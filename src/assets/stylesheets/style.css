@@ -4,12 +4,57 @@ The main SCSS file for everything, yep
 nav.navbar {
   margin-bottom: 0;
   border-radius: 0; }
+  nav.navbar .navbar-nav > li > a {
+    margin: 15px 0; }
+  nav.navbar .navbar-form {
+    padding-top: 15px; }
 
 .jumbotron {
   background-color: #59AA2B;
-  color: white; }
+  min-height: 410px; }
+  .jumbotron h2 {
+    padding-top: 20px;
+    font-size: 3em;
+    letter-spacing: 1px;
+    color: white;
+    line-height: 1.3em; }
+  .jumbotron .btn {
+    background-color: transparent;
+    border: solid 2px white; }
+  .jumbotron .btn img {
+    margin-right: 10px; }
+  .jumbotron .anim-container {
+    position: absolute;
+    width: 655px;
+    padding: 50px;
+    background-image: url('../images/MB-screen.png');
+    background-size: 100%;
+    background-repeat: no-repeat; }
+  .jumbotron img.anim {
+    position: relative;
+    top: -10px;
+    left: 32px; }
+
+i.fa-3x {
+  border: solid 2px rgba(89, 170, 43, 0.2);
+  width: 70px;
+  height: 70px;
+  line-height: 64px;
+  border-radius: 50%;
+  text-align: center; }
 
 .spacer30 {
   height: 30px;
   width: 100%;
   clear: both; }
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Marvel', sans-serif; }
+
+h2 {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2em; }
+
+h3 {
+  color: #59AA2B; }
