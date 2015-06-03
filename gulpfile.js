@@ -16,6 +16,8 @@ var reload = browserSync.reload;
 // And define a variable that BrowserSync uses in it"s function
 var bs;
 
+var rename = require("gulp-rename");
+
 // Deletes the directory that is used to serve the site during development
 gulp.task("clean:dev", del.bind(null, ["serve"]));
 
@@ -76,6 +78,16 @@ gulp.task("copy", function () {
   return gulp.src(["serve/*.txt", "serve/*.xml"])
     .pipe(gulp.dest("site"))
     .pipe($.size({ title: "xml & txt" }))
+});
+
+// Copy and rename docs .md from the original repo (via submodule)
+gulp.task("docs", function () {
+  return gulp.src("src/_cleanflight/docs/**/*.md")
+    .pipe(rename(function(path) {
+      path.dirname = path.dirname.toLowerCase();
+      path.basename = '2015-01-01-' + path.basename.replace(/\s+/g, '-').toLowerCase();
+     }))
+    .pipe(gulp.dest("./src/_posts/docs"))
 });
 
 // Optimizes all the CSS, HTML and concats the JS etc
