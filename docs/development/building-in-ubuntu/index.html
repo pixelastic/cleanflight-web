@@ -1,0 +1,86 @@
+<h1>Building in Ubuntu</h1>
+
+<p>Building for Ubuntu platform is remarkably easy. The only trick to understand is that the Ubuntu toolchain,
+which they are downstreaming from Debian, is not compatible with Cleanflight. We suggest that you take an
+alternative PPA from Terry Guo, found here:
+<a href="https://launchpad.net/%7Eterry.guo/+archive/ubuntu/gcc-arm-embedded">https://launchpad.net/~terry.guo/+archive/ubuntu/gcc-arm-embedded</a></p>
+
+<p>This PPA has several compiler versions and platforms available. For many hardware platforms (notably Naze)
+the 4.9.3 compiler will work fine. For some, older compiler 4.8 (notably Sparky) is more appropriate. We
+suggest you build with 4.9.3 first, and try to see if you can connect to the CLI or run the Configurator.
+If you cannot, please see the section below for further hints on what you might do.</p>
+
+<h2>Setup GNU ARM Toolchain</h2>
+
+<p>Note specifically the last paragraph of Terry&rsquo;s PPA documentation &ndash; Ubuntu carries its own package for
+<code>gcc-arm-none-eabi</code>, so you&rsquo;ll have to remove it, and then pin the one from the PPA.
+For your release, you should first remove any older pacakges (from Debian or Ubuntu directly), introduce
+Terry&rsquo;s PPA, and update:
+<code>
+sudo apt-get remove binutils-arm-none-eabi gcc-arm-none-eabi
+sudo add-apt-repository ppa:terry.guo/gcc-arm-embedded
+sudo apt-get update
+</code></p>
+
+<p>For Ubuntu 14.10 (current release, called Utopic Unicorn), you should pin:
+<code>
+sudo apt-get install gcc-arm-none-eabi=4.9.3.2014q4-0utopic12
+</code></p>
+
+<p>For Ubuntu 14.04 (an LTS as of Q1&#39;2015, called Trusty Tahr), you should pin:
+<code>
+sudo apt-get install gcc-arm-none-eabi=4.9.3.2014q4-0trusty12
+</code></p>
+
+<p>For Ubuntu 12.04 (previous LTS, called Precise Penguin), you should pin:
+<code>
+sudo apt-get install gcc-arm-none-eabi=4.9.3.2014q4-0precise12
+</code></p>
+
+<h2>Building on Ubuntu</h2>
+
+<p>After the ARM toolchain from Terry is installed, you should be able to build from source.
+<code>
+cd src
+git clone git@github.com:cleanflight/cleanflight.git
+cd cleanflight
+make TARGET=NAZE
+</code></p>
+
+<p>You&rsquo;ll see a set of files being compiled, and finally linked, yielding both an ELF and then a HEX:
+<code>
+...
+arm-none-eabi-size ./obj/main/cleanflight_NAZE.elf 
+   text    data     bss     dec     hex filename
+  97164     320   11080  108564   1a814 ./obj/main/cleanflight_NAZE.elf
+arm-none-eabi-objcopy -O ihex --set-start 0x8000000 obj/main/cleanflight_NAZE.elf obj/cleanflight_NAZE.hex
+$ ls -la obj/cleanflight_NAZE.hex                                                                                                                                                 
+-rw-rw-r-- 1 pim pim 274258 Jan 12 21:45 obj/cleanflight_NAZE.hex
+</code></p>
+
+<p>You can use the Cleanflight-Configurator to flash the <code>obj/cleanflight_NAZE.hex</code> file.</p>
+
+<h2>Bricked/Bad build?</h2>
+
+<p>Users have reported that the 4.9.3 compiler for ARM produces bad builds, for example on the Sparky hardware platform.
+It is very likely that using an older compiler would be fine &ndash; Terry happens to have also a 4.8 2014q2 build in his
+PPA - to install this, you can fetch the <code>.deb</code> directly:
+<a href="http://ppa.launchpad.net/terry.guo/gcc-arm-embedded/ubuntu/pool/main/g/gcc-arm-none-eabi/">http://ppa.launchpad.net/terry.guo/gcc-arm-embedded/ubuntu/pool/main/g/gcc-arm-none-eabi/</a></p>
+
+<p>and use <code>dpkg</code> to install:
+<code>
+sudo dpkg -i gcc-arm-none-eabi_4-8-2014q2-0saucy9_amd64.deb
+</code></p>
+
+<p>Make sure to remove <code>obj/</code> and <code>make clean</code>, before building again.</p>
+
+<h2>Updating and rebuilding</h2>
+
+<p>Navigate to the local cleanflight repository and use the following steps to pull the latest changes and rebuild your version of cleanflight:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">cd src/cleanflight
+git reset --hard
+git pull
+make clean TARGET=NAZE
+make
+</code></pre></div>
+<p>Credit goes to K.C. Budd, AKfreak for testing, and pulsar for doing the long legwork that yielded this very short document.</p>

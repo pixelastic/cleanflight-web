@@ -1,0 +1,41 @@
+<h1>RSSI</h1>
+
+<p>RSSI is a measurement of signal strength and is very handy so you know when your aircraft isw going out of range or if it is suffering RF interference.</p>
+
+<p>Some receivers have RSSI outputs.  3 types are supported.</p>
+
+<ol>
+<li>RSSI via PPM channel</li>
+<li>RSSI via Parallel PWM channel</li>
+<li>RSSI via ADC with PPM RC that has an RSSI output - aka RSSI ADC</li>
+</ol>
+
+<h2>RSSI via PPM</h2>
+
+<p>Configure your receiver to output RSSI on a spare channel, then select the channel used via the CLI.</p>
+
+<p>e.g. if you used channel 9 then you would set:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">set rssi_channel = 9
+</code></pre></div>
+<p>Note: Some systems such as EZUHF invert the RSSI ( 0 = Full signal / 100 = Lost signal). To correct this problem you can invert the channel input so you will get a correct reading by using command:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">set rssi_ppm_invert = 1
+</code></pre></div>
+<p>Default is set to &ldquo;0&rdquo; for normal operation ( 100 = Full signal / 0 = Lost signal).</p>
+
+<h2>RSSI via Parallel PWM channel</h2>
+
+<p>Connect the RSSI signal to any PWM input channel then set the RSSI channel as you would for RSSI via PPM</p>
+
+<h2>RSSI ADC</h2>
+
+<p>Connect the RSSI signal to the RC2/CH2 input. The signal must be between 0v and 3.3v.
+Use inline resistors to lower voltage if required; inline smoothing capacitors may also help.
+A simple PPM-&gt;RSSI conditioner can easily be made. See the  PPM-RSSI conditioning.pdf  for details.</p>
+
+<p>Under CLI :
+- enable using the RSSI_ADC feature  :  <code>feature RSSI_ADC</code>
+- set the RSSI_SCALE parameter (between 1 and 255) to adjust RSSI level according to your configuration.</p>
+
+<p>FrSky D4R-II and X8R supported.</p>
+
+<p>The feature can not be used when RX_PARALLEL_PWM is enabled.</p>

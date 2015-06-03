@@ -1,0 +1,195 @@
+<h1>Battery Monitoring</h1>
+
+<p>Cleanflight has a battery monitoring feature.  The voltage of the main battery can be measured by the system and used to trigger a low-battery warning <a href="Buzzer.md">buzzer</a>, on-board status LED flashing and LED strip patterns.</p>
+
+<p>Low battery warnings can:</p>
+
+<ul>
+<li>Help ensure you have time to safely land the aircraft</li>
+<li>Help maintain the life and safety of your LiPo/LiFe batteries, which should not be discharged below manufacturer recommendations</li>
+</ul>
+
+<p>Minimum and maximum cell voltages can be set, and these voltages are used to auto-detect the number of cells in the battery when it is first connected.</p>
+
+<p>Per-cell monitoring is not supported, as we only use one ADC to read the battery voltage.</p>
+
+<h2>Supported targets</h2>
+
+<p>All targets support battery voltage monitoring unless status.</p>
+
+<h2>Connections</h2>
+
+<p>When dealing with batteries <strong>ALWAYS CHECK POLARITY!</strong></p>
+
+<p>Measure expected voltages <strong>first</strong> and then connect to the flight controller.  Powering the flight controller with
+incorrect voltage or reversed polarity will likely fry your flight controller. Ensure your flight controller
+has a voltage divider capable of measuring your particular battery voltage.</p>
+
+<h3>Naze32</h3>
+
+<p>The Naze32 has an on-board battery divider circuit; just connect your main battery to the VBAT connector.</p>
+
+<p><strong>CAUTION:</strong>  When installing the connection from main battery to the VBAT connector, be sure to first disconnect the main battery from the frame/power distribution board.  Check the wiring very carefully before connecting battery again.  Incorrect connections can immediately and completely destroy the flight controller and connected peripherals (ESC, GPS, Receiver etc.).</p>
+
+<h3>CC3D</h3>
+
+<p>The CC3D has no battery divider.  To use voltage monitoring, you must create a divider that gives a 3.3v 
+MAXIMUM output when the main battery is fully charged.  Connect the divider output to S5_IN/PA0/RC5.</p>
+
+<p>Notes:</p>
+
+<ul>
+<li><p>S5_IN/PA0/RC5 is Pin 7 on the 8 pin connector, second to last pin, on the opposite end from the 
+GND/+5/PPM signal input.</p></li>
+<li><p>When battery monitoring is enabled on the CC3D, RC5 can no-longer be used for PWM input.</p></li>
+</ul>
+
+<h3>Sparky</h3>
+
+<p>See the <a href="Board%20-%20Sparky.md">Sparky board chapter</a>.</p>
+
+<h2>Configuration</h2>
+
+<p>Enable the <code>VBAT</code> feature.</p>
+
+<p>Configure min/max cell voltages using the following CLI setting:</p>
+
+<p><code>vbat_scale</code> - Adjust this to match actual measured battery voltage to reported value.</p>
+
+<p><code>vbat_max_cell_voltage</code> - Maximum voltage per cell, used for auto-detecting battery voltage in 0.1V units, i.e. 43 = 4.3V</p>
+
+<p><code>set vbat_warning_cell_voltage</code> - Warning voltage per cell; this triggers battery-out alarms, in 0.1V units, i.e. 34 = 3.4V</p>
+
+<p><code>vbat_min_cell_voltage</code> - Minimum voltage per cell; this triggers battery-out alarms, in 0.1V units, i.e. 33 = 3.3V</p>
+
+<p>e.g.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">set vbat_scale = 110
+set vbat_max_cell_voltage = 43
+set vbat_warning_cell_voltage = 34
+set vbat_min_cell_voltage = 33
+</code></pre></div>
+<h1>Current Monitoring</h1>
+
+<p>Current monitoring (amperage) is supported by connecting a current meter to the appropriate current meter ADC input (see the documentation for your particular board).</p>
+
+<p>When enabled, the following values calculated and used by the telemetry and OLED display subsystems:
+* Amps
+* mAh used
+* Capacity remaining</p>
+
+<h2>Configuration</h2>
+
+<p>Enable current monitoring using the CLI command:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">feature CURRENT_METER
+</code></pre></div>
+<p>Configure the current meter type using the <code>current_meter_type</code> settings here:</p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Sensor Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>None</td>
+</tr>
+<tr>
+<td>1</td>
+<td>ADC/hardware sensor</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Virtual sensor</td>
+</tr>
+</tbody></table>
+
+<p>Configure capacity using the <code>battery_capacity</code> setting, in mAh units.</p>
+
+<p>If you&rsquo;re using an OSD that expects the multiwii current meter output value, then set <code>multiwii_current_meter_output</code> to <code>1</code> (this multiplies amperage sent to MSP by 10).</p>
+
+<h3>ADC Sensor</h3>
+
+<p>The current meter may need to be configured so the value read at the ADC input matches actual current draw.  Just like you need a voltmeter to correctly calibrate your voltage reading you also need an ammeter to calibrate the current sensor.</p>
+
+<p>Use the following settings to adjust calibration:</p>
+
+<p><code>current_meter_scale</code>
+<code>current_meter_offset</code></p>
+
+<h3>Virtual Sensor</h3>
+
+<p>The virtual sensor uses the throttle position to calculate an estimated current value. This is useful when a real sensor is not available. The following settings adjust the virtual sensor calibration:</p>
+
+<table><thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>current_meter_scale</code></td>
+<td>The throttle scaling factor [centiamps, i.e. 1/100th A]</td>
+</tr>
+<tr>
+<td><code>current_meter_offset</code></td>
+<td>The current at zero throttle (while disarmed) [centiamps, i.e. 1/100th A]</td>
+</tr>
+</tbody></table>
+
+<p>There are two simple methods to tune these parameters:  one uses a battery charger and another depends on actual current measurements.</p>
+
+<h4>Tuning Using Actual Current Measurements</h4>
+
+<p>If you know your craft&rsquo;s current draw while disarmed (Imin) and at maximum throttle while armed (Imax), calculate the scaling factors as follows:
+<code>
+current_meter_scale = (Imax - Imin) * 100000 / (Tmax + (Tmax * Tmax / 50))
+current_meter_offset = Imin * 100
+</code>
+Note: Tmax is maximum throttle offset (i.e. for <code>max_throttle</code> = 1850, Tmax = 1850 - 1000 = 850)</p>
+
+<p>For example, assuming a maximum current of 34.2A, a minimum current of 2.8A, and a Tmax <code>max_throttle</code> = 1850:
+<code>
+current_meter_scale = (Imax - Imin) * 100000 / (Tmax + (Tmax * Tmax / 50))
+                    = (34.2 - 2.8) * 100000 / (850 + (850 * 850 / 50))
+                    = 205
+current_meter_offset = Imin * 100 = 280
+</code></p>
+
+<h4>Tuning Using Battery Charger Measurement</h4>
+
+<p>If you cannot measure current draw directly, you can approximate it indirectly using your battery charger.<br>
+However, note it may be difficult to adjust <code>current_meter_offset</code> using this method unless you can 
+measure the actual current draw with the craft disarmed.</p>
+
+<p>Note:
++ This method depends on the accuracy of your battery charger; results may vary.
++ If you add or replace equipment that changes the in-flight current draw (e.g. video transmitter, 
+  camera, gimbal, motors, prop pitch/sizes, ESCs, etc.), you should recalibrate.</p>
+
+<p>The general method is:</p>
+
+<ol>
+<li>Fully charge your flight battery</li>
+<li>Fly your craft, using &gt;50% of your battery pack capacity (estimated)</li>
+<li>Note Cleanflight&rsquo;s reported mAh draw</li>
+<li>Re-charge your flight battery, noting the mAh charging data needed to restore the pack to fully charged</li>
+<li>Adjust <code>current_meter_scale</code> to according to the formula given below</li>
+<li>Repeat and test</li>
+</ol>
+
+<p>Given (a) the reported mAh draw and the (b) mAh charging data, calculate a new <code>current_meter_scale</code> value as follows:
+<code>
+current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_meter_scale
+</code>
+For example, assuming:
++ A Cleanflight reported current draw of 1260 mAh
++ Charging data to restore full charge of 1158 mAh
++ A existing <code>current_meter_scale</code> value of 400 (the default)</p>
+
+<p>Then the updated <code>current_meter_scale</code> is:
+<code>
+current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_meter_scale
+                    = (1158 / 1260) * 400
+                    = 368
+</code></p>

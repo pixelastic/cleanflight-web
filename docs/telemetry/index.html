@@ -1,0 +1,94 @@
+<h1>Telemetry</h1>
+
+<p>Telemetry allows you to know what is happening on your aircraft while you are flying it.  Among other things you can receive battery voltages and GPS positions on your transmitter.</p>
+
+<p>Telemetry can be either always on, or enabled when armed.  If a serial port for telemetry is shared with other functionality then then telemetry will only be enabled when armed on that port.</p>
+
+<p>Telemetry is enabled using the &lsquo;TELEMETRY` feature.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">feature TELEMETRY
+</code></pre></div>
+<p>Multiple telemetry providers are currently supported, FrSky, Graupner HoTT V4, SmartPort (S.Port) and MultiWii Serial Protocol (MSP)</p>
+
+<p>All telemetry systems use serial ports, configure serial ports to use the telemetry system required.</p>
+
+<h2>FrSky telemetry</h2>
+
+<p>FrSky telemetry is transmit only and just requires a single connection from the TX pin of a serial port to the RX pin on an FrSky telemetry receiver.</p>
+
+<p>FrSky telemetry signals are inverted.  To connect a cleanflight capable board to an FrSKy receiver you have some options.</p>
+
+<ol>
+<li>A hardware inverter - Built in to some flight controllers.</li>
+<li>Use software serial and enable frsky_inversion.</li>
+<li>Use a flight controller that has software configurable hardware inversion (e.g. STM32F30x).</li>
+</ol>
+
+<p>For 1, just connect your inverter to a usart or software serial port.</p>
+
+<p>For 2 and 3 use the CLI command as follows:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">set telemetry_inversion = 1
+</code></pre></div>
+<h3>Precision setting for VFAS</h3>
+
+<p>Cleanflight can send VFAS (FrSky Ampere Sensor Voltage) in two ways:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">set frsky_vfas_precision  = 0
+</code></pre></div>
+<p>This is default setting which supports VFAS resolution of 0.2 volts and is supported on all FrSky hardware.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">set frsky_vfas_precision  = 1
+</code></pre></div>
+<p>This is new setting which supports VFAS resolution of 0.1 volts and is only supported by OpenTX radios (this method uses custom ID 0x39).</p>
+
+<h3>Notes</h3>
+
+<p>RPM shows throttle output when armed.
+RPM shows when disarmed.
+TEMP2 shows Satellite Signal Quality when GPS is enabled.</p>
+
+<p>RPM requires that the &#39;blades&rsquo; setting is set to 12 on your receiver/display - tested with Taranis/OpenTX.</p>
+
+<h2>HoTT telemetry</h2>
+
+<p>Only Electric Air Modules and GPS Modules are emulated.</p>
+
+<p>Use the latest Graupner firmware for your transmitter and receiver.</p>
+
+<p>Older HoTT transmitters required the EAM and GPS modules to be enabled in the telemetry menu of the transmitter. (e.g. on MX-20)</p>
+
+<p>Serial ports use two wires but HoTT uses a single wire so some electronics are required so that the signals don&rsquo;t get mixed up.  The TX and RX pins of
+a serial port should be connected using a diode and a single wire to the <code>T</code> port on a HoTT receiver.</p>
+
+<p>Connect as follows:</p>
+
+<ul>
+<li>HoTT TX/RX <code>T</code> -&gt; Serial RX (connect directly)</li>
+<li>HoTT TX/RX <code>T</code> -&gt; Diode <code>-(  |)-</code> &gt; Serial TX (connect via diode)</li>
+</ul>
+
+<p>The diode should be arranged to allow the data signals to flow the right way</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">-(  |)- == Diode, | indicates cathode marker.
+</code></pre></div>
+<p>1N4148 diodes have been tested and work with the GR-24.</p>
+
+<p>As noticed by Skrebber the GR-12 (and probably GR-16/24, too) are based on a PIC 24FJ64GA-002, which has 5V tolerant digital pins.</p>
+
+<p>Note: The SoftSerial ports may not be 5V tolerant on your board.  Verify if you require a 5v/3.3v level shifters.</p>
+
+<h2>MultiWii Serial Protocol (MSP)</h2>
+
+<p>MSP Telemetry simply transmits MSP packets in sequence to any MSP device attached to the telemetry port.  It rotates though a fixes sequence of command responses.</p>
+
+<p>It is transmit only, it can work at any supported baud rate.</p>
+
+<h2>SmartPort (S.Port)</h2>
+
+<p>Smartport is a telemetry system used by newer FrSky transmitters and receivers such as the Taranis/XJR and X8R, X6R and X4R(SB).</p>
+
+<p>More information about the implementation can be found here: <a href="https://github.com/frank26080115/cleanflight/wiki/Using-Smart-Port">https://github.com/frank26080115/cleanflight/wiki/Using-Smart-Port</a></p>
+
+<p>In time this documentation will be updated with further details.</p>
+
+<p>Smartport devices can be connected directly to STM32F3 boards such as the SPRacingF3 and Sparky, with a single straight through cable without the need for any hardware modifications on the FC or the receiver.</p>
+
+<p>For Smartport on F3 based boards, enable the telemetry inversion setting.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">set telemetry_inversion = 1
+</code></pre></div>

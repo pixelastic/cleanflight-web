@@ -1,0 +1,739 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>cleanflight.org/</loc>
+    <lastmod>2015-06-03T23:27:26+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/autotune</loc>
+      
+        <lastmod>2015-01-02T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/development/travis</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/telemetry</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/spektrum-bind</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/sonar</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/serial</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/safety</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/rx</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/rssi</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/profiles</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/pid-tuning</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/development/pid-internals</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/oneshot</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/api/msp_extensions</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/modes</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/mixer</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/migrating-from-baseflight</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/ledstrip</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/introduction</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/installation</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/inflight-adjustments</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/development/hardware-debugging-in-eclipse</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/development/hardware-debugging</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/gps</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/getting-started</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/failsafe</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/display</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/development/development</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/controls</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/development/configuration-storage</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/configuration</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/cli</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/buzzer</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/development/building-manual</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/development/building-in-windows</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/development/building-in-ubuntu</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/development/building-in-mac-os-x</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/development/building-in-eclipse</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/boards</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/board---sparky</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/board---paris-air-hero-32</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/board---olimexino</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/board---naze32</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/board---cjmcu</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/board---chebuzzf3</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/board---cc3d</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/board---alienwii32</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/blackbox</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/battery</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/autotune</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>cleanflight.org/docs/development/atomic-barrier</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+  
+  <url>
+    <loc>cleanflight.org/404.html</loc>
+    
+      <lastmod>2015-06-03T23:27:26+02:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>cleanflight.org/about.html</loc>
+    
+      <lastmod>2015-06-03T23:27:26+02:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>cleanflight.org/atom.xml</loc>
+    
+      <lastmod>2015-06-03T23:27:26+02:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>cleanflight.org/index.html</loc>
+    
+      <lastmod>2015-06-03T23:27:26+02:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>cleanflight.org/sitemap.xml</loc>
+    
+      <lastmod>2015-06-03T23:27:26+02:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+</urlset>

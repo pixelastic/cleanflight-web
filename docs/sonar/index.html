@@ -1,0 +1,83 @@
+<h1>Sonar</h1>
+
+<p>A sonar sensor can be used to measure altitude for use with BARO and SONAR altitude
+hold modes.</p>
+
+<p>The sonar sensor is used instead of the pressure sensor (barometer) at low altitudes.
+The sonar sensor is only used when the aircraft inclination angle (attitude) is small.</p>
+
+<h2>Hardware</h2>
+
+<p>Currently the only supported sensor is the HCSR04 sensor.</p>
+
+<h2>Connections</h2>
+
+<h3>Naze/Flip32+</h3>
+
+<table><thead>
+<tr>
+<th>Mode</th>
+<th>Trigger</th>
+<th>Echo</th>
+<th>Inline 1k resistors</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Parallel PWM/ADC current sensor</td>
+<td>PB8 / Motor 5</td>
+<td>PB9 / Motor 6</td>
+<td>NO (5v tolerant)</td>
+</tr>
+<tr>
+<td>PPM/Serial RX</td>
+<td>PB0 / RC7</td>
+<td>PB1 / RC8</td>
+<td>YES (3.3v input)</td>
+</tr>
+</tbody></table>
+
+<h4>Constraints</h4>
+
+<p>Current meter cannot be used in conjunction with Parallel PWM and Sonar.</p>
+
+<h3>Olimexino</h3>
+
+<table><thead>
+<tr>
+<th>Trigger</th>
+<th>Echo</th>
+<th>Inline 1k resistors</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PB0 / RC7</td>
+<td>PB1 / RC8</td>
+<td>YES (3.3v input)</td>
+</tr>
+</tbody></table>
+
+<h4>Constraints</h4>
+
+<p>Current meter cannot be used in conjunction with Sonar.</p>
+
+<h3>CC3D</h3>
+
+<table><thead>
+<tr>
+<th>Trigger</th>
+<th>Echo</th>
+<th>Inline 1k resistors</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PB5</td>
+<td>PB0</td>
+<td>YES (3.3v input)</td>
+</tr>
+</tbody></table>
+
+<p>Sonar support is not available when using the OpenPilot bootloader (OPBL).</p>
+
+<h4>Constraints</h4>
+
+<p>Sonar cannot be used in conjuction with SoftSerial or Parallel PWM.</p>

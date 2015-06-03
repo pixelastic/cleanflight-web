@@ -1,0 +1,89 @@
+<h1>Building in Mac OS X</h1>
+
+<p>Building in Mac OS X can be accomplished in just a few steps:</p>
+
+<ul>
+<li>Install general development tools (clang, make, git)</li>
+<li>Install ARM GCC 4.8 series compiler</li>
+<li>Checkout Cleanflight sourcecode through git</li>
+<li>Build the code</li>
+</ul>
+
+<h2>Install general development tools (clang, make, git)</h2>
+
+<p>Open up a terminal and run <code>make</code>. If it is installed already, you should see a message like this, which means that you
+already have the required development tools installed:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">make: *** No targets specified and no makefile found.  Stop.
+</code></pre></div>
+<p>If it isn&rsquo;t installed yet, you might get a popup like this. If so, click the &ldquo;install&rdquo; button to install the commandline
+developer tools:</p>
+
+<p><img src="assets/mac-prompt-tools-install.png" alt="Prompt to install developer tools"></p>
+
+<p>If you just get an error like this instead of a helpful popup prompt:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">-bash: make: command not found
+</code></pre></div>
+<p>Try running <code>xcode-select --install</code> instead to trigger the popup.</p>
+
+<p>If that doesn&rsquo;t work, you&rsquo;ll need to install the XCode development environment <a href="https://itunes.apple.com/us/app/xcode/id497799835">from the App Store</a>. After
+installation, open up XCode and enter its preferences menu. Go to the &ldquo;downloads&rdquo; tab and install the 
+&ldquo;command line tools&rdquo; package.</p>
+
+<h2>Install ARM GCC 4.8 series compiler</h2>
+
+<p>Cleanflight is built using the 4.8 series GCC compiler provided by the <a href="https://launchpad.net/gcc-arm-embedded">GNU Tools for ARM Embedded Processors project</a>.
+The newest &ldquo;4.9&rdquo; series compiler produces builds that don&rsquo;t boot on CC3D and Sparky targets (and perhaps others), so it&rsquo;s
+better to use the older 4.8 compiler for the moment.</p>
+
+<p>Hit the &ldquo;all downloads&rdquo; link on the right side of the GNU Tools for ARM page to view <a href="https://launchpad.net/gcc-arm-embedded/+download">the older releases</a>. Grab the
+Mac installation tarball for the latest version in the 4.8 series (e.g. 4.8-2014-q3-update). Move it somewhere useful 
+such as a <code>~/development</code> folder (in your home directory) and double click it to unpack it. You should end up with a 
+folder called <code>~/development/gcc-arm-none-eabi-4_8-2014q3/</code>.</p>
+
+<p>Now you just need to add the <code>bin/</code> directory from inside the GCC directory to your system&rsquo;s path. Run <code>nano ~/.profile</code>. Add a
+new line at the end of the file which adds the path for the <code>bin/</code> folder to your path, like so:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">export PATH=$PATH:~/development/gcc-arm-none-eabi-4_8-2014q3/bin
+</code></pre></div>
+<p>Press CTRL+X to exit nano, and answer &ldquo;y&rdquo; when prompted to save your changes.</p>
+
+<p>Now <em>close this terminal window</em> and open a new one. Try running:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">arm-none-eabi-gcc --version
+</code></pre></div>
+<p>You should get output similar to:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">arm-none-eabi-gcc (GNU Tools for ARM Embedded Processors) 4.8.4 20140725 (release) [ARM/embedded-4_8-branch revision 213147]
+Copyright (C) 2013 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+</code></pre></div>
+<p>If <code>arm-none-eabi-gcc</code> couldn&rsquo;t be found, go back and check that you entered the correct path in your <code>~/.profile</code> file.</p>
+
+<h2>Checkout CleanFlight sourcecode through git</h2>
+
+<p>Enter your development directory and clone the <a href="https://github.com/cleanflight/cleanflight">Cleanflight repository</a> using the &ldquo;HTTPS clone URL&rdquo; which is shown on
+the right side of the Cleanflight GitHub page, like so:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git clone https://github.com/cleanflight/cleanflight.git
+</code></pre></div>
+<p>This will download the entire Cleanflight repository for you into a new folder called &ldquo;cleanflight&rdquo;.</p>
+
+<h2>Build the code</h2>
+
+<p>Enter the cleanflight directory and run <code>make TARGET=NAZE</code> to build firmware for the Naze32. When the build completes,
+the .hex firmware should be available as <code>obj/cleanflight_NAZE.hex</code> for you to flash using the Cleanflight
+Configurator.</p>
+
+<h2>Updating to the latest source</h2>
+
+<p>If you want to erase your local changes and update to the latest version of the Cleanflight source, enter your
+cleanflight directory and run these commands to first erase your local changes, fetch and merge the latest
+changes from the repository, then rebuild the firmware:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git reset --hard
+git pull
+
+make clean TARGET=NAZE
+make TARGET=NAZE
+</code></pre></div>
+<p>Or in the case of CC3D in need of a <code>obj/cleanflight_CC3D.bin</code>
+<code>
+make clean TARGET=CC3D
+make TARGET=CC3D OPBL=yes
+</code></p>

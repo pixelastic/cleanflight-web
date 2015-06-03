@@ -1,0 +1,118 @@
+<h1>Serial</h1>
+
+<p>Cleanflight has enhanced serial port flexibility but configuration is slightly more complex as a result.</p>
+
+<p>Cleanflight has the concept of a function (MSP, GPS, Serial RX, etc) and a port (VCP, UARTx, SoftSerial x).
+Not all functions can be used on all ports due to hardware pin mapping, conflicting features, hardware, and software
+constraints.</p>
+
+<h2>Serial port types</h2>
+
+<ul>
+<li>USB Virtual Com Port (VCP) - USB pins on a USB port connected directly to the processor without requiring
+a dedicated USB to UART adapter.  VCP does not &lsquo;use&rsquo; a physical UART port.</li>
+<li>UART - A pair of dedicated hardware transmit and receive pins with signal detection and generation done in hardware.</li>
+<li>SoftSerial - A pair of hardware transmit and receive pins with signal detection and generation done in software.</li>
+</ul>
+
+<p>UART is the most efficient in terms of CPU usage.
+SoftSerial is the least efficient and slowest, SoftSerial should only be used for low-bandwidth usages, such as telemetry transmission.</p>
+
+<p>UART ports are sometimes exposed via on-board USB to UART converters, such as the CP2102 as found on the Naze and Flip32 boards.
+If the flight controller does not have an on-board USB to UART converter and doesn&rsquo;t support VCP then an external USB to UART board is required.
+These are sometimes referred to as FTDI boards.  FTDI is just a common manufacturer of a chip (the FT232RL) used on USB to UART boards.</p>
+
+<p>When selecting a USB to UART converter choose one that has DTR exposed as well as a selector for 3.3v and 5v since they are more useful.</p>
+
+<p>Examples:</p>
+
+<ul>
+<li><a href="http://www.banggood.com/FT232RL-FTDI-USB-To-TTL-Serial-Converter-Adapter-Module-For-Arduino-p-917226.html">FT232RL FTDI USB To TTL Serial Converter Adapter</a></li>
+<li><a href="http://www.banggood.com/Wholesale-USB-To-TTL-Or-COM-Converter-Module-Buildin-in-CP2102-New-p-27989.html">USB To TTL / COM Converter Module buildin-in CP2102</a></li>
+</ul>
+
+<p>Both SoftSerial and UART ports can be connected to your computer via USB to UART converter boards. </p>
+
+<h2>Serial Configuration</h2>
+
+<p>Serial port configuration is best done via the configurator.</p>
+
+<p>Configure serial ports first, then enable/disable features that use the ports.  To configure SoftSerial ports the SOFTSERIAL feature must be also be enabled. </p>
+
+<h3>Constraints</h3>
+
+<p>If the configuration is invalid the serial port configuration will reset to its defaults and features may be disabled.</p>
+
+<ul>
+<li>There must always be a port available to use for MSP/CLI.</li>
+<li>There is a maximum of 2 MSP ports.</li>
+<li>To use a port for a function, the function&rsquo;s corresponding feature must be also be enabled.
+e.g. after configuring a port for GPS enable the GPS feature.</li>
+<li>If SoftSerial is used, then all SoftSerial ports must use the same baudrate.</li>
+<li>Softserial is limited to 19200 buad.</li>
+<li>All telemetry systems except MSP will ignore any attempts to override the baudrate.</li>
+<li>MSP/CLI can be shared with EITHER Blackbox OR telemetry.  In shared mode blackbox or telemetry will be output only when armed.</li>
+<li>Smartport telemetry cannot be shared with MSP.</li>
+<li>No other serial port sharing combinations are valid.</li>
+<li>You can use as many different telemetry systems as you like at the same time.</li>
+<li>You can only use each telemetry system once.  e.g.  FrSky telemetry cannot be used on two port, but MSP Telemetry + FrSky on different ports is fine.</li>
+</ul>
+
+<h3>Configuration via CLI</h3>
+
+<p>You can use the CLI for configuration but the commands are reserved for developers and advanced users.</p>
+
+<p>The <code>serial</code> CLI command takes 6 arguments.</p>
+
+<ol>
+<li>Identifier</li>
+<li>Function bitmask (see serialPortFunction_e in the source) </li>
+<li>MSP baud rate</li>
+<li>GPS baud rate</li>
+<li>Telemetry baud rate (auto baud allowed)</li>
+<li>Blackbox baud rate</li>
+</ol>
+
+<h3>Baud Rates</h3>
+
+<p>The allowable baud rates are as follows:</p>
+
+<table><thead>
+<tr>
+<th>Identifier</th>
+<th>Baud rate</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>Auto</td>
+</tr>
+<tr>
+<td>1</td>
+<td>9600</td>
+</tr>
+<tr>
+<td>2</td>
+<td>19200</td>
+</tr>
+<tr>
+<td>3</td>
+<td>38400</td>
+</tr>
+<tr>
+<td>4</td>
+<td>57600</td>
+</tr>
+<tr>
+<td>5</td>
+<td>115200</td>
+</tr>
+<tr>
+<td>6</td>
+<td>230400</td>
+</tr>
+<tr>
+<td>7</td>
+<td>250000</td>
+</tr>
+</tbody></table>

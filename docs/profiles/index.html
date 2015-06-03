@@ -1,0 +1,87 @@
+<h1>Profiles</h1>
+
+<p>A profile is a set of configuration settings.</p>
+
+<p>Currently three profiles are supported. The default profile is profile <code>0</code>.</p>
+
+<h2>Changing profiles</h2>
+
+<p>Profiles can be selected using a GUI or the following stick combinations:</p>
+
+<table><thead>
+<tr>
+<th>Profile</th>
+<th>Throttle</th>
+<th>Yaw</th>
+<th>Pitch</th>
+<th>Roll</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>Down</td>
+<td>Left</td>
+<td>Middle</td>
+<td>Left</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Down</td>
+<td>Left</td>
+<td>Up</td>
+<td>Middle</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Down</td>
+<td>Left</td>
+<td>Middle</td>
+<td>Right</td>
+</tr>
+</tbody></table>
+
+<p>The CLI <code>profile</code> command can also be used:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">profile &lt;index&gt;
+</code></pre></div>
+<h1>Rate Profiles</h1>
+
+<p>Cleanflight supports rate profiles in addition to regular profiles.</p>
+
+<p>Rate profiles contain settings that adjust how your craft behaves based on control input.</p>
+
+<p>Three rate profiles are supported.</p>
+
+<p>Rate profiles can be selected while flying using the inflight adjustments feature.</p>
+
+<p>Each normal profile has a setting called &lsquo;default_rate_profile`.  When a profile is activated the
+corresponding rate profile is also activated. </p>
+
+<p>Profile 0 has a default rate profile of 0.
+Profile 1 has a default rate profile of 1.
+Profile 2 has a default rate profile of 2.</p>
+
+<p>The defaults are set this way so that it&rsquo;s simple to configure a profile and a rate profile at the same.</p>
+
+<p>The current rate profile can be shown or set using the CLI <code>rateprofile</code> command:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">rateprofile &lt;index&gt;
+</code></pre></div>
+<p>The values contained within a rate profile can be seen by using the CLI <code>dump rates</code> command.</p>
+
+<p>e.g
+&ldquo;`</p>
+
+<h1>dump rates</h1>
+
+<h1>rateprofile</h1>
+
+<p>rateprofile 0</p>
+
+<p>set rc_rate = 90
+set rc_expo = 65
+set thr_mid = 50
+set thr_expo = 0
+set roll_pitch_rate = 0
+set yaw_rate = 0
+set tpa_rate = 0
+set tpa_breakpoint = 1500
+&rdquo;`</p>

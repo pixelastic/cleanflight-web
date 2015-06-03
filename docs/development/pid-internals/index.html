@@ -1,0 +1,58 @@
+<h3>IO variables</h3>
+
+<p><code>gyroADC/8192*2000 = deg/s</code></p>
+
+<p><code>gyroADC/4 ~ deg/s</code></p>
+
+<p><code>rcCommand</code> - <code>&lt;-500 - 500&gt;</code> nominal, but is scaled with <code>rcRate/100</code>, max +-1250</p>
+
+<p><code>inclination</code> - in 0.1 degree, roll and pitch deviation from horizontal position
+<code>max_angle_inclination</code> - in 0.1 degree, default 50 degrees (500)</p>
+
+<p><code>axisPID</code> - output to mixer, will be added to throttle(<code>&lt;1000-2000&gt;</code>), output range is <code>&lt;minthrottle, maxthrottle&gt;</code> (default <code>&lt;1150 - 1850&gt;</code>)</p>
+
+<h3>PID controller 0, &ldquo;MultiWii&rdquo; (default)</h3>
+
+<h4>Leveling term</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">error = constrain(2*rcCommand[axis], limit +- max_angle_inclination) - inclination[axis]
+Pacc = constrain(P8[PIDLEVEL]/100 * error, limit +- 5 * D8[PIDLEVEL])
+Iacc = intergrate(error, limit +-10000) * I8[PIDLEVEL] / 4096
+</code></pre></div>
+<h4>Gyro term</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Pgyro = rcCommand[axis];
+error = rcCommand[axis] * 10 * 8 / pidProfile-&gt;P8[axis] - gyroADC[axis] / 4; (conversion so that error is in deg/s ?)
+Igyro = integrate(error, limit +-16000) / 10 / 8  * I8[axis] / 100 (conversion back to mixer units ?)
+</code></pre></div>
+<p>reset I term if
+  - axis rotation rate &gt; +-64deg/s
+  - axis is YAW and rcCommand&gt;+-100</p>
+
+<h5>Mode dependent mix(yaw is always from gyro)</h5>
+
+<ul>
+<li>HORIZON - proportionally according to max deflection
+<code>
+deflection = MAX(ABS(rcCommand[PITCH]), ABS(rcCommand[ROLL])) / 500 ; limit to 0.0 .. 1.0
+P = Pacc * (1-deflection) + Pgyro * deflection
+I = Iacc * (1-deflection) + Igyro * deflection
+</code></li>
+<li>gyro
+<code>
+P = Pgyro
+I = Igyro
+</code></li>
+<li>ANGLE
+<code>
+P = Pacc
+I = Iacc
+</code>
+#### Gyro stabilization</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">P -=  gyroADC[axis] / 4 * dynP8 / 10 / 8
+D = -mean(diff(gyroADC[axis] / 4), over 3 samples) * 3 * dynD8 / 32
+[equivalent to :]
+D = - (gyroADC[axis]/4 - (&lt;3 loops old&gt;gyroADC[axis]/4)) * dynD8 / 32
+</code></pre></div>
+<p>This can be seen as sum of
+ - PI controller (handles rcCommand, HORIZON/ANGLE); <code>Igyro</code> is only output based on gyroADC
+ - PD controller(parameters dynP8/dynD8) with zero setpoint acting on gyroADC</p>

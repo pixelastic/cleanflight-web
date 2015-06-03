@@ -1,0 +1,308 @@
+<h1>MSP Extensions</h1>
+
+<p>Cleanflight includes a number of extensions to the MultiWii Serial Protocol (MSP). This document describes 
+those extensions in order that 3rd party tools may identify cleanflight firmware and react appropriately.</p>
+
+<p>Issue the MSP_API_VERSION command to find out if the firmware supports them.</p>
+
+<h2>Mode Ranges</h2>
+
+<h3>MSP_MODE_RANGES</h3>
+
+<p>The MSP_MODE_RANGES returns the current auxiliary mode settings from the flight controller. It should be invoked
+before any modification is made to the configuration.</p>
+
+<p>The message returns a group of 4 unsigned bytes for each &lsquo;slot&rsquo; available in the flight controller. The number of
+slots should be calculated from the size of the returned message.</p>
+
+<table><thead>
+<tr>
+<th>Command</th>
+<th>Msg Id</th>
+<th>Direction</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>MSP_MODE_RANGES</td>
+<td>34</td>
+<td>to FC</td>
+<td>Following this command, the FC returns a block of 4 bytes for each auxiliary mode &#39;slot&rsquo;</td>
+</tr>
+</tbody></table>
+
+<p>Unassigned slots have rangeStartStep == rangeEndStep. Each element contains the following fields.</p>
+
+<table><thead>
+<tr>
+<th>Data</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>permanentId</td>
+<td>uint8</td>
+<td>See Modes.md for a definition of the permanent ids</td>
+</tr>
+<tr>
+<td>auxChannelIndex</td>
+<td>uint8</td>
+<td>The Aux switch number (indexed from 0)</td>
+</tr>
+<tr>
+<td>rangeStartStep</td>
+<td>uint8</td>
+<td>The start value for this element in &#39;blocks&rsquo; of 25  where 0 == 900 and 48 == 2100</td>
+</tr>
+<tr>
+<td>rangeEndStep</td>
+<td>uint8</td>
+<td>The end value for this element in &#39;blocks&rsquo; of 25 where 0 == 900 and 48 == 2100</td>
+</tr>
+</tbody></table>
+
+<p>Thus, for a cleanflight firmware with 40 slots 160 bytes would be returned in response to MSP_MODE_RANGES,</p>
+
+<h3>MSP_SET_MODE_RANGE</h3>
+
+<p>The MSP_SET_MODE_RANGE is used to inform the flight controller of
+auxiliary mode settings. The client <em>must</em> return all auxiliary
+elements, including those that have been disabled or are undefined, by
+sending this message for all auxiliary slots.</p>
+
+<table><thead>
+<tr>
+<th>Command</th>
+<th>Msg Id</th>
+<th>Direction</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>MSP_SET_MODE_RANGE</td>
+<td>35</td>
+<td>to FC</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Data</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sequence id</td>
+<td>uint8</td>
+<td>A monotonically increasing ID, from 0 to the number of slots -1</td>
+</tr>
+<tr>
+<td>permanentId</td>
+<td>uint8</td>
+<td>See Modes.md for a definition of the permanent ids</td>
+</tr>
+<tr>
+<td>auxChannelIndex</td>
+<td>uint8</td>
+<td>The Aux channel number (indexed from 0)</td>
+</tr>
+<tr>
+<td>rangeStartStep</td>
+<td>uint8</td>
+<td>The start value for this element in &#39;blocks&rsquo; of 25  where 0 == 900 and 48 == 2100</td>
+</tr>
+<tr>
+<td>rangeEndStep</td>
+<td>uint8</td>
+<td>The end value for this element in &#39;blocks&rsquo; of 25 where 0 == 900 and 48 == 2100</td>
+</tr>
+</tbody></table>
+
+<h3>Implementation Notes</h3>
+
+<ul>
+<li>The client should make no assumptions about the number of slots available. Rather, the number should be computed 
+from the size of the MSP_MODE_RANGES message divided by the size of the returned data element (4 bytes);</li>
+<li>The client should ensure that all changed items are returned to the flight controller, including those where a
+switch or range has been disabled;</li>
+<li>A &#39;null&rsquo; return, with all values other than the sequence id set to 0, must be made for all unused slots, up to
+the maximum number of slots calculated from the initial message.</li>
+</ul>
+
+<h2>Adjustment Ranges</h2>
+
+<h3>MSP_ADJUSTMENT_RANGES</h3>
+
+<p>The MSP_ADJUSTMENT_RANGES returns the current adjustment range settings from
+the flight controller. It should be invoked before any modification is
+made to the configuration.</p>
+
+<p>The message returns a group of 6 unsigned bytes for each &#39;slot&rsquo;
+available in the flight controller. The number of slots should be
+calculated from the size of the returned message.</p>
+
+<table><thead>
+<tr>
+<th>Command</th>
+<th>Msg Id</th>
+<th>Direction</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>MSP_ADJUSTMENT_RANGES</td>
+<td>52</td>
+<td>to FC</td>
+<td>Following this command, the FC returns a block of 6 bytes for each adjustment range &#39;slot&rsquo;</td>
+</tr>
+</tbody></table>
+
+<p>Unassigned slots have rangeStartStep == rangeEndStep. Each element contains the following fields.</p>
+
+<table><thead>
+<tr>
+<th>Data</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>adjustmentStateIndex</td>
+<td>uint8</td>
+<td>See below</td>
+</tr>
+<tr>
+<td>auxChannelIndex</td>
+<td>uint8</td>
+<td>The Aux channel number (indexed from 0) used to activate the adjustment</td>
+</tr>
+<tr>
+<td>rangeStartStep</td>
+<td>uint8</td>
+<td>The start value for this element in &#39;blocks&rsquo; of 25  where 0 == 900 and 48 == 2100</td>
+</tr>
+<tr>
+<td>rangeEndStep</td>
+<td>uint8</td>
+<td>The end value for this element in &#39;blocks&rsquo; of 25 where 0 == 900 and 48 == 2100</td>
+</tr>
+<tr>
+<td>adjustmentFunction</td>
+<td>uint8</td>
+<td>See below</td>
+</tr>
+<tr>
+<td>auxSwitchChannelIndex</td>
+<td>uint8</td>
+<td>The Aux channel number used to perform the function (indexed from 0)</td>
+</tr>
+</tbody></table>
+
+<p>Thus, for a cleanflight firmware with 12 slots 72 bytes would be returned in response to MSP_ADJUSTMENT_RANGES,</p>
+
+<h3>MSP_SET_ADJUSTMENT_RANGE</h3>
+
+<p>The MSP_SET_ADJUSTMENT_RANGE is used to inform the flight controller of
+adjustment range settings. The client <em>must</em> return all adjustment range
+elements, including those that have been disabled or are undefined, by
+sending this message for all adjustment range slots.</p>
+
+<table><thead>
+<tr>
+<th>Command</th>
+<th>Msg Id</th>
+<th>Direction</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>MSP_SET_ADJUSTMENT_RANGE</td>
+<td>53</td>
+<td>to FC</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Data</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sequence id</td>
+<td>uint8</td>
+<td>A monotonically increasing ID, from 0 to the number of slots -1</td>
+</tr>
+<tr>
+<td>adjustmentStateIndex</td>
+<td>uint8</td>
+<td>See below</td>
+</tr>
+<tr>
+<td>auxChannelIndex</td>
+<td>uint8</td>
+<td>The Aux channel number (indexed from 0)</td>
+</tr>
+<tr>
+<td>rangeStartStep</td>
+<td>uint8</td>
+<td>The start value for this element in &#39;blocks&rsquo; of 25  where 0 == 900 and 48 == 2100</td>
+</tr>
+<tr>
+<td>rangeEndStep</td>
+<td>uint8</td>
+<td>The end value for this element in &#39;blocks&rsquo; of 25 where 0 == 900 and 48 == 2100</td>
+</tr>
+<tr>
+<td>adjustmentFunction</td>
+<td>uint8</td>
+<td>See below</td>
+</tr>
+<tr>
+<td>auxSwitchChannelIndex</td>
+<td>uint8</td>
+<td>The Aux channel number used to perform the function (indexed from 0)</td>
+</tr>
+</tbody></table>
+
+<h4>AdjustmentIndex</h4>
+
+<p>The FC maintains internal state for each adjustmentStateIndex, currently 4 simultaneous adjustment states are maintained.  Multiple adjustment ranges
+can be configured to use the same state but care should be taken not to send multiple adjustment ranges that when active would confict.</p>
+
+<p>e.g.  Configuring two identical adjustment ranges using the same slot would conflict, but configuring two adjustment ranges that used 
+only one half of the possible channel range each but used the same adjustmentStateIndex would not conflict.</p>
+
+<p>The FC does NOT check for conflicts.</p>
+
+<h4>AdjustmentFunction</h4>
+
+<p>There are many adjustments that can be made, the numbers of them and their use is found in the documentation of the cli <code>adjrange</code> command in the &#39;Inflight Adjustents&rsquo; section.</p>
+
+<h3>Implementation Notes</h3>
+
+<ul>
+<li>The client should make no assumptions about the number of slots available. Rather, the number should be computed 
+from the size of the MSP_ADJUSTMENT_RANGES message divided by the size of the returned data element (6 bytes);</li>
+<li>The client should ensure that all changed items are returned to the flight controller, including those where a
+switch or range has been disabled;</li>
+<li>A &#39;null&rsquo; return, with all values except for the sequence id set to 0, must be made for all unused slots,
+up to the maximum number of slots calculated from the initial message.</li>
+</ul>
+
+<h2>Deprecated MSP</h2>
+
+<p>The following MSP commands are replaced by the MSP_MODE_RANGES and
+MSP_SET_MODE_RANGE extensions, and are not recognised by
+cleanflight.</p>
+
+<ul>
+<li>MSP_BOX</li>
+<li>MSP_SET_BOX</li>
+</ul>
+
+<h2>See also</h2>
+
+<p>Modes.md describes the user visible implementation for the cleanflight
+modes extension.</p>

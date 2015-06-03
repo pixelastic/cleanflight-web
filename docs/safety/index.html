@@ -1,0 +1,30 @@
+<h1>Safety</h1>
+
+<p>As many can attest, multirotors and RC models in general can be very dangerous, particularly on the test bench. Here are some simple golden rules to save you a trip to the local ER:
+* <strong>NEVER</strong> arm your model with propellers fitted unless you intend to fly!
+* <strong>Always</strong> remove your propellers if you are setting up for the first time, flashing firmware, or if in any doubt.</p>
+
+<h2>Before Installing</h2>
+
+<p>Please consult the <a href="Cli.md">Cli</a>, <a href="Controls.md">Controls</a>, <a href="Failsafe.md">Failsafe</a> and <a href="Modes.md">Modes</a> 
+pages for further important information.</p>
+
+<p>You are highly advised to use the Receiver tab in the CleanFlight Configurator, making sure your Rx channel 
+values are centered at 1500 (1520 for Futaba RC) with minimum &amp; maximums of 1000 and 2000 (respectively) 
+are reached when controls are operated.  Failure to configure these ranges properly can create
+problems, such as inability to arm (because you can&rsquo;t reach the endpoints) or immediate activation of
+<a href="failsafe.md">failsafe</a>.</p>
+
+<p>You may have to adjust your channel endpoints and trims/sub-trims on your RC transmitter to achieve the 
+expected range of 1000 to 2000.</p>
+
+<p>The referenced values for each channel have marked impact on the operation of the flight controller and the 
+different flight modes.</p>
+
+<h2>Props Spinning When Armed</h2>
+
+<p>With the default configuration, when the controller is armed, the propellers <em>WILL</em> begin spinning at low speed.
+We recommend keeping this setting as it provides a good visual indication the craft is armed.</p>
+
+<p>If you wish to change this behavior, see the MOTOR_STOP feature in the Configurator and relevant docuemntation pages.
+Enabling this feature will stop the props from spinning when armed.</p>

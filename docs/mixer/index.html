@@ -1,0 +1,314 @@
+<h1>Mixer</h1>
+
+<p>Cleanflight supports a number of mixing configurations as well as custom mixing.  Mixer configurations determine how the servos and motors work together to control the aircraft.</p>
+
+<h2>Configuration</h2>
+
+<p>To use a built-in mixing configuration, you can use the Chrome configuration GUI.  It includes images of the various mixer types to assist in making the proper connections.  See the Configuration section of the documentation for more information on the GUI.</p>
+
+<p>You can also use the Command Line Interface (CLI) to set the mixer type:</p>
+
+<ol>
+<li>Use <code>mixer list</code> to see a list of supported mixes</li>
+<li>Select a mixer.  For example, to select TRI, use <code>mixer TRI</code></li>
+<li>You must use <code>save</code> to preserve your changes</li>
+</ol>
+
+<h2>Supported Mixer Types</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Motors</th>
+<th>Servos</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TRI</td>
+<td>Tricopter</td>
+<td>M1-M3</td>
+<td>S1</td>
+</tr>
+<tr>
+<td>QUADP</td>
+<td>Quadcopter-Plus</td>
+<td>M1-M4</td>
+<td>None</td>
+</tr>
+<tr>
+<td>QUADX</td>
+<td>Quadcopter-X</td>
+<td>M1-M4</td>
+<td>None</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>Bicopter (left/right)</td>
+<td>M1-M2</td>
+<td>S1, S2</td>
+</tr>
+<tr>
+<td>GIMBAL</td>
+<td>Gimbal control</td>
+<td>N/A</td>
+<td>S1, S2</td>
+</tr>
+<tr>
+<td>Y6</td>
+<td>Y6-copter</td>
+<td>M1-M6</td>
+<td>None</td>
+</tr>
+<tr>
+<td>HEX6</td>
+<td>Hexacopter-Plus</td>
+<td>M1-M6</td>
+<td>None</td>
+</tr>
+<tr>
+<td>FLYING_WING</td>
+<td>Fixed wing; elevons</td>
+<td>M1</td>
+<td>S1, S2</td>
+</tr>
+<tr>
+<td>Y4</td>
+<td>Y4-copter</td>
+<td>M1-M4</td>
+<td>None</td>
+</tr>
+<tr>
+<td>HEX6X</td>
+<td>Hexacopter-X</td>
+<td>M1-M6</td>
+<td>None</td>
+</tr>
+<tr>
+<td>OCTOX8</td>
+<td>Octocopter-X (over/under)</td>
+<td>M1-M8</td>
+<td>None</td>
+</tr>
+<tr>
+<td>OCTOFLATP</td>
+<td>Octocopter-FlatPlus</td>
+<td>M1-M8</td>
+<td>None</td>
+</tr>
+<tr>
+<td>OCTOFLATX</td>
+<td>Octocopter-FlatX</td>
+<td>M1-M8</td>
+<td>None</td>
+</tr>
+<tr>
+<td>AIRPLANE</td>
+<td>Fixed wing; Ax2, R, E</td>
+<td>M1</td>
+<td>S1, S2, S3, S4</td>
+</tr>
+<tr>
+<td>HELI_120_CCPM</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>HELI_90_DEG</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VTAIL4</td>
+<td>Quadcopter with V-Tail</td>
+<td>M1-M4</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>HEX6H</td>
+<td>Hexacopter-H</td>
+<td>M1-M6</td>
+<td>None</td>
+</tr>
+<tr>
+<td>PPM_TO_SERVO</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DUALCOPTER</td>
+<td>Dualcopter</td>
+<td>M1-M2</td>
+<td>S1, S2</td>
+</tr>
+<tr>
+<td>SINGLECOPTER</td>
+<td>Conventional helicopter</td>
+<td>M1</td>
+<td>S1</td>
+</tr>
+<tr>
+<td>ATAIL4</td>
+<td>Quadcopter with A-Tail</td>
+<td>M1-M4</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>CUSTOM</td>
+<td>User-defined</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2>Servo filtering</h2>
+
+<p>A low-pass filter can be enabled for the servos.  It may be useful for avoiding structural modes in the airframe, for example.  </p>
+
+<h3>Configuration</h3>
+
+<p>Currently it can only be configured via the CLI:</p>
+
+<ol>
+<li>Use <code>set servo_lowpass_freq = nnn</code> to select the cutoff frequency.  Valid values range from 10 to 400.  This is a fraction of the loop frequency in 1/1000ths. For example, <code>40</code> means <code>0.040</code>.</li>
+<li>Use <code>set servo_lowpass_enable = 1</code> to enable filtering.</li>
+</ol>
+
+<p>The cutoff frequency can be determined by the following formula:
+<code>Frequency = 1000 * servo_lowpass_freq / looptime</code></p>
+
+<p>For example, if <code>servo_lowpass_freq</code> is set to 40, and looptime is set to the default of 3500 us, the cutoff frequency will be 11.43 Hz.</p>
+
+<h3>Tuning</h3>
+
+<p>One method for tuning the filter cutoff is as follows:</p>
+
+<ol>
+<li><p>Ensure your vehicle can move at least somewhat freely in the troublesome axis.  For example, if you are having yaw oscillations on a tricopter, ensure that the copter is supported in a way that allows it to rotate left and right to at least some degree.  Suspension near the CG is ideal.  Alternatively, you can just fly the vehicle and trigger the problematic condition you are trying to eliminate, although tuning will be more tedious.</p></li>
+<li><p>Tap the vehicle at its end in the axis under evaluation.  Directly commanding the servo in question to move may also be used.  In the tricopter example, tap the end of the tail boom from the side, or command a yaw using your transmitter.</p></li>
+<li><p>If your vehicle oscillates for several seconds or even continues oscillating indefinitely, then the filter cutoff frequency should be reduced. Reduce the value of <code>servo_lowpass_freq</code> by half its current value and repeat the previous step.</p></li>
+<li><p>If the oscillations are dampened within roughly a second or are no longer present, then you are done.  Be sure to run <code>save</code>.</p></li>
+</ol>
+
+<h2>Custom Motor Mixing</h2>
+
+<p>Custom motor mixing allows for completely customized motor configurations. Each motor must be defined with a custom mixing table for that motor. The mix must reflect how close each motor is with reference to the CG (Center of Gravity) of the flight controller. A motor closer to the CG of the flight controller will need to travel less distance than a motor further away.  </p>
+
+<p>Steps to configure custom mixer in the CLI:</p>
+
+<ol>
+<li>Use <code>mixer custom</code> to enable the custom mixing.</li>
+<li>Use <code>cmix reset</code> to erase the any existing custom mixing. </li>
+<li>Issue a cmix statement for each motor. </li>
+</ol>
+
+<p>The cmix statement has the following syntax: <code>cmix n THROTTLE ROLL PITCH YAW</code> </p>
+
+<table><thead>
+<tr>
+<th>Mixing table parameter</th>
+<th>Definition</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>n</td>
+<td>Motor ordering number</td>
+</tr>
+<tr>
+<td>THROTTLE</td>
+<td>All motors that are used in this configuration are set to 1.0. Unused set to 0.0.</td>
+</tr>
+<tr>
+<td>ROLL</td>
+<td>Indicates how much roll authority this motor imparts to the roll of the flight controller. Accepts values nominally from 1.0 to -1.0.</td>
+</tr>
+<tr>
+<td>PITCH</td>
+<td>Indicates the pitch authority this motor has over the flight controller. Also accepts values nominally from 1.0 to -1.0.</td>
+</tr>
+<tr>
+<td>YAW</td>
+<td>Indicates the direction of the motor rotation in relationship with the flight controller. 1.0 = CCW -1.0 = CW.</td>
+</tr>
+</tbody></table>
+
+<h3>Example 1: A KK2.0 wired motor setup</h3>
+
+<p>Here&rsquo;s an example of a X configuration quad, but the motors are still wired using the KK board motor numbering scheme. </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">KK2.0 Motor Layout
+
+  1CW      2CCW
+     \    /
+       KK
+     /    \
+  4CCW     3CW
+</code></pre></div>
+<ol>
+<li>Use <code>mixer custom</code></li>
+<li>Use <code>cmix reset</code></li>
+<li>Use <code>cmix 1 1.0,  1.0, -1.0, -1.0</code> for the Front Left motor. It tells the flight controller the #1 motor is used, provides positive roll, provides negative pitch and is turning CW.<br></li>
+<li>Use <code>cmix 2 1.0, -1.0, -1.0,  1.0</code> for the Front Right motor. It still provides a negative pitch authority, but unlike the front left, it provides negative roll authority and turns CCW.</li>
+<li>Use <code>cmix 3 1.0, -1.0,  1.0, -1.0</code> for the Rear Right motor. It has negative roll, provides positive pitch when the speed is increased and turns CW.</li>
+<li>Use <code>cmix 4 1.0,  1.0,  1.0,  1.0</code> for the Rear Left motor. Increasing motor speed imparts positive roll, positive pitch and turns CCW.</li>
+</ol>
+
+<h3>Example 2: A HEX-U Copter</h3>
+
+<p>Here is an example of a U-shaped hex; probably good for herding giraffes in the Sahara. Because the 1 and 6 motors are closer to the roll axis, they impart much more force than the motors mounted twice as far from the FC CG. The effect they have on pitch is the same as the forward motors because they are the same distance from the FC CG. The 2 and 5 motors do not contribute anything to pitch because speeding them up and slowing them down has no effect on the forward/back pitch of the FC. </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">HEX6-U
+
+.4........3. 
+............
+.5...FC...2. 
+............
+...6....1...
+
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Command</th>
+<th>Roll</th>
+<th>Pitch</th>
+<th>Yaw</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Use <code>cmix 1 1.0, -0.5,  1.0, -1.0</code></td>
+<td>half negative</td>
+<td>full positive</td>
+<td>CW</td>
+</tr>
+<tr>
+<td>Use <code>cmix 2 1.0, -1.0,  0.0,  1.0</code></td>
+<td>full negative</td>
+<td>none</td>
+<td>CCW</td>
+</tr>
+<tr>
+<td>Use <code>cmix 3 1.0, -1.0, -1.0, -1.0</code></td>
+<td>full negative</td>
+<td>full negative</td>
+<td>CW</td>
+</tr>
+<tr>
+<td>Use <code>cmix 4 1.0,  1.0, -1.0,  1.0</code></td>
+<td>full positive</td>
+<td>full negative</td>
+<td>CCW</td>
+</tr>
+<tr>
+<td>Use <code>cmix 5 1.0,  1.0,  0.0, -1.0</code></td>
+<td>full positive</td>
+<td>none</td>
+<td>CW</td>
+</tr>
+<tr>
+<td>Use <code>cmix 6 1.0,  0.5,  1.0,  1.0</code></td>
+<td>half positive</td>
+<td>full positive</td>
+<td>CCW</td>
+</tr>
+</tbody></table>
