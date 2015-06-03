@@ -1,5 +1,9 @@
 # .gitignore for jekyllized projects
 
+# Ignore submodules and temporary docs copy
+src/_posts/docs/*
+src/_cleanflight/*
+
 # Ignore hidden folders
 # This takes care of .tmp, .sass-cache, and many others
 .*/
