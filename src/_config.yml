@@ -1,7 +1,7 @@
 # Title, decription, tagline and URL for your site
 # Can be used in your theme by calling 'site.title' and so on
 title: Cleanflight
-url: localhost:4000
+url: http://localhost:3000
 
 # Used so Jekyll outputs the site correctly so Gulp can do what it wants
 source: src
@@ -27,7 +27,7 @@ lsi: false
 # Permalink structure and pagination options
 relative_permalinks: true
 permalink: /:categories/:title
-paginate: 0
+paginate: 1000
 paginate_path: 'page:num'
 excerpt_separator: '<!--more-->'
 
@@ -38,3 +38,10 @@ redcarpet:
   extensions: ['no_intra_emphasis', 'tables', 'fenced_code_blocks', 'autolink', 'smart',
               'strikethrough', 'superscript', 'underline', 'highlight', 'footnotes']
 highlighter: true
+
+algolia:
+  index_name: dev_cleanflight
+  application_id: T2ZX9HO66V
+  search_only_api_key: 7119d2f6f1cd95224251ec2e490e824f
+  clusters:
+    - c1-eu-1
