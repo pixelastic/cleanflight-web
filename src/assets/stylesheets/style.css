@@ -12,12 +12,13 @@ nav.navbar {
 .jumbotron {
   background-color: #59AA2B;
   min-height: 410px; }
-  .jumbotron h2 {
+  .jumbotron h1 {
     padding-top: 20px;
-    font-size: 3em;
+    font-size: 3.3em;
     letter-spacing: 1px;
     color: white;
-    line-height: 1.3em; }
+    line-height: 1.2em;
+    margin-bottom: 35px; }
   .jumbotron .btn {
     background-color: transparent;
     border: solid 2px white; }
@@ -54,7 +55,10 @@ h1, h2, h3, h4, h5 {
 h2 {
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 2em; }
+  font-size: 2em;
+  border-bottom: solid 1px #eee;
+  padding-bottom: 10px;
+  margin-bottom: 30px; }
 
 h3 {
   color: #59AA2B; }
