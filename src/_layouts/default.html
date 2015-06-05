@@ -17,24 +17,22 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Get Started</a></li>
-            <li><a href="{{ site.url }}/docs">Documentation</a></li>
-            <li><a href="#">Ressources</a></li>
+            <!-- <li><a href="#">Get Started</a></li> -->
+            <li><a href="{{ site.url }}/categories/docs">Documentation</a></li>
+            <!-- <li><a href="#">Ressources</a></li> -->
             <li><a href="https://github.com/cleanflight/cleanflight">Contributing</a></li>
           </ul>
           <form class="navbar-form navbar-right" role="search">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
+              <input id="search" type="text" class="form-control" placeholder="Search">
             </div>
           </form>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
     {{ content }}
-    <div class="spacer30"></div>
-    <hr>
     <footer class="footer text-center">
-      <i class="fa fa-copyright"> 2015 Cleanflight Team
+      <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>
   </body>
 </html>

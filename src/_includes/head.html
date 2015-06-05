@@ -23,9 +23,16 @@
 
   <!-- JS -->
   <!-- build:js /assets/javascript/all.min.js -->
-  <script src="{{ site.url }}/assets/javascript/javascript.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="//cdn.jsdelivr.net/typeahead.js/0.10.5/typeahead.jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.5.0/algoliasearch.min.js"></script>
+  <script src="{{ site.url }}/assets/javascript/javascript.js"></script>
+    <script>
+    window.baseUrl = '{{ site.url }}';
+    window.algolia = algoliasearch('{{ site.algolia.application_id }}', '{{ site.algolia.search_only_api_key }}');
+    window.index = algolia.initIndex('{{ site.algolia.index_name }}');
+  </script>
   <!-- endbuild -->
 
   <!-- Icons -->

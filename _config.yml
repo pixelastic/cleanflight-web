@@ -4,8 +4,17 @@ title: Cleanflight
 url: http://localhost:3000
 
 # Used so Jekyll outputs the site correctly so Gulp can do what it wants
-source: src
-destination: serve
+source: ./src
+destination: ./serve
+layouts: ./src/_layouts
+
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+      type: "posts" # previously `post` in Jekyll 2.2.
+    values:
+      layout: "post"
 
 # Same as the title etc for your site but can instead be
 # called by using 'site.author.name' and so on
@@ -24,12 +33,12 @@ future: true
 show_drafts: false
 # Disables the more accurate related posts for faster generating of the site
 lsi: false
-limit_posts: 10
+limit_posts: 100
 
 # Permalink structure and pagination options
 relative_permalinks: true
 permalink: /:categories/:title
-paginate: 1000
+paginate: 100
 paginate_path: 'page:num'
 excerpt_separator: '<!--more-->'
 
