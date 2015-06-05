@@ -1,4 +1,85 @@
-<h1>Oneshot</h1>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Oneshot &middot; Cleanflight
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- build:css /assets/stylesheets/style.min.css -->
+  <link rel="stylesheet" href="http://localhost:3000/assets/stylesheets/style.css">
+  <!-- endbuild -->
+  <link href='//fonts.googleapis.com/css?family=Marvel:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css">
+
+  <!-- JS -->
+  <!-- build:js /assets/javascript/all.min.js -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="//cdn.jsdelivr.net/typeahead.js/0.10.5/typeahead.jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.5.0/algoliasearch.min.js"></script>
+  <script src="http://localhost:3000/assets/javascript/javascript.js"></script>
+    <script>
+    window.baseUrl = 'http://localhost:3000';
+    window.algolia = algoliasearch('T2ZX9HO66V', '7119d2f6f1cd95224251ec2e490e824f');
+    window.index = algolia.initIndex('dev_cleanflight');
+  </script>
+  <!-- endbuild -->
+
+  <!-- Icons -->
+  <link rel="shortcut icon" href="http://localhost:3000/assets/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img src="http://localhost:3000/assets/images/cleanflight-logo.png" height="50"></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <!-- <li><a href="#">Get Started</a></li> -->
+            <li><a href="http://localhost:3000/categories/docs">Documentation</a></li>
+            <!-- <li><a href="#">Ressources</a></li> -->
+            <li><a href="https://github.com/cleanflight/cleanflight">Contributing</a></li>
+          </ul>
+          <form class="navbar-form navbar-right" role="search">
+            <div class="form-group">
+              <input id="search" type="text" class="form-control" placeholder="Search">
+            </div>
+          </form>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+  <div class="page-header">
+    <h1>Oneshot </h1>
+  </div>
+
+  <div class="row post-full">
+    <div class="col-md-9">
+      <div class="content">
+        <h1>Oneshot</h1>
 
 <p>Oneshot allows faster communication between the Flight Controller and the ESCs that are present on your multirotor.</p>
 
@@ -53,3 +134,167 @@ save
 <ul>
 <li>FlyDuino (<a href="http://flyduino.net/"><a href="http://flyduino.net/">http://flyduino.net/</a></a>)</li>
 </ul>
+
+      </div>
+    </div>
+    <div class="col-md-3">
+      <ul class="posts list-unstyled">
+      
+          <li><a href="/docs/development/travis">Travis</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/telemetry">Telemetry</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/spektrum-bind">Spektrum Bind</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/sonar">Sonar</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/serial">Serial</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/safety">Safety</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/rx">Rx</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/rssi">Rssi</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/profiles">Profiles</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/pid-tuning">Pid Tuning</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/development/pid-internals">Pid Internals</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/oneshot">Oneshot</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/api/msp_extensions">Msp_extensions</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/api/'>api</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/modes">Modes</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/mixer">Mixer</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/migrating-from-baseflight">Migrating From Baseflight</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/ledstrip">Ledstrip</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/introduction">Introduction</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/installation">Installation</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/inflight-adjustments">Inflight Adjustments</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/development/hardware-debugging-in-eclipse">Hardware Debugging In Eclipse</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/development/hardware-debugging">Hardware Debugging</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/gps">Gps</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/getting-started">Getting Started</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/failsafe">Failsafe</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/display">Display</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/development/development">Development</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/controls">Controls</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/development/configuration-storage">Configuration Storage</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/configuration">Configuration</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/cli">Cli</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/buzzer">Buzzer</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/development/building-manual">Building Manual</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/development/building-in-windows">Building In Windows</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/development/building-in-ubuntu">Building In Ubuntu</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/development/building-in-mac-os-x">Building In Mac Os X</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/development/building-in-eclipse">Building In Eclipse</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/boards">Boards</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/board---sparky">Board   Sparky</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/board---paris-air-hero-32">Board   Paris Air Hero 32</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/board---olimexino">Board   Olimexino</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/board---naze32">Board   Naze32</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/board---cjmcu">Board   Cjmcu</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/board---chebuzzf3">Board   Chebuzzf3</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/board---cc3d">Board   Cc3d</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/board---alienwii32">Board   Alienwii32</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/blackbox">Blackbox</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/battery">Battery</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/autotune">Autotune</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+          <li><a href="/docs/development/atomic-barrier">Atomic Barrier</a></li>
+          <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
+      
+    </div>
+  </div>
+</div>
+    <footer class="footer text-center">
+      <i class="fa fa-copyright"></i> 2015 Cleanflight Team
+    </footer>
+  </body>
+</html>
