@@ -10,4 +10,4 @@ show_drafts: false
 # Gives you more accurate related posts
 lsi: false
 # Removes the upper limit for posts generated
-limit_posts: all
+limit_posts: 1000
