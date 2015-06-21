@@ -104,6 +104,30 @@ h3{
   }
 }
 
+table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 16px;
+  // Cells
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        padding: 8px 6px;
+        line-height: 20px;
+        vertical-align: top;
+        border-top: 1px solid #ccc;
+      }
+    }
+  }
+  > tbody > tr:nth-of-type(odd) {
+    background-color: #f8f8f8;
+  }
+}
+
+
+
 .twitter-typeahead { width: 100%; }
 .twitter-typeahead .tt-input, .twitter-typeahead .tt-hint { width: 100%; margin: 0px; padding: 8px 12px; border: 2px solid #ccc; outline: none; }
 .twitter-typeahead .tt-input:focus { border: 2px solid #0097cf; }
