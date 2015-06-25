@@ -82,7 +82,7 @@
 
 <p>download the Setup*.exe from <a href="https://www.cygwin.com/">https://www.cygwin.com/</a></p>
 
-<p><img src="http://shipow.github.io/cleanflight-web/assets/images/docs/001.cygwin_dl.png" alt="Cygwin Installation"></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/001.cygwin_dl.png" alt="Cygwin Installation"></p>
 
 <p>Execute the download Setup and step through the installation  wizard (no need to customize the settings here). Stop at the  &ldquo;Select Packages&rdquo; Screen and select the following Packages
 for Installation:</p>
@@ -97,19 +97,19 @@ for Installation:</p>
 <li>Shells/mintty (should be already selected)</li>
 </ul>
 
-<p><img src="http://shipow.github.io/cleanflight-web/assets/images/docs/002.cygwin_setup.png" alt="Cygwin Installation"></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/002.cygwin_setup.png" alt="Cygwin Installation"></p>
 
-<p><img src="http://shipow.github.io/cleanflight-web/assets/images/docs/003.cygwin_setup.png" alt="Cygwin Installation"></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/003.cygwin_setup.png" alt="Cygwin Installation"></p>
 
-<p><img src="http://shipow.github.io/cleanflight-web/assets/images/docs/004.cygwin_setup.png" alt="Cygwin Installation"></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/004.cygwin_setup.png" alt="Cygwin Installation"></p>
 
-<p><img src="http://shipow.github.io/cleanflight-web/assets/images/docs/005.cygwin_setup.png" alt="Cygwin Installation"></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/005.cygwin_setup.png" alt="Cygwin Installation"></p>
 
-<p><img src="http://shipow.github.io/cleanflight-web/assets/images/docs/006.cygwin_setup.png" alt="Cygwin Installation"></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/006.cygwin_setup.png" alt="Cygwin Installation"></p>
 
 <p>Continue with the Installation and accept all autodetected dependencies.</p>
 
-<p><img src="http://shipow.github.io/cleanflight-web/assets/images/docs/007.cygwin_setup.png" alt="Cygwin Installation"></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/007.cygwin_setup.png" alt="Cygwin Installation"></p>
 
 <h2>Setup GNU ARM Toolchain</h2>
 
@@ -119,13 +119,13 @@ for Installation:</p>
 
 <p>Extract the contents of this archive to any folder of your choice, for instance <code>C:\dev\gcc-arm-none-eabi-4_8-2014q2</code>. </p>
 
-<p><img src="http://shipow.github.io/cleanflight-web/assets/images/docs/008.toolchain.png" alt="GNU ARM Toolchain Setup"></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/008.toolchain.png" alt="GNU ARM Toolchain Setup"></p>
 
 <p>add the &ldquo;bin&rdquo; subdirectory to the PATH Windows environment variable: <code>%PATH%;C:\dev\gcc-arm-none-eabi-4_8-2014q2\bin</code></p>
 
-<p><img src="http://shipow.github.io/cleanflight-web/assets/images/docs/009.toolchain_path.png" alt="GNU ARM Toolchain Setup"></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/009.toolchain_path.png" alt="GNU ARM Toolchain Setup"></p>
 
-<p><img src="http://shipow.github.io/cleanflight-web/assets/images/docs/010.toolchain_path.png" alt="GNU ARM Toolchain Setup"></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/010.toolchain_path.png" alt="GNU ARM Toolchain Setup"></p>
 
 <h2>Checkout and compile Cleanflight</h2>
 
@@ -135,15 +135,15 @@ for Installation:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">cd /cygdrive/c/dev
 git clone https://github.com/cleanflight/cleanflight.git
 </code></pre></div>
-<p><img src="http://shipow.github.io/cleanflight-web/assets/images/docs/011.git_checkout.png" alt="GIT Checkout"></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/011.git_checkout.png" alt="GIT Checkout"></p>
 
-<p><img src="http://shipow.github.io/cleanflight-web/assets/images/docs/012.git_checkout.png" alt="GIT Checkout"></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/012.git_checkout.png" alt="GIT Checkout"></p>
 
 <p>To compile your Cleanflight binaries, enter the cleanflight directory and build the project using the make command. You can append TARGET=[HARDWARE] if you want to build anything other than the default NAZE target:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">cd cleanflight
 make TARGET=NAZE
 </code></pre></div>
-<p><img src="http://shipow.github.io/cleanflight-web/assets/images/docs/013.compile.png" alt="GIT Checkout"></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/013.compile.png" alt="GIT Checkout"></p>
 
 <p>within few moments you should have your binary ready:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">(...)
