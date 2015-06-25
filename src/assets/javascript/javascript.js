@@ -21,6 +21,7 @@ $(function () {
           '<div class="name">' +
             hit._highlightResult.title.value +
           '</div>' +
+          '<div class="snippet">[...]'+  hit._snippetResult.content.value + '[...]</div>' +
         '</div>';
       }
     }
