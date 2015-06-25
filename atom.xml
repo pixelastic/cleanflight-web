@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Cleanflight</title>
- <link href="http://localhost:3000/atom.xml" rel="self"/>
- <link href="http://localhost:3000/"/>
- <updated>2015-06-25T10:39:17+02:00</updated>
- <id>http://localhost:3000</id>
+ <link href="http://shipow.github.io/cleanflight-web/atom.xml" rel="self"/>
+ <link href="http://shipow.github.io/cleanflight-web/"/>
+ <updated>2015-06-25T10:45:15+02:00</updated>
+ <id>http://shipow.github.io/cleanflight-web</id>
  <author>
    <name>Kevin Granger</name>
    <email>shipowlata@gmail.com</email>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>Travis</title>
-   <link href="http://localhost:3000/docs/development/travis"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/development/travis"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/development/travis</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/development/travis</id>
    <content type="html">&lt;h1&gt;Travis&lt;/h1&gt;
 
 &lt;p&gt;Cleanflight provides Travis build and config files in the repository root. &lt;/p&gt;
@@ -31,9 +31,9 @@ a file upload post to the configured server.&lt;/p&gt;
  
  <entry>
    <title>Telemetry</title>
-   <link href="http://localhost:3000/docs/telemetry"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/telemetry"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/telemetry</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/telemetry</id>
    <content type="html">&lt;h1&gt;Telemetry&lt;/h1&gt;
 
 &lt;p&gt;Telemetry allows you to know what is happening on your aircraft while you are flying it.  Among other things you can receive battery voltages and GPS positions on your transmitter.&lt;/p&gt;
@@ -132,9 +132,9 @@ a serial port should be connected using a diode and a single wire to the &lt;cod
  
  <entry>
    <title>Spektrum Bind</title>
-   <link href="http://localhost:3000/docs/spektrum-bind"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/spektrum-bind"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/spektrum-bind</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/spektrum-bind</id>
    <content type="html">&lt;h1&gt;Spektrum bind support&lt;/h1&gt;
 
 &lt;p&gt;Spektrum bind with hardware bind plug support.&lt;/p&gt;
@@ -246,9 +246,9 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
  
  <entry>
    <title>Sonar</title>
-   <link href="http://localhost:3000/docs/sonar"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/sonar"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/sonar</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/sonar</id>
    <content type="html">&lt;h1&gt;Sonar&lt;/h1&gt;
 
 &lt;p&gt;A sonar sensor can be used to measure altitude for use with BARO and SONAR altitude
@@ -337,9 +337,9 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
  
  <entry>
    <title>Serial</title>
-   <link href="http://localhost:3000/docs/serial"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/serial"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/serial</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/serial</id>
    <content type="html">&lt;h1&gt;Serial&lt;/h1&gt;
 
 &lt;p&gt;Cleanflight has enhanced serial port flexibility but configuration is slightly more complex as a result.&lt;/p&gt;
@@ -463,9 +463,9 @@ e.g. after configuring a port for GPS enable the GPS feature.&lt;/li&gt;
  
  <entry>
    <title>Safety</title>
-   <link href="http://localhost:3000/docs/safety"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/safety"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/safety</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/safety</id>
    <content type="html">&lt;h1&gt;Safety&lt;/h1&gt;
 
 &lt;p&gt;As many can attest, multirotors and RC models in general can be very dangerous, particularly on the test bench. Here are some simple golden rules to save you a trip to the local ER:
@@ -474,14 +474,14 @@ e.g. after configuring a port for GPS enable the GPS feature.&lt;/li&gt;
 
 &lt;h2&gt;Before Installing&lt;/h2&gt;
 
-&lt;p&gt;Please consult the &lt;a href=&quot;http://localhost:3000/docs/cli/&quot;&gt;Cli&lt;/a&gt;, &lt;a href=&quot;http://localhost:3000/docs/controls/&quot;&gt;Controls&lt;/a&gt;, &lt;a href=&quot;http://localhost:3000/docs/failsafe/&quot;&gt;Failsafe&lt;/a&gt; and &lt;a href=&quot;http://localhost:3000/docs/modes/&quot;&gt;Modes&lt;/a&gt; 
+&lt;p&gt;Please consult the &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/cli/&quot;&gt;Cli&lt;/a&gt;, &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/controls/&quot;&gt;Controls&lt;/a&gt;, &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/failsafe/&quot;&gt;Failsafe&lt;/a&gt; and &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/modes/&quot;&gt;Modes&lt;/a&gt; 
 pages for further important information.&lt;/p&gt;
 
 &lt;p&gt;You are highly advised to use the Receiver tab in the CleanFlight Configurator, making sure your Rx channel 
 values are centered at 1500 (1520 for Futaba RC) with minimum &amp;amp; maximums of 1000 and 2000 (respectively) 
 are reached when controls are operated.  Failure to configure these ranges properly can create
 problems, such as inability to arm (because you can&amp;rsquo;t reach the endpoints) or immediate activation of
-&lt;a href=&quot;http://localhost:3000/docs/failsafe/&quot;&gt;failsafe&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/failsafe/&quot;&gt;failsafe&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;You may have to adjust your channel endpoints and trims/sub-trims on your RC transmitter to achieve the 
 expected range of 1000 to 2000.&lt;/p&gt;
@@ -501,9 +501,9 @@ Enabling this feature will stop the props from spinning when armed.&lt;/p&gt;
  
  <entry>
    <title>Rx</title>
-   <link href="http://localhost:3000/docs/rx"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/rx"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/rx</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/rx</id>
    <content type="html">&lt;h1&gt;Receivers (RX)&lt;/h1&gt;
 
 &lt;p&gt;A receiver is used to receive radio control signals from your transmitter and convert them into signals that the flight controller can understand.&lt;/p&gt;
@@ -704,9 +704,9 @@ For Serial RX enable &lt;code&gt;RX_SERIAL&lt;/code&gt; and set the &lt;code&gt;
  
  <entry>
    <title>Rssi</title>
-   <link href="http://localhost:3000/docs/rssi"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/rssi"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/rssi</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/rssi</id>
    <content type="html">&lt;h1&gt;RSSI&lt;/h1&gt;
 
 &lt;p&gt;RSSI is a measurement of signal strength and is very handy so you know when your aircraft isw going out of range or if it is suffering RF interference.&lt;/p&gt;
@@ -753,9 +753,9 @@ A simple PPM-&amp;gt;RSSI conditioner can easily be made. See the  PPM-RSSI cond
  
  <entry>
    <title>Profiles</title>
-   <link href="http://localhost:3000/docs/profiles"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/profiles"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/profiles</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/profiles</id>
    <content type="html">&lt;h1&gt;Profiles&lt;/h1&gt;
 
 &lt;p&gt;A profile is a set of configuration settings.&lt;/p&gt;
@@ -848,9 +848,9 @@ set tpa_breakpoint = 1500
  
  <entry>
    <title>Pid Tuning</title>
-   <link href="http://localhost:3000/docs/pid-tuning"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/pid-tuning"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/pid-tuning</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/pid-tuning</id>
    <content type="html">&lt;h1&gt;PID tuning&lt;/h1&gt;
 
 &lt;p&gt;Every aspect of flight dynamics is controlled by the selected &amp;ldquo;PID controller&amp;rdquo;. This is an algorithm which is
@@ -1034,9 +1034,9 @@ stick, and no self-leveling will be applied at 75% stick and onwards.&lt;/p&gt;
  
  <entry>
    <title>Pid Internals</title>
-   <link href="http://localhost:3000/docs/development/pid-internals"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/development/pid-internals</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/development/pid-internals</id>
    <content type="html">&lt;h3&gt;IO variables&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;gyroADC/8192*2000 = deg/s&lt;/code&gt;&lt;/p&gt;
@@ -1100,9 +1100,9 @@ D = - (gyroADC[axis]/4 - (&amp;lt;3 loops old&amp;gt;gyroADC[axis]/4)) * dynD8 /
  
  <entry>
    <title>Oneshot</title>
-   <link href="http://localhost:3000/docs/oneshot"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/oneshot"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/oneshot</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/oneshot</id>
    <content type="html">&lt;h1&gt;Oneshot&lt;/h1&gt;
 
 &lt;p&gt;Oneshot allows faster communication between the Flight Controller and the ESCs that are present on your multirotor.&lt;/p&gt;
@@ -1163,9 +1163,9 @@ save
  
  <entry>
    <title>Msp_extensions</title>
-   <link href="http://localhost:3000/docs/api/msp_extensions"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/api/msp_extensions"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/api/msp_extensions</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/api/msp_extensions</id>
    <content type="html">&lt;h1&gt;MSP Extensions&lt;/h1&gt;
 
 &lt;p&gt;Cleanflight includes a number of extensions to the MultiWii Serial Protocol (MSP). This document describes 
@@ -1479,9 +1479,9 @@ modes extension.&lt;/p&gt;
  
  <entry>
    <title>Modes</title>
-   <link href="http://localhost:3000/docs/modes"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/modes"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/modes</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/modes</id>
    <content type="html">&lt;h1&gt;Modes&lt;/h1&gt;
 
 &lt;p&gt;Cleanflight has various modes that can be toggled on or off.  Modes can be enabled/disabled by stick positions,
@@ -1698,9 +1698,9 @@ auxillary receiver channels and other events such as failsafe detection.&lt;/p&g
  
  <entry>
    <title>Mixer</title>
-   <link href="http://localhost:3000/docs/mixer"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/mixer"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/mixer</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/mixer</id>
    <content type="html">&lt;h1&gt;Mixer&lt;/h1&gt;
 
 &lt;p&gt;Cleanflight supports a number of mixing configurations as well as custom mixing.  Mixer configurations determine how the servos and motors work together to control the aircraft.&lt;/p&gt;
@@ -2020,9 +2020,9 @@ auxillary receiver channels and other events such as failsafe detection.&lt;/p&g
  
  <entry>
    <title>Migrating From Baseflight</title>
-   <link href="http://localhost:3000/docs/migrating-from-baseflight"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/migrating-from-baseflight"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/migrating-from-baseflight</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/migrating-from-baseflight</id>
    <content type="html">&lt;h1&gt;Migrating from baseflight&lt;/h1&gt;
 
 &lt;h2&gt;Procedure&lt;/h2&gt;
@@ -2144,9 +2144,9 @@ verify your aux config is correct - aux settings are not backwards compatible.&l
  
  <entry>
    <title>Ledstrip</title>
-   <link href="http://localhost:3000/docs/ledstrip"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/ledstrip"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/ledstrip</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/ledstrip</id>
    <content type="html">&lt;h1&gt;LED Strip&lt;/h1&gt;
 
 &lt;p&gt;Cleanflight supports the use of addressable LED strips.  Addressable LED strips allow each LED in the strip to
@@ -2885,9 +2885,9 @@ This also means that you can make sure that each R,G and B LED in each LED modul
  
  <entry>
    <title>Introduction</title>
-   <link href="http://localhost:3000/docs/introduction"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/introduction"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/introduction</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/introduction</id>
    <content type="html">&lt;h1&gt;Cleanflight&lt;/h1&gt;
 
 &lt;p&gt;Welcome to CleanFlight!&lt;/p&gt;
@@ -2928,9 +2928,9 @@ This also means that you can make sure that each R,G and B LED in each LED modul
  
  <entry>
    <title>Installation</title>
-   <link href="http://localhost:3000/docs/installation"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/installation"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/installation</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/installation</id>
    <content type="html">&lt;h1&gt;Installation&lt;/h1&gt;
 
 &lt;h2&gt;Using the configurator&lt;/h2&gt;
@@ -2969,9 +2969,9 @@ This also means that you can make sure that each R,G and B LED in each LED modul
  
  <entry>
    <title>Inflight Adjustments</title>
-   <link href="http://localhost:3000/docs/inflight-adjustments"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/inflight-adjustments"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/inflight-adjustments</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/inflight-adjustments</id>
    <content type="html">&lt;h1&gt;In-flight Adjustments&lt;/h1&gt;
 
 &lt;p&gt;With Cleanflight it&amp;rsquo;s possible to make adjustments to various settings by using AUX channels from your transmitter while the aircraft is flying.&lt;/p&gt;
@@ -3301,40 +3301,40 @@ When the switch is high, rate profile 2 is selcted.&lt;/p&gt;
 
 &lt;p&gt;The following 5 images show valid configurations.  In all cales the enture usable range for the Range Channel is used.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/adjustments-rate-profile-selection-via-3pos.png&quot; alt=&quot;Configurator example 1&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/adjustments-rate-profile-selection-via-3pos.png&quot; alt=&quot;Configurator example 1&quot;&gt;&lt;/p&gt;
 
 &lt;hr&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/adjustments-pitch-and-roll-rate-adjustment-via-3pos.png&quot; alt=&quot;Configurator example 2&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/adjustments-pitch-and-roll-rate-adjustment-via-3pos.png&quot; alt=&quot;Configurator example 2&quot;&gt;&lt;/p&gt;
 
 &lt;hr&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/adjustments-pid-via-two-3pos.png&quot; alt=&quot;Configurator example 3&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/adjustments-pid-via-two-3pos.png&quot; alt=&quot;Configurator example 3&quot;&gt;&lt;/p&gt;
 
 &lt;hr&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/adjustments-pid-via-6pos-and-3pos.png&quot; alt=&quot;Configurator example 4&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/adjustments-pid-via-6pos-and-3pos.png&quot; alt=&quot;Configurator example 4&quot;&gt;&lt;/p&gt;
 
 &lt;hr&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/adjustments-rates-via-a-2pos-and-3pos.png&quot; alt=&quot;Configurator example 5&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/adjustments-rates-via-a-2pos-and-3pos.png&quot; alt=&quot;Configurator example 5&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;The following examples shows &lt;strong&gt;incorrect&lt;/strong&gt; configuration - the entire usable range for the Range Channel is not used in both cases.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/adjustments-incorrect-config-1.png&quot; alt=&quot;Configurator example 6&quot;&gt;
-&lt;img src=&quot;http://localhost:3000/docs/assets/adjustments-incorrect-config-2.png&quot; alt=&quot;Configurator example 7&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/adjustments-incorrect-config-1.png&quot; alt=&quot;Configurator example 6&quot;&gt;
+&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/adjustments-incorrect-config-2.png&quot; alt=&quot;Configurator example 7&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;In the following example, the incorrect configuraton (above) has been corrected by adding a range that makes &amp;lsquo;No changes&amp;rsquo;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/adjustments-incorrect-config-2-corrected.png&quot; alt=&quot;Configurator example 7&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/adjustments-incorrect-config-2-corrected.png&quot; alt=&quot;Configurator example 7&quot;&gt;&lt;/p&gt;
 </content>
  </entry>
  
  <entry>
    <title>Hardware Debugging In Eclipse</title>
-   <link href="http://localhost:3000/docs/development/hardware-debugging-in-eclipse"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/development/hardware-debugging-in-eclipse</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse</id>
    <content type="html">&lt;h1&gt;Hardware&lt;/h1&gt;
 
 &lt;p&gt;Various debugging hardware solutions exist, the Segger J-Link clones are cheap and are known to work on Windows with both the Naze and Olimexino platforms.&lt;/p&gt;
@@ -3492,14 +3492,14 @@ continue
  
  <entry>
    <title>Hardware Debugging</title>
-   <link href="http://localhost:3000/docs/development/hardware-debugging"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/development/hardware-debugging</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging</id>
    <content type="html">&lt;h1&gt;Hardware debugging&lt;/h1&gt;
 
 &lt;p&gt;The code can be compiled with debugging information, you can then upload a debug version to a board via a JLink/St-Link debug adapter and step through the code in your IDE.&lt;/p&gt;
 
-&lt;p&gt;More information about the necessary hardware and setting up the eclipse IDE can be found &lt;a href=&quot;http://localhost:3000/docs/hardware-debugging-in-eclipse/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;More information about the necessary hardware and setting up the eclipse IDE can be found &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/hardware-debugging-in-eclipse/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;A guide for visual studio can be found here:
 &lt;a href=&quot;http://visualgdb.com/tutorials/arm/st-link/&quot;&gt;http://visualgdb.com/tutorials/arm/st-link/&lt;/a&gt;&lt;/p&gt;
@@ -3530,9 +3530,9 @@ continue
  
  <entry>
    <title>Gps</title>
-   <link href="http://localhost:3000/docs/gps"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/gps"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/gps</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/gps</id>
    <content type="html">&lt;h1&gt;GPS&lt;/h1&gt;
 
 &lt;p&gt;GPS features in Cleanflight are experimental.  Please share your findings with the developers.&lt;/p&gt;
@@ -3786,40 +3786,40 @@ Below are some examples of user-tested hardware. &lt;/p&gt;
  
  <entry>
    <title>Getting Started</title>
-   <link href="http://localhost:3000/docs/getting-started"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/getting-started"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/getting-started</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/getting-started</id>
    <content type="html">&lt;h1&gt;Getting Started&lt;/h1&gt;
 
 &lt;p&gt;This is a step-by-step guide that can help a person that has never used Cleanflight before set up a flight controller and the aircraft around it for flight. Basic RC knowledge is required, though. A total beginner should first familiarize themselves with concepts and techniques of RC before using this (e.g. basic controls, soldering, transmitter operation etc). One could use &lt;a href=&quot;http://www.rcgroups.com/forums/index.php&quot;&gt;RCGroups&lt;/a&gt; and/or &lt;a href=&quot;https://www.youtube.com/user/flitetest&quot;&gt;the Youtube show FliteTest&lt;/a&gt; for this.&lt;/p&gt;
 
 &lt;p&gt;DISCLAIMER: This documents is a work in progress. We cannot guarantee the safety or success of your project. At this point the document is only meant to be a helping guide, not an authoritative checklist of everything you should do to be safe and successful. Always exercise common sense, critical thinking and caution.&lt;/p&gt;
 
-&lt;p&gt;Read the &lt;a href=&quot;http://localhost:3000/docs/introduction/&quot;&gt;Introduction&lt;/a&gt; chapter for an overview of Cleanflight and how the community works.&lt;/p&gt;
+&lt;p&gt;Read the &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/introduction/&quot;&gt;Introduction&lt;/a&gt; chapter for an overview of Cleanflight and how the community works.&lt;/p&gt;
 
 &lt;h2&gt;Hardware&lt;/h2&gt;
 
 &lt;p&gt;NOTE: Flight Controllers are typically equipped with accelerometers. These devices are sensitive to shocks. When the device is not yet installed  to an aircraft, it has very little mass by itself. If you drop or bump the controller, a big force will be applied on its accelerometers, which could potentially damage them. Bottom line: Handle the board very carefully until it&amp;rsquo;s installed on an aircraft!&lt;/p&gt;
 
-&lt;p&gt;For an overview of the hardware Cleanflight (hereby CF) can run on, see &lt;a href=&quot;http://localhost:3000/docs/boards/&quot;&gt;Boards.md&lt;/a&gt;. For information about specific boards, see the board specific documentation.&lt;/p&gt;
+&lt;p&gt;For an overview of the hardware Cleanflight (hereby CF) can run on, see &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/boards/&quot;&gt;Boards.md&lt;/a&gt;. For information about specific boards, see the board specific documentation.&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Assuming that you have a flight controller board (hereby FC) in hand, you should first read through the manual that it came with. You can skip the details about software setup, as we&amp;rsquo;ll cover that here.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Decide how you&amp;rsquo;ll connect your receiver by reading the &lt;a href=&quot;http://localhost:3000/docs/rx/&quot;&gt;receiver&lt;/a&gt; chapter, and how many pins you need on the outputs (to connect ESCs and servos) by reading about &lt;a href=&quot;http://localhost:3000/docs/mixer/&quot;&gt;Mixers&lt;/a&gt;. &lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;If you&amp;rsquo;re interested in monitoring your flight battery with CF, see &lt;a href=&quot;http://localhost:3000/docs/battery/&quot;&gt;Battery Monitoring&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;You may want audible feedback from your copter so skim through &lt;a href=&quot;http://localhost:3000/docs/buzzer/&quot;&gt;Buzzer&lt;/a&gt; and mark the pins that will be used.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Do you want your RC Receiver&amp;rsquo;s RSSI to be sent to the board? &lt;a href=&quot;http://localhost:3000/docs/rssi/&quot;&gt;The RSSI chapter&lt;/a&gt; explains how. You may or may not need to make an additional connection from your Receiver to the FC.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Would you like to try using a GPS unit to get your aircraft to Loiter or Return-To-Launch? Take a look at the &lt;a href=&quot;http://localhost:3000/docs/gps/&quot;&gt;GPS&lt;/a&gt; and &lt;a href=&quot;http://localhost:3000/docs/gps-tested-hardware/&quot;&gt;GPS Tested Hardware&lt;/a&gt; chapters.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;You may also want to read the &lt;a href=&quot;http://localhost:3000/docs/serial/&quot;&gt;Serial&lt;/a&gt; chapter to determine what extra devices (such as Blackbox, OSD, Telemetry) you may want to use, and how they should be connected.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Decide how you&amp;rsquo;ll connect your receiver by reading the &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/rx/&quot;&gt;receiver&lt;/a&gt; chapter, and how many pins you need on the outputs (to connect ESCs and servos) by reading about &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/mixer/&quot;&gt;Mixers&lt;/a&gt;. &lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If you&amp;rsquo;re interested in monitoring your flight battery with CF, see &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/battery/&quot;&gt;Battery Monitoring&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;You may want audible feedback from your copter so skim through &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/buzzer/&quot;&gt;Buzzer&lt;/a&gt; and mark the pins that will be used.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Do you want your RC Receiver&amp;rsquo;s RSSI to be sent to the board? &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/rssi/&quot;&gt;The RSSI chapter&lt;/a&gt; explains how. You may or may not need to make an additional connection from your Receiver to the FC.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Would you like to try using a GPS unit to get your aircraft to Loiter or Return-To-Launch? Take a look at the &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/gps/&quot;&gt;GPS&lt;/a&gt; and &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/gps-tested-hardware/&quot;&gt;GPS Tested Hardware&lt;/a&gt; chapters.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;You may also want to read the &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/serial/&quot;&gt;Serial&lt;/a&gt; chapter to determine what extra devices (such as Blackbox, OSD, Telemetry) you may want to use, and how they should be connected.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Now that you know what features you are going to use, and which pins you need, you can go ahead and solder them to your board, if they are not soldered already. Soldering only the pins required for the application may save weight and contribute to a neater looking setup, but if you need to use a new feature later you may have to unmount the board from the craft and solder missing pins, so plan accordingly.  Before soldering your FC please review a how-to-solder tutorial to avoid expensive mistakes, practice soldering on some scrap before soldering your FC.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;If you are going to use &lt;a href=&quot;http://localhost:3000/docs/oneshot/&quot;&gt;Oneshot125&lt;/a&gt;, you may need to enable that on your ESCs using a jumper or flashing them with the latest stable firmware and enable Damped Light in their settings, if it&amp;rsquo;s supported. Refer to the ESCs&amp;rsquo; documentation or online discussions to determine this.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If you are going to use &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/oneshot/&quot;&gt;Oneshot125&lt;/a&gt;, you may need to enable that on your ESCs using a jumper or flashing them with the latest stable firmware and enable Damped Light in their settings, if it&amp;rsquo;s supported. Refer to the ESCs&amp;rsquo; documentation or online discussions to determine this.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2&gt;Software setup&lt;/h2&gt;
 
 &lt;p&gt;Now that your board has pins on it, you are ready to connect it to your PC and flash it with CF. Install the Chromium browser or Google Chrome to your PC, if you don&amp;rsquo;t have it already, add the &lt;a href=&quot;https://chrome.google.com/webstore/detail/cleanflight-configurator/enacoimjcgeinfnnnpajinjgmkahmfgb&quot;&gt;Cleanflight Configurator&lt;/a&gt; to it, and start it.&lt;/p&gt;
 
-&lt;p&gt;Then follow these instructions for &lt;a href=&quot;http://localhost:3000/docs/installation/&quot;&gt;Installation&lt;/a&gt; of the firmware to the FC.&lt;/p&gt;
+&lt;p&gt;Then follow these instructions for &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/installation/&quot;&gt;Installation&lt;/a&gt; of the firmware to the FC.&lt;/p&gt;
 
 &lt;h2&gt;Cleanflight Configuration&lt;/h2&gt;
 
@@ -3827,7 +3827,7 @@ Below are some examples of user-tested hardware. &lt;/p&gt;
 
 &lt;!--- This next paragraph should probably contain less info, as this info already exists in Configuration.md --&gt;
 
-&lt;p&gt;Now, there are two ways to &lt;a href=&quot;http://localhost:3000/docs/configuration/&quot;&gt;configure CF&lt;/a&gt;; via  the Configurator&amp;rsquo;s tabs (in a &amp;ldquo;graphical&amp;rdquo; way, clicking through and selecting/changing values and tickboxes) and using the &lt;a href=&quot;http://localhost:3000/docs/cli/&quot;&gt;Command Line Interface (CLI)&lt;/a&gt;. Some settings may only be configurable using the CLI and some settings are best configured using the GUI (particularly the ports settings, which aren&amp;rsquo;t documented for the CLI as they&amp;rsquo;re not human friendly).&lt;/p&gt;
+&lt;p&gt;Now, there are two ways to &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/configuration/&quot;&gt;configure CF&lt;/a&gt;; via  the Configurator&amp;rsquo;s tabs (in a &amp;ldquo;graphical&amp;rdquo; way, clicking through and selecting/changing values and tickboxes) and using the &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/cli/&quot;&gt;Command Line Interface (CLI)&lt;/a&gt;. Some settings may only be configurable using the CLI and some settings are best configured using the GUI (particularly the ports settings, which aren&amp;rsquo;t documented for the CLI as they&amp;rsquo;re not human friendly).&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;It is now a good time to setup your RC Receiver and Transmitter. Set the Tx so that it outputs at least 4 channels (Aileron, Elevator, Throttle, Rudder) but preferably more. E.g. you can set channels 5 and 6 to be controlled by 3-position switches, to be used later. Maybe set up EXPO on AIL/ELE/RUD, but you should know that it can also be done in CF&amp;rsquo;s software later. If using RSSI over PPM or PWM, it&amp;rsquo;s now time to configure your Rx to output it on a spare channel.&lt;/p&gt;&lt;/li&gt;
@@ -3853,11 +3853,11 @@ Below are some examples of user-tested hardware. &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Check that the channel inputs move according to your Tx inputs. &lt;/li&gt;
 &lt;li&gt;Check that the Channel map is correct along with the RSSI Channel, if you use that.&lt;/li&gt;
-&lt;li&gt;Verify the range of each channel goes from ~1000 to ~2000.  See also &lt;a href=&quot;http://localhost:3000/docs/controls/&quot;&gt;controls&lt;/a&gt;. and &lt;code&gt;rx_min_usec&lt;/code&gt; and &lt;code&gt;rx_max_usec&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Verify the range of each channel goes from ~1000 to ~2000.  See also &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/controls/&quot;&gt;controls&lt;/a&gt;. and &lt;code&gt;rx_min_usec&lt;/code&gt; and &lt;code&gt;rx_max_usec&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;You can also set EXPO here instead of your Tx. &lt;/li&gt;
 &lt;li&gt;Click Save!&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Modes tab: Setup the desired modes. See the &lt;a href=&quot;http://localhost:3000/docs/modes/&quot;&gt;modes&lt;/a&gt; chapter for what each mode does, but for the beginning you mainly need HORIZON, if any.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Modes tab: Setup the desired modes. See the &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/modes/&quot;&gt;modes&lt;/a&gt; chapter for what each mode does, but for the beginning you mainly need HORIZON, if any.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Before finishing this section, you should calibrate the ESCs, install the FC to the frame, and connect the RSSI cable, buzzer and battery if you have chosen to use those.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -3866,8 +3866,8 @@ Below are some examples of user-tested hardware. &lt;/p&gt;
 &lt;p&gt;It&amp;rsquo;s important that you have configured CF properly, so that your aircraft does not fly away, or even worse fly into property and people! This is an important step that you should NOT postpone until after your maiden flight. Please do this now, before you head off to the flying field.&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;First, learn how to arm your FC, and about other &lt;a href=&quot;http://localhost:3000/docs/controls/&quot;&gt;controls&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Next up, setup &lt;a href=&quot;http://localhost:3000/docs/failsafe/&quot;&gt;Failsafe&lt;/a&gt;. Take your time, do it properly.&lt;/li&gt;
+&lt;li&gt;First, learn how to arm your FC, and about other &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/controls/&quot;&gt;controls&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Next up, setup &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/failsafe/&quot;&gt;Failsafe&lt;/a&gt;. Take your time, do it properly.&lt;/li&gt;
 &lt;li&gt;Now, on the bench, without props, test that failsafe works properly, according to the above doc.&lt;/li&gt;
 &lt;li&gt;Additionally, test the effect of AIL/ELE input of your Tx. Is the aircraft responding properly? Do the same for RUD input.&lt;/li&gt;
 &lt;li&gt;Test the direction of AIL/ELE auto correction. Raise throttle at 30% (no blades!); when you tilt the aircraft, do the motors try to compensate momentarily? This should simulate random wind forces that the FC should counteract&lt;/li&gt;
@@ -3885,26 +3885,26 @@ Below are some examples of user-tested hardware. &lt;/p&gt;
 &lt;p&gt;Some advanced configurations and features are documented in the following pages, but have not been touched-upon earlier:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://localhost:3000/docs/profiles/&quot;&gt;Profiles&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://localhost:3000/docs/pid-tuning/&quot;&gt;PID tuning&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://localhost:3000/docs/inflight-adjustments/&quot;&gt;In-flight Adjustments&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://localhost:3000/docs/autotune/&quot;&gt;Autotune&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://localhost:3000/docs/blackbox/&quot;&gt;Blackbox logging&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://localhost:3000/docs/sonar/&quot;&gt;Using a Sonar&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://localhost:3000/docs/spektrum-bind/&quot;&gt;Spektrum Bind&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://localhost:3000/docs/telemetry/&quot;&gt;Telemetry&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://localhost:3000/docs/display/&quot;&gt;Using a Display&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://localhost:3000/docs/ledstrip/&quot;&gt;Using a LED strip&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://localhost:3000/docs/migrating-from-baseflight/&quot;&gt;Migrating from baseflight&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/profiles/&quot;&gt;Profiles&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/pid-tuning/&quot;&gt;PID tuning&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/inflight-adjustments/&quot;&gt;In-flight Adjustments&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/autotune/&quot;&gt;Autotune&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/blackbox/&quot;&gt;Blackbox logging&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/sonar/&quot;&gt;Using a Sonar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/spektrum-bind/&quot;&gt;Spektrum Bind&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/telemetry/&quot;&gt;Telemetry&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/display/&quot;&gt;Using a Display&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/ledstrip/&quot;&gt;Using a LED strip&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/migrating-from-baseflight/&quot;&gt;Migrating from baseflight&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
  </entry>
  
  <entry>
    <title>Failsafe</title>
-   <link href="http://localhost:3000/docs/failsafe"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/failsafe"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/failsafe</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/failsafe</id>
    <content type="html">&lt;h1&gt;Failsafe&lt;/h1&gt;
 
 &lt;p&gt;There are two types of failsafe:&lt;/p&gt;
@@ -4052,9 +4052,9 @@ The idea is that you set throttle and other controls so the aircraft descends in
  
  <entry>
    <title>Display</title>
-   <link href="http://localhost:3000/docs/display"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/display"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/display</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/display</id>
    <content type="html">&lt;h1&gt;Display&lt;/h1&gt;
 
 &lt;p&gt;Cleanflight supports displays to provide information to you about your aircraft and cleanflight state.&lt;/p&gt;
@@ -4115,8 +4115,8 @@ or other display corruption.&lt;/p&gt;
 
 &lt;p&gt;More can be read about this procedure here: &lt;a href=&quot;http://www.multiwii.com/forum/viewtopic.php?f=6&amp;amp;t=2705&amp;amp;start=10&quot;&gt;http://www.multiwii.com/forum/viewtopic.php?f=6&amp;amp;t=2705&amp;amp;start=10&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/Crius%20CO-16%20OLED%20diagram.png&quot; alt=&quot;Crius CO-16 Diagram&quot;&gt;
-&lt;img src=&quot;http://localhost:3000/docs/assets/Crius%20CO-16%20OLED%20modifications.jpg&quot; alt=&quot;Crius CO-16 Modification&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/Crius%20CO-16%20OLED%20diagram.png&quot; alt=&quot;Crius CO-16 Diagram&quot;&gt;
+&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/Crius%20CO-16%20OLED%20modifications.jpg&quot; alt=&quot;Crius CO-16 Modification&quot;&gt;&lt;/p&gt;
 
 &lt;h2&gt;Connections&lt;/h2&gt;
 
@@ -4128,9 +4128,9 @@ or other display corruption.&lt;/p&gt;
  
  <entry>
    <title>Development</title>
-   <link href="http://localhost:3000/docs/development/development"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/development/development"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/development/development</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/development/development</id>
    <content type="html">&lt;h1&gt;Development&lt;/h1&gt;
 
 &lt;p&gt;This document is primarily for developers only.&lt;/p&gt;
@@ -4241,9 +4241,9 @@ make
  
  <entry>
    <title>Controls</title>
-   <link href="http://localhost:3000/docs/controls"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/controls"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/controls</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/controls</id>
    <content type="html">&lt;h1&gt;Controls&lt;/h1&gt;
 
 &lt;h2&gt;Arming&lt;/h2&gt;
@@ -4446,9 +4446,9 @@ default). If you are having issues with your tail rotor contacting the ground du
  
  <entry>
    <title>Configuration Storage</title>
-   <link href="http://localhost:3000/docs/development/configuration-storage"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/development/configuration-storage</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/development/configuration-storage</id>
    <content type="html">&lt;h1&gt;Configuration&lt;/h1&gt;
 
 &lt;p&gt;The configuration in cleanflight is stored at the end of the flash ram, currently it uses 2KB of flash.&lt;/p&gt;
@@ -4529,9 +4529,9 @@ J-Link&amp;gt;q
  
  <entry>
    <title>Configuration</title>
-   <link href="http://localhost:3000/docs/configuration"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/configuration"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/configuration</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/configuration</id>
    <content type="html">&lt;h1&gt;Configuration&lt;/h1&gt;
 
 &lt;p&gt;Cleanflight is configured primarily using the Cleanflight Configurator GUI.&lt;/p&gt;
@@ -4548,7 +4548,7 @@ some features and settings.&lt;/p&gt;
 
 &lt;h2&gt;GUI&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/cleanflight-gui.png&quot; alt=&quot;Cleanflight Gui&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/cleanflight-gui.png&quot; alt=&quot;Cleanflight Gui&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;The GUI tool is the preferred way of configuration.  The GUI tool also includes a terminal which
 can be used to interact with the CLI.&lt;/p&gt;
@@ -4570,9 +4570,9 @@ See the README file that comes with the configurator for installation instructio
  
  <entry>
    <title>Cli</title>
-   <link href="http://localhost:3000/docs/cli"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/cli"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/cli</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/cli</id>
    <content type="html">&lt;h1&gt;Command Line Interface (CLI)&lt;/h1&gt;
 
 &lt;p&gt;Cleanflight has a command line interface (CLI) that can be used to change settings and configure the FC.&lt;/p&gt;
@@ -6096,9 +6096,9 @@ dump rates
  
  <entry>
    <title>Buzzer</title>
-   <link href="http://localhost:3000/docs/buzzer"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/buzzer"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/buzzer</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/buzzer</id>
    <content type="html">&lt;h1&gt;Buzzer&lt;/h1&gt;
 
 &lt;p&gt;Cleanflight supports a buzzer which is used for the following purposes:&lt;/p&gt;
@@ -6169,9 +6169,9 @@ Connecting to PA15 requires careful soldering.&lt;/p&gt;
  
  <entry>
    <title>Building Manual</title>
-   <link href="http://localhost:3000/docs/development/building-manual"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/development/building-manual"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/development/building-manual</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/development/building-manual</id>
    <content type="html">&lt;h1&gt;Building Manual.&lt;/h1&gt;
 
 &lt;p&gt;The manual PDF file is generated by concatenating relevant markdown files and by transforming the result using Gimli to obtain the final PDF file. This steps are handled automatically by the &lt;code&gt;build_manual.sh&lt;/code&gt; script located in the root of the repository next to the Makefile.&lt;/p&gt;
@@ -6199,16 +6199,16 @@ doc_files=( &amp;#39;Configuration.md&amp;#39;
  
  <entry>
    <title>Building In Windows</title>
-   <link href="http://localhost:3000/docs/development/building-in-windows"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/development/building-in-windows"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/development/building-in-windows</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/development/building-in-windows</id>
    <content type="html">&lt;h1&gt;Building in windows&lt;/h1&gt;
 
 &lt;h2&gt;Setup Cygwin&lt;/h2&gt;
 
 &lt;p&gt;download the Setup*.exe from &lt;a href=&quot;https://www.cygwin.com/&quot;&gt;https://www.cygwin.com/&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/001.cygwin_dl.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/001.cygwin_dl.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;Execute the download Setup and step through the installation  wizard (no need to customize the settings here). Stop at the  &amp;ldquo;Select Packages&amp;rdquo; Screen and select the following Packages
 for Installation:&lt;/p&gt;
@@ -6223,19 +6223,19 @@ for Installation:&lt;/p&gt;
 &lt;li&gt;Shells/mintty (should be already selected)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/002.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/002.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/003.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/003.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/004.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/004.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/005.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/005.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/006.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/006.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;Continue with the Installation and accept all autodetected dependencies.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/007.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/007.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
 
 &lt;h2&gt;Setup GNU ARM Toolchain&lt;/h2&gt;
 
@@ -6245,13 +6245,13 @@ for Installation:&lt;/p&gt;
 
 &lt;p&gt;Extract the contents of this archive to any folder of your choice, for instance &lt;code&gt;C:\dev\gcc-arm-none-eabi-4_8-2014q2&lt;/code&gt;. &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/008.toolchain.png&quot; alt=&quot;GNU ARM Toolchain Setup&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/008.toolchain.png&quot; alt=&quot;GNU ARM Toolchain Setup&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;add the &amp;ldquo;bin&amp;rdquo; subdirectory to the PATH Windows environment variable: &lt;code&gt;%PATH%;C:\dev\gcc-arm-none-eabi-4_8-2014q2\bin&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/009.toolchain_path.png&quot; alt=&quot;GNU ARM Toolchain Setup&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/009.toolchain_path.png&quot; alt=&quot;GNU ARM Toolchain Setup&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/010.toolchain_path.png&quot; alt=&quot;GNU ARM Toolchain Setup&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/010.toolchain_path.png&quot; alt=&quot;GNU ARM Toolchain Setup&quot;&gt;&lt;/p&gt;
 
 &lt;h2&gt;Checkout and compile Cleanflight&lt;/h2&gt;
 
@@ -6261,15 +6261,15 @@ for Installation:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;cd /cygdrive/c/dev
 git clone https://github.com/cleanflight/cleanflight.git
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/011.git_checkout.png&quot; alt=&quot;GIT Checkout&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/011.git_checkout.png&quot; alt=&quot;GIT Checkout&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/012.git_checkout.png&quot; alt=&quot;GIT Checkout&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/012.git_checkout.png&quot; alt=&quot;GIT Checkout&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;To compile your Cleanflight binaries, enter the cleanflight directory and build the project using the make command. You can append TARGET=[HARDWARE] if you want to build anything other than the default NAZE target:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;cd cleanflight
 make TARGET=NAZE
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/013.compile.png&quot; alt=&quot;GIT Checkout&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/013.compile.png&quot; alt=&quot;GIT Checkout&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;within few moments you should have your binary ready:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;(...)
@@ -6293,9 +6293,9 @@ make
  
  <entry>
    <title>Building In Ubuntu</title>
-   <link href="http://localhost:3000/docs/development/building-in-ubuntu"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/development/building-in-ubuntu</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu</id>
    <content type="html">&lt;h1&gt;Building in Ubuntu&lt;/h1&gt;
 
 &lt;p&gt;Building for Ubuntu platform is remarkably easy. The only trick to understand is that the Ubuntu toolchain,
@@ -6387,9 +6387,9 @@ make
  
  <entry>
    <title>Building In Mac Os X</title>
-   <link href="http://localhost:3000/docs/development/building-in-mac-os-x"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/development/building-in-mac-os-x</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x</id>
    <content type="html">&lt;h1&gt;Building in Mac OS X&lt;/h1&gt;
 
 &lt;p&gt;Building in Mac OS X can be accomplished in just a few steps:&lt;/p&gt;
@@ -6410,7 +6410,7 @@ already have the required development tools installed:&lt;/p&gt;
 &lt;p&gt;If it isn&amp;rsquo;t installed yet, you might get a popup like this. If so, click the &amp;ldquo;install&amp;rdquo; button to install the commandline
 developer tools:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/mac-prompt-tools-install.png&quot; alt=&quot;Prompt to install developer tools&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/mac-prompt-tools-install.png&quot; alt=&quot;Prompt to install developer tools&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;If you just get an error like this instead of a helpful popup prompt:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;-bash: make: command not found
@@ -6484,9 +6484,9 @@ make TARGET=CC3D OPBL=yes
  
  <entry>
    <title>Building In Eclipse</title>
-   <link href="http://localhost:3000/docs/development/building-in-eclipse"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/development/building-in-eclipse</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse</id>
    <content type="html">&lt;h1&gt;Short Version&lt;/h1&gt;
 
 &lt;p&gt;Install the latest Eclipse Standard/SDK and install the &lt;strong&gt;C/C++ developments Tools&lt;/strong&gt; plugins
@@ -6569,9 +6569,9 @@ make TARGET=CC3D OPBL=yes
  
  <entry>
    <title>Boards</title>
-   <link href="http://localhost:3000/docs/boards"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/boards"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/boards</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/boards</id>
    <content type="html">&lt;h1&gt;Flight controller hardware&lt;/h1&gt;
 
 &lt;p&gt;The current focus is geared towards flight controller hardware that use the STM32F103 and STM32F303 series processors.  The core logic is separated from the hardware drivers, porting to other processors is possible.&lt;/p&gt;
@@ -6615,9 +6615,9 @@ make TARGET=CC3D OPBL=yes
  
  <entry>
    <title>Board   Sparky</title>
-   <link href="http://localhost:3000/docs/board---sparky"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/board---sparky"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/board---sparky</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/board---sparky</id>
    <content type="html">&lt;h1&gt;Board - Sparky&lt;/h1&gt;
 
 &lt;p&gt;The Sparky is a very low cost and very powerful board.&lt;/p&gt;
@@ -6862,9 +6862,9 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
  
  <entry>
    <title>Board   Paris Air Hero 32</title>
-   <link href="http://localhost:3000/docs/board---paris-air-hero-32"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/board---paris-air-hero-32"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/board---paris-air-hero-32</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/board---paris-air-hero-32</id>
    <content type="html">&lt;h1&gt;Board - Paris Air Hero 32 / Acro Naze 32 Mini&lt;/h1&gt;
 
 &lt;p&gt;This board uses the same firmware as the Naze32 board.&lt;/p&gt;
@@ -7000,9 +7000,9 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
  
  <entry>
    <title>Board   Olimexino</title>
-   <link href="http://localhost:3000/docs/board---olimexino"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/board---olimexino"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/board---olimexino</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/board---olimexino</id>
    <content type="html">&lt;h1&gt;Board - Olimexino&lt;/h1&gt;
 
 &lt;p&gt;The Olimexino is a cheap and widely available development board&lt;/p&gt;
@@ -7177,9 +7177,9 @@ serial port depending on the placement of the Derial IO selection jumpers.&lt;/p
  
  <entry>
    <title>Board   Naze32</title>
-   <link href="http://localhost:3000/docs/board---naze32"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/board---naze32"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/board---naze32</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/board---naze32</id>
    <content type="html">&lt;h1&gt;Board - Naze32&lt;/h1&gt;
 
 &lt;p&gt;The Naze32 target supports all Naze hardware revisions.  Revision 4 and 5 are used and
@@ -7374,9 +7374,9 @@ if found please report via the &lt;a href=&quot;https://github.com/cleanflight/c
  
  <entry>
    <title>Board   Cjmcu</title>
-   <link href="http://localhost:3000/docs/board---cjmcu"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/board---cjmcu"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/board---cjmcu</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/board---cjmcu</id>
    <content type="html">&lt;h1&gt;Board - CJMCU&lt;/h1&gt;
 
 &lt;p&gt;The CJMCU is a tiny (80mm) board running a STM32F103, which contains a 3-Axis Compass (HMC5883L) 
@@ -7655,9 +7655,9 @@ for one of the the AUX channels which will result in it being always on&lt;/li&g
  
  <entry>
    <title>Board   Chebuzzf3</title>
-   <link href="http://localhost:3000/docs/board---chebuzzf3"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/board---chebuzzf3"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/board---chebuzzf3</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/board---chebuzzf3</id>
    <content type="html">&lt;h1&gt;Board - ChebuzzF3&lt;/h1&gt;
 
 &lt;p&gt;The ChebuzzF3 is a daugter board which connects to the bottom of an STM32F3Discovery board and provides pin headers and ports for various FC connections.&lt;/p&gt;
@@ -7756,9 +7756,9 @@ PC0 / ADC0 - ADC12_IN6&lt;/p&gt;
  
  <entry>
    <title>Board   Cc3d</title>
-   <link href="http://localhost:3000/docs/board---cc3d"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/board---cc3d"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/board---cc3d</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/board---cc3d</id>
    <content type="html">&lt;h1&gt;Board - CC3D&lt;/h1&gt;
 
 &lt;p&gt;The OpenPilot Copter Control 3D aka CC3D is a board more tuned to Acrobatic flying or GPS based
@@ -8135,9 +8135,9 @@ $
  
  <entry>
    <title>Board   Alienwii32</title>
-   <link href="http://localhost:3000/docs/board---alienwii32"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/board---alienwii32"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/board---alienwii32</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/board---alienwii32</id>
    <content type="html">&lt;h1&gt;Board - AlienWii32 (ALIENWIIF1 and ALIENWIIF3 target)&lt;/h1&gt;
 
 &lt;p&gt;The AlienWii32 is actually in prototype stage and few samples exist. There are some different variants and field testing with some users is ongoing. The information below is preliminary and will be updated as needed.&lt;/p&gt;
@@ -8166,7 +8166,7 @@ $
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;set serialrx_provider = 1   (0 for 1024bit, 1 for 2048bit) 
 set spektrum_sat_bind = 5
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;For more detail of the different bind modes please refer the &lt;a href=&quot;http://localhost:3000/docs/spektrum-bind/&quot;&gt;Spektrum Bind&lt;/a&gt; document&lt;/p&gt;
+&lt;p&gt;For more detail of the different bind modes please refer the &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/spektrum-bind/&quot;&gt;Spektrum Bind&lt;/a&gt; document&lt;/p&gt;
 
 &lt;p&gt;Deltang receivers in serial mode will work like any other Spektrum satellite receiver (10bit, 22ms) only the bind process will be different. &lt;/p&gt;
 
@@ -8176,18 +8176,18 @@ set spektrum_sat_bind = 5
 
 &lt;p&gt;The AlienWii32 F1 board can be flashed like the Naze board or the related clones. All the different methods will work in the same way.&lt;/p&gt;
 
-&lt;p&gt;The AlienWii32 F3 board needs to be flashed via the USB port in DFU mode. Flashing via the Cleanflight GUI is not possible yet. The DFU mode can be activated via setting the BOOT0 jumper during power on of the board. The second method is to connect with an terminal program (i.e. Putty) to the board and enter the character &amp;ldquo;R&amp;rdquo; immediately after connecting. Details about the flashing process can be found in the related section of the &lt;a href=&quot;http://localhost:3000/docs/board-sparky/&quot;&gt;Sparky&lt;/a&gt; documentation. The BOOT0 jumper should be removed and the board needs to be repowerd after firmware flashing. Please be aware, during reboot of the AlienWii F3 board, the GUI will disconnect and an manual reconnect is required.&lt;/p&gt;
+&lt;p&gt;The AlienWii32 F3 board needs to be flashed via the USB port in DFU mode. Flashing via the Cleanflight GUI is not possible yet. The DFU mode can be activated via setting the BOOT0 jumper during power on of the board. The second method is to connect with an terminal program (i.e. Putty) to the board and enter the character &amp;ldquo;R&amp;rdquo; immediately after connecting. Details about the flashing process can be found in the related section of the &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/board-sparky/&quot;&gt;Sparky&lt;/a&gt; documentation. The BOOT0 jumper should be removed and the board needs to be repowerd after firmware flashing. Please be aware, during reboot of the AlienWii F3 board, the GUI will disconnect and an manual reconnect is required.&lt;/p&gt;
 </content>
  </entry>
  
  <entry>
    <title>Blackbox</title>
-   <link href="http://localhost:3000/docs/blackbox"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/blackbox"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/blackbox</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/blackbox</id>
    <content type="html">&lt;h1&gt;Blackbox flight data recorder&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/blackbox-screenshot-1.jpg&quot; alt=&quot;Rendered flight log frame&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/blackbox-screenshot-1.jpg&quot; alt=&quot;Rendered flight log frame&quot;&gt;&lt;/p&gt;
 
 &lt;h2&gt;Introduction&lt;/h2&gt;
 
@@ -8311,7 +8311,7 @@ pin to the OpenLog.&lt;/p&gt;
 carbon fiber), but this makes its status LEDs impossible to see. I recommend wrapping it with some clear heatshrink
 tubing instead.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/blackbox-installation-1.jpg&quot; alt=&quot;OpenLog installed&quot; title=&quot;OpenLog installed with double-sided tape, SDCard slot pointing outward&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/blackbox-installation-1.jpg&quot; alt=&quot;OpenLog installed&quot; title=&quot;OpenLog installed with double-sided tape, SDCard slot pointing outward&quot;&gt;&lt;/p&gt;
 
 &lt;h3&gt;Onboard dataflash storage&lt;/h3&gt;
 
@@ -8403,7 +8403,7 @@ tools will ask you to pick which one of these flights you want to display/decode
 computer. Go to the &amp;ldquo;dataflash&amp;rdquo; tab and click the &amp;ldquo;save flash to file&amp;hellip;&amp;rdquo; button. Saving the log can take 2 or 3
 minutes.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:3000/docs/assets/blackbox-dataflash.png&quot; alt=&quot;Dataflash tab in Configurator&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/docs/assets/blackbox-dataflash.png&quot; alt=&quot;Dataflash tab in Configurator&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;After downloading the log, be sure to erase the chip to make it ready for reuse by clicking the &amp;ldquo;erase flash&amp;rdquo; button.&lt;/p&gt;
 
@@ -8431,12 +8431,12 @@ tool:&lt;/p&gt;
  
  <entry>
    <title>Battery</title>
-   <link href="http://localhost:3000/docs/battery"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/battery"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/battery</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/battery</id>
    <content type="html">&lt;h1&gt;Battery Monitoring&lt;/h1&gt;
 
-&lt;p&gt;Cleanflight has a battery monitoring feature.  The voltage of the main battery can be measured by the system and used to trigger a low-battery warning &lt;a href=&quot;http://localhost:3000/docs/buzzer/&quot;&gt;buzzer&lt;/a&gt;, on-board status LED flashing and LED strip patterns.&lt;/p&gt;
+&lt;p&gt;Cleanflight has a battery monitoring feature.  The voltage of the main battery can be measured by the system and used to trigger a low-battery warning &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/buzzer/&quot;&gt;buzzer&lt;/a&gt;, on-board status LED flashing and LED strip patterns.&lt;/p&gt;
 
 &lt;p&gt;Low battery warnings can:&lt;/p&gt;
 
@@ -8482,7 +8482,7 @@ GND/+5/PPM signal input.&lt;/p&gt;&lt;/li&gt;
 
 &lt;h3&gt;Sparky&lt;/h3&gt;
 
-&lt;p&gt;See the &lt;a href=&quot;http://localhost:3000/docs/board-sparky/&quot;&gt;Sparky board chapter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;See the &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/board-sparky/&quot;&gt;Sparky board chapter&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2&gt;Configuration&lt;/h2&gt;
 
@@ -8634,9 +8634,9 @@ current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_mete
  
  <entry>
    <title>Autotune</title>
-   <link href="http://localhost:3000/docs/autotune"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/autotune"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/autotune</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/autotune</id>
    <content type="html">&lt;h1&gt;Autotune&lt;/h1&gt;
 
 &lt;p&gt;Autotune helps to automatically tune your multirotor.&lt;/p&gt;
@@ -8679,9 +8679,9 @@ A beeper will sound indicating the settings are saved.&lt;/p&gt;&lt;/li&gt;
  
  <entry>
    <title>Atomic Barrier</title>
-   <link href="http://localhost:3000/docs/development/atomic-barrier"/>
+   <link href="http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://localhost:3000/docs/development/atomic-barrier</id>
+   <id>http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier</id>
    <content type="html">&lt;h1&gt;Atomic Barrier Warning&lt;/h1&gt;
 
 &lt;p&gt;If GCC is upgraded and a warning appears when compiling then the generated asm source must be verified.&lt;/p&gt;

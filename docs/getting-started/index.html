@@ -16,7 +16,7 @@
   <!-- CSS -->
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
   <!-- build:css /assets/stylesheets/style.min.css -->
-  <link rel="stylesheet" href="http://localhost:3000/assets/stylesheets/style.css">
+  <link rel="stylesheet" href="http://shipow.github.io/cleanflight-web/assets/stylesheets/style.css">
   <!-- endbuild -->
   <link href='//fonts.googleapis.com/css?family=Marvel:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css">
@@ -27,16 +27,16 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <script src="//cdn.jsdelivr.net/typeahead.js/0.10.5/typeahead.jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.5.0/algoliasearch.min.js"></script>
-  <script src="http://localhost:3000/assets/javascript/javascript.js"></script>
+  <script src="http://shipow.github.io/cleanflight-web/assets/javascript/javascript.js"></script>
     <script>
-    window.baseUrl = 'http://localhost:3000';
+    window.baseUrl = 'http://shipow.github.io/cleanflight-web';
     window.algolia = algoliasearch('T2ZX9HO66V', '7119d2f6f1cd95224251ec2e490e824f');
     window.index = algolia.initIndex('dev_cleanflight');
   </script>
   <!-- endbuild -->
 
   <!-- Icons -->
-  <link rel="shortcut icon" href="http://localhost:3000/assets/favicon.ico">
+  <link rel="shortcut icon" href="http://shipow.github.io/cleanflight-web/assets/favicon.ico">
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
@@ -53,13 +53,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="http://localhost:3000/"><img src="http://localhost:3000/assets/images/cleanflight-logo.png" height="50"></a>
+          <a class="navbar-brand" href="http://shipow.github.io/cleanflight-web/"><img src="http://shipow.github.io/cleanflight-web/assets/images/cleanflight-logo.png" height="50"></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="http://localhost:3000/docs/getting-started/">Get Started</a></li>
-            <li><a href="http://localhost:3000/categories/docs">Documentation</a></li>
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/getting-started/">Get Started</a></li>
+            <li><a href="http://shipow.github.io/cleanflight-web/categories/docs">Documentation</a></li>
             <!-- <li><a href="#">Ressources</a></li> -->
             <li><a href="https://github.com/cleanflight/cleanflight">Contributing</a></li>
           </ul>
@@ -82,31 +82,31 @@
 
 <p>DISCLAIMER: This documents is a work in progress. We cannot guarantee the safety or success of your project. At this point the document is only meant to be a helping guide, not an authoritative checklist of everything you should do to be safe and successful. Always exercise common sense, critical thinking and caution.</p>
 
-<p>Read the <a href="http://localhost:3000/docs/introduction/">Introduction</a> chapter for an overview of Cleanflight and how the community works.</p>
+<p>Read the <a href="http://shipow.github.io/cleanflight-web/docs/introduction/">Introduction</a> chapter for an overview of Cleanflight and how the community works.</p>
 
 <h2>Hardware</h2>
 
 <p>NOTE: Flight Controllers are typically equipped with accelerometers. These devices are sensitive to shocks. When the device is not yet installed  to an aircraft, it has very little mass by itself. If you drop or bump the controller, a big force will be applied on its accelerometers, which could potentially damage them. Bottom line: Handle the board very carefully until it&rsquo;s installed on an aircraft!</p>
 
-<p>For an overview of the hardware Cleanflight (hereby CF) can run on, see <a href="http://localhost:3000/docs/boards/">Boards.md</a>. For information about specific boards, see the board specific documentation.</p>
+<p>For an overview of the hardware Cleanflight (hereby CF) can run on, see <a href="http://shipow.github.io/cleanflight-web/docs/boards/">Boards.md</a>. For information about specific boards, see the board specific documentation.</p>
 
 <ul>
 <li><p>Assuming that you have a flight controller board (hereby FC) in hand, you should first read through the manual that it came with. You can skip the details about software setup, as we&rsquo;ll cover that here.</p></li>
-<li><p>Decide how you&rsquo;ll connect your receiver by reading the <a href="http://localhost:3000/docs/rx/">receiver</a> chapter, and how many pins you need on the outputs (to connect ESCs and servos) by reading about <a href="http://localhost:3000/docs/mixer/">Mixers</a>. </p></li>
-<li><p>If you&rsquo;re interested in monitoring your flight battery with CF, see <a href="http://localhost:3000/docs/battery/">Battery Monitoring</a>.</p></li>
-<li><p>You may want audible feedback from your copter so skim through <a href="http://localhost:3000/docs/buzzer/">Buzzer</a> and mark the pins that will be used.</p></li>
-<li><p>Do you want your RC Receiver&rsquo;s RSSI to be sent to the board? <a href="http://localhost:3000/docs/rssi/">The RSSI chapter</a> explains how. You may or may not need to make an additional connection from your Receiver to the FC.</p></li>
-<li><p>Would you like to try using a GPS unit to get your aircraft to Loiter or Return-To-Launch? Take a look at the <a href="http://localhost:3000/docs/gps/">GPS</a> and <a href="http://localhost:3000/docs/gps-tested-hardware/">GPS Tested Hardware</a> chapters.</p></li>
-<li><p>You may also want to read the <a href="http://localhost:3000/docs/serial/">Serial</a> chapter to determine what extra devices (such as Blackbox, OSD, Telemetry) you may want to use, and how they should be connected.</p></li>
+<li><p>Decide how you&rsquo;ll connect your receiver by reading the <a href="http://shipow.github.io/cleanflight-web/docs/rx/">receiver</a> chapter, and how many pins you need on the outputs (to connect ESCs and servos) by reading about <a href="http://shipow.github.io/cleanflight-web/docs/mixer/">Mixers</a>. </p></li>
+<li><p>If you&rsquo;re interested in monitoring your flight battery with CF, see <a href="http://shipow.github.io/cleanflight-web/docs/battery/">Battery Monitoring</a>.</p></li>
+<li><p>You may want audible feedback from your copter so skim through <a href="http://shipow.github.io/cleanflight-web/docs/buzzer/">Buzzer</a> and mark the pins that will be used.</p></li>
+<li><p>Do you want your RC Receiver&rsquo;s RSSI to be sent to the board? <a href="http://shipow.github.io/cleanflight-web/docs/rssi/">The RSSI chapter</a> explains how. You may or may not need to make an additional connection from your Receiver to the FC.</p></li>
+<li><p>Would you like to try using a GPS unit to get your aircraft to Loiter or Return-To-Launch? Take a look at the <a href="http://shipow.github.io/cleanflight-web/docs/gps/">GPS</a> and <a href="http://shipow.github.io/cleanflight-web/docs/gps-tested-hardware/">GPS Tested Hardware</a> chapters.</p></li>
+<li><p>You may also want to read the <a href="http://shipow.github.io/cleanflight-web/docs/serial/">Serial</a> chapter to determine what extra devices (such as Blackbox, OSD, Telemetry) you may want to use, and how they should be connected.</p></li>
 <li><p>Now that you know what features you are going to use, and which pins you need, you can go ahead and solder them to your board, if they are not soldered already. Soldering only the pins required for the application may save weight and contribute to a neater looking setup, but if you need to use a new feature later you may have to unmount the board from the craft and solder missing pins, so plan accordingly.  Before soldering your FC please review a how-to-solder tutorial to avoid expensive mistakes, practice soldering on some scrap before soldering your FC.</p></li>
-<li><p>If you are going to use <a href="http://localhost:3000/docs/oneshot/">Oneshot125</a>, you may need to enable that on your ESCs using a jumper or flashing them with the latest stable firmware and enable Damped Light in their settings, if it&rsquo;s supported. Refer to the ESCs&rsquo; documentation or online discussions to determine this.</p></li>
+<li><p>If you are going to use <a href="http://shipow.github.io/cleanflight-web/docs/oneshot/">Oneshot125</a>, you may need to enable that on your ESCs using a jumper or flashing them with the latest stable firmware and enable Damped Light in their settings, if it&rsquo;s supported. Refer to the ESCs&rsquo; documentation or online discussions to determine this.</p></li>
 </ul>
 
 <h2>Software setup</h2>
 
 <p>Now that your board has pins on it, you are ready to connect it to your PC and flash it with CF. Install the Chromium browser or Google Chrome to your PC, if you don&rsquo;t have it already, add the <a href="https://chrome.google.com/webstore/detail/cleanflight-configurator/enacoimjcgeinfnnnpajinjgmkahmfgb">Cleanflight Configurator</a> to it, and start it.</p>
 
-<p>Then follow these instructions for <a href="http://localhost:3000/docs/installation/">Installation</a> of the firmware to the FC.</p>
+<p>Then follow these instructions for <a href="http://shipow.github.io/cleanflight-web/docs/installation/">Installation</a> of the firmware to the FC.</p>
 
 <h2>Cleanflight Configuration</h2>
 
@@ -114,7 +114,7 @@
 
 <!--- This next paragraph should probably contain less info, as this info already exists in Configuration.md -->
 
-<p>Now, there are two ways to <a href="http://localhost:3000/docs/configuration/">configure CF</a>; via  the Configurator&rsquo;s tabs (in a &ldquo;graphical&rdquo; way, clicking through and selecting/changing values and tickboxes) and using the <a href="http://localhost:3000/docs/cli/">Command Line Interface (CLI)</a>. Some settings may only be configurable using the CLI and some settings are best configured using the GUI (particularly the ports settings, which aren&rsquo;t documented for the CLI as they&rsquo;re not human friendly).</p>
+<p>Now, there are two ways to <a href="http://shipow.github.io/cleanflight-web/docs/configuration/">configure CF</a>; via  the Configurator&rsquo;s tabs (in a &ldquo;graphical&rdquo; way, clicking through and selecting/changing values and tickboxes) and using the <a href="http://shipow.github.io/cleanflight-web/docs/cli/">Command Line Interface (CLI)</a>. Some settings may only be configurable using the CLI and some settings are best configured using the GUI (particularly the ports settings, which aren&rsquo;t documented for the CLI as they&rsquo;re not human friendly).</p>
 
 <ul>
 <li><p>It is now a good time to setup your RC Receiver and Transmitter. Set the Tx so that it outputs at least 4 channels (Aileron, Elevator, Throttle, Rudder) but preferably more. E.g. you can set channels 5 and 6 to be controlled by 3-position switches, to be used later. Maybe set up EXPO on AIL/ELE/RUD, but you should know that it can also be done in CF&rsquo;s software later. If using RSSI over PPM or PWM, it&rsquo;s now time to configure your Rx to output it on a spare channel.</p></li>
@@ -140,11 +140,11 @@
 <ul>
 <li>Check that the channel inputs move according to your Tx inputs. </li>
 <li>Check that the Channel map is correct along with the RSSI Channel, if you use that.</li>
-<li>Verify the range of each channel goes from ~1000 to ~2000.  See also <a href="http://localhost:3000/docs/controls/">controls</a>. and <code>rx_min_usec</code> and <code>rx_max_usec</code>.</li>
+<li>Verify the range of each channel goes from ~1000 to ~2000.  See also <a href="http://shipow.github.io/cleanflight-web/docs/controls/">controls</a>. and <code>rx_min_usec</code> and <code>rx_max_usec</code>.</li>
 <li>You can also set EXPO here instead of your Tx. </li>
 <li>Click Save!</li>
 </ul></li>
-<li><p>Modes tab: Setup the desired modes. See the <a href="http://localhost:3000/docs/modes/">modes</a> chapter for what each mode does, but for the beginning you mainly need HORIZON, if any.</p></li>
+<li><p>Modes tab: Setup the desired modes. See the <a href="http://shipow.github.io/cleanflight-web/docs/modes/">modes</a> chapter for what each mode does, but for the beginning you mainly need HORIZON, if any.</p></li>
 <li><p>Before finishing this section, you should calibrate the ESCs, install the FC to the frame, and connect the RSSI cable, buzzer and battery if you have chosen to use those.</p></li>
 </ul>
 
@@ -153,8 +153,8 @@
 <p>It&rsquo;s important that you have configured CF properly, so that your aircraft does not fly away, or even worse fly into property and people! This is an important step that you should NOT postpone until after your maiden flight. Please do this now, before you head off to the flying field.</p>
 
 <ul>
-<li>First, learn how to arm your FC, and about other <a href="http://localhost:3000/docs/controls/">controls</a>.</li>
-<li>Next up, setup <a href="http://localhost:3000/docs/failsafe/">Failsafe</a>. Take your time, do it properly.</li>
+<li>First, learn how to arm your FC, and about other <a href="http://shipow.github.io/cleanflight-web/docs/controls/">controls</a>.</li>
+<li>Next up, setup <a href="http://shipow.github.io/cleanflight-web/docs/failsafe/">Failsafe</a>. Take your time, do it properly.</li>
 <li>Now, on the bench, without props, test that failsafe works properly, according to the above doc.</li>
 <li>Additionally, test the effect of AIL/ELE input of your Tx. Is the aircraft responding properly? Do the same for RUD input.</li>
 <li>Test the direction of AIL/ELE auto correction. Raise throttle at 30% (no blades!); when you tilt the aircraft, do the motors try to compensate momentarily? This should simulate random wind forces that the FC should counteract</li>
@@ -172,17 +172,17 @@
 <p>Some advanced configurations and features are documented in the following pages, but have not been touched-upon earlier:</p>
 
 <ul>
-<li><a href="http://localhost:3000/docs/profiles/">Profiles</a></li>
-<li><a href="http://localhost:3000/docs/pid-tuning/">PID tuning</a></li>
-<li><a href="http://localhost:3000/docs/inflight-adjustments/">In-flight Adjustments</a></li>
-<li><a href="http://localhost:3000/docs/autotune/">Autotune</a></li>
-<li><a href="http://localhost:3000/docs/blackbox/">Blackbox logging</a></li>
-<li><a href="http://localhost:3000/docs/sonar/">Using a Sonar</a></li>
-<li><a href="http://localhost:3000/docs/spektrum-bind/">Spektrum Bind</a></li>
-<li><a href="http://localhost:3000/docs/telemetry/">Telemetry</a></li>
-<li><a href="http://localhost:3000/docs/display/">Using a Display</a></li>
-<li><a href="http://localhost:3000/docs/ledstrip/">Using a LED strip</a></li>
-<li><a href="http://localhost:3000/docs/migrating-from-baseflight/">Migrating from baseflight</a></li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/profiles/">Profiles</a></li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/pid-tuning/">PID tuning</a></li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/inflight-adjustments/">In-flight Adjustments</a></li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/autotune/">Autotune</a></li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/blackbox/">Blackbox logging</a></li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/sonar/">Using a Sonar</a></li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/spektrum-bind/">Spektrum Bind</a></li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/telemetry/">Telemetry</a></li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/display/">Using a Display</a></li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/ledstrip/">Using a LED strip</a></li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/migrating-from-baseflight/">Migrating from baseflight</a></li>
 </ul>
 
       </div>
@@ -193,154 +193,154 @@
       <ul class="posts list-unstyled">
       
       
-          <li><a href="http://localhost:3000//docs/development/atomic-barrier">Atomic Barrier</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/development/atomic-barrier">Atomic Barrier</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/autotune">Autotune</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/autotune">Autotune</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/battery">Battery</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/battery">Battery</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/blackbox">Blackbox</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/blackbox">Blackbox</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/board---alienwii32">Board   Alienwii32</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/board---alienwii32">Board   Alienwii32</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/board---cc3d">Board   Cc3d</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/board---cc3d">Board   Cc3d</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/board---chebuzzf3">Board   Chebuzzf3</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/board---chebuzzf3">Board   Chebuzzf3</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/board---cjmcu">Board   Cjmcu</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/board---cjmcu">Board   Cjmcu</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/board---naze32">Board   Naze32</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/board---naze32">Board   Naze32</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/board---olimexino">Board   Olimexino</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/board---olimexino">Board   Olimexino</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/board---paris-air-hero-32">Board   Paris Air Hero 32</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/board---paris-air-hero-32">Board   Paris Air Hero 32</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/board---sparky">Board   Sparky</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/board---sparky">Board   Sparky</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/boards">Boards</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/boards">Boards</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/development/building-in-eclipse">Building In Eclipse</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/development/building-in-eclipse">Building In Eclipse</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/development/building-in-mac-os-x">Building In Mac Os X</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/development/building-in-mac-os-x">Building In Mac Os X</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/development/building-in-ubuntu">Building In Ubuntu</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/development/building-in-ubuntu">Building In Ubuntu</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/development/building-in-windows">Building In Windows</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/development/building-in-windows">Building In Windows</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/development/building-manual">Building Manual</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/development/building-manual">Building Manual</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/buzzer">Buzzer</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/buzzer">Buzzer</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/cli">Cli</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/cli">Cli</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/configuration">Configuration</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/configuration">Configuration</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/development/configuration-storage">Configuration Storage</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/development/configuration-storage">Configuration Storage</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/controls">Controls</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/controls">Controls</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/development/development">Development</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/development/development">Development</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/display">Display</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/display">Display</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/failsafe">Failsafe</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/failsafe">Failsafe</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/getting-started">Getting Started</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/getting-started">Getting Started</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/gps">Gps</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/gps">Gps</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/development/hardware-debugging">Hardware Debugging</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/development/hardware-debugging">Hardware Debugging</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/development/hardware-debugging-in-eclipse">Hardware Debugging In Eclipse</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/development/hardware-debugging-in-eclipse">Hardware Debugging In Eclipse</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/inflight-adjustments">Inflight Adjustments</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/inflight-adjustments">Inflight Adjustments</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/installation">Installation</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/installation">Installation</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/introduction">Introduction</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/introduction">Introduction</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/ledstrip">Ledstrip</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/ledstrip">Ledstrip</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/migrating-from-baseflight">Migrating From Baseflight</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/migrating-from-baseflight">Migrating From Baseflight</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/mixer">Mixer</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/mixer">Mixer</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/modes">Modes</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/modes">Modes</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/api/msp_extensions">Msp_extensions</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/api/msp_extensions">Msp_extensions</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/api/'>api</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/oneshot">Oneshot</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/oneshot">Oneshot</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/development/pid-internals">Pid Internals</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/development/pid-internals">Pid Internals</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/pid-tuning">Pid Tuning</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/pid-tuning">Pid Tuning</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/profiles">Profiles</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/profiles">Profiles</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/rssi">Rssi</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/rssi">Rssi</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/rx">Rx</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/rx">Rx</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/safety">Safety</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/safety">Safety</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/serial">Serial</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/serial">Serial</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/sonar">Sonar</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/sonar">Sonar</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/spektrum-bind">Spektrum Bind</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/spektrum-bind">Spektrum Bind</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/telemetry">Telemetry</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/telemetry">Telemetry</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/docs/'>docs</a></div> -->
       
-          <li><a href="http://localhost:3000//docs/development/travis">Travis</a></li>
+          <li><a href="http://shipow.github.io/cleanflight-web//docs/development/travis">Travis</a></li>
           <!-- <div class="categories">Filed under <a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/docs/'>docs</a></div> -->
       
     </div>
