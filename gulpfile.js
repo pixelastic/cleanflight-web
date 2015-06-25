@@ -14,6 +14,8 @@ var merge = require("merge-stream");
 // Need a command for reloading webpages using BrowserSync
 var reload = browserSync.reload;
 // And define a variable that BrowserSync uses in it"s function
+var flatten = require('gulp-flatten');
+
 var bs;
 
 var rename = require("gulp-rename");
@@ -54,7 +56,7 @@ gulp.task("styles", function () {
 
 // Optimizes the images that exists
 gulp.task("images", function () {
-  return gulp.src("src/assets/images/**")
+  return gulp.src(["src/assets/images/**"])
     .pipe($.changed("site/assets/images"))
     .pipe($.imagemin({
       // Lossless conversion to progressive JPGs
@@ -87,7 +89,19 @@ gulp.task("docs", function () {
       path.dirname = path.dirname.toLowerCase();
       path.basename = '2015-01-01-' + path.basename.replace(/\s+/g, '-').toLowerCase();
      }))
-    .pipe(gulp.dest("./src/_posts/docs"))
+    .pipe(gulp.dest("./serve/_posts/docs"))
+});
+
+gulp.task("docs_assets:prod", ["jekyll:prod"], function () {
+  return gulp.src(["src/_cleanflight/docs/**/*","!**/*.md","!**/*.css"])
+    .pipe(flatten())
+    .pipe(gulp.dest("./serve/assets/images"))
+});
+
+gulp.task("docs_assets:dev", ["jekyll:dev"], function () {
+  return gulp.src(["src/_cleanflight/docs/**/*","!**/*.md","!**/*.css"])
+    .pipe(flatten())
+    .pipe(gulp.dest("./serve/assets/images"))
 });
 
 // Optimizes all the CSS, HTML and concats the JS etc
@@ -121,7 +135,6 @@ gulp.task("html", ["styles"], function () {
     .pipe(gulp.dest("site"))
     .pipe($.size({title: "optimizations"}));
 });
-
 
 // Task to upload your site to your personal GH Pages repo
 gulp.task("deploy", function () {
@@ -175,7 +188,7 @@ gulp.task("serve:prod", function () {
 });
 
 // Default task, run when just writing "gulp" in the terminal
-gulp.task("default", ["serve:dev", "watch"]);
+gulp.task("default", ["serve:dev", "watch", "docs_assets:dev"]);
 
 // Checks your CSS, JS and Jekyll for errors
 gulp.task("check", ["jslint", "doctor"], function () {
@@ -183,7 +196,7 @@ gulp.task("check", ["jslint", "doctor"], function () {
 });
 
 // Builds the site but doesn"t serve it to you
-gulp.task("build", ["jekyll:prod", "styles"], function () {});
+gulp.task("build", ["jekyll:prod", "styles", "docs_assets:prod"], function () {});
 
 // Builds your site with the "build" command and then runs all the optimizations on
 // it and outputs it to "./site"
