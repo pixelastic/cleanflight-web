@@ -154,9 +154,30 @@ table {
 .twitter-typeahead .tt-dropdown-menu .tt-suggestion {
   text-align: left;
   padding: 5px 10px;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 24px;
+  border-bottom: solid 1px #eee;
 }
+.tt-suggestion .name {
+  em {
+    background-color: rgba(#59AA2B,.2)
+  }
+
+}
+.tt-suggestion .snippet {
+  font-size: 13px;
+  color: #666;
+  h1, h2, h3, h4, h5 {
+    margin: 0;
+    padding: 0;
+    display: inline;
+    font-size: 13px;
+    font-family: arial;
+    text-transform: none;
+  }
+}
+
+
 .twitter-typeahead .tt-dropdown-menu .tt-suggestion.tt-cursor {
   color: #fff;
   background-color: #0097cf;
