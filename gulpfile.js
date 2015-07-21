@@ -83,13 +83,13 @@ gulp.task("copy", function () {
 });
 
 // Copy and rename docs .md from the original repo (via submodule)
-gulp.task("docs", ["serve:dev"], function () {
+gulp.task("docs", function () {
   return gulp.src("src/_cleanflight/docs/**/*.md")
     .pipe(rename(function(path) {
       path.dirname = path.dirname.toLowerCase();
       path.basename = '2015-01-01-' + path.basename.replace(/\s+/g, '-').toLowerCase();
      }))
-    .pipe(gulp.dest("./serve/_posts/docs"))
+    .pipe(gulp.dest("./src/_posts/docs"))
 });
 
 gulp.task("docs_assets:prod", ["jekyll:prod"], function () {
@@ -188,7 +188,7 @@ gulp.task("serve:prod", function () {
 });
 
 // Default task, run when just writing "gulp" in the terminal
-gulp.task("default", ["serve:dev", "watch", "docs_assets:dev", "docs"]);
+gulp.task("default", ["serve:dev", "watch", "docs_assets:dev"]);
 
 // Checks your CSS, JS and Jekyll for errors
 gulp.task("check", ["jslint", "doctor"], function () {
