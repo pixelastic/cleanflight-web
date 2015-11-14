@@ -1,6 +1,6 @@
 # override default Jekyll post's process method not extracting categories
 module Jekyll
-  class Post
+  class Document
     def process(name)
       m, cats, date, slug, ext = *name.match(MATCHER)
       self.categories += (cats || '').split('/')

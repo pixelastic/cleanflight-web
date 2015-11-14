@@ -6,7 +6,7 @@ url: http://localhost:3000
 # Used so Jekyll outputs the site correctly so Gulp can do what it wants
 source: ./src
 destination: ./serve
-layouts: ./src/_layouts
+layout_dir: ./src/_layouts
 
 defaults:
   -
@@ -36,8 +36,7 @@ lsi: false
 limit_posts: 100
 
 # Permalink structure and pagination options
-relative_permalinks: true
-permalink: /:categories/:title
+permalink: :categories/:title.html
 paginate: 100
 paginate_path: 'page:num'
 excerpt_separator: '<!--more-->'
@@ -56,3 +55,7 @@ algolia:
   search_only_api_key: 7119d2f6f1cd95224251ec2e490e824f
   clusters:
     - c1-eu-1
+
+gems:
+  - algoliasearch-jekyll
+  - jekyll-paginate

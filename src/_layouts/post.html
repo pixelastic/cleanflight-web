@@ -16,7 +16,7 @@ layout: default
         {% assign sortedposts = site.posts | sort %}
         {% for post in sortedposts %}
           {% if post.categories.size == 1 %}
-            <li><a href="{{ site.url }}/{{ post.url }}">{{ post.title }}</a></li>
+            <li><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></li>
           {% endif %}
         {% endfor %}
       </ul>

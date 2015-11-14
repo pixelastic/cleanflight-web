@@ -4,7 +4,7 @@ module ChangeLocalMdLinksToHtml
       @base_dir  = site['url']
     end
     def generate(site)
-      site.posts.each { |p| rewrite_links(site, p) }
+      site.posts.docs.each { |p| rewrite_links(site, p) }
     end
     def rewrite_links(site, post)
       post.content = post.content.gsub(/\(([^)]+)\.md\)/){"(#{@base_dir}/docs/#{$1.downcase.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-')}/)"}

@@ -4,5 +4,9 @@ gem 'jekyll'
 gem 'redcarpet'
 gem 'classifier-reborn'
 gem 'fast-stemmer'
-gem 'algoliasearch'
-gem 'algoliasearch-jekyll'
+gem 'jekyll-paginate'
+
+
+group :jekyll_plugins do
+  gem 'algoliasearch-jekyll', '~> 0.4.3'
+end
