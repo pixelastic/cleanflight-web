@@ -25,14 +25,27 @@
   <!-- build:js /assets/javascript/all.min.js -->
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <script src="//cdn.jsdelivr.net/typeahead.js/0.10.5/typeahead.jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.5.0/algoliasearch.min.js"></script>
-  <script src="{{ site.url }}/assets/javascript/javascript.js"></script>
-    <script>
+  <script>
     window.baseUrl = '{{ site.url }}';
     window.algolia = algoliasearch('{{ site.algolia.application_id }}', '{{ site.algolia.search_only_api_key }}');
     window.index = algolia.initIndex('{{ site.algolia.index_name }}');
   </script>
+  <script type="text/template" id="my-custom-menu-template">
+    <div class="my-custom-menu">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="aa-dataset-d1"></div>
+        </div>
+        <div class="col-sm-6">
+          <div class="aa-dataset-d2"></div>
+          <div class="aa-dataset-d3"></div>
+        </div>
+      </div>
+    </div>
+  </script>
+  <script src="{{ site.url }}/assets/javascript/javascript.js"></script>
   <!-- endbuild -->
 
   <!-- Icons -->
