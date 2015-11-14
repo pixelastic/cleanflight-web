@@ -72,3 +72,4 @@ site
 # hide the AWS and Rsync credentials file
 aws-credentials.json
 rsync-credentials.json
+_algolia_api_key
