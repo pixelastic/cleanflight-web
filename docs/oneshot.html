@@ -9,7 +9,7 @@
 
   <title>
     
-      404: Page not found &middot; Cleanflight
+      Oneshot &middot; Cleanflight
     
   </title>
 
@@ -86,10 +86,61 @@
   <div class="row post-full">
     <div class="col-md-9">
       <div class="content">
-        <div class="page">
-  <h1 class="page-title">404: Page not found</h1>
-  <p class="lead">Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. <a href="/">Head back home</a> to try finding it again.</p>
-</div>
+        <h1>Oneshot</h1>
+
+<p>Oneshot allows faster communication between the Flight Controller and the ESCs that are present on your multirotor.</p>
+
+<p>It does this in two ways:</p>
+
+<ol>
+<li>Use a signal that varies between 125 µs and 250 µs (instead of the normal PWM timing of 1000µs to 2000µs)</li>
+<li>Only send a &lsquo;shot&rsquo; once per flight controller loop, and do this as soon as the flight controller has calculated the required speed of the motors.</li>
+</ol>
+
+<h2>Supported ESCs</h2>
+
+<p>FlyDuino KISS ESCs are able to use the Oneshot125 protocol out of the box. There is only one soldering needed.
+BLHeli rev13.0 also supports Oneshot125 and will be automatically selected by the ESC without additional work.</p>
+
+<h2>Supported Boards</h2>
+
+<p>The Naze boards are supported, and have been flight tested in a number of configurations.</p>
+
+<p>CC3D boards have been tested with a PPM receiver, however parallel PWM receivers might not work properly with this board.</p>
+
+<h2>Enabling Oneshot</h2>
+
+<p>To configure Oneshot, you must turn off any power to your ESCs.  </p>
+
+<p>It is a good idea at this stage to configure your ESC for oneshot mode (by soldering JP1 in the case of the KISS ESC).</p>
+
+<p>Connect a USB cable to your board, and connect using the Chrome GUI app.</p>
+
+<p>Go to the CLI tab, and type the following:</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">feature ONESHOT125
+save
+</code></pre></figure>
+<p>Then you can safely power up your ESCs again.</p>
+
+<h2>Configuration</h2>
+
+<p>The process for calibrating oneshot ESCs is the same as any other ESC.</p>
+
+<ol>
+<li>Ensure that your ESCs are not powered up.</li>
+<li>Connect to the board using a USB cable, and change to the motor test page.</li>
+<li>Set the motor speed to maximum using the main slider.</li>
+<li>Connect power to your ESCs.  They will beep.</li>
+<li>Click on the slider to bring the motor speed down to zero.  The ESCs will beep again, usually a couple of times.</li>
+<li>Disconnect the power from your ESCs.</li>
+<li>Re-connect power to your ESCs, and verify that moving the motor slider makes your motors spin up normally.</li>
+</ol>
+
+<h2>References</h2>
+
+<ul>
+<li>FlyDuino (<a href="http://flyduino.net/"><a href="http://flyduino.net/">http://flyduino.net/</a></a>)</li>
+</ul>
 
       </div>
     </div>
@@ -323,7 +374,7 @@
                 
                   
                     <li>
-                      <a href="/api/docs/msp-extensions.html">
+                      <a href="/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -347,7 +398,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/travis.html">
+                      <a href="/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -355,7 +406,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/pid-internals.html">
+                      <a href="/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -363,7 +414,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging.html">
+                      <a href="/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -371,7 +422,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging-in-eclipse.html">
+                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -379,7 +430,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/development.html">
+                      <a href="/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -387,7 +438,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/configuration-storage.html">
+                      <a href="/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -395,7 +446,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-manual.html">
+                      <a href="/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -403,7 +454,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-windows.html">
+                      <a href="/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -411,7 +462,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-ubuntu.html">
+                      <a href="/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -419,7 +470,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-mac-os-x.html">
+                      <a href="/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -427,7 +478,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-eclipse.html">
+                      <a href="/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -435,7 +486,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/blackbox-internals.html">
+                      <a href="/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -443,7 +494,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/atomic-barrier.html">
+                      <a href="/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>

@@ -9,7 +9,7 @@
 
   <title>
     
-      404: Page not found &middot; Cleanflight
+      Autotune &middot; Cleanflight
     
   </title>
 
@@ -86,10 +86,43 @@
   <div class="row post-full">
     <div class="col-md-9">
       <div class="content">
-        <div class="page">
-  <h1 class="page-title">404: Page not found</h1>
-  <p class="lead">Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. <a href="/">Head back home</a> to try finding it again.</p>
-</div>
+        <h1>Autotune</h1>
+
+<p>Autotune helps to automatically tune your multirotor.</p>
+
+<p>WARNING: Autotune is an experimental feature.  Currently enough feedback has been gathered and we do not recommend that anyone uses it until this warning is removed.  Autotune may be replaced by G-Tune, Please see <a href="https://github.com/cleanflight/cleanflight/pull/568">https://github.com/cleanflight/cleanflight/pull/568</a> for details.</p>
+
+<h2>Configuration.</h2>
+
+<p>Autotune only works in HORIZON or ANGLE mode, before using auto-tune it&rsquo;s best you setup so there is as little drift as possible.
+Autotuning is best on a full battery in good flying conditions, i.e. no or minimal wind. Autotune does not support pid_controller 2  or higher (pid_controller 0 is the Cleanflight default, pid_controller 1 will work for autotune as well).</p>
+
+<p>Configure a two position switch on your transmitter to activate the AUTOTUNE mode. Autotune may be done in ether one of the both only, HORIZON or  ANGLE mode (will then apply on both modes). </p>
+
+<h2>Using autotuning</h2>
+
+<p>Turn off the autotune switch.  If the autotune switch is on while not armed the warning LED will flash and you cannot arm.</p>
+
+<ol>
+<li><p>Launch the multirotor.</p></li>
+<li><p>Phase 1: ROLL/YAW autotune. 
+Turn on/hold the autotune switch on your transmitter for approx 5 seconds.  You can observe roll left/right while a beep code sounds on the beeper, when turning off the autotune switch, PID settings will have been updated for ROLL and YAW.</p></li>
+<li><p>Stay in air and re-align your copter for the following PITCH/YAW autotune.</p></li>
+<li><p>Phase 2: PITCH/YAW autotune.
+Turn on/hold the switch again for approx 5 seconds.  You can observe pitch forwards/backwards while a beep code sounds on the beeper, when turning off the autotune switch, PID settings will have been updated for PITCH and YAW.</p></li>
+<li><p>Keep flying and see if it&rsquo;s better.  If it&rsquo;s worse then while still armed flip the switch again to restore previous PIDs that were present prior to arming.  You can do this while still flying or after landing.</p></li>
+<li><p>Land &amp; disarm.  If desired you may verify results via an app while battery power still on. Cutting the power will lose the new unsaved PIDs.</p></li>
+<li><p>If you&rsquo;re happy with the PIDs then disarm (but leave the battery still on).</p></li>
+<li><p>Flip the autotune switch again (copter still under battery power) to save all settings. 
+A beeper will sound indicating the settings are saved.</p></li>
+<li><p>Then flip it back (so you can arm again).</p></li>
+</ol>
+
+<h1>References</h1>
+
+<ul>
+<li>Brad Quick for the initial Autotune algorithm in BradWii.</li>
+</ul>
 
       </div>
     </div>
@@ -323,7 +356,7 @@
                 
                   
                     <li>
-                      <a href="/api/docs/msp-extensions.html">
+                      <a href="/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -347,7 +380,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/travis.html">
+                      <a href="/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -355,7 +388,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/pid-internals.html">
+                      <a href="/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -363,7 +396,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging.html">
+                      <a href="/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -371,7 +404,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging-in-eclipse.html">
+                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -379,7 +412,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/development.html">
+                      <a href="/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -387,7 +420,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/configuration-storage.html">
+                      <a href="/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -395,7 +428,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-manual.html">
+                      <a href="/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -403,7 +436,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-windows.html">
+                      <a href="/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -411,7 +444,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-ubuntu.html">
+                      <a href="/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -419,7 +452,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-mac-os-x.html">
+                      <a href="/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -427,7 +460,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-eclipse.html">
+                      <a href="/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -435,7 +468,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/blackbox-internals.html">
+                      <a href="/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -443,7 +476,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/atomic-barrier.html">
+                      <a href="/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>

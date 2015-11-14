@@ -9,7 +9,7 @@
 
   <title>
     
-      404: Page not found &middot; Cleanflight
+      Rssi &middot; Cleanflight
     
   </title>
 
@@ -86,10 +86,47 @@
   <div class="row post-full">
     <div class="col-md-9">
       <div class="content">
-        <div class="page">
-  <h1 class="page-title">404: Page not found</h1>
-  <p class="lead">Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. <a href="/">Head back home</a> to try finding it again.</p>
-</div>
+        <h1>RSSI</h1>
+
+<p>RSSI is a measurement of signal strength and is very handy so you know when your aircraft isw going out of range or if it is suffering RF interference.</p>
+
+<p>Some receivers have RSSI outputs.  3 types are supported.</p>
+
+<ol>
+<li>RSSI via PPM channel</li>
+<li>RSSI via Parallel PWM channel</li>
+<li>RSSI via ADC with PPM RC that has an RSSI output - aka RSSI ADC</li>
+</ol>
+
+<h2>RSSI via PPM</h2>
+
+<p>Configure your receiver to output RSSI on a spare channel, then select the channel used via the CLI.</p>
+
+<p>e.g. if you used channel 9 then you would set:</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">set rssi_channel = 9
+</code></pre></figure>
+<p>Note: Some systems such as EZUHF invert the RSSI ( 0 = Full signal / 100 = Lost signal). To correct this problem you can invert the channel input so you will get a correct reading by using command:</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">set rssi_ppm_invert = 1
+</code></pre></figure>
+<p>Default is set to &ldquo;0&rdquo; for normal operation ( 100 = Full signal / 0 = Lost signal).</p>
+
+<h2>RSSI via Parallel PWM channel</h2>
+
+<p>Connect the RSSI signal to any PWM input channel then set the RSSI channel as you would for RSSI via PPM</p>
+
+<h2>RSSI ADC</h2>
+
+<p>Connect the RSSI signal to the RC2/CH2 input. The signal must be between 0v and 3.3v.
+Use inline resistors to lower voltage if required; inline smoothing capacitors may also help.
+A simple PPM-&gt;RSSI conditioner can easily be made. See the  PPM-RSSI conditioning.pdf  for details.</p>
+
+<p>Under CLI :
+- enable using the RSSI_ADC feature  :  <code>feature RSSI_ADC</code>
+- set the RSSI_SCALE parameter (between 1 and 255) to adjust RSSI level according to your configuration.</p>
+
+<p>FrSky D4R-II and X8R supported.</p>
+
+<p>The feature can not be used when RX_PARALLEL_PWM is enabled.</p>
 
       </div>
     </div>
@@ -323,7 +360,7 @@
                 
                   
                     <li>
-                      <a href="/api/docs/msp-extensions.html">
+                      <a href="/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -347,7 +384,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/travis.html">
+                      <a href="/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -355,7 +392,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/pid-internals.html">
+                      <a href="/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -363,7 +400,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging.html">
+                      <a href="/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -371,7 +408,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging-in-eclipse.html">
+                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -379,7 +416,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/development.html">
+                      <a href="/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -387,7 +424,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/configuration-storage.html">
+                      <a href="/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -395,7 +432,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-manual.html">
+                      <a href="/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -403,7 +440,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-windows.html">
+                      <a href="/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -411,7 +448,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-ubuntu.html">
+                      <a href="/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -419,7 +456,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-mac-os-x.html">
+                      <a href="/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -427,7 +464,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-eclipse.html">
+                      <a href="/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -435,7 +472,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/blackbox-internals.html">
+                      <a href="/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -443,7 +480,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/atomic-barrier.html">
+                      <a href="/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>

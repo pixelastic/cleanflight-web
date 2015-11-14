@@ -25,14 +25,27 @@
   <!-- build:js /assets/javascript/all.min.js -->
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <script src="//cdn.jsdelivr.net/typeahead.js/0.10.5/typeahead.jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.5.0/algoliasearch.min.js"></script>
-  <script src="http://shipow.github.io/cleanflight-web/assets/javascript/javascript.js"></script>
-    <script>
+  <script>
     window.baseUrl = 'http://shipow.github.io/cleanflight-web';
     window.algolia = algoliasearch('T2ZX9HO66V', '7119d2f6f1cd95224251ec2e490e824f');
     window.index = algolia.initIndex('dev_cleanflight');
   </script>
+  <script type="text/template" id="my-custom-menu-template">
+    <div class="my-custom-menu">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="aa-dataset-d1"></div>
+        </div>
+        <div class="col-sm-6">
+          <div class="aa-dataset-d2"></div>
+          <div class="aa-dataset-d3"></div>
+        </div>
+      </div>
+    </div>
+  </script>
+  <script src="http://shipow.github.io/cleanflight-web/assets/javascript/javascript.js"></script>
   <!-- endbuild -->
 
   <!-- Icons -->
@@ -58,16 +71,13 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="http://shipow.github.io/cleanflight-web/docs/getting-started/">Get Started</a></li>
-            <li><a href="http://shipow.github.io/cleanflight-web/categories/docs">Documentation</a></li>
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/getting-started.html">Documentation</a></li>
             <!-- <li><a href="#">Ressources</a></li> -->
             <li><a href="https://github.com/cleanflight/cleanflight">Contributing</a></li>
           </ul>
-          <form class="navbar-form navbar-right" role="search">
-            <div class="form-group">
-              <input id="search" type="text" class="form-control" placeholder="Search">
-            </div>
-          </form>
+          <div class="search-wrapper">
+            <input id="search" type="text" class="form-control" placeholder="Search">
+          </div>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>

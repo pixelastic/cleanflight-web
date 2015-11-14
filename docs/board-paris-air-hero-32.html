@@ -9,7 +9,7 @@
 
   <title>
     
-      404: Page not found &middot; Cleanflight
+      Board   Paris Air Hero 32 &middot; Cleanflight
     
   </title>
 
@@ -86,10 +86,136 @@
   <div class="row post-full">
     <div class="col-md-9">
       <div class="content">
-        <div class="page">
-  <h1 class="page-title">404: Page not found</h1>
-  <p class="lead">Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. <a href="/">Head back home</a> to try finding it again.</p>
-</div>
+        <h1>Board - Paris Air Hero 32 / Acro Naze 32 Mini</h1>
+
+<p>This board uses the same firmware as the Naze32 board.</p>
+
+<h2>Sensors</h2>
+
+<p>MPU6500 via SPI interface.</p>
+
+<h2>Ports</h2>
+
+<p>6 x 3pin ESC / Servo outputs
+1 x 8pin JST connector (PPM/PWM/UART2)
+1 x 4pin JST connector (UART3/I2C)</p>
+
+<h2>Pinouts</h2>
+
+<p>The 10 pin RC I/O connector has the following pinouts when used in RX_PPM/RX_SERIAL mode.</p>
+
+<p>From right to left when looking at the socket from the edge of the board.</p>
+
+<table><thead>
+<tr>
+<th>Pin</th>
+<th>Function</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Ground</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>+5V</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>RX_PPM</td>
+<td>Enable <code>feature RX_PPM</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>RSSI_ADC</td>
+<td>Enable <code>feature RSSI_ADC</code>.  Connect to the output of a PWM-RSSI conditioner, 0v-3.3v input</td>
+</tr>
+<tr>
+<td>5</td>
+<td>USART2 TX</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>USART2 RX</td>
+<td>Built-in inverter</td>
+</tr>
+<tr>
+<td>7</td>
+<td>LED_STRIP</td>
+<td>Enable <code>feature LED_STRIP</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td>unused</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>When SOFTSERIAL is enabled, LED_STRIP and CURRENT_METER are unavailable, but one SoftSerial port is made available to use instead.</p>
+
+<table><thead>
+<tr>
+<th>Pin</th>
+<th>Function</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>7</td>
+<td>SOFTSERIAL1 RX</td>
+<td>Enable <code>feature SOFTSERIAL</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td>SOFTSERIAL1 TX</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2>Serial Ports</h2>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Identifier</th>
+<th>RX</th>
+<th>TX</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>USART1</td>
+<td>RX  / PA10</td>
+<td>TX  / PA9 / TELEM</td>
+<td>TELEM output is always inverted (for FrSky). Internally connected to USB port via CP2102 IC</td>
+</tr>
+<tr>
+<td>2</td>
+<td>USART2</td>
+<td>RC4 / PA3</td>
+<td>RC3 / PA2</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>USART3</td>
+<td>F3  / PB11</td>
+<td>F2  / PB10</td>
+<td>Flex port is configured as UART3 when port is configured</td>
+</tr>
+<tr>
+<td>4</td>
+<td>SOFTSERIAL1</td>
+<td>RC5 / PA6</td>
+<td>RC6 / PA7</td>
+<td></td>
+</tr>
+</tbody></table>
 
       </div>
     </div>
@@ -323,7 +449,7 @@
                 
                   
                     <li>
-                      <a href="/api/docs/msp-extensions.html">
+                      <a href="/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -347,7 +473,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/travis.html">
+                      <a href="/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -355,7 +481,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/pid-internals.html">
+                      <a href="/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -363,7 +489,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging.html">
+                      <a href="/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -371,7 +497,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging-in-eclipse.html">
+                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -379,7 +505,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/development.html">
+                      <a href="/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -387,7 +513,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/configuration-storage.html">
+                      <a href="/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -395,7 +521,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-manual.html">
+                      <a href="/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -403,7 +529,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-windows.html">
+                      <a href="/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -411,7 +537,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-ubuntu.html">
+                      <a href="/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -419,7 +545,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-mac-os-x.html">
+                      <a href="/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -427,7 +553,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-eclipse.html">
+                      <a href="/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -435,7 +561,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/blackbox-internals.html">
+                      <a href="/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -443,7 +569,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/atomic-barrier.html">
+                      <a href="/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>

@@ -9,7 +9,7 @@
 
   <title>
     
-      404: Page not found &middot; Cleanflight
+      Hardware Debugging &middot; Cleanflight
     
   </title>
 
@@ -86,11 +86,109 @@
   <div class="row post-full">
     <div class="col-md-9">
       <div class="content">
-        <div class="page">
-  <h1 class="page-title">404: Page not found</h1>
-  <p class="lead">Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. <a href="/">Head back home</a> to try finding it again.</p>
-</div>
+        <h1>Hardware debugging</h1>
 
+<p>The code can be compiled with debugging information, you can then upload a debug version to a board via a JLink/St-Link debug adapter and step through the code in your IDE.</p>
+
+<p>More information about the necessary hardware and setting up the eclipse IDE can be found <a href="http://shipow.github.io/cleanflight-web/docs/hardware-debugging-in-eclipse/">here</a></p>
+
+<p>A guide for visual studio can be found here:
+<a href="http://visualgdb.com/tutorials/arm/st-link/">http://visualgdb.com/tutorials/arm/st-link/</a></p>
+
+<p>This video is also helpful in understanding the proces:
+<a href="https://www.youtube.com/watch?v=kjvqySyNw20">https://www.youtube.com/watch?v=kjvqySyNw20</a></p>
+
+<h2>Hardware</h2>
+
+<p>Various debugging hardware solutions exist, the Segger J-Link clones are cheap and are known to work on Windows with both the Naze and Olimexino platforms.</p>
+
+<h3>J-Link devices</h3>
+
+<p>Segger make excellent debuggers and debug software.</p>
+
+<p>The Segger J-Link GDB server can be obtained from here.</p>
+
+<p><a href="http://www.segger.com/jlink-software.html">http://www.segger.com/jlink-software.html</a></p>
+
+<h4>Segger J-Link EDU EDU version, for hobbyists and educational use.</h4>
+
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/j-link-edu.jpg" alt="Segger J-Link EDU"></p>
+
+<p><a href="https://www.segger.com/j-link-edu.html">https://www.segger.com/j-link-edu.html</a></p>
+
+<h4>USB-MiniJTAG J-Link JTAG/SWD Debugger/Emulator</h4>
+
+<p><a href="http://www.hotmcu.com/usbminijtag-jlink-jtagswd-debuggeremula%E2%80%8Btor-p-29.html?cPath=3_25&amp;zenid=fdefvpnod186umrhsek225dc10">http://www.hotmcu.com/usbminijtag-jlink-jtagswd-debuggeremula%E2%80%8Btor-p-29.html?cPath=3_25&amp;zenid=fdefvpnod186umrhsek225dc10</a></p>
+
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/THAOYU-USB-MiniJTAG.jpg" alt="THAOYU USB-MiniJTAG"></p>
+
+<h5>ARM-JTAG-20-10 adapter</h5>
+
+<p><a href="https://www.olimex.com/Products/ARM/JTAG/ARM-JTAG-20-10/">https://www.olimex.com/Products/ARM/JTAG/ARM-JTAG-20-10/</a>
+<a href="http://uk.farnell.com/jsp/search/productdetail.jsp?sku=2144328">http://uk.farnell.com/jsp/search/productdetail.jsp?sku=2144328</a></p>
+
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/OLIMEX-ARM-JTAG-ADAPTER-2144328-40.jpg" alt="OLIMEX ARM JTAG ADAPTER"></p>
+
+<h4>CJMCU-STM32 Singlechip Development Board Jlink Downloader Jlink ARM Programmer</h4>
+
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/cjmcu-jlink-front.jpg" alt="CJMCU-STM32 Jlink ARM Programmer Front"></p>
+
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/cjmcu-jlink-back.jpg" alt="CJMCU-STM32 Jlink ARM Programmer Back"></p>
+
+<p><a href="http://www.goodluckbuy.com/cjmcu-stm32-singlechip-development-board-jlink-downloader-jlink-arm-programmer.html">http://www.goodluckbuy.com/cjmcu-stm32-singlechip-development-board-jlink-downloader-jlink-arm-programmer.html</a></p>
+
+<h3>STLink V2 devices</h3>
+
+<p>STLink V2 devices can be used too, via OpenOCD.</p>
+
+<h4>CEPark STLink V2</h4>
+
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/cepark-stlink-v2-front.jpg" alt="CEPark STLink V2"></p>
+
+<p><a href="http://www.goodluckbuy.com/cepark-stlink-st-link-v2-emulator-programmer-stm8-stm32-downloader.html">http://www.goodluckbuy.com/cepark-stlink-st-link-v2-emulator-programmer-stm8-stm32-downloader.html</a></p>
+
+<h2>Compilation options</h2>
+
+<p>use <code>DEBUG=GDB</code> make argument.</p>
+
+<p>You may find that if you compile all the files with debug information on that the program is too big to fit on the target device.  If this happens you have some options:</p>
+
+<ul>
+<li>Compile all files without debug information (<code>make clean</code>, <code>make ...</code>), then re-save or <code>touch</code> the files you want to be able to step though and then run <code>make DEBUG=GDB</code>.  This will then re-compile the files you&rsquo;re interested in debugging with debugging symbols and you will get a smaller binary file which should then fit on the device.</li>
+<li>You could use a development board such as an Olimexino or an EUSTM32F103RB, development boards often have more flash rom.</li>
+</ul>
+
+<h2>OSX</h2>
+
+<h3>Install OpenOCD via Brew</h3>
+
+<p>ruby -e &ldquo;$(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/master/install)">https://raw.githubusercontent.com/Homebrew/install/master/install)</a>&rdquo;</p>
+
+<p>brew install openocd</p>
+
+<h3>GDB debug server</h3>
+
+<h4>J-Link</h4>
+
+<h5>Windows</h5>
+
+<p>Run the Launch the J-Link GDB Server program and configure using UI. </p>
+
+<h4>OpenOCD</h4>
+
+<h5>Windows</h5>
+
+<p>STM32F103 targets</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">&quot;C:\Program Files (x86)\UTILS\openocd-0.8.0\bin-x64\openocd-x64-0.8.0.exe&quot; -f interface/stlink-v2.cfg -f target/stm32f1x_stlink.cfg
+</code></pre></figure>
+<p>STM32F30x targets</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">&quot;C:\Program Files (x86)\UTILS\openocd-0.8.0\bin-x64\openocd-x64-0.8.0.exe&quot; -f scripts\board\stm32f3discovery.cfg
+</code></pre></figure>
+<h5>OSX/Linux</h5>
+
+<p>STM32F30x targets</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">  openocd -f /usr/share/openocd/scripts/board/stm32vldiscovery.cfg
+</code></pre></figure>
       </div>
     </div>
     <div class="col-md-3">
@@ -347,7 +445,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/travis.html">
+                      <a href="/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -355,7 +453,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/pid-internals.html">
+                      <a href="/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>

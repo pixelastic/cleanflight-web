@@ -9,7 +9,7 @@
 
   <title>
     
-      404: Page not found &middot; Cleanflight
+      Development &middot; Cleanflight
     
   </title>
 
@@ -86,10 +86,110 @@
   <div class="row post-full">
     <div class="col-md-9">
       <div class="content">
-        <div class="page">
-  <h1 class="page-title">404: Page not found</h1>
-  <p class="lead">Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. <a href="/">Head back home</a> to try finding it again.</p>
-</div>
+        <h1>Development</h1>
+
+<p>This document is primarily for developers only.</p>
+
+<h2>General principals</h2>
+
+<ol>
+<li>Name everything well.</li>
+<li>Strike a balance between simplicity and not-repeating code.</li>
+<li>Methods that return a boolean should be named as a question, and should not change state.  e.g. &lsquo;isOkToArm()&rsquo;</li>
+<li>Methods that start with the word &#39;find&rsquo; can return a null, methods that start with &#39;get&rsquo; should not.</li>
+<li>Methods should have verb or verb-phrase names, like <code>deletePage</code> or <code>save</code>.  Variables should not, they generally should be nouns.  Tell the system to &#39;do&rsquo; something &#39;with&rsquo; something.  e.g. deleteAllPages(pageList).</li>
+<li>Keep methods short - it makes it easier to test.</li>
+<li>Don&rsquo;t be afraid of moving code to a new file - it helps to reduce test dependencies.</li>
+<li>Avoid noise-words in variable names, like &#39;data&rsquo; or &#39;info&rsquo;.  Think about what you&rsquo;re naming and name it well.  Don&rsquo;t be afraid to rename anything.</li>
+<li>Avoid comments that describe what the code is doing, the code should describe itself.  Comments are useful however for big-picture purposes and to document content of variables.</li>
+<li>If you need to document a variable do it at the declaration, don&rsquo;t copy the comment to the <code>extern</code> usage since it will lead to comment rot.</li>
+<li>Seek advice from other developers - know you can always learn more.</li>
+<li>Be professional - attempts at humor or slating existing code in the codebase itself is not helpful when you have to change/fix it.</li>
+<li>Know that there&rsquo;s always more than one way to do something and that code is never final - but it does have to work.</li>
+</ol>
+
+<p>Before making any code contributions, take a note of the <a href="https://github.com/multiwii/baseflight/wiki/CodingStyle">https://github.com/multiwii/baseflight/wiki/CodingStyle</a></p>
+
+<p>It is also advised to read about clean code, here are some useful links:</p>
+
+<ul>
+<li><a href="http://cleancoders.com/">http://cleancoders.com/</a></li>
+<li><a href="http://en.wikipedia.org/wiki/SOLID_%28object-oriented_design%29">http://en.wikipedia.org/wiki/SOLID_%28object-oriented_design%29</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Code_smell">http://en.wikipedia.org/wiki/Code_smell</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Code_refactoring">http://en.wikipedia.org/wiki/Code_refactoring</a></li>
+<li><a href="http://www.amazon.co.uk/Working-Effectively-Legacy-Robert-Martin/dp/0131177052">http://www.amazon.co.uk/Working-Effectively-Legacy-Robert-Martin/dp/0131177052</a></li>
+</ul>
+
+<h2>Unit testing</h2>
+
+<p>Ideally, there should be tests for any new code. However, since this is a legacy codebase which was not designed to be tested this might be a bit difficult.</p>
+
+<p>If you want to make changes and want to make sure it&rsquo;s tested then focus on the minimal set of changes required to add a test.</p>
+
+<p>Tests currently live in the <code>test</code> folder and they use the google test framework. 
+The tests are compiled and run natively on your development machine and not on the target platform.
+This allows you to develop tests and code and actually execute it to make sure it works without needing a development board or simulator.</p>
+
+<p>This project could really do with some functional tests which test the behaviour of the application.</p>
+
+<p>All pull requests to add/improve the testability of the code or testing methods are highly sought!</p>
+
+<p>Note: Tests are written in C++ and linked with with firmware&rsquo;s C code.</p>
+
+<h3>Running the tests.</h3>
+
+<p>The tests and test build system is very simple and based off the googletest example files, it will be improved in due course. From the root folder of the project simply do:</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">make test
+</code></pre></figure>
+<p>This will build a set of executable files in the <code>obj/test</code> folder, one for each <code>*_unittest.cc</code> file.</p>
+
+<p>After they have been executed by the make invocation, you can still run them on the command line to execute the tests and to see the test report.</p>
+
+<p>You can also step-debug the tests in eclipse and you can use the GoogleTest test runner to make building and re-running the tests simple.</p>
+
+<p>The tests are currently always compiled with debugging information enabled, there may be additional warnings, if you see any warnings please attempt to fix them and submit pull requests with the fixes.</p>
+
+<p>Tests are verified and working with GCC 4.9.2.</p>
+
+<h2>Using git and github</h2>
+
+<p>Ensure you understand the github workflow: <a href="https://guides.github.com/introduction/flow/index.html">https://guides.github.com/introduction/flow/index.html</a></p>
+
+<p>Please keep pull requests focused on one thing only, since this makes it easier to merge and test in a timely manner.</p>
+
+<p>If you need help with pull requests there are guides on github here:</p>
+
+<p><a href="https://help.github.com/articles/creating-a-pull-request/">https://help.github.com/articles/creating-a-pull-request/</a></p>
+
+<p>The main flow for a contributing is as follows:</p>
+
+<ol>
+<li>Login to github, go to the cleanflight repository and press <code>fork</code>.</li>
+<li>Then using the command line/terminal on your computer: <code>git clone &lt;url to YOUR fork&gt;</code></li>
+<li><code>cd cleanflight</code></li>
+<li><code>git checkout master</code></li>
+<li><code>git checkout -b my-new-code</code></li>
+<li>Make changes</li>
+<li><code>git add &lt;files that have changed&gt;</code></li>
+<li><code>git commit</code></li>
+<li><code>git push origin my-new-code</code></li>
+<li>Create pull request using github UI to merge your changes from your new branch into <code>cleanflight/master</code></li>
+<li>Repeat from step 4 for new other changes.</li>
+</ol>
+
+<p>The primary thing to remember is that separate pull requests should be created for separate branches.  Never create a pull request from your <code>master</code> branch.</p>
+
+<p>Later, you can get the changes from the cleanflight repo into your <code>master</code> branch by adding cleanflight as a git remote and merging from it as follows:</p>
+
+<ol>
+<li><code>git remote add cleanflight https://github.com/cleanflight/cleanflight.git</code></li>
+<li><code>git checkout master</code></li>
+<li><code>git fetch cleanflight</code></li>
+<li><code>git merge cleanflight/master</code></li>
+<li><code>git push origin master</code> is an optional step that will update your fork on github</li>
+</ol>
+
+<p>You can also perform the git commands using the git client inside Eclipse.  Refer to the Eclipse git manual.</p>
 
       </div>
     </div>
@@ -347,7 +447,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/travis.html">
+                      <a href="/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -355,7 +455,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/pid-internals.html">
+                      <a href="/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -363,7 +463,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging.html">
+                      <a href="/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -371,7 +471,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging-in-eclipse.html">
+                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>

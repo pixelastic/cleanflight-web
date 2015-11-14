@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Rx &middot; Cleanflight
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- build:css /assets/stylesheets/style.min.css -->
+  <link rel="stylesheet" href="http://shipow.github.io/cleanflight-web/assets/stylesheets/style.css">
+  <!-- endbuild -->
+  <link href='//fonts.googleapis.com/css?family=Marvel:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css">
+
+  <!-- JS -->
+  <!-- build:js /assets/javascript/all.min.js -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.5.0/algoliasearch.min.js"></script>
+  <script>
+    window.baseUrl = 'http://shipow.github.io/cleanflight-web';
+    window.algolia = algoliasearch('T2ZX9HO66V', '7119d2f6f1cd95224251ec2e490e824f');
+    window.index = algolia.initIndex('dev_cleanflight');
+  </script>
+  <script type="text/template" id="my-custom-menu-template">
+    <div class="my-custom-menu">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="aa-dataset-d1"></div>
+        </div>
+        <div class="col-sm-6">
+          <div class="aa-dataset-d2"></div>
+          <div class="aa-dataset-d3"></div>
+        </div>
+      </div>
+    </div>
+  </script>
+  <script src="http://shipow.github.io/cleanflight-web/assets/javascript/javascript.js"></script>
+  <!-- endbuild -->
+
+  <!-- Icons -->
+  <link rel="shortcut icon" href="http://shipow.github.io/cleanflight-web/assets/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://shipow.github.io/cleanflight-web/"><img src="http://shipow.github.io/cleanflight-web/assets/images/cleanflight-logo.png" height="50"></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/getting-started.html">Documentation</a></li>
+            <!-- <li><a href="#">Ressources</a></li> -->
+            <li><a href="https://github.com/cleanflight/cleanflight">Contributing</a></li>
+          </ul>
+          <div class="search-wrapper">
+            <input id="search" type="text" class="form-control" placeholder="Search">
+          </div>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <div class="container post">
+
+  <div class="row post-full">
+    <div class="col-md-9">
+      <div class="content">
+        <h1>Receivers (RX)</h1>
+
+<p>A receiver is used to receive radio control signals from your transmitter and convert them into signals that the flight controller can understand.</p>
+
+<p>There are 3 basic types of receivers:</p>
+
+<ol>
+<li>Parallel PWM Receivers</li>
+<li>PPM Receivers</li>
+<li>Serial Receivers</li>
+</ol>
+
+<h2>Parallel PWM Receivers</h2>
+
+<p>8 channel support, 1 channel per input pin.  On some platforms using parallel input will disable the use of serial ports
+and SoftSerial making it hard to use telemetry or GPS features.</p>
+
+<h2>PPM Receivers</h2>
+
+<p>PPM is sometimes known as PPM SUM or CPPM.</p>
+
+<p>12 channels via a single input pin, not as accurate or jitter free as methods that use serial communications, but readily available.</p>
+
+<p>These receivers are reported working:</p>
+
+<p>FrSky D4R-II
+<a href="http://www.frsky-rc.com/product/pro.php?pro_id=24">http://www.frsky-rc.com/product/pro.php?pro_id=24</a></p>
+
+<p>Graupner GR24
+<a href="http://www.graupner.de/en/products/33512/product.aspx">http://www.graupner.de/en/products/33512/product.aspx</a></p>
+
+<p>R615X Spektrum/JR DSM2/DSMX Compatible 6Ch 2.4GHz Receiver w/CPPM
+<a href="http://orangerx.com/2014/05/20/r615x-spektrumjr-dsm2dsmx-compatible-6ch-2-4ghz-receiver-wcppm-2/">http://orangerx.com/2014/05/20/r615x-spektrumjr-dsm2dsmx-compatible-6ch-2-4ghz-receiver-wcppm-2/</a></p>
+
+<p>FrSky D8R-XP 8ch telemetry receiver, or CPPM and RSSI enabled receiver
+<a href="http://www.frsky-rc.com/product/pro.php?pro_id=21">http://www.frsky-rc.com/product/pro.php?pro_id=21</a></p>
+
+<h2>Serial Receivers</h2>
+
+<h3>Spektrum</h3>
+
+<p>8 channels via serial currently supported.</p>
+
+<p>These receivers are reported working:</p>
+
+<p>Lemon Rx DSMX Compatible PPM 8-Channel Receiver + Lemon DSMX Compatible Satellite with Failsafe
+<a href="http://www.lemon-rx.com/shop/index.php?route=product/product&amp;product_id=118">http://www.lemon-rx.com/shop/index.php?route=product/product&amp;product_id=118</a></p>
+
+<h3>S.BUS</h3>
+
+<p>16 channels via serial currently supported.  See below how to set up your transmitter.</p>
+
+<ul>
+<li>You probably need an inverter between the receiver output and the flight controller. However, some flight controllers have this built in (the main port on CC3D, for example), and doesn&rsquo;t need one.</li>
+<li>Softserial ports cannot be used with SBUS because it runs at too high of a bitrate (1Mbps).  Refer to the chapter specific to your board to determine which port(s) may be used.</li>
+<li>You will need to configure the channel mapping in the GUI (Receiver tab) or CLI (<code>map</code> command). Note that channels above 8 are mapped &ldquo;straight&rdquo;, with no remapping.</li>
+</ul>
+
+<p>These receivers are reported working:</p>
+
+<p>FrSky X4RSB 3/16ch Telemetry Receiver
+<a href="http://www.frsky-rc.com/product/pro.php?pro_id=135">http://www.frsky-rc.com/product/pro.php?pro_id=135</a></p>
+
+<p>FrSky X8R 8/16ch Telemetry Receiver
+<a href="http://www.frsky-rc.com/product/pro.php?pro_id=105">http://www.frsky-rc.com/product/pro.php?pro_id=105</a></p>
+
+<p>Futaba R2008SB 2.4GHz S-FHSS
+<a href="http://www.futaba-rc.com/systems/futk8100-8j/">http://www.futaba-rc.com/systems/futk8100-8j/</a></p>
+
+<h4>OpenTX S.BUS configuration</h4>
+
+<p>If using OpenTX set the transmitter module to D16 mode and ALSO select CH1-16 on the transmitter before binding to allow reception
+of all 16 channels. </p>
+
+<p>OpenTX 2.09, which is shipped on some Taranis X9D Plus transmitters, has a bug - <a href="https://github.com/opentx/opentx/issues/1701">issue:1701</a>.
+The bug prevents use of all 16 channels.  Upgrade to the latest OpenTX version to allow correct reception of all 16 channels,
+without the fix you are limited to 8 channels regardless of the CH1-16/D16 settings.</p>
+
+<h3>XBUS</h3>
+
+<p>The firmware currently supports the MODE B version of the XBus protocol.
+Make sure to set your TX to use &ldquo;MODE B&rdquo; for XBUS in the TX menus!
+See here for info on JR&rsquo;s XBUS protocol: <a href="http://www.jrpropo.com/english/propo/XBus/">http://www.jrpropo.com/english/propo/XBus/</a></p>
+
+<p>These receivers are reported working:</p>
+
+<p>XG14 14ch DMSS System w/RG731BX XBus Receiver
+<a href="http://www.jramericas.com/233794/JRP00631/">http://www.jramericas.com/233794/JRP00631/</a></p>
+
+<p>There exist a remote receiver made for small BNF-models like the Align T-Rex 150 helicopter. The code also supports using the Align DMSS RJ01 receiver directly with the cleanflight software.
+To use this receiver you must power it with 3V from the hardware, and then connect the serial line as other serial RX receivers.
+In order for this receiver to work, you need to specify the XBUS_MODE_B_RJ01 for serialrx_provider. Note that you need to set your radio mode for XBUS &ldquo;MODE B&rdquo; also for this receiver to work.
+Receiver name: Align DMSS RJ01 (HER15001)</p>
+
+<h3>SUMD</h3>
+
+<p>16 channels via serial currently supported.</p>
+
+<p>These receivers are reported working:</p>
+
+<p>GR-24 receiver HoTT
+<a href="http://www.graupner.de/en/products/33512/product.aspx">http://www.graupner.de/en/products/33512/product.aspx</a></p>
+
+<p>Graupner receiver GR-12SH+ HoTT
+<a href="http://www.graupner.de/en/products/870ade17-ace8-427f-943b-657040579906/33565/product.aspx">http://www.graupner.de/en/products/870ade17-ace8-427f-943b-657040579906/33565/product.aspx</a></p>
+
+<h3>SUMH</h3>
+
+<p>8 channels via serial currently supported.</p>
+
+<p>SUMH is a legacy Graupner protocol.  Graupner have issued a firmware updates for many recivers that lets them use SUMD instead.</p>
+
+<h2>MultiWii serial protocol (MSP)</h2>
+
+<p>Allows you to use MSP commands as the RC input.  Only 8 channel support to maintain compatibility with MSP.</p>
+
+<h2>Configuration</h2>
+
+<p>There are 3 features that control receiver mode:</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">RX_PPM
+RX_SERIAL
+RX_PARALLEL_PWM
+RX_MSP
+</code></pre></figure>
+<p>Only one receiver feature can be enabled at a time.</p>
+
+<h3>RX signal-loss detection</h3>
+
+<p>The software has signal loss detection which is always enabled.  Signal loss detection is used for safety and failsafe reasons.</p>
+
+<p>The <code>rx_min_usec</code> and <code>rx_max_usec</code> settings helps detect when your RX stops sending any data, enters failsafe mode or when the RX looses signal.</p>
+
+<p>By default, when the signal loss is detected the FC will set pitch/roll/yaw to the value configured for <code>mid_rc</code>. The throttle will be set to the value configured for <code>rx_min_usec</code> or <code>mid_rc</code> if using 3D feature.</p>
+
+<p>Signal loss can be detected when:</p>
+
+<ol>
+<li>no rx data is received (due to radio reception, recevier configuration or cabling issues).</li>
+<li>using Serial RX and receiver indicates failsafe condition.</li>
+<li>using any of the first 4 stick channels do not have a value in the range specified by <code>rx_min_usec</code> and <code>rx_max_usec</code>.</li>
+</ol>
+
+<h3>RX loss configuration</h3>
+
+<p>The <code>rxfail</code> cli command is used to configure per-channel rx-loss behaviour.
+You can use the <code>rxfail</code> command to change this behaviour.
+A flight channel can either be AUTOMATIC or HOLD, an AUX channel can either be SET or HOLD.  </p>
+
+<ul>
+<li>AUTOMATIC - Flight channels are set to safe values (low throttle, mid position for yaw/pitch/roll).</li>
+<li>HOLD - Channel holds the last value.</li>
+<li>SET - Channel is set to a specific configured value. </li>
+</ul>
+
+<p>The default mode is AUTOMATIC for flight channels and HOLD for AUX channels. </p>
+
+<p>The rxfail command can be used in conjunction with mode ranges to trigger various actions.</p>
+
+<p>The <code>rxfail</code> command takes 2 or 3 arguments.
+* Index of channel (See below)
+* Mode (&lsquo;a&rsquo; = AUTOMATIC, &#39;h&rsquo; = HOLD, &rsquo;s&rsquo; = SET)
+* A value to use when in SET mode.</p>
+
+<p>Channels are always specified in the same order, regardless of your channel mapping.</p>
+
+<ul>
+<li>Roll is 0</li>
+<li>Pitch is 1</li>
+<li>Yaw is 2</li>
+<li>Throttle is 3.</li>
+<li>Aux channels are 4 onwards.</li>
+</ul>
+
+<p>Examples:</p>
+
+<p>To make Throttle channel have an automatic value when RX loss is detected:</p>
+
+<p><code>rxfail 3 a</code></p>
+
+<p>To make AUX4 have a value of 2000 when RX loss is detected:</p>
+
+<p><code>rxfail 7 s 2000</code></p>
+
+<p>To make AUX8 hold it&rsquo;s value when RX loss is detected:</p>
+
+<p><code>rxfail 11 h</code></p>
+
+<p>WARNING: Always make sure you test the behavior is as expected after configuring rxfail settings!</p>
+
+<h4><code>rx_min_usec</code></h4>
+
+<p>The lowest channel value considered valid.  e.g. PWM/PPM pulse length </p>
+
+<h4><code>rx_max_usec</code></h4>
+
+<p>The highest channel value considered valid.  e.g. PWM/PPM pulse length </p>
+
+<h3>Serial RX</h3>
+
+<p>See the Serial chapter for some some RX configuration examples.</p>
+
+<p>To setup spectrum on the Naze32 or clones in the GUI:
+1. Start on the &ldquo;Ports&rdquo; tab make sure that UART2 has serial RX.  If not set the checkbox, save and reboot.
+2. Move to the &ldquo;Configuration&rdquo; page and in the upper lefthand corner choose Serial RX as the receiver type.
+3. Below that choose the type of serial receiver that you are using.  Save and reboot.</p>
+
+<p>Using CLI:
+For Serial RX enable <code>RX_SERIAL</code> and set the <code>serialrx_provider</code> CLI setting as follows.</p>
+
+<table><thead>
+<tr>
+<th>Serial RX Provider</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>SPEKTRUM1024</td>
+<td>0</td>
+</tr>
+<tr>
+<td>SPEKTRUM2048</td>
+<td>1</td>
+</tr>
+<tr>
+<td>SBUS</td>
+<td>2</td>
+</tr>
+<tr>
+<td>SUMD</td>
+<td>3</td>
+</tr>
+<tr>
+<td>SUMH</td>
+<td>4</td>
+</tr>
+<tr>
+<td>XBUS_MODE_B</td>
+<td>5</td>
+</tr>
+<tr>
+<td>XBUS_MODE_B_RJ01</td>
+<td>6</td>
+</tr>
+</tbody></table>
+
+<h3>PPM/PWM input filtering.</h3>
+
+<p>Hardware input filtering can be enabled if you are experiencing interference on the signal sent via your PWM/PPM RX.</p>
+
+<p>Use the <code>input_filtering_mode</code> CLI setting to select a mode.</p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>Disabled</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Enabled</td>
+</tr>
+</tbody></table>
+
+<h2>Receiver configuration.</h2>
+
+<h3>FrSky D4R-II</h3>
+
+<p>Set the RX for &#39;No Pulses&rsquo;.  Turn OFF TX and RX, Turn ON RX.  Press and release F/S button on RX.  Turn off RX.</p>
+
+<h3>Graupner GR-24 PWM</h3>
+
+<p>Set failsafe on the throttle channel in the receiver settings (via transmitter menu) to a value below <code>rx_min_usec</code> using channel mode FAILSAFE.
+This is the prefered way, since this is <em>much faster</em> detected by the FC then a channel that sends no pulses (OFF).</p>
+
+<p><strong>NOTE:</strong>
+One or more control channels may be set to OFF to signal a failsafe condition to the FC, all other channels <em>must</em> be set to either HOLD or OFF. 
+Do <strong>NOT USE</strong> the mode indicated with FAILSAFE instead, as this combination is NOT handled correctly by the FC.</p>
+
+<h2>Receiver Channel Range Configuration.</h2>
+
+<p>If you have a transmitter/receiver, that output a non-standard pulse range (i.e. 1070-1930 as some Spektrum receivers)
+you could use rx channel range configuration to map actual range of your transmitter to 1000-2000 as expected by Cleanflight.</p>
+
+<p>The low and high value of a channel range are often referred to as &#39;End-points&rsquo;.  e.g. &#39;End-point adjustments / EPA&rsquo;.</p>
+
+<p>All attempts should be made to configure your transmitter/receiver to use the range 1000-2000 <em>before</em> using this feature
+as you will have less preceise control if it is used.</p>
+
+<p>To do this you should figure out what range your transmitter outputs and use these values for rx range configuration.
+You can do this in a few simple steps:</p>
+
+<p>If you have used rc range configuration previously you should reset it to prevent it from altering rc input. Do so
+by entering the following command in CLI:
+<code>
+rxrange reset
+save
+</code></p>
+
+<p>Now reboot your FC, connect the configurator, go to the <code>Receiver</code> tab move sticks on your transmitter and note min and
+max values of first 4 channels. Take caution as you can accidentally arm your craft. Best way is to move one channel at 
+a time.</p>
+
+<p>Go to CLI and set the min and max values with the following command:
+<code>
+rxrange &lt;channel_number&gt; &lt;min&gt; &lt;max&gt;
+</code></p>
+
+<p>For example, if you have the range 1070-1930 for the first channel you should use <code>rxrange 0 1070 1930</code> in
+the CLI. Be sure to enter the <code>save</code> command to save the settings.</p>
+
+<p>After configuring channel ranges use the sub-trim on your transmitter to set the middle point of pitch, roll, yaw and throttle.</p>
+
+<p>You can also use rxrange to reverse the direction of an input channel, e.g. <code>rxrange 0 2000 1000</code>.</p>
+
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="spacer30"></div>
+      <h2>Documentation</h2>
+      <ul class="posts list-unstyled">
+        
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/1wire.html">1wire</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/autotune.html">Autotune</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/battery.html">Battery</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/blackbox.html">Blackbox</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-cc3d.html">Board   Cc3d</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-chebuzzf3.html">Board   Chebuzzf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-cjmcu.html">Board   Cjmcu</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-motolab.html">Board   Motolab</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-naze32.html">Board   Naze32</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-olimexino.html">Board   Olimexino</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-paris-air-hero-32.html">Board   Paris Air Hero 32</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-rmdo.html">Board   Rmdo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-sparky.html">Board   Sparky</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/boards.html">Boards</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/buzzer.html">Buzzer</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/cli.html">Cli</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/configuration.html">Configuration</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/controls.html">Controls</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/display.html">Display</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/failsafe.html">Failsafe</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/getting-started.html">Getting Started</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/gps.html">Gps</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/gtune.html">Gtune</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/inflight-adjustments.html">Inflight Adjustments</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/installation.html">Installation</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/introduction.html">Introduction</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/ledstrip.html">Ledstrip</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/migrating-from-baseflight.html">Migrating From Baseflight</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/mixer.html">Mixer</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/modes.html">Modes</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/oneshot.html">Oneshot</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/pid-tuning.html">Pid Tuning</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/profiles.html">Profiles</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/rssi.html">Rssi</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/rx.html">Rx</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/safety.html">Safety</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/serial.html">Serial</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/sonar.html">Sonar</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/spektrum-bind.html">Spektrum Bind</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/telemetry.html">Telemetry</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/usb-flashing.html">Usb Flashing</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+      
+        <div class="catbloc" id="docs">
+          
+          
+        </div>
+      
+        <div class="catbloc" id="api">
+          
+          
+            <h3>api</h3>
+            <ul class="posts list-unstyled">
+              
+                
+                  
+                
+              
+                
+                  
+                    <li>
+                      <a href="/docs/api/msp-extensions.html">
+                        Msp_extensions
+                      </a>
+                    </li>
+                  
+                
+              
+            </ul>
+          
+        </div>
+      
+        <div class="catbloc" id="development">
+          
+          
+            <h3>development</h3>
+            <ul class="posts list-unstyled">
+              
+                
+                  
+                
+              
+                
+                  
+                    <li>
+                      <a href="/docs/development/travis.html">
+                        Travis
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/pid-internals.html">
+                        Pid Internals
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/hardware-debugging.html">
+                        Hardware Debugging
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                        Hardware Debugging In Eclipse
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/development.html">
+                        Development
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/configuration-storage.html">
+                        Configuration Storage
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/building-manual.html">
+                        Building Manual
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/building-in-windows.html">
+                        Building In Windows
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/building-in-ubuntu.html">
+                        Building In Ubuntu
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/building-in-mac-os-x.html">
+                        Building In Mac Os X
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/building-in-eclipse.html">
+                        Building In Eclipse
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/blackbox-internals.html">
+                        Blackbox Internals
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/atomic-barrier.html">
+                        Atomic Barrier
+                      </a>
+                    </li>
+                  
+                
+              
+            </ul>
+          
+        </div>
+      
+    </div>
+  </div>
+</div>
+    <footer class="footer text-center">
+      <i class="fa fa-copyright"></i> 2015 Cleanflight Team
+    </footer>
+  </body>
+</html>

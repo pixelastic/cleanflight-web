@@ -9,7 +9,7 @@
 
   <title>
     
-      404: Page not found &middot; Cleanflight
+      Board   Cjmcu &middot; Cleanflight
     
   </title>
 
@@ -86,10 +86,279 @@
   <div class="row post-full">
     <div class="col-md-9">
       <div class="content">
-        <div class="page">
-  <h1 class="page-title">404: Page not found</h1>
-  <p class="lead">Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. <a href="/">Head back home</a> to try finding it again.</p>
-</div>
+        <h1>Board - CJMCU</h1>
+
+<p>The CJMCU is a tiny (80mm) board running a STM32F103, which contains a 3-Axis Compass (HMC5883L) 
+and an Accelerometer/Gyro (MPU6050).</p>
+
+<p>This board does not have an onboard USB-Serial converter, so an external adapter is needed.</p>
+
+<h1>Hardware revisions</h1>
+
+<table><thead>
+<tr>
+<th>Revision</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>No boot jumper pads by LED1. Uses blue and red LEDs</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Boot jumper pads presoldered with pins and a jumper by LED1. Uses green and red LEDs.</td>
+</tr>
+</tbody></table>
+
+<p>Version 2 boards are supported from firmware v1.4.0 onwards, do NOT flash earlier versions to version 2 boards.</p>
+
+<h1>Pins</h1>
+
+<h2>RX Connections</h2>
+
+<table><thead>
+<tr>
+<th>Pin Label</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PA0</td>
+<td>RC Channel 1</td>
+</tr>
+<tr>
+<td>PA1</td>
+<td>RC Channel 2</td>
+</tr>
+<tr>
+<td>PA2</td>
+<td>RC Channel 3 / USART2 TX</td>
+</tr>
+<tr>
+<td>PA3</td>
+<td>RC Channel 4 / USART2 RX</td>
+</tr>
+<tr>
+<td>VCC</td>
+<td>Power (See note)</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+</tbody></table>
+
+<p>NOTE: The VCC RX Pin is not regulated and will supply what ever voltage is provided to the board, this will mean it&rsquo;ll provide 5v if a 5v serial connection is used. Be careful if you are using a voltage sensitive RX. A regulated 3.3v supply can be found on the top pin of column 1, just below the RX GND pin.</p>
+
+<h2>Serial Connections</h2>
+
+<p>USART1 (along with power) is on the following pins.</p>
+
+<table><thead>
+<tr>
+<th>Pin Label</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TX1</td>
+<td>UART1 TX</td>
+</tr>
+<tr>
+<td>RX1</td>
+<td>UART2 RX</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>3V3</td>
+<td>Power +3.3v</td>
+</tr>
+<tr>
+<td>5V</td>
+<td>Power +5v</td>
+</tr>
+</tbody></table>
+
+<p>USART2 is the following pins.</p>
+
+<table><thead>
+<tr>
+<th>Pin Label</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PA2</td>
+<td>USART2 TX</td>
+</tr>
+<tr>
+<td>PA3</td>
+<td>USART2 RX</td>
+</tr>
+</tbody></table>
+
+<h2>Power Connections</h2>
+
+<table><thead>
+<tr>
+<th>Pin Label</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Power +</td>
+<td>Power - 1 Cell 3.7v Max</td>
+</tr>
+<tr>
+<td>Power -</td>
+<td>Ground</td>
+</tr>
+</tbody></table>
+
+<h2>Motor Connections</h2>
+
+<p>In standard QUADX configuration, the motors are mapped:</p>
+
+<table><thead>
+<tr>
+<th>Cleanflight</th>
+<th>CJMCU</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Motor 1</td>
+<td>Motor3</td>
+</tr>
+<tr>
+<td>Motor 2</td>
+<td>Motor2</td>
+</tr>
+<tr>
+<td>Motor 3</td>
+<td>Motor4</td>
+</tr>
+<tr>
+<td>Motor 4</td>
+<td>Motor1</td>
+</tr>
+</tbody></table>
+
+<p>It is therefore simplest to wire the motors:
+ * Motor 1 -&gt; Clockwise
+ * Motor 2 -&gt; Anti-Clockwise
+ * Motor 3 -&gt; Clockwise
+ * Motor 4 -&gt; Anti-Clockwise</p>
+
+<p>If you are using the Hubsan x4/Ladybird motors, clockwise are Blue (GND) / Red (VCC) wires, anticlockwise
+are Black (GND) / White (VCC).
+i.e. there is one wire on each motor out of the standard RED/BLACK VCC/GND polarity colors that can be used to identify polarity.</p>
+
+<p>If you have wired as above, Motor1/Motor2 on the board will be forward.</p>
+
+<h1>Connecting a Serial-USB Adapter</h1>
+
+<p>You will need a USB -&gt; Serial UART adapter. Connect:</p>
+
+<table><thead>
+<tr>
+<th>Adapter</th>
+<th>CJMCU</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Either 3.3v OR 5v</td>
+<td>The correct 3.3v OR 5v pin</td>
+</tr>
+<tr>
+<td>RX</td>
+<td>TX</td>
+</tr>
+<tr>
+<td>TX</td>
+<td>RX</td>
+</tr>
+</tbody></table>
+
+<p>When first connected this should power up the board, and will be in bootloader mode. If this does not happen, check 
+the charge switch is set to POW.
+After the flashing process has been completed, this will allow access via the cleanflight configurator to change 
+settings or flash a new firmware.</p>
+
+<p>WARNING: If the motors are connected and the board boots into the bootloader, they will start 
+to spin after around 20 seconds, it is recommended not to connect the motors until the board
+is flashed.</p>
+
+<h1>Flashing</h1>
+
+<p>To flash the board:
+ * Open Cleanflight Configurator
+ * Choose the latest CJMCU firmware from the list.
+ * Select &ldquo;Load Firmware [Online]&rdquo; and wait for the firmware to download.
+ * Tick &ldquo;No Reboot Sequence&rdquo; and &ldquo;Full Chip Erase&rdquo;
+ * Connect the USB-&gt;Serial adapter to the board
+ * Select the USB-UART adapter from the top left box
+ * Click &ldquo;Flash Firmware&rdquo;
+ * You should see &ldquo;Programming: SUCCESSFUL&rdquo; in the log box
+ * Click &ldquo;Connect&rdquo; -&gt; This should open the &ldquo;Initial Setup&rdquo; tab and you should see sensor data from the quad shown
+ * Unplug the quad and short the 2 &ldquo;BOOT0&rdquo; pins. Revision 1 boards require this to be soldered, revision 2 boards can connect the included jumper to the two pre-soldered pins - This prevents the board from going into bootloader mode on next
+   boot, if anything goes wrong, simply disconnect these two pins and the bootloader will start, allowing you to reflash. You cannot
+   overwrite the bootloader.</p>
+
+<h1>Charging</h1>
+
+<p>The CJMCU has on it a TP4056 Lithium battery charging IC that can charge a 1S battery at 1A using a provided 5v supply attached to the 5v serial pin.</p>
+
+<p>To charge an attached battery:
+ * Set the power switch to OFF
+ * Set the charge switch to CHG
+ * Plug in a 1S battery to the battery pins
+ * Plug in a 5v supply to the 5v serial pins</p>
+
+<p>The charger will finish when either the battery reaches 4.2v, or the battery&rsquo;s voltage is greater than the charger&rsquo;s input voltage.</p>
+
+<p>The two nearby LEDs will show the status of charging:</p>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Green LED</th>
+<th>Red LED</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Charging</td>
+<td>On</td>
+<td>Off</td>
+</tr>
+<tr>
+<td>Finished</td>
+<td>Off</td>
+<td>On</td>
+</tr>
+<tr>
+<td>5v not connected</td>
+<td>Off</td>
+<td>Off</td>
+</tr>
+<tr>
+<td>Batt not connected</td>
+<td>Flashing</td>
+<td>On</td>
+</tr>
+</tbody></table>
+
+<h1>Helpful Hints</h1>
+
+<ul>
+<li>If you are only using a 4 channel RX, in the auxiliary configuration tab, you can add a &ldquo;Horizon&rdquo; mode range around 1500 
+for one of the the AUX channels which will result in it being always on</li>
+<li>Enabling the feature MOTOR_STOP helps with crashes so it doesn&rsquo;t try to keep spinning on its back</li>
+<li>When the power runs low, the quad will start jumping around a bit, if the flight behaviour seems strange, check your batteries charge</li>
+</ul>
 
       </div>
     </div>
@@ -323,7 +592,7 @@
                 
                   
                     <li>
-                      <a href="/api/docs/msp-extensions.html">
+                      <a href="/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -347,7 +616,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/travis.html">
+                      <a href="/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -355,7 +624,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/pid-internals.html">
+                      <a href="/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -363,7 +632,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging.html">
+                      <a href="/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -371,7 +640,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging-in-eclipse.html">
+                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -379,7 +648,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/development.html">
+                      <a href="/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -387,7 +656,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/configuration-storage.html">
+                      <a href="/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -395,7 +664,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-manual.html">
+                      <a href="/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -403,7 +672,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-windows.html">
+                      <a href="/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -411,7 +680,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-ubuntu.html">
+                      <a href="/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -419,7 +688,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-mac-os-x.html">
+                      <a href="/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -427,7 +696,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-eclipse.html">
+                      <a href="/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -435,7 +704,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/blackbox-internals.html">
+                      <a href="/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -443,7 +712,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/atomic-barrier.html">
+                      <a href="/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>

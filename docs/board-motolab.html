@@ -9,7 +9,7 @@
 
   <title>
     
-      404: Page not found &middot; Cleanflight
+      Board   Motolab &middot; Cleanflight
     
   </title>
 
@@ -86,10 +86,108 @@
   <div class="row post-full">
     <div class="col-md-9">
       <div class="content">
-        <div class="page">
-  <h1 class="page-title">404: Page not found</h1>
-  <p class="lead">Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. <a href="/">Head back home</a> to try finding it again.</p>
-</div>
+        <h1>Board - MotoLab</h1>
+
+<p>The MOTOLAB build target supports the STM32F3-based boards provided by MotoLab.</p>
+
+<p>At present this includes the TornadoFC and MotoF3. The TornadoFC is described here:</p>
+
+<p><a href="http://www.rcgroups.com/forums/showthread.php?t=2473157">http://www.rcgroups.com/forums/showthread.php?t=2473157</a></p>
+
+<p>The MotoF3 documentation will be provided when the board is available.</p>
+
+<p>Both boards use the STM32F303 microcontroller and have the following features:</p>
+
+<ul>
+<li>256K bytes of flash memory</li>
+<li>Floating point math coprocessor</li>
+<li>Three hardware serial port UARTs</li>
+<li>USB using the built-in USB phy that does not interfere with any hadware UART</li>
+<li>Stable voltage regulation</li>
+<li>High-current buzzer/LED output</li>
+<li>Serial LED interface</li>
+<li>Low-pass filtered VBAT input with 1/10 divider ratio</li>
+<li>8 short-circuit protected PWM outputs, with 5V buffering on the TornadoFC</li>
+<li>On-board 6S-compatible switching regulator (MotoF3)</li>
+<li>Direct mounting option for a Pololu switching regulator for up to 6S lipo operation (TornadoFC)</li>
+</ul>
+
+<h1>Flashing</h1>
+
+<p>The MotoLab boards use the internal DFU USB interface on the STM32F3 microcontroller which is not compatible with the Cleanflight configurator flashing tool.</p>
+
+<p>Instead, on Windows you can use the Impulse Flashing Utility from ImpulseRC, available here:</p>
+
+<p><a href="http://www.warpquad.com/ImpulseFlash.zip">http://www.warpquad.com/ImpulseFlash.zip</a></p>
+
+<p>Download and unzip the program. Start the program, plug in the USB on the target board, and drag and drop the intended binary file onto the program icon. The program will put the STM32F3 into bootloader mode automatically and load the binary file to the flash.</p>
+
+<p>For programming on Linux, use the dfu-util program which is installed by default on Ubuntu-based systems. Connect the boot pins on the board and plug in the USB.</p>
+
+<p>Verify that the system identifies the DFU device with this command:
+<code>
+dfu-util -l
+</code></p>
+
+<p>The output should list a &ldquo;Found DFU&rdquo; device, something like this:
+&ldquo;`
+dfu-util 0.5</p>
+
+<p>&copy; 2005-2008 by Weston Schmidt, Harald Welte and OpenMoko Inc.
+&copy; 2010-2011 Tormod Volden (DfuSe support)
+This program is Free Software and has ABSOLUTELY NO WARRANTY</p>
+
+<p>dfu-util does currently only support DFU version 1.0</p>
+
+<p>Found DFU: [0483:df11] devnum=0, cfg=1, intf=0, alt=0, name=&rdquo;@Internal Flash  /0x08000000/128*0002Kg&quot;
+Found DFU: [0483:df11] devnum=0, cfg=1, intf=0, alt=1, name=&ldquo;@Option Bytes  /0x1FFFF800/01*016 e&rdquo;
+&ldquo;`</p>
+
+<p>Use this command to load the binary file to the flash memory on the board:
+<code>
+dfu-util --alt 0 -s 0x08000000 -D &lt;binfile&gt;
+</code></p>
+
+<p>The output should look something like this:
+&rdquo;`
+dfu-util 0.5</p>
+
+<p>&copy; 2005-2008 by Weston Schmidt, Harald Welte and OpenMoko Inc.
+&copy; 2010-2011 Tormod Volden (DfuSe support)
+This program is Free Software and has ABSOLUTELY NO WARRANTY</p>
+
+<p>dfu-util does currently only support DFU version 1.0</p>
+
+<p>Opening DFU USB device&hellip; ID 0483:df11
+Run-time device DFU version 011a
+Found DFU: [0483:df11] devnum=0, cfg=1, intf=0, alt=0, name=&ldquo;@Internal Flash  /0x08000000/128*0002Kg&rdquo;
+Claiming USB DFU Interface&hellip;
+Setting Alternate Setting #0 &hellip;
+Determining device status: state = dfuDNLOAD-IDLE, status = 0
+aborting previous incomplete transfer
+Determining device status: state = dfuIDLE, status = 0
+dfuIDLE, continuing
+DFU mode device DFU version 011a
+Device returned transfer size 2048
+No valid DFU suffix signature
+Warning: File has no DFU suffix
+DfuSe interface name: &ldquo;Internal Flash  &rdquo;
+&ldquo;`</p>
+
+<p>A binary file is required for the Impulse flashing Utility and dfu-util. The binary file can be built as follows:
+<code>
+make TARGET=MOTOLAB clean
+make TARGET=MOTOLAB binary
+</code></p>
+
+<p>To completely erase the flash, create an all-zero file with this command on linux: 
+<code>
+dd if=/dev/zero of=zero.bin bs=1 count=262144
+</code></p>
+
+<h2>Todo</h2>
+
+<p>Pinout documentation</p>
 
       </div>
     </div>
@@ -323,7 +421,7 @@
                 
                   
                     <li>
-                      <a href="/api/docs/msp-extensions.html">
+                      <a href="/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -347,7 +445,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/travis.html">
+                      <a href="/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -355,7 +453,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/pid-internals.html">
+                      <a href="/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -363,7 +461,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging.html">
+                      <a href="/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -371,7 +469,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging-in-eclipse.html">
+                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -379,7 +477,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/development.html">
+                      <a href="/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -387,7 +485,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/configuration-storage.html">
+                      <a href="/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -395,7 +493,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-manual.html">
+                      <a href="/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -403,7 +501,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-windows.html">
+                      <a href="/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -411,7 +509,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-ubuntu.html">
+                      <a href="/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -419,7 +517,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-mac-os-x.html">
+                      <a href="/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -427,7 +525,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-eclipse.html">
+                      <a href="/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -435,7 +533,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/blackbox-internals.html">
+                      <a href="/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -443,7 +541,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/atomic-barrier.html">
+                      <a href="/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>

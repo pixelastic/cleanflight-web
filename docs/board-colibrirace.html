@@ -9,7 +9,7 @@
 
   <title>
     
-      404: Page not found &middot; Cleanflight
+      Board   Colibrirace &middot; Cleanflight
     
   </title>
 
@@ -86,11 +86,127 @@
   <div class="row post-full">
     <div class="col-md-9">
       <div class="content">
-        <div class="page">
-  <h1 class="page-title">404: Page not found</h1>
-  <p class="lead">Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. <a href="/">Head back home</a> to try finding it again.</p>
-</div>
+        <h1>Board - Colibri RACE</h1>
 
+<p>The Colibri RACE is a STM32F3 based flight control designed specifically to work with the TBS POWERCUBE multi rotor stack. </p>
+
+<h2>Hardware Features:</h2>
+
+<ul>
+<li>STM32F303 based chipset for ultimate performance</li>
+<li>PPM, SBUS, DSM, DSMX input (5V and 3.3V provided over internal BUS). No inverters or hacks needed.</li>
+<li><p>6 PWM ESC output channels (autoconnect, internal BUS)</p>
+
+<ul>
+<li>RGB LED strip support incl. power management</li>
+<li>Extension port for GPS / external compass / pressure sensor</li>
+<li>UART port for peripherals (Blackbox, FrSky telemetry etc.)</li>
+<li>Choose between plug &amp; play sockets or solder pads for R/C and buzzer</li>
+<li>5V buzzer output</li>
+<li>MPU6500 new generation accelerometer/gyro</li>
+<li>3x status LED (DCDC pwr/ 3.3V pwr/ status)</li>
+<li>Battery monitoring for 12V, 5V and VBat supply</li>
+<li>Size: 36mmx36mm (30.5mm standard raster)</li>
+<li>Weight: 4.4g</li>
+</ul>
+
+<p>For more details please visit:
+<a href="http://www.team-blacksheep.com/powercube">http://www.team-blacksheep.com/powercube</a></p></li>
+</ul>
+
+<h2>Serial Ports</h2>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">| Value | Identifier   | Board Markings | Notes                                     |
+| ----- | ------------ | -------------- | ------------------------------------------|
+| 1     | VCP          | USB PORT       | Main Port For MSP                         |
+| 2     | USART1       | FREE PORT      | PC4 and PC5(Tx and Rx respectively)       |
+| 3     | USART2       | PPM Serial     | PA15                                      |
+| 4     | USART3       | GPS PORT       | PB10 and PB11(Tx and Rx respectively)     |
+</code></pre></figure>
+<h2>Pinouts</h2>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">Full pinout details are available in the manual, here:
+
+http://www.team-blacksheep.com/colibri_race
+</code></pre></figure>
+<h3>SWD - ICSP</h3>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">| Pin | Function       | Notes                                        |
+| --- | -------------- | -------------------------------------------- |
+| 1   | VCC_IN         | 3.3 Volt                                     |
+| 2   | SWDIO          |                                              |
+| 3   | nRESET         |                                              |
+| 4   | SWCLK          |                                              |
+| 5   | Ground         |                                              |
+| 6   | SWO/TDO        |                                              |
+</code></pre></figure>
+<h3>Internal Bus</h3>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">| Pin | Function       | Notes                                        |
+| --- | -------------- | -------------------------------------------- |
+| 1   | PWM1           | MOTOR 1                                      |
+| 2   | PWM2           | MOTOR 2                                      |
+| 3   | PWM3           | MOTOR 3                                      |
+| 4   | PWM4           | MOTOR 4                                      |
+| 5   | PWM5           | MOTOR 5 (For Y6 or Hex X)                    |
+| 6   | PWM6           | MOTOR 6 (For Y6 or Hex X)                    |
+| 7   | BST SDA        | Use For TBS CorePro Control Device           |
+| 8   | BST SCL        | Use For TBS CorePro Control Device           |
+| 9   | PWM7           | Can be a normal GPIO (PA1) or PWM            |
+| 10  | PWM8           | Can be a normal GPIO (PA2) or PWM            |
+| 11  | 12.2V DCDC     | If 12v is detected, the Blue LED will turn on|
+| 12  | 5.1V DCDC      | Voltage for MCU                              |
+</code></pre></figure>
+<h3>Servo</h3>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">| Pin | Function       | Notes                                        |
+| --- | -------------- | -------------------------------------------- |
+| 1   | Ground         |                                              |
+| 2   | VCC_OUT        | 5.1 Volt output to LCD Strip                 |
+| 3   | PWM Servo      | PB14 - PWM10                                 |
+</code></pre></figure>
+<h3>IO_1 - LED Strip</h3>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">| Pin | Function          | Notes                                        |
+| --- | ----------------- | -------------------------------------------- |
+| 1   | LED_STRIP         | Enable `feature LED_STRIP`                   |
+| 2   | VCC_OUT           | 5.1 Volt output to LCD Strip                 |
+| 3   | Ground            |                                              |
+</code></pre></figure>
+<h3>IO_2 - Sensor Interface</h3>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">| Pin | Function          | Notes                                        |
+| --- | ----------------- | -------------------------------------------- |
+| 1   | VCC_OUT           | 4.7 Volt output to the device                |
+| 2   | Ground            |                                              |
+| 3   | UART3 TX          | GPS                                          |
+| 4   | UART3 RX          | GPS                                          |
+| 5   | SDA               | mag, pressure, or other i2c device           |
+| 6   | SCL               | mag, pressure, or other i2c device           |
+</code></pre></figure>
+<h3>IO_3 - RC input</h3>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">IO_3 is used for RX_PPM/RX_SERIAL. Under the `PORT` tab, set RX_SERIAL to UART2 when using RX_SERIAL.
+
+| Pin | Function          | Notes                                        |
+| --- | ----------------- | -------------------------------------------- |
+| 1   | PPM/Serial        | Can PPM or Serial input                      |
+| 2   | VCC_OUT           | 3.3 Volt output to the device                |
+| 3   | Ground            |                                              |
+| 4   | VCC_OUT           | 5.1 Volt output to the device                |
+</code></pre></figure>
+<h3>IO_4 - Buzzer</h3>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">| Pin | Function          | Notes                                        |
+| --- | ----------------- | -------------------------------------------- |
+| 1   | BUZZER            | Normal high (5.1v)                           |
+| 2   | VCC_OUT           | 5.1 Volt output to the device                |
+</code></pre></figure>
+<h3>IO_5 - Free UART</h3>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">| Pin | Function          | Notes                                        |
+| --- | ----------------- | -------------------------------------------- |
+| 1   | UART1 TX          | Free UART                                    |
+| 2   | UART1 RX          | Free UART                                    |
+| 3   | Ground            |                                              |
+| 4   | VCC_OUT           | 4.7 Volt output to the device                |
+</code></pre></figure>
+<h3>IO_6 - IR TX (extension)</h3>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">| Pin | Function          | Notes                                        |
+| --- | ----------------- | -------------------------------------------- |
+| 1   | IR TX             |                                              |
+| 2   | Ground            |                                              |
+</code></pre></figure>
       </div>
     </div>
     <div class="col-md-3">
@@ -323,7 +439,7 @@
                 
                   
                     <li>
-                      <a href="/api/docs/msp-extensions.html">
+                      <a href="/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -347,7 +463,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/travis.html">
+                      <a href="/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -355,7 +471,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/pid-internals.html">
+                      <a href="/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -363,7 +479,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging.html">
+                      <a href="/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -371,7 +487,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging-in-eclipse.html">
+                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -379,7 +495,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/development.html">
+                      <a href="/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -387,7 +503,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/configuration-storage.html">
+                      <a href="/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -395,7 +511,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-manual.html">
+                      <a href="/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -403,7 +519,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-windows.html">
+                      <a href="/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -411,7 +527,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-ubuntu.html">
+                      <a href="/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -419,7 +535,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-mac-os-x.html">
+                      <a href="/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -427,7 +543,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-eclipse.html">
+                      <a href="/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -435,7 +551,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/blackbox-internals.html">
+                      <a href="/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -443,7 +559,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/atomic-barrier.html">
+                      <a href="/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>

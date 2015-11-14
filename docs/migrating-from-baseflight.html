@@ -9,7 +9,7 @@
 
   <title>
     
-      404: Page not found &middot; Cleanflight
+      Migrating From Baseflight &middot; Cleanflight
     
   </title>
 
@@ -86,10 +86,126 @@
   <div class="row post-full">
     <div class="col-md-9">
       <div class="content">
-        <div class="page">
-  <h1 class="page-title">404: Page not found</h1>
-  <p class="lead">Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. <a href="/">Head back home</a> to try finding it again.</p>
-</div>
+        <h1>Migrating from baseflight</h1>
+
+<h2>Procedure</h2>
+
+<p><strong>First ensure your main flight battery is disconnected or your props are off!</strong></p>
+
+<p>Before flashing with cleanflight, dump your configs for each profile via the CLI and save to a text file.</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">profile 0
+dump
+profile 1
+dump
+profile 2
+dump
+</code></pre></figure>
+<p>Then after flashing cleanflight paste the output from each dump command into the cli, switching profiles as you go.</p>
+
+<p>You&rsquo;ll note that some commands are not recognised by cleanflight when you do this.  For the commands that are not recognised look
+up the new configuration options and choose appropriate values for the settings.  See below for a list of differences.</p>
+
+<p>Once you&rsquo;ve done this for the first profile, save the config.  Then verify your config is OK, e.g. features serial ports, etc.
+When you&rsquo;ve verified the first profile is OK repeat for the other profiles.</p>
+
+<p>It&rsquo;s also advisable to take screenshots of your AUX settings from baseflight configurator and then after re-applying the settings
+verify your aux config is correct - aux settings are not backwards compatible.</p>
+
+<h2>CLI command differences from baseflight</h2>
+
+<p>In general all CLI commands use underscore characters to separate words for consistency.  In baseflight the format of CLI commands is somewhat haphazard.</p>
+
+<h3>gps_baudrate</h3>
+
+<p>reason: new serial port configuration.</p>
+
+<p>See <code>serial</code> command.</p>
+
+<h3>gps_type</h3>
+
+<p>reason: renamed to <code>gps_provider</code> for consistency</p>
+
+<h3>serialrx_type</h3>
+
+<p>reason: renamed to <code>serialrx_provider</code> for consistency</p>
+
+<h3>rssi_aux_channel</h3>
+
+<p>reason: renamed to <code>rssi_channel</code> for improved functionality</p>
+
+<p>Cleanflight supports using any RX channel for rssi.  Baseflight only supports AUX1 to 4.</p>
+
+<p>In Cleanflight a value of 0 disables the feature, a higher value indicates the channel number to read RSSI information from.</p>
+
+<p>Example: to use RSSI on AUX1 in Cleanflight use <code>set rssi_channel = 5</code>, since 5 is the first AUX channel (this is equivalent to <code>set rssi_aux_channel = 1</code> in Baseflight).</p>
+
+<h3>failsafe_detect_threshold</h3>
+
+<p>reason: improved functionality</p>
+
+<p>See <code>rx_min_usec</code> and <code>rx_max_usec</code> in Failsafe documentation.</p>
+
+<h3>emfavoidance</h3>
+
+<p>reason: renamed to <code>emf_avoidance</code> for consistency</p>
+
+<h3>yawrate</h3>
+
+<p>reason: renamed to <code>yaw_rate</code> for consistency</p>
+
+<h3>yawdeadband</h3>
+
+<p>reason: renamed to <code>yaw_deadband</code> for consistency</p>
+
+<h3>midrc</h3>
+
+<p>reason: renamed to <code>mid_rc</code> for consistency</p>
+
+<h3>mincheck</h3>
+
+<p>reason: renamed to <code>min_check</code> for consistency</p>
+
+<h3>maxcheck</h3>
+
+<p>reason: renamed to <code>max_check</code> for consistency</p>
+
+<h3>minthrottle</h3>
+
+<p>reason: renamed to <code>min_throttle</code> for consistency</p>
+
+<h3>maxthrottle</h3>
+
+<p>reason: renamed to <code>max_throttle</code> for consistency</p>
+
+<h3>mincommand</h3>
+
+<p>reason: renamed to <code>min_command</code> for consistency</p>
+
+<h3>deadband3d_low</h3>
+
+<p>reason: renamed to <code>3d_deadband_low</code> for consistency</p>
+
+<h3>deadband3d_high</h3>
+
+<p>reason: renamed to <code>3d_deadband_high</code> for consistency</p>
+
+<h3>deadband3d_throttle</h3>
+
+<p>reason: renamed to <code>3d_deadband_throttle</code> for consistency</p>
+
+<h3>neutral3d</h3>
+
+<p>reason: renamed to <code>3d_neutral</code> for consistency</p>
+
+<h3>alt_hold_throttle_neutral</h3>
+
+<p>reason: renamed to <code>alt_hold_deadband</code> for consistency</p>
+
+<h3>gimbal_flags</h3>
+
+<p>reason: seperation of features.</p>
+
+<p>see <code>gimbal_mode</code> and <code>CHANNEL_FORWARDING</code> feature</p>
 
       </div>
     </div>
@@ -323,7 +439,7 @@
                 
                   
                     <li>
-                      <a href="/api/docs/msp-extensions.html">
+                      <a href="/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -347,7 +463,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/travis.html">
+                      <a href="/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -355,7 +471,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/pid-internals.html">
+                      <a href="/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -363,7 +479,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging.html">
+                      <a href="/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -371,7 +487,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging-in-eclipse.html">
+                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -379,7 +495,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/development.html">
+                      <a href="/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -387,7 +503,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/configuration-storage.html">
+                      <a href="/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -395,7 +511,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-manual.html">
+                      <a href="/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -403,7 +519,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-windows.html">
+                      <a href="/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -411,7 +527,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-ubuntu.html">
+                      <a href="/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -419,7 +535,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-mac-os-x.html">
+                      <a href="/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -427,7 +543,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-eclipse.html">
+                      <a href="/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -435,7 +551,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/blackbox-internals.html">
+                      <a href="/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -443,7 +559,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/atomic-barrier.html">
+                      <a href="/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>

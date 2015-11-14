@@ -9,7 +9,7 @@
 
   <title>
     
-      404: Page not found &middot; Cleanflight
+      Spektrum Bind &middot; Cleanflight
     
   </title>
 
@@ -86,10 +86,112 @@
   <div class="row post-full">
     <div class="col-md-9">
       <div class="content">
-        <div class="page">
-  <h1 class="page-title">404: Page not found</h1>
-  <p class="lead">Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. <a href="/">Head back home</a> to try finding it again.</p>
-</div>
+        <h1>Spektrum bind support</h1>
+
+<p>Spektrum bind with hardware bind plug support.</p>
+
+<p>The Spektrum bind code is actually enabled for the NAZE, NAZE32PRO, CJMCU, EUSTM32F103RC, SPARKY, CC3D, ALIENWIIF1, ALIENWIIF3 targets.</p>
+
+<h2>Configure the bind code</h2>
+
+<p>The following parameters can be used to enable and configure this in the related target.h file:</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">SPEKTRUM_BIND          Enables the Spektrum bind code
+BIND_PORT  GPIOA       Defines the port for the bind pin
+BIND_PIN   Pin_3       Defines the bind pin (the satellite receiver is connected to)
+</code></pre></figure>
+<p>This is to activate the hardware bind plug feature</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">HARDWARE_BIND_PLUG     Enables the hardware bind plug feature
+BINDPLUG_PORT  GPIOB   Defines the port for the hardware bind plug
+BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
+</code></pre></figure>
+<h2>Hardware</h2>
+
+<p>The hardware bind plug will be enabled via defining HARDWARE_BIND_PLUG during building of the firmware. BINDPLUG_PORT and BINDPLUG_PIN also need to be defined (please see above). This is done automatically if the AlienWii32 firmware is built. The hardware bind plug is expected between the defined bind pin and ground. </p>
+
+<h2>Function</h2>
+
+<p>The bind code will actually work for NAZE, NAZE32PRO, CJMCU, EUSTM32F103RC, SPARKY targets (USART2) and CC3D target (USART3, flex port). The spektrum_sat_bind CLI parameter is defining the number of bind impulses (1-10) send to the satellite receiver. Setting spektrum_sat_bind to zero will disable the bind mode in any case. The bind mode will only be activated after an power on or hard reset. Please refer to the table below for the different possible values.</p>
+
+<p>If the hardware bind plug is configured the bind mode will only be activated if the plug is set during the firmware start-up. The value of the spektrum_sat_bind parameter will be permanently preserved. The bind plug should be always removed for normal flying.</p>
+
+<p>If no hardware bind plug is used the spektrum_sat_bind parameter will trigger the bind process during the next hardware reset and will be automatically reset to &ldquo;0&rdquo; after this.</p>
+
+<p>Please refer to the satellite receiver documentation for more details of the specific receiver in bind mode. Usually the bind mode will be indicated with some flashing LEDs.</p>
+
+<h2>Table with spektrum_sat_bind parameter value</h2>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Receiver mode</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>3</td>
+<td>DSM2 1024bit/22ms</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>DSM2 2048bit/11ms</td>
+<td>default AlienWii32</td>
+</tr>
+<tr>
+<td>7</td>
+<td>DSMX 1024bit/22ms</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>DSMX 2048bit/11ms</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>More detailed information regarding the satellite binding process can be found here:
+<a href="http://wiki.openpilot.org/display/Doc/Spektrum+Satellite">http://wiki.openpilot.org/display/Doc/Spektrum+Satellite</a></p>
+
+<h3>Supported Hardware</h3>
+
+<p>NAZE, NAZE32PRO, CJMCU, SPARKY, EUSTM32F103RC, CC3D targets and ALIENWIIF1, ALIENWIIF3 targets with hardware bind plug</p>
+
+<h3>Connecting a Spektrum-compatible satellite to a Flip32+ flight controller</h3>
+
+<p>The Flip32/Flip32+ is wired in a rather strange way, i.e. the dedicated connector for the satellite module uses the same UART pins as the USB adapter. This means that you can&rsquo;t use that connector as it maps to UART1 which you really shouldn&rsquo;t assign to SERIAL_RX as that will break USB functionality. (Looks this problem is fixed in later versions of the Flip32/Flip32+)</p>
+
+<p>In order to connect the satellite to a Flip32+, you have to wire the serial data pin to RC_CH4. This is the fourth pin from the top in the left column of the 3x6 header on the right side of the board. GND and +3.3V may either be obtained from the dedicated SAT connector or from any ground pin and pin 1 of the BOOT connector which also provides 3.3V.</p>
+
+<h4>Tested satellite transmitter combinations</h4>
+
+<table><thead>
+<tr>
+<th>Satellite</th>
+<th>Remote</th>
+<th>Remark</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Orange R100</td>
+<td>Spektrum DX6i</td>
+<td>Bind value 3</td>
+</tr>
+<tr>
+<td>Lemon RX DSM2/DSMX</td>
+<td>Spektrum DX8</td>
+<td>Bind value 5</td>
+</tr>
+<tr>
+<td>Lemon RX DSMX</td>
+<td>Walkera Devo10</td>
+<td>Bind value 9, Deviation firmware 4.01 up to 12 channels</td>
+</tr>
+<tr>
+<td>Lemon RX DSM2</td>
+<td>Walkera Devo7</td>
+<td>Bind value 9, Deviation firmware</td>
+</tr>
+</tbody></table>
 
       </div>
     </div>
@@ -323,7 +425,7 @@
                 
                   
                     <li>
-                      <a href="/api/docs/msp-extensions.html">
+                      <a href="/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -347,7 +449,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/travis.html">
+                      <a href="/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -355,7 +457,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/pid-internals.html">
+                      <a href="/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -363,7 +465,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging.html">
+                      <a href="/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -371,7 +473,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging-in-eclipse.html">
+                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -379,7 +481,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/development.html">
+                      <a href="/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -387,7 +489,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/configuration-storage.html">
+                      <a href="/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -395,7 +497,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-manual.html">
+                      <a href="/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -403,7 +505,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-windows.html">
+                      <a href="/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -411,7 +513,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-ubuntu.html">
+                      <a href="/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -419,7 +521,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-mac-os-x.html">
+                      <a href="/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -427,7 +529,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-eclipse.html">
+                      <a href="/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -435,7 +537,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/blackbox-internals.html">
+                      <a href="/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -443,7 +545,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/atomic-barrier.html">
+                      <a href="/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>

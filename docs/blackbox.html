@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Blackbox &middot; Cleanflight
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- build:css /assets/stylesheets/style.min.css -->
+  <link rel="stylesheet" href="http://shipow.github.io/cleanflight-web/assets/stylesheets/style.css">
+  <!-- endbuild -->
+  <link href='//fonts.googleapis.com/css?family=Marvel:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css">
+
+  <!-- JS -->
+  <!-- build:js /assets/javascript/all.min.js -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.5.0/algoliasearch.min.js"></script>
+  <script>
+    window.baseUrl = 'http://shipow.github.io/cleanflight-web';
+    window.algolia = algoliasearch('T2ZX9HO66V', '7119d2f6f1cd95224251ec2e490e824f');
+    window.index = algolia.initIndex('dev_cleanflight');
+  </script>
+  <script type="text/template" id="my-custom-menu-template">
+    <div class="my-custom-menu">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="aa-dataset-d1"></div>
+        </div>
+        <div class="col-sm-6">
+          <div class="aa-dataset-d2"></div>
+          <div class="aa-dataset-d3"></div>
+        </div>
+      </div>
+    </div>
+  </script>
+  <script src="http://shipow.github.io/cleanflight-web/assets/javascript/javascript.js"></script>
+  <!-- endbuild -->
+
+  <!-- Icons -->
+  <link rel="shortcut icon" href="http://shipow.github.io/cleanflight-web/assets/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://shipow.github.io/cleanflight-web/"><img src="http://shipow.github.io/cleanflight-web/assets/images/cleanflight-logo.png" height="50"></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/getting-started.html">Documentation</a></li>
+            <!-- <li><a href="#">Ressources</a></li> -->
+            <li><a href="https://github.com/cleanflight/cleanflight">Contributing</a></li>
+          </ul>
+          <div class="search-wrapper">
+            <input id="search" type="text" class="form-control" placeholder="Search">
+          </div>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <div class="container post">
+
+  <div class="row post-full">
+    <div class="col-md-9">
+      <div class="content">
+        <h1>Blackbox flight data recorder</h1>
+
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/blackbox-screenshot-1.jpg" alt="Rendered flight log frame"></p>
+
+<h2>Introduction</h2>
+
+<p>This feature transmits your flight data information on every control loop iteration over a serial port to an external
+logging device to be recorded, or to a dataflash chip which is present on some flight controllers.</p>
+
+<p>After your flight, you can view the resulting logs using the interactive log viewer:</p>
+
+<p><a href="https://github.com/cleanflight/blackbox-log-viewer">https://github.com/cleanflight/blackbox-log-viewer</a></p>
+
+<p>You can also use the <code>blackbox_decode</code> tool to turn the logs into CSV files for analysis, or render your flight log as a
+video using the <code>blackbox_render</code> tool. Those tools can be found in this repository:</p>
+
+<p><a href="https://github.com/cleanflight/blackbox-tools">https://github.com/cleanflight/blackbox-tools</a></p>
+
+<h2>Logged data</h2>
+
+<p>The blackbox records flight data on every iteration of the flight control loop. It records the current time in
+microseconds, P, I and D corrections for each axis, your RC command stick positions (after applying expo curves),
+gyroscope data, accelerometer data (after your configured low-pass filtering), barometer and sonar readings, 3-axis
+magnetometer readings, raw VBAT and current measurements, RSSI, and the command being sent to each motor speed
+controller. This is all stored without any approximation or loss of precision, so even quite subtle problems should be
+detectable from the fight data log.</p>
+
+<p>GPS data is logged whenever new GPS data is available. Although the CSV decoder will decode this data, the video
+renderer does not yet show any of the GPS information (this will be added later).</p>
+
+<h2>Supported configurations</h2>
+
+<p>The maximum data rate that can be recorded to the flight log is fairly restricted, so anything that increases the load
+can cause the flight log to drop frames and contain errors.</p>
+
+<p>The Blackbox is typically used on tricopters and quadcopters. Although it will work on hexacopters and octocopters,
+because these craft have more motors to record, they must transmit more data to the flight log. This can increase the
+number of dropped frames. Although the browser-based log viewer supports hexacopters and octocopters, the command-line 
+<code>blackbox_render</code> tool currently only supports tri- and quadcopters.</p>
+
+<p>Cleanflight&rsquo;s <code>looptime</code> setting decides how frequently an update is saved to the flight log. The default looptime on
+Cleanflight is 3500. If you&rsquo;re using a looptime smaller than about 2400, you may experience some dropped frames due to
+the high required data rate. In that case you will need to reduce the sampling rate in the Blackbox settings, or
+increase your logger&rsquo;s baudrate to 250000. See the later section on configuring the Blackbox feature for details.</p>
+
+<h2>Setting up logging</h2>
+
+<p>First, you must enable the Blackbox feature. In the <a href="https://chrome.google.com/webstore/detail/cleanflight-configurator/enacoimjcgeinfnnnpajinjgmkahmfgb?hl=en">Cleanflight Configurator</a> enter the Configuration tab,
+tick the &ldquo;BLACKBOX&rdquo; feature at the bottom of the page, and click &ldquo;Save and reboot&rdquo; </p>
+
+<p>Now you must decide which device to store your flight logs on. You can either transmit the log data over a serial port
+to an external logging device like the <a href="https://www.sparkfun.com/products/9530">OpenLog serial data logger</a> to be recorded to a microSDHC card, or if you have
+a compatible flight controller you can store the logs on the onboard dataflash storage instead.</p>
+
+<h3>OpenLog serial data logger</h3>
+
+<p>The OpenLog is a small logging device which attaches to your flight controller using a serial port and logs your
+flights to a MicroSD card.</p>
+
+<p>The OpenLog ships from SparkFun with standard &ldquo;OpenLog 3&rdquo; firmware installed. Although this original OpenLog firmware
+will work with the Blackbox, in order to reduce the number of dropped frames it should be reflashed with the
+higher performance <a href="https://github.com/cleanflight/blackbox-firmware">OpenLog Blackbox firmware</a>. The special Blackbox variant of the OpenLog firmware also ensures that
+the OpenLog is using Cleanflight compatible settings, and defaults to 115200 baud.</p>
+
+<p>You can find the Blackbox version of the OpenLog firmware <a href="https://github.com/cleanflight/blackbox-firmware">here</a>, 
+along with instructions for installing it onto your OpenLog.</p>
+
+<h4>microSDHC</h4>
+
+<p>Your choice of microSDHC card is very important to the performance of the system. The OpenLog relies on being able to
+make many small writes to the card with minimal delay, which not every card is good at. A faster SD-card speed rating is
+not a guarantee of better performance.</p>
+
+<h5>microSDHC cards known to have poor performance</h5>
+
+<ul>
+<li>Generic 4GB Class 4 microSDHC card - the rate of missing frames is about 1%, and is concentrated around the most
+interesting parts of the log!</li>
+<li>Sandisk Ultra 32GB (unlike the smaller 16GB version, this version has poor write latency)</li>
+</ul>
+
+<h5>microSDHC cards known to have good performance</h5>
+
+<ul>
+<li>Transcend 16GB Class 10 UHS-I microSDHC (typical error rate &lt; 0.1%)</li>
+<li>Sandisk Extreme 16GB Class 10 UHS-I microSDHC (typical error rate &lt; 0.1%)</li>
+<li>Sandisk Ultra 16GB (it performs only half as well as the Extreme in theory, but still very good)</li>
+</ul>
+
+<p>You should format any card you use with the <a href="https://www.sdcard.org/downloads/formatter_4/">SD Association&rsquo;s special formatting tool</a> , as it will give the OpenLog
+the best chance of writing at high speed. You must format it with either FAT, or with FAT32 (recommended).</p>
+
+<h3>Choosing a serial port for the OpenLog</h3>
+
+<p>First, tell the Blackbox to log using a serial port (rather than to an onboard dataflash chip). Go to the
+Configurator&rsquo;s CLI tab, enter <code>set blackbox_device=SERIAL</code> to switch logging to serial, and
+save.</p>
+
+<p>You need to let Cleanflight know which of <a href="https://github.com/cleanflight/cleanflight/blob/master/docs/Serial.md">your serial ports</a> you connect your OpenLog to (i.e. the Blackbox port),
+which you can do on the Configurator&rsquo;s Ports tab.</p>
+
+<p>You should use a hardware serial port (such as UART1 on the Naze32, the two-pin Tx/Rx header in the center of the
+board). SoftSerial ports can be used for the Blackbox. However, because they are limited to 19200 baud, your logging 
+rate will need to be severely reduced to compensate. Therefore the use of SoftSerial is not recommended.</p>
+
+<p>When using a hardware serial port, Blackbox should be set to at least 115200 baud on that port. When using fast
+looptimes (&lt;2500), a baud rate of 250000 should be used instead in order to reduce dropped frames.</p>
+
+<p>The serial port used for Blackbox cannot be shared with any other function (e.g. GPS, telemetry) except the MSP
+protocol. If MSP is used on the same port as Blackbox, then MSP will be active when the board is disarmed, and Blackbox
+will be active when the board is armed. This will mean that you can&rsquo;t use the Configurator or any other function that
+requires MSP, such as an OSD or a Bluetooth wireless configuration app, while the board is armed.</p>
+
+<p>Connect the &ldquo;TX&rdquo; pin of the serial port you&rsquo;ve chosen to the OpenLog&rsquo;s &ldquo;RXI&rdquo; pin. Don&rsquo;t connect the serial port&rsquo;s RX
+pin to the OpenLog, as this will cause the OpenLog to interfere with any shared functions on the serial port while
+disarmed.</p>
+
+<h4>Naze32 serial port choices</h4>
+
+<p>On the Naze32, the TX/RX pins on top of the board are connected to UART1, and are shared with the USB connector.
+Therefore, MSP must be enabled on UART1 in order to use the Configurator over USB. If Blackbox is connected to the pins
+on top of the Naze32, the Configurator will stop working once the board is armed. This configuration is usually a good
+choice if you don&rsquo;t already have an OSD installed which is using those pins while armed, and aren&rsquo;t using the FrSky
+telemetry pins.</p>
+
+<p>Pin RC3 on the side of the board is UART2&rsquo;s Tx pin. If Blackbox is configured on UART2, MSP can still be used on UART1
+when the board is armed, which means that the Configurator will continue to work simultaneously with Blackbox logging.
+However, the RC3 pin is only available for use by UART2 if the receiver mode is <u>not</u> <code>PARALLEL_PWM</code>. In other words, a
+PPM or Serial receiver must be used. If a PWM receiver is used, the RC3 and RC4 pins are used for channel input from the
+receiver. Sharing UART1 between Blackbox and MSP is the only way to use Blackbox on a Naze32 with a PWM receiver.</p>
+
+<p>The OpenLog tolerates a power supply of between 3.3V and 12V. If you are powering your Naze32 with a standard 5V BEC,
+then you can use a spare motor header&rsquo;s +5V and GND pins to power the OpenLog with.</p>
+
+<h4>Other flight controller hardware</h4>
+
+<p>Boards other than the Naze32 may have more accessible hardware serial devices, in which case refer to their
+documentation to decide how to wire up the logger. The key criteria are:</p>
+
+<ul>
+<li>Should be a hardware serial port rather than SoftSerial.</li>
+<li>Cannot be shared with any other function (GPS, telemetry) except MSP.</li>
+<li>If MSP is used on the same UART, MSP will stop working when the board is armed.</li>
+</ul>
+
+<h4>OpenLog configuration</h4>
+
+<p>Power up the OpenLog with a microSD card inside, wait 10 seconds or so, then power it down and plug the microSD card
+into your computer. You should find a &ldquo;CONFIG.TXT&rdquo; file on the card, open it up in a text editor. You should see the
+baud rate that the OpenLog has been configured for (usually 115200 or 9600 from the factory). Set the baud rate to match
+the rate you entered for the Blackbox in the Configurator&rsquo;s Port tab (typically 115200 or 250000).</p>
+
+<p>Save the file and put the card back into your OpenLog, it will use those settings from now on.</p>
+
+<p>If your OpenLog didn&rsquo;t write a CONFIG.TXT file, create a CONFIG.TXT file with these contents and store it in the root
+of the MicroSD card:</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">115200
+baud
+</code></pre></figure>
+<p>If you are using the original OpenLog firmware, use this configuration instead:</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">115200,26,0,0,1,0,1
+baud,escape,esc#,mode,verb,echo,ignoreRX
+</code></pre></figure>
+<h4>OpenLog protection</h4>
+
+<p>The OpenLog can be wrapped in black electrical tape or heat-shrink in order to insulate it from conductive frames (like
+carbon fiber), but this makes its status LEDs impossible to see. I recommend wrapping it with some clear heatshrink
+tubing instead.</p>
+
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/blackbox-installation-1.jpg" alt="OpenLog installed" title="OpenLog installed with double-sided tape, SDCard slot pointing outward"></p>
+
+<h3>Onboard dataflash storage</h3>
+
+<p>Some flight controllers have an onboard SPI NOR dataflash chip which can be used to store flight logs instead of using
+an OpenLog.</p>
+
+<p>The full version of the Naze32 and the CC3D have an onboard &ldquo;m25p16&rdquo; 2 megabyte dataflash storage chip. This is a small
+chip with 8 fat legs, which can be found at the base of the Naze32&rsquo;s direction arrow. This chip is not present on the
+&ldquo;Acro&rdquo; version of the Naze32.</p>
+
+<p>The SPRacingF3 has a larger 8 megabyte dataflash chip onboard which allows for longer recording times.</p>
+
+<p>These chips are also supported:</p>
+
+<ul>
+<li>Micron/ST M25P16 - 16 Mbit / 2 MByte</li>
+<li>Micron N25Q064 - 64 Mbit / 8 MByte</li>
+<li>Winbond W25Q64 - 64 Mbit / 8 MByte</li>
+<li>Micron N25Q0128 - 128 Mbit / 16 MByte</li>
+<li>Winbond W25Q128 - 128 Mbit / 16 MByte</li>
+</ul>
+
+<h4>Enable recording to dataflash</h4>
+
+<p>On the Configurator&rsquo;s CLI tab, you must enter <code>set blackbox_device=SPIFLASH</code> to switch to logging to an onboard dataflash chip,
+then save.</p>
+
+<h2>Configuring the Blackbox</h2>
+
+<p>The Blackbox currently provides two settings (<code>blackbox_rate_num</code> and <code>blackbox_rate_denom</code>) that allow you to control 
+the rate at which data is logged. These two together form a fraction (<code>blackbox_rate_num / blackbox_rate_denom</code>) which
+decides what portion of the flight controller&rsquo;s control loop iterations should be logged. The default is 1/1 which logs 
+every iteration.</p>
+
+<p>If you&rsquo;re using a slower MicroSD card, you may need to reduce your logging rate to reduce the number of corrupted
+logged frames that <code>blackbox_decode</code> complains about. A rate of &frac12; is likely to work for most craft.</p>
+
+<p>You can change the logging rate settings by entering the CLI tab in the <a href="https://chrome.google.com/webstore/detail/cleanflight-configurator/enacoimjcgeinfnnnpajinjgmkahmfgb?hl=en">Cleanflight Configurator</a> and using the <code>set</code>
+command, like so:</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">set blackbox_rate_num = 1
+set blackbox_rate_denom = 2
+</code></pre></figure>
+<p>The data rate for my quadcopter using a looptime of 2400 and a rate of 1/1 is about 10.25kB/s. This allows about 18
+days of flight logs to fit on my OpenLog&rsquo;s 16GB MicroSD card, which ought to be enough for anybody :).</p>
+
+<p>If you are logging using SoftSerial, you will almost certainly need to reduce your logging rate to 1/32. Even at that
+logging rate, looptimes faster than about 1000 cannot be successfully logged.</p>
+
+<p>If you&rsquo;re logging to an onboard dataflash chip instead of an OpenLog, be aware that the 2MB of storage space it offers
+is pretty small. At the default 1/1 logging rate, and a 2400 looptime, this is only enough for about 3 minutes of
+flight. This could be long enough for you to investigate some flying problem with your craft, but you may want to reduce
+the logging rate in order to extend your recording time.</p>
+
+<p>To maximize your recording time, you could drop the rate all the way down to 1/32 (the smallest possible rate) which
+would result in a logging rate of about 10-20Hz and about 650 bytes/second of data. At that logging rate, a 2MB
+dataflash chip can store around 50 minutes of flight data, though the level of detail is severely reduced and you could
+not diagnose flight problems like vibration or PID setting issues.</p>
+
+<h2>Usage</h2>
+
+<p>The Blackbox starts recording data as soon as you arm your craft, and stops when you disarm.</p>
+
+<p>If your craft has a buzzer attached, you can use Cleanflight&rsquo;s arming beep to synchronize your Blackbox log with your
+flight video. Cleanflight&rsquo;s arming beep is a &ldquo;long, short&rdquo; pattern. The beginning of the first long beep will be shown 
+as a blue line in the flight data log, which you can sync against your recorded audio track.</p>
+
+<p>You should wait a few seconds after disarming your craft to allow the Blackbox to finish saving its data.</p>
+
+<h3>Usage - OpenLog</h3>
+
+<p>Each time the OpenLog is power-cycled, it begins a fresh new log file. If you arm and disarm several times without
+cycling the power (recording several flights), those logs will be combined together into one file. The command line
+tools will ask you to pick which one of these flights you want to display/decode.</p>
+
+<p>Don&rsquo;t insert or remove the SD card while the OpenLog is powered up.</p>
+
+<h3>Usage - Dataflash chip</h3>
+
+<p>After your flights, you can use the <a href="https://chrome.google.com/webstore/detail/cleanflight-configurator/enacoimjcgeinfnnnpajinjgmkahmfgb?hl=en">Cleanflight Configurator</a> to download the contents of the dataflash to your
+computer. Go to the &ldquo;dataflash&rdquo; tab and click the &ldquo;save flash to file&hellip;&rdquo; button. Saving the log can take 2 or 3
+minutes.</p>
+
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/blackbox-dataflash.png" alt="Dataflash tab in Configurator"></p>
+
+<p>After downloading the log, be sure to erase the chip to make it ready for reuse by clicking the &ldquo;erase flash&rdquo; button.</p>
+
+<p>If you try to start recording a new flight when the dataflash is already full, Blackbox logging will be disabled and
+nothing will be recorded.</p>
+
+<h3>Usage - Logging switch</h3>
+
+<p>If you&rsquo;re recording to an onboard flash chip, you probably want to disable Blackbox recording when not required in order
+to save storage space. To do this, you can add a Blackbox flight mode to one of your AUX channels on the Configurator&rsquo;s 
+modes tab. Once you&rsquo;ve added a mode, Blackbox will only log flight data when the mode is active.</p>
+
+<p>A log header will always be recorded at arming time, even if logging is paused. You can freely pause and resume logging 
+while in flight.</p>
+
+<h2>Viewing recorded logs</h2>
+
+<p>After your flights, you&rsquo;ll have a series of flight log files with a .TXT extension.</p>
+
+<p>You can view these .TXT flight log files interactively using your web browser with the Cleanflight Blackbox Explorer:</p>
+
+<p><a href="https://github.com/cleanflight/blackbox-log-viewer">https://github.com/cleanflight/blackbox-log-viewer</a></p>
+
+<p>This allows you to scroll around a graphed version of your log and examine your log in detail. You can also export a
+video of your log to share it with others!</p>
+
+<p>You can decode your logs with the <code>blackbox_decode</code> tool to create CSV (comma-separated values) files for analysis,
+or render them into a series of PNG frames with <code>blackbox_render</code> tool, which you could then convert into a video using
+another software package.</p>
+
+<p>You&rsquo;ll find those tools along with instructions for using them in this repository:</p>
+
+<p><a href="https://github.com/cleanflight/blackbox-tools">https://github.com/cleanflight/blackbox-tools</a></p>
+
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="spacer30"></div>
+      <h2>Documentation</h2>
+      <ul class="posts list-unstyled">
+        
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/1wire.html">1wire</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/autotune.html">Autotune</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/battery.html">Battery</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/blackbox.html">Blackbox</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-cc3d.html">Board   Cc3d</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-chebuzzf3.html">Board   Chebuzzf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-cjmcu.html">Board   Cjmcu</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-motolab.html">Board   Motolab</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-naze32.html">Board   Naze32</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-olimexino.html">Board   Olimexino</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-paris-air-hero-32.html">Board   Paris Air Hero 32</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-rmdo.html">Board   Rmdo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-sparky.html">Board   Sparky</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/boards.html">Boards</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/buzzer.html">Buzzer</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/cli.html">Cli</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/configuration.html">Configuration</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/controls.html">Controls</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/display.html">Display</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/failsafe.html">Failsafe</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/getting-started.html">Getting Started</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/gps.html">Gps</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/gtune.html">Gtune</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/inflight-adjustments.html">Inflight Adjustments</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/installation.html">Installation</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/introduction.html">Introduction</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/ledstrip.html">Ledstrip</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/migrating-from-baseflight.html">Migrating From Baseflight</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/mixer.html">Mixer</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/modes.html">Modes</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/oneshot.html">Oneshot</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/pid-tuning.html">Pid Tuning</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/profiles.html">Profiles</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/rssi.html">Rssi</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/rx.html">Rx</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/safety.html">Safety</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/serial.html">Serial</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/sonar.html">Sonar</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/spektrum-bind.html">Spektrum Bind</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/telemetry.html">Telemetry</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/usb-flashing.html">Usb Flashing</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+      
+        <div class="catbloc" id="docs">
+          
+          
+        </div>
+      
+        <div class="catbloc" id="api">
+          
+          
+            <h3>api</h3>
+            <ul class="posts list-unstyled">
+              
+                
+                  
+                
+              
+                
+                  
+                    <li>
+                      <a href="/docs/api/msp-extensions.html">
+                        Msp_extensions
+                      </a>
+                    </li>
+                  
+                
+              
+            </ul>
+          
+        </div>
+      
+        <div class="catbloc" id="development">
+          
+          
+            <h3>development</h3>
+            <ul class="posts list-unstyled">
+              
+                
+                  
+                
+              
+                
+                  
+                    <li>
+                      <a href="/docs/development/travis.html">
+                        Travis
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/pid-internals.html">
+                        Pid Internals
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/hardware-debugging.html">
+                        Hardware Debugging
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                        Hardware Debugging In Eclipse
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/development.html">
+                        Development
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/configuration-storage.html">
+                        Configuration Storage
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/building-manual.html">
+                        Building Manual
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/building-in-windows.html">
+                        Building In Windows
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/building-in-ubuntu.html">
+                        Building In Ubuntu
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/building-in-mac-os-x.html">
+                        Building In Mac Os X
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/building-in-eclipse.html">
+                        Building In Eclipse
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/blackbox-internals.html">
+                        Blackbox Internals
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="/docs/development/atomic-barrier.html">
+                        Atomic Barrier
+                      </a>
+                    </li>
+                  
+                
+              
+            </ul>
+          
+        </div>
+      
+    </div>
+  </div>
+</div>
+    <footer class="footer text-center">
+      <i class="fa fa-copyright"></i> 2015 Cleanflight Team
+    </footer>
+  </body>
+</html>

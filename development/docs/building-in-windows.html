@@ -9,7 +9,7 @@
 
   <title>
     
-      404: Page not found &middot; Cleanflight
+      Building In Windows &middot; Cleanflight
     
   </title>
 
@@ -86,11 +86,93 @@
   <div class="row post-full">
     <div class="col-md-9">
       <div class="content">
-        <div class="page">
-  <h1 class="page-title">404: Page not found</h1>
-  <p class="lead">Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. <a href="/">Head back home</a> to try finding it again.</p>
-</div>
+        <h1>Building in windows</h1>
 
+<h2>Setup Cygwin</h2>
+
+<p>download the Setup*.exe from <a href="https://www.cygwin.com/">https://www.cygwin.com/</a></p>
+
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/001.cygwin_dl.png" alt="Cygwin Installation"></p>
+
+<p>Execute the download Setup and step through the installation  wizard (no need to customize the settings here). Stop at the  &ldquo;Select Packages&rdquo; Screen and select the following Packages
+for Installation:</p>
+
+<ul>
+<li>Devel/git</li>
+<li>Devel/git-completion (Optional)</li>
+<li>Devel/make</li>
+<li>Devel/binutils</li>
+<li>Editors/vim<br></li>
+<li>Editors/vim-common (Optional)</li>
+<li>Shells/mintty (should be already selected)</li>
+</ul>
+
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/002.cygwin_setup.png" alt="Cygwin Installation"></p>
+
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/003.cygwin_setup.png" alt="Cygwin Installation"></p>
+
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/004.cygwin_setup.png" alt="Cygwin Installation"></p>
+
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/005.cygwin_setup.png" alt="Cygwin Installation"></p>
+
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/006.cygwin_setup.png" alt="Cygwin Installation"></p>
+
+<p>Continue with the Installation and accept all autodetected dependencies.</p>
+
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/007.cygwin_setup.png" alt="Cygwin Installation"></p>
+
+<h2>Setup GNU ARM Toolchain</h2>
+
+<hr>
+
+<p>versions do matter, 4.8-2014-q2 is known to work well. Download this version from <a href="https://launchpad.net/gcc-arm-embedded/+download">https://launchpad.net/gcc-arm-embedded/+download</a> - preferrebly as a ZIP-File. </p>
+
+<p>Extract the contents of this archive to any folder of your choice, for instance <code>C:\dev\gcc-arm-none-eabi-4_8-2014q2</code>. </p>
+
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/008.toolchain.png" alt="GNU ARM Toolchain Setup"></p>
+
+<p>add the &ldquo;bin&rdquo; subdirectory to the PATH Windows environment variable: <code>%PATH%;C:\dev\gcc-arm-none-eabi-4_8-2014q2\bin</code></p>
+
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/009.toolchain_path.png" alt="GNU ARM Toolchain Setup"></p>
+
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/010.toolchain_path.png" alt="GNU ARM Toolchain Setup"></p>
+
+<h2>Checkout and compile Cleanflight</h2>
+
+<p>Head over to the Cleanflight Github page and grab the URL of the GIT Repository: &ldquo;<a href="https://github.com/cleanflight/cleanflight.git">https://github.com/cleanflight/cleanflight.git</a>&rdquo;</p>
+
+<p>Open the Cygwin-Terminal, navigate to your development folder and use the git commandline to checkout the repository:</p>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">cd /cygdrive/c/dev
+git clone https://github.com/cleanflight/cleanflight.git
+</code></pre></figure>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/011.git_checkout.png" alt="GIT Checkout"></p>
+
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/012.git_checkout.png" alt="GIT Checkout"></p>
+
+<p>To compile your Cleanflight binaries, enter the cleanflight directory and build the project using the make command. You can append TARGET=[HARDWARE] if you want to build anything other than the default NAZE target:</p>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">cd cleanflight
+make TARGET=NAZE
+</code></pre></figure>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/013.compile.png" alt="GIT Checkout"></p>
+
+<p>within few moments you should have your binary ready:</p>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">(...)
+arm-none-eabi-size ./obj/main/cleanflight_NAZE.elf
+   text    data     bss     dec     hex filename
+  95388     308   10980  106676   1a0b4 ./obj/main/cleanflight_NAZE.elf
+arm-none-eabi-objcopy -O ihex --set-start 0x8000000 obj/main/cleanflight_NAZE.elf obj/cleanflight_NAZE.hex
+</code></pre></figure>
+<p>You can use the Cleanflight-Configurator to flash the <code>obj/cleanflight_NAZE.hex</code> file.</p>
+
+<h2>Updating and rebuilding</h2>
+
+<p>Navigate to the local cleanflight repository and use the following steps to pull the latest changes and rebuild your version of cleanflight:</p>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">cd /cygdrive/c/dev/cleanflight
+git reset --hard
+git pull
+make clean TARGET=NAZE
+make
+</code></pre></figure>
       </div>
     </div>
     <div class="col-md-3">
@@ -347,7 +429,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/travis.html">
+                      <a href="/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -355,7 +437,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/pid-internals.html">
+                      <a href="/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -363,7 +445,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging.html">
+                      <a href="/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -371,7 +453,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging-in-eclipse.html">
+                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -379,7 +461,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/development.html">
+                      <a href="/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -387,7 +469,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/configuration-storage.html">
+                      <a href="/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -395,7 +477,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-manual.html">
+                      <a href="/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>

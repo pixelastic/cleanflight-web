@@ -9,7 +9,7 @@
 
   <title>
     
-      404: Page not found &middot; Cleanflight
+      Installation &middot; Cleanflight
     
   </title>
 
@@ -86,10 +86,39 @@
   <div class="row post-full">
     <div class="col-md-9">
       <div class="content">
-        <div class="page">
-  <h1 class="page-title">404: Page not found</h1>
-  <p class="lead">Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. <a href="/">Head back home</a> to try finding it again.</p>
-</div>
+        <h1>Installation</h1>
+
+<h2>Using the configurator</h2>
+
+<p>This is a generic procedure to flash a board using the configurator. The configurator does not yet support all boards, so please check the documentation corresponding to your board before proceeding.</p>
+
+<p>Make sure you have the <a href="https://github.com/cleanflight/cleanflight-configurator">Cleanflight Configurator</a> installed, then:</p>
+
+<ul>
+<li>Connect the flight controller to the PC.</li>
+<li>Start the Cleanflight Configurator.</li>
+<li>Click on &ldquo;Disconnect&rdquo; if the configurator connected to the board automatically.</li>
+<li>Click on the &ldquo;Firmware Flasher&rdquo; tab.</li>
+<li>Make sure you have internet connectivity and click on the &ldquo;Load Firmware [Online]&rdquo; button.</li>
+<li>Click on the &ldquo;Choose a Firmware / Board&rdquo; dropdown menu, and select the latest stable version for your flight controller.</li>
+<li>IMPORTANT: Read and understand the release notes that are displayed.  When upgrading review all release notes since your current firmware.</li>
+<li>If this is the first time Cleanflight is flashed to the board, tick the &ldquo;Full Chip Erase&rdquo; checkbox.</li>
+<li>Connect the flight controller board to the PC.  Ensure the correct serial port is selected.</li>
+<li>Click on the &ldquo;Flash Firmware&rdquo; button and hold still (do not breathe, too).</li>
+<li>When the progress bar becomes green and reads &ldquo;Programming: SUCCESSFUL&rdquo; you are done!</li>
+</ul>
+
+<h2>Manually</h2>
+
+<p>See the board specific flashing instructions.</p>
+
+<h1>Upgrading</h1>
+
+<p>When upgrading be sure to backup / dump your existing settings.  Some firmware releases are not backwards compatible and default settings are restored when the FC detects an out of date configuration.</p>
+
+<h2>Backup/Restore process</h2>
+
+<p>See the CLI section of the docs for details on how to backup and restore your configuration via the CLI.</p>
 
       </div>
     </div>
@@ -323,7 +352,7 @@
                 
                   
                     <li>
-                      <a href="/api/docs/msp-extensions.html">
+                      <a href="/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -347,7 +376,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/travis.html">
+                      <a href="/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -355,7 +384,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/pid-internals.html">
+                      <a href="/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -363,7 +392,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging.html">
+                      <a href="/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -371,7 +400,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging-in-eclipse.html">
+                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -379,7 +408,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/development.html">
+                      <a href="/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -387,7 +416,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/configuration-storage.html">
+                      <a href="/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -395,7 +424,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-manual.html">
+                      <a href="/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -403,7 +432,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-windows.html">
+                      <a href="/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -411,7 +440,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-ubuntu.html">
+                      <a href="/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -419,7 +448,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-mac-os-x.html">
+                      <a href="/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -427,7 +456,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-eclipse.html">
+                      <a href="/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -435,7 +464,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/blackbox-internals.html">
+                      <a href="/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -443,7 +472,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/atomic-barrier.html">
+                      <a href="/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>

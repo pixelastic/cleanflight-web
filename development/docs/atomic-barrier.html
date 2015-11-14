@@ -9,7 +9,7 @@
 
   <title>
     
-      404: Page not found &middot; Cleanflight
+      Atomic Barrier &middot; Cleanflight
     
   </title>
 
@@ -86,10 +86,51 @@
   <div class="row post-full">
     <div class="col-md-9">
       <div class="content">
-        <div class="page">
-  <h1 class="page-title">404: Page not found</h1>
-  <p class="lead">Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. <a href="/">Head back home</a> to try finding it again.</p>
-</div>
+        <h1>Atomic Barrier Warning</h1>
+
+<p>If GCC is upgraded and a warning appears when compiling then the generated asm source must be verified.</p>
+
+<p>e.g.<br>
+<code>
+%% serial_softserial.c
+warning &quot;Please verify that ATOMIC_BARRIER works as intended&quot;
+</code></p>
+
+<p>To perform the verification, proceed as per discusson on issue #167 which reads:</p>
+
+<p>I hope it&rsquo;s enough to check that optimized-away variable still has cleanup code at end of scope.</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">static int markme=0;
+markme++;
+ATOMIC_BLOCK_NB(0xff) {
+   ATOMIC_BARRIER(markme);
+   markme++;
+};
+markme++;
+</code></pre></figure>
+<p>pass <code>-save-temps=obj</code> (or <code>-save-temps=cwd</code>, but lots of files will end up in same directory as makefile) to gcc link step (LTO is in use), find resulting <code>*.ltrans*.ltrans.s</code> (grep for <code>markme</code>, on linux it ends up in <code>/tmp</code>) and check that generated assembly sequence is:</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">                 MSR basepri_max, r3
+# (possibly markme address load)
+                # barier (markme) start
+
+# (increment markme, load and store to memory)
+        ldr     r2, [r3]
+        adds    r0, r2, #1
+        str     r0, [r3]
+
+                # barier(markme)  end
+                MSR basepri, r3
+
+# (markme value should be cached in register on next increment)
+</code></pre></figure>
+<p>The # barrier(markme) must surround access code and must be inside MSR basepri instructions ..</p>
+
+<p>Similar approach is used for ATOMIC_BLOCK in avr libraries, so gcc should not break this behavior.</p>
+
+<p>IMO attribute(cleanup) and asm volatile is defined in a way that should guarantee this.</p>
+
+<p>attribute(cleanup) is probably safer way to implement atomic sections - another possibility is to explicitly place barriers in code, but that can (and will eventually) lead to missed barrier/basepri restore on same path creating very hard to find bug.</p>
+
+<p>The MEMORY_BARRIER() code can be omitted and use ATOMIC_BLOCK with full memory barriers, but IMO it is better to explicitly state what memory is protected by barrier and gcc can use this knowledge to greatly improve generated code in future.</p>
 
       </div>
     </div>
@@ -347,7 +388,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/travis.html">
+                      <a href="/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -355,7 +396,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/pid-internals.html">
+                      <a href="/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -363,7 +404,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging.html">
+                      <a href="/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -371,7 +412,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging-in-eclipse.html">
+                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -379,7 +420,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/development.html">
+                      <a href="/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -387,7 +428,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/configuration-storage.html">
+                      <a href="/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -395,7 +436,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-manual.html">
+                      <a href="/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -403,7 +444,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-windows.html">
+                      <a href="/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -411,7 +452,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-ubuntu.html">
+                      <a href="/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -419,7 +460,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-mac-os-x.html">
+                      <a href="/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -427,7 +468,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-eclipse.html">
+                      <a href="/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -435,7 +476,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/blackbox-internals.html">
+                      <a href="/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>

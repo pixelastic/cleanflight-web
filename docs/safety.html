@@ -9,7 +9,7 @@
 
   <title>
     
-      404: Page not found &middot; Cleanflight
+      Safety &middot; Cleanflight
     
   </title>
 
@@ -86,10 +86,36 @@
   <div class="row post-full">
     <div class="col-md-9">
       <div class="content">
-        <div class="page">
-  <h1 class="page-title">404: Page not found</h1>
-  <p class="lead">Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. <a href="/">Head back home</a> to try finding it again.</p>
-</div>
+        <h1>Safety</h1>
+
+<p>As many can attest, multirotors and RC models in general can be very dangerous, particularly on the test bench. Here are some simple golden rules to save you a trip to the local ER:
+* <strong>NEVER</strong> arm your model with propellers fitted unless you intend to fly!
+* <strong>Always</strong> remove your propellers if you are setting up for the first time, flashing firmware, or if in any doubt.</p>
+
+<h2>Before Installing</h2>
+
+<p>Please consult the <a href="http://shipow.github.io/cleanflight-web/docs/cli/">Cli</a>, <a href="http://shipow.github.io/cleanflight-web/docs/controls/">Controls</a>, <a href="http://shipow.github.io/cleanflight-web/docs/failsafe/">Failsafe</a> and <a href="http://shipow.github.io/cleanflight-web/docs/modes/">Modes</a> 
+pages for further important information.</p>
+
+<p>You are highly advised to use the Receiver tab in the CleanFlight Configurator, making sure your Rx channel 
+values are centered at 1500 (1520 for Futaba RC) with minimum &amp; maximums of 1000 and 2000 (respectively) 
+are reached when controls are operated.  Failure to configure these ranges properly can create
+problems, such as inability to arm (because you can&rsquo;t reach the endpoints) or immediate activation of
+<a href="http://shipow.github.io/cleanflight-web/docs/failsafe/">failsafe</a>.</p>
+
+<p>You may have to adjust your channel endpoints and trims/sub-trims on your RC transmitter to achieve the 
+expected range of 1000 to 2000.</p>
+
+<p>The referenced values for each channel have marked impact on the operation of the flight controller and the 
+different flight modes.</p>
+
+<h2>Props Spinning When Armed</h2>
+
+<p>With the default configuration, when the controller is armed, the propellers <em>WILL</em> begin spinning at low speed.
+We recommend keeping this setting as it provides a good visual indication the craft is armed.</p>
+
+<p>If you wish to change this behavior, see the MOTOR_STOP feature in the Configurator and relevant docuemntation pages.
+Enabling this feature will stop the props from spinning when armed.</p>
 
       </div>
     </div>
@@ -323,7 +349,7 @@
                 
                   
                     <li>
-                      <a href="/api/docs/msp-extensions.html">
+                      <a href="/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -347,7 +373,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/travis.html">
+                      <a href="/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -355,7 +381,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/pid-internals.html">
+                      <a href="/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -363,7 +389,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging.html">
+                      <a href="/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -371,7 +397,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging-in-eclipse.html">
+                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -379,7 +405,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/development.html">
+                      <a href="/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -387,7 +413,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/configuration-storage.html">
+                      <a href="/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -395,7 +421,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-manual.html">
+                      <a href="/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -403,7 +429,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-windows.html">
+                      <a href="/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -411,7 +437,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-ubuntu.html">
+                      <a href="/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -419,7 +445,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-mac-os-x.html">
+                      <a href="/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -427,7 +453,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-eclipse.html">
+                      <a href="/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -435,7 +461,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/blackbox-internals.html">
+                      <a href="/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -443,7 +469,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/atomic-barrier.html">
+                      <a href="/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>

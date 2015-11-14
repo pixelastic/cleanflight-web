@@ -9,7 +9,7 @@
 
   <title>
     
-      404: Page not found &middot; Cleanflight
+      Gtune &middot; Cleanflight
     
   </title>
 
@@ -86,10 +86,59 @@
   <div class="row post-full">
     <div class="col-md-9">
       <div class="content">
-        <div class="page">
-  <h1 class="page-title">404: Page not found</h1>
-  <p class="lead">Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. <a href="/">Head back home</a> to try finding it again.</p>
-</div>
+        <h1>G-Tune instructions.</h1>
+
+<p>The algorithm has been originally developed by Mohammad Hefny (<a href="mailto:mohammad.hefny@gmail.com">mohammad.hefny@gmail.com</a>):</p>
+
+<blockquote>
+<p><a href="http://technicaladventure.blogspot.com/2014/06/zero-pids-tuner-for-multirotors.html">http://technicaladventure.blogspot.com/2014/06/zero-pids-tuner-for-multirotors.html</a>
+<a href="http://diydrones.com/profiles/blogs/zero-pid-tunes-for-multirotors-part-2">http://diydrones.com/profiles/blogs/zero-pid-tunes-for-multirotors-part-2</a>
+<a href="http://www.multiwii.com/forum/viewtopic.php?f=8&amp;t=5190">http://www.multiwii.com/forum/viewtopic.php?f=8&amp;t=5190</a></p>
+</blockquote>
+
+<p>The G-Tune functionality for Cleanflight is ported from the Harakiri firmware.</p>
+
+<h2>Safety preamble: <u>Use at your own risk</u></h2>
+
+<p>The implementation you have here is quiet different and just for adjusting the P values of ROLL/PITCH/YAW in Acro mode.
+When flying in Acro mode (yaw tune in other modes possible as well - see below) you can activate G-Tune with an AUX box (switch) while the copter is armed.</p>
+
+<p>It will start tuning the wanted / possible axes (see below) in a predefined range (see below).</p>
+
+<p>After activation you will probably notice nothing! That means G-Tune will not start shaking your copter, you will have to do it (or simply fly and let it work).</p>
+
+<p>The G-Tune is based on the gyro error so it is only active when you give no RC input (that would be an additional error). So if you just roll only pitch and yaw are tuned. If you stop rolling G-Tune will wait ca. 450ms to let the axis settle and then start tuning that axis again. All axes are treated independently.</p>
+
+<p>The easiest way to tune all axes at once is to do some air-jumps with the copter in Acro (RC centered and G-Tune activated&hellip; of course..).</p>
+
+<p>You can set a too high P for the axes as default in the GUI, when the copter starts shaking the wobbles will be detected and P tuned down (be careful with the strength setting though - see below).</p>
+
+<p>Yaw tune is disabled in any copter with less than 4 motors (like tricopters).</p>
+
+<p>G-Tune in Horizon or Level mode will just affect Yaw axis (if more than 3 motors&hellip;)</p>
+
+<p>You will see the results in the GUI - the tuning results will only be saved if you enable G-Tune mode while the copter is disarmed and G-Tune was used before when armed. You also can save the configuration in an alternative way (like hitting save button in the GUI, casting an eepromwrite with trimming, acc calibration etc.)</p>
+
+<p>TPA and G-Tune: It is not tested and will most likely not result into something good. However G-Tune might be able to replace TPA for you.</p>
+
+<h2>Parameters and their function:</h2>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">gtune_loP_rll        = 10  [0..200] Lower limit of ROLL P during G-Tune.  Note &quot;10&quot; means &quot;1.0&quot; in the GUI.
+gtune_loP_ptch       = 10  [0..200] Lower limit of PITCH P during G-Tune. Note &quot;10&quot; means &quot;1.0&quot; in the GUI.
+gtune_loP_yw         = 10  [0..200] Lower limit of YAW P during G-Tune.   Note &quot;10&quot; means &quot;1.0&quot; in the GUI.
+gtune_hiP_rll        = 100 [0..200] Higher limit of ROLL P during G-Tune. 0 Disables tuning for that axis.  Note &quot;100&quot; means &quot;10.0&quot; in the GUI.
+gtune_hiP_ptch       = 100 [0..200] Higher limit of PITCH P during G-Tune. 0 Disables tuning for that axis. Note &quot;100&quot; means &quot;10.0&quot; in the GUI.
+gtune_hiP_yw         = 100 [0..200] Higher limit of YAW P during G-Tune. 0 Disables tuning for that axis.   Note &quot;100&quot; means &quot;10.0&quot; in the GUI.
+gtune_pwr            = 0   [0..10] Strength of adjustment
+gtune_settle_time    = 450 [200..1000] Settle time in ms
+gtune_average_cycles = 16  [8..128] Number of looptime cycles used for gyro average calcullation
+</code></pre></figure>
+<p>So you have lower and higher limits for each P for every axis. The preset range (GUI: 1.0 - 10.0) is quiet broad to represent most setups.</p>
+
+<p>If you want tighter or more loose ranges change them here. gtune_loP_XXX can be configured lower than &ldquo;10&rdquo; that means a P of &ldquo;1.0&rdquo; in the GUI. So you can have &ldquo;Zero P&rdquo; but you may get sluggish initial control.</p>
+
+<p>If you want to exclude one axis from the tuning you must set gtune_hiP_XXX to zero. Let&rsquo;s say you want to disable yaw tuning write in CLI <code>set gtune_hiP_yw = 0</code>. Note: The MultiWii Wiki advises you to trim the yaw axis on your transmitter. If you have done so (yaw not neutral on your RC) yaw tuning will be disabled.</p>
+
+<p>You can adjust the strength of tuning by using <code>set gtune_pwr = N</code>. My small copter works fine with 0 and doesn&rsquo;t like a value of &ldquo;3&rdquo;. My big copter likes &ldquo;gtune_pwr = 5&rdquo;. It shifts the tuning to higher values and if too high can diminish the wobble blocking! So start with 0 (default). If you feel your resulting P is always too low for you, increase gtune_pwr. You will see it getting a little shaky if value is too high.</p>
 
       </div>
     </div>
@@ -323,7 +372,7 @@
                 
                   
                     <li>
-                      <a href="/api/docs/msp-extensions.html">
+                      <a href="/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -347,7 +396,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/travis.html">
+                      <a href="/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -355,7 +404,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/pid-internals.html">
+                      <a href="/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -363,7 +412,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging.html">
+                      <a href="/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -371,7 +420,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging-in-eclipse.html">
+                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -379,7 +428,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/development.html">
+                      <a href="/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -387,7 +436,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/configuration-storage.html">
+                      <a href="/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -395,7 +444,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-manual.html">
+                      <a href="/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -403,7 +452,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-windows.html">
+                      <a href="/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -411,7 +460,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-ubuntu.html">
+                      <a href="/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -419,7 +468,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-mac-os-x.html">
+                      <a href="/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -427,7 +476,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-eclipse.html">
+                      <a href="/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -435,7 +484,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/blackbox-internals.html">
+                      <a href="/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -443,7 +492,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/atomic-barrier.html">
+                      <a href="/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
