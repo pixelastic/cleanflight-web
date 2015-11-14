@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Cleanflight</title>
- <link href="http://shipow.github.io/cleanflight-web/atom.xml" rel="self"/>
- <link href="http://shipow.github.io/cleanflight-web/"/>
- <updated>2015-06-25T13:09:09+02:00</updated>
- <id>http://shipow.github.io/cleanflight-web</id>
+ <link href="http://localhost:3000/atom.xml" rel="self"/>
+ <link href="http://localhost:3000/"/>
+ <updated>2015-11-14T17:18:40+01:00</updated>
+ <id>http://localhost:3000</id>
  <author>
    <name>Kevin Granger</name>
    <email>shipowlata@gmail.com</email>
@@ -13,10 +13,47 @@
 
  
  <entry>
-   <title>Travis</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/development/travis"/>
+   <title>Usb Flashing</title>
+   <link href="http://localhost:3000/docs/usb-flashing"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/development/travis</id>
+   <id>http://localhost:3000/docs/usb-flashing</id>
+   <content type="html">&lt;h1&gt;USB Flashing&lt;/h1&gt;
+
+&lt;p&gt;Some newer boards with full USB support must be flashed in USB DFU mode. This is a straightforward process in Configurator versions 0.67 and newer. The standard flashing procedure should work successfully with the caveat of some platform specific problems as noted below. The &amp;ldquo;No reboot sequence&amp;rdquo; checkbox has no effect as the device will automatically be detected when already in bootloader mode (a DFU device will appear in the connect dropdown if this is the case). The Full chip erase checkbox operates as normal. The baudrate checkbox is ignored as it has no relevance to USB.&lt;/p&gt;
+
+&lt;h2&gt;Platform Specific: Linux&lt;/h2&gt;
+
+&lt;p&gt;Linux requires udev rules to allow write access to USB devices for users. An example shell command to acheive this on Ubuntu is shown here:
+&lt;code&gt;
+(echo &amp;#39;# DFU (Internal bootloader for STM32 MCUs)&amp;#39;
+ echo &amp;#39;SUBSYSTEM==&amp;quot;usb&amp;quot;, ATTRS{idVendor}==&amp;quot;0483&amp;quot;, ATTRS{idProduct}==&amp;quot;df11&amp;quot;, MODE=&amp;quot;0664&amp;quot;, GROUP=&amp;quot;plugdev&amp;quot;&amp;#39;) | sudo tee /etc/udev/rules.d/45-stdfu-permissions.rules &amp;gt; /dev/null
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This assigns the device to the plugdev group(a standard group in Ubuntu). To check that your account is in the plugdev group type &lt;code&gt;groups&lt;/code&gt; in the shell and ensure plugdev is listed. If not you can add yourself as shown (replacing &lt;code&gt;&amp;lt;username&amp;gt;&lt;/code&gt; with your username):
+&lt;code&gt;
+sudo usermod -a -G plugdev &amp;lt;username&amp;gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2&gt;Platform Specific: Windows&lt;/h2&gt;
+
+&lt;p&gt;Chrome can have problems accessing USB devices on Windows. A driver should be automatically installed by Windows for the ST Device in DFU Mode but this doesn&amp;rsquo;t always allow access for Chrome. The solution is to replace the ST driver with a libusb driver. The easiest way to do that is to download &lt;a href=&quot;http://zadig.akeo.ie/&quot;&gt;Zadig&lt;/a&gt;. 
+With the board connected and in bootloader mode (reset it by sending the character R via serial, or simply attempt to flash it with the correct serial port selected in Configurator): 
+* Open Zadig
+* Choose Options &amp;gt; List All Devices
+* Select &lt;code&gt;STM32 BOOTLOADER&lt;/code&gt; in the device list
+* Choose &lt;code&gt;WinUSB (v6.x.x.x)&lt;/code&gt; in the right hand box
+&lt;img src=&quot;http://localhost:3000/assets/images/zadig-dfu.png&quot; alt=&quot;Zadig Driver Procedure&quot;&gt;
+* Click Replace Driver
+* Restart Chrome (make sure it is completely closed, logout and login if unsure)
+* Now the DFU device should be seen by Configurator&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Travis</title>
+   <link href="http://localhost:3000/docs/development/travis"/>
+   <updated>2015-01-01T00:00:00+01:00</updated>
+   <id>http://localhost:3000/docs/development/travis</id>
    <content type="html">&lt;h1&gt;Travis&lt;/h1&gt;
 
 &lt;p&gt;Cleanflight provides Travis build and config files in the repository root. &lt;/p&gt;
@@ -31,9 +68,9 @@ a file upload post to the configured server.&lt;/p&gt;
  
  <entry>
    <title>Telemetry</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/telemetry"/>
+   <link href="http://localhost:3000/docs/telemetry"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/telemetry</id>
+   <id>http://localhost:3000/docs/telemetry</id>
    <content type="html">&lt;h1&gt;Telemetry&lt;/h1&gt;
 
 &lt;p&gt;Telemetry allows you to know what is happening on your aircraft while you are flying it.  Among other things you can receive battery voltages and GPS positions on your transmitter.&lt;/p&gt;
@@ -132,9 +169,9 @@ a serial port should be connected using a diode and a single wire to the &lt;cod
  
  <entry>
    <title>Spektrum Bind</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/spektrum-bind"/>
+   <link href="http://localhost:3000/docs/spektrum-bind"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/spektrum-bind</id>
+   <id>http://localhost:3000/docs/spektrum-bind</id>
    <content type="html">&lt;h1&gt;Spektrum bind support&lt;/h1&gt;
 
 &lt;p&gt;Spektrum bind with hardware bind plug support.&lt;/p&gt;
@@ -246,9 +283,9 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
  
  <entry>
    <title>Sonar</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/sonar"/>
+   <link href="http://localhost:3000/docs/sonar"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/sonar</id>
+   <id>http://localhost:3000/docs/sonar</id>
    <content type="html">&lt;h1&gt;Sonar&lt;/h1&gt;
 
 &lt;p&gt;A sonar sensor can be used to measure altitude for use with BARO and SONAR altitude
@@ -337,9 +374,9 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
  
  <entry>
    <title>Serial</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/serial"/>
+   <link href="http://localhost:3000/docs/serial"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/serial</id>
+   <id>http://localhost:3000/docs/serial</id>
    <content type="html">&lt;h1&gt;Serial&lt;/h1&gt;
 
 &lt;p&gt;Cleanflight has enhanced serial port flexibility but configuration is slightly more complex as a result.&lt;/p&gt;
@@ -463,9 +500,9 @@ e.g. after configuring a port for GPS enable the GPS feature.&lt;/li&gt;
  
  <entry>
    <title>Safety</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/safety"/>
+   <link href="http://localhost:3000/docs/safety"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/safety</id>
+   <id>http://localhost:3000/docs/safety</id>
    <content type="html">&lt;h1&gt;Safety&lt;/h1&gt;
 
 &lt;p&gt;As many can attest, multirotors and RC models in general can be very dangerous, particularly on the test bench. Here are some simple golden rules to save you a trip to the local ER:
@@ -474,14 +511,14 @@ e.g. after configuring a port for GPS enable the GPS feature.&lt;/li&gt;
 
 &lt;h2&gt;Before Installing&lt;/h2&gt;
 
-&lt;p&gt;Please consult the &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/cli/&quot;&gt;Cli&lt;/a&gt;, &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/controls/&quot;&gt;Controls&lt;/a&gt;, &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/failsafe/&quot;&gt;Failsafe&lt;/a&gt; and &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/modes/&quot;&gt;Modes&lt;/a&gt; 
+&lt;p&gt;Please consult the &lt;a href=&quot;http://localhost:3000/docs/cli/&quot;&gt;Cli&lt;/a&gt;, &lt;a href=&quot;http://localhost:3000/docs/controls/&quot;&gt;Controls&lt;/a&gt;, &lt;a href=&quot;http://localhost:3000/docs/failsafe/&quot;&gt;Failsafe&lt;/a&gt; and &lt;a href=&quot;http://localhost:3000/docs/modes/&quot;&gt;Modes&lt;/a&gt; 
 pages for further important information.&lt;/p&gt;
 
 &lt;p&gt;You are highly advised to use the Receiver tab in the CleanFlight Configurator, making sure your Rx channel 
 values are centered at 1500 (1520 for Futaba RC) with minimum &amp;amp; maximums of 1000 and 2000 (respectively) 
 are reached when controls are operated.  Failure to configure these ranges properly can create
 problems, such as inability to arm (because you can&amp;rsquo;t reach the endpoints) or immediate activation of
-&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/failsafe/&quot;&gt;failsafe&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&quot;http://localhost:3000/docs/failsafe/&quot;&gt;failsafe&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;You may have to adjust your channel endpoints and trims/sub-trims on your RC transmitter to achieve the 
 expected range of 1000 to 2000.&lt;/p&gt;
@@ -501,9 +538,9 @@ Enabling this feature will stop the props from spinning when armed.&lt;/p&gt;
  
  <entry>
    <title>Rx</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/rx"/>
+   <link href="http://localhost:3000/docs/rx"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/rx</id>
+   <id>http://localhost:3000/docs/rx</id>
    <content type="html">&lt;h1&gt;Receivers (RX)&lt;/h1&gt;
 
 &lt;p&gt;A receiver is used to receive radio control signals from your transmitter and convert them into signals that the flight controller can understand.&lt;/p&gt;
@@ -704,9 +741,9 @@ For Serial RX enable &lt;code&gt;RX_SERIAL&lt;/code&gt; and set the &lt;code&gt;
  
  <entry>
    <title>Rssi</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/rssi"/>
+   <link href="http://localhost:3000/docs/rssi"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/rssi</id>
+   <id>http://localhost:3000/docs/rssi</id>
    <content type="html">&lt;h1&gt;RSSI&lt;/h1&gt;
 
 &lt;p&gt;RSSI is a measurement of signal strength and is very handy so you know when your aircraft isw going out of range or if it is suffering RF interference.&lt;/p&gt;
@@ -753,9 +790,9 @@ A simple PPM-&amp;gt;RSSI conditioner can easily be made. See the  PPM-RSSI cond
  
  <entry>
    <title>Profiles</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/profiles"/>
+   <link href="http://localhost:3000/docs/profiles"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/profiles</id>
+   <id>http://localhost:3000/docs/profiles</id>
    <content type="html">&lt;h1&gt;Profiles&lt;/h1&gt;
 
 &lt;p&gt;A profile is a set of configuration settings.&lt;/p&gt;
@@ -848,9 +885,9 @@ set tpa_breakpoint = 1500
  
  <entry>
    <title>Pid Tuning</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/pid-tuning"/>
+   <link href="http://localhost:3000/docs/pid-tuning"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/pid-tuning</id>
+   <id>http://localhost:3000/docs/pid-tuning</id>
    <content type="html">&lt;h1&gt;PID tuning&lt;/h1&gt;
 
 &lt;p&gt;Every aspect of flight dynamics is controlled by the selected &amp;ldquo;PID controller&amp;rdquo;. This is an algorithm which is
@@ -1034,9 +1071,9 @@ stick, and no self-leveling will be applied at 75% stick and onwards.&lt;/p&gt;
  
  <entry>
    <title>Pid Internals</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals"/>
+   <link href="http://localhost:3000/docs/development/pid-internals"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/development/pid-internals</id>
+   <id>http://localhost:3000/docs/development/pid-internals</id>
    <content type="html">&lt;h3&gt;IO variables&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;gyroADC/8192*2000 = deg/s&lt;/code&gt;&lt;/p&gt;
@@ -1100,9 +1137,9 @@ D = - (gyroADC[axis]/4 - (&amp;lt;3 loops old&amp;gt;gyroADC[axis]/4)) * dynD8 /
  
  <entry>
    <title>Oneshot</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/oneshot"/>
+   <link href="http://localhost:3000/docs/oneshot"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/oneshot</id>
+   <id>http://localhost:3000/docs/oneshot</id>
    <content type="html">&lt;h1&gt;Oneshot&lt;/h1&gt;
 
 &lt;p&gt;Oneshot allows faster communication between the Flight Controller and the ESCs that are present on your multirotor.&lt;/p&gt;
@@ -1163,9 +1200,9 @@ save
  
  <entry>
    <title>Msp_extensions</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/api/msp_extensions"/>
+   <link href="http://localhost:3000/docs/api/msp_extensions"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/api/msp_extensions</id>
+   <id>http://localhost:3000/docs/api/msp_extensions</id>
    <content type="html">&lt;h1&gt;MSP Extensions&lt;/h1&gt;
 
 &lt;p&gt;Cleanflight includes a number of extensions to the MultiWii Serial Protocol (MSP). This document describes 
@@ -1479,9 +1516,9 @@ modes extension.&lt;/p&gt;
  
  <entry>
    <title>Modes</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/modes"/>
+   <link href="http://localhost:3000/docs/modes"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/modes</id>
+   <id>http://localhost:3000/docs/modes</id>
    <content type="html">&lt;h1&gt;Modes&lt;/h1&gt;
 
 &lt;p&gt;Cleanflight has various modes that can be toggled on or off.  Modes can be enabled/disabled by stick positions,
@@ -1698,9 +1735,9 @@ auxillary receiver channels and other events such as failsafe detection.&lt;/p&g
  
  <entry>
    <title>Mixer</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/mixer"/>
+   <link href="http://localhost:3000/docs/mixer"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/mixer</id>
+   <id>http://localhost:3000/docs/mixer</id>
    <content type="html">&lt;h1&gt;Mixer&lt;/h1&gt;
 
 &lt;p&gt;Cleanflight supports a number of mixing configurations as well as custom mixing.  Mixer configurations determine how the servos and motors work together to control the aircraft.&lt;/p&gt;
@@ -2020,9 +2057,9 @@ auxillary receiver channels and other events such as failsafe detection.&lt;/p&g
  
  <entry>
    <title>Migrating From Baseflight</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/migrating-from-baseflight"/>
+   <link href="http://localhost:3000/docs/migrating-from-baseflight"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/migrating-from-baseflight</id>
+   <id>http://localhost:3000/docs/migrating-from-baseflight</id>
    <content type="html">&lt;h1&gt;Migrating from baseflight&lt;/h1&gt;
 
 &lt;h2&gt;Procedure&lt;/h2&gt;
@@ -2144,9 +2181,9 @@ verify your aux config is correct - aux settings are not backwards compatible.&l
  
  <entry>
    <title>Ledstrip</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/ledstrip"/>
+   <link href="http://localhost:3000/docs/ledstrip"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/ledstrip</id>
+   <id>http://localhost:3000/docs/ledstrip</id>
    <content type="html">&lt;h1&gt;LED Strip&lt;/h1&gt;
 
 &lt;p&gt;Cleanflight supports the use of addressable LED strips.  Addressable LED strips allow each LED in the strip to
@@ -2885,9 +2922,9 @@ This also means that you can make sure that each R,G and B LED in each LED modul
  
  <entry>
    <title>Introduction</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/introduction"/>
+   <link href="http://localhost:3000/docs/introduction"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/introduction</id>
+   <id>http://localhost:3000/docs/introduction</id>
    <content type="html">&lt;h1&gt;Cleanflight&lt;/h1&gt;
 
 &lt;p&gt;Welcome to CleanFlight!&lt;/p&gt;
@@ -2928,9 +2965,9 @@ This also means that you can make sure that each R,G and B LED in each LED modul
  
  <entry>
    <title>Installation</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/installation"/>
+   <link href="http://localhost:3000/docs/installation"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/installation</id>
+   <id>http://localhost:3000/docs/installation</id>
    <content type="html">&lt;h1&gt;Installation&lt;/h1&gt;
 
 &lt;h2&gt;Using the configurator&lt;/h2&gt;
@@ -2969,9 +3006,9 @@ This also means that you can make sure that each R,G and B LED in each LED modul
  
  <entry>
    <title>Inflight Adjustments</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/inflight-adjustments"/>
+   <link href="http://localhost:3000/docs/inflight-adjustments"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/inflight-adjustments</id>
+   <id>http://localhost:3000/docs/inflight-adjustments</id>
    <content type="html">&lt;h1&gt;In-flight Adjustments&lt;/h1&gt;
 
 &lt;p&gt;With Cleanflight it&amp;rsquo;s possible to make adjustments to various settings by using AUX channels from your transmitter while the aircraft is flying.&lt;/p&gt;
@@ -3301,40 +3338,40 @@ When the switch is high, rate profile 2 is selcted.&lt;/p&gt;
 
 &lt;p&gt;The following 5 images show valid configurations.  In all cales the enture usable range for the Range Channel is used.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/adjustments-rate-profile-selection-via-3pos.png&quot; alt=&quot;Configurator example 1&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/adjustments-rate-profile-selection-via-3pos.png&quot; alt=&quot;Configurator example 1&quot;&gt;&lt;/p&gt;
 
 &lt;hr&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/adjustments-pitch-and-roll-rate-adjustment-via-3pos.png&quot; alt=&quot;Configurator example 2&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/adjustments-pitch-and-roll-rate-adjustment-via-3pos.png&quot; alt=&quot;Configurator example 2&quot;&gt;&lt;/p&gt;
 
 &lt;hr&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/adjustments-pid-via-two-3pos.png&quot; alt=&quot;Configurator example 3&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/adjustments-pid-via-two-3pos.png&quot; alt=&quot;Configurator example 3&quot;&gt;&lt;/p&gt;
 
 &lt;hr&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/adjustments-pid-via-6pos-and-3pos.png&quot; alt=&quot;Configurator example 4&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/adjustments-pid-via-6pos-and-3pos.png&quot; alt=&quot;Configurator example 4&quot;&gt;&lt;/p&gt;
 
 &lt;hr&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/adjustments-rates-via-a-2pos-and-3pos.png&quot; alt=&quot;Configurator example 5&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/adjustments-rates-via-a-2pos-and-3pos.png&quot; alt=&quot;Configurator example 5&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;The following examples shows &lt;strong&gt;incorrect&lt;/strong&gt; configuration - the entire usable range for the Range Channel is not used in both cases.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/adjustments-incorrect-config-1.png&quot; alt=&quot;Configurator example 6&quot;&gt;
-&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/adjustments-incorrect-config-2.png&quot; alt=&quot;Configurator example 7&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/adjustments-incorrect-config-1.png&quot; alt=&quot;Configurator example 6&quot;&gt;
+&lt;img src=&quot;http://localhost:3000/assets/images/adjustments-incorrect-config-2.png&quot; alt=&quot;Configurator example 7&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;In the following example, the incorrect configuraton (above) has been corrected by adding a range that makes &amp;lsquo;No changes&amp;rsquo;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/adjustments-incorrect-config-2-corrected.png&quot; alt=&quot;Configurator example 7&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/adjustments-incorrect-config-2-corrected.png&quot; alt=&quot;Configurator example 7&quot;&gt;&lt;/p&gt;
 </content>
  </entry>
  
  <entry>
    <title>Hardware Debugging In Eclipse</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse"/>
+   <link href="http://localhost:3000/docs/development/hardware-debugging-in-eclipse"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse</id>
+   <id>http://localhost:3000/docs/development/hardware-debugging-in-eclipse</id>
    <content type="html">&lt;h1&gt;Hardware&lt;/h1&gt;
 
 &lt;p&gt;Various debugging hardware solutions exist, the Segger J-Link clones are cheap and are known to work on Windows with both the Naze and Olimexino platforms.&lt;/p&gt;
@@ -3492,14 +3529,14 @@ continue
  
  <entry>
    <title>Hardware Debugging</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging"/>
+   <link href="http://localhost:3000/docs/development/hardware-debugging"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging</id>
+   <id>http://localhost:3000/docs/development/hardware-debugging</id>
    <content type="html">&lt;h1&gt;Hardware debugging&lt;/h1&gt;
 
 &lt;p&gt;The code can be compiled with debugging information, you can then upload a debug version to a board via a JLink/St-Link debug adapter and step through the code in your IDE.&lt;/p&gt;
 
-&lt;p&gt;More information about the necessary hardware and setting up the eclipse IDE can be found &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/hardware-debugging-in-eclipse/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;More information about the necessary hardware and setting up the eclipse IDE can be found &lt;a href=&quot;http://localhost:3000/docs/hardware-debugging-in-eclipse/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;A guide for visual studio can be found here:
 &lt;a href=&quot;http://visualgdb.com/tutorials/arm/st-link/&quot;&gt;http://visualgdb.com/tutorials/arm/st-link/&lt;/a&gt;&lt;/p&gt;
@@ -3529,10 +3566,71 @@ continue
  </entry>
  
  <entry>
-   <title>Gps</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/gps"/>
+   <title>Gtune</title>
+   <link href="http://localhost:3000/docs/gtune"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/gps</id>
+   <id>http://localhost:3000/docs/gtune</id>
+   <content type="html">&lt;h1&gt;G-Tune instructions.&lt;/h1&gt;
+
+&lt;p&gt;The algorithm has been originally developed by Mohammad Hefny (&lt;a href=&quot;mailto:mohammad.hefny@gmail.com&quot;&gt;mohammad.hefny@gmail.com&lt;/a&gt;):&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://technicaladventure.blogspot.com/2014/06/zero-pids-tuner-for-multirotors.html&quot;&gt;http://technicaladventure.blogspot.com/2014/06/zero-pids-tuner-for-multirotors.html&lt;/a&gt;
+&lt;a href=&quot;http://diydrones.com/profiles/blogs/zero-pid-tunes-for-multirotors-part-2&quot;&gt;http://diydrones.com/profiles/blogs/zero-pid-tunes-for-multirotors-part-2&lt;/a&gt;
+&lt;a href=&quot;http://www.multiwii.com/forum/viewtopic.php?f=8&amp;amp;t=5190&quot;&gt;http://www.multiwii.com/forum/viewtopic.php?f=8&amp;amp;t=5190&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The G-Tune functionality for Cleanflight is ported from the Harakiri firmware.&lt;/p&gt;
+
+&lt;h2&gt;Safety preamble: &lt;u&gt;Use at your own risk&lt;/u&gt;&lt;/h2&gt;
+
+&lt;p&gt;The implementation you have here is quiet different and just for adjusting the P values of ROLL/PITCH/YAW in Acro mode.
+When flying in Acro mode (yaw tune in other modes possible as well - see below) you can activate G-Tune with an AUX box (switch) while the copter is armed.&lt;/p&gt;
+
+&lt;p&gt;It will start tuning the wanted / possible axes (see below) in a predefined range (see below).&lt;/p&gt;
+
+&lt;p&gt;After activation you will probably notice nothing! That means G-Tune will not start shaking your copter, you will have to do it (or simply fly and let it work).&lt;/p&gt;
+
+&lt;p&gt;The G-Tune is based on the gyro error so it is only active when you give no RC input (that would be an additional error). So if you just roll only pitch and yaw are tuned. If you stop rolling G-Tune will wait ca. 450ms to let the axis settle and then start tuning that axis again. All axes are treated independently.&lt;/p&gt;
+
+&lt;p&gt;The easiest way to tune all axes at once is to do some air-jumps with the copter in Acro (RC centered and G-Tune activated&amp;hellip; of course..).&lt;/p&gt;
+
+&lt;p&gt;You can set a too high P for the axes as default in the GUI, when the copter starts shaking the wobbles will be detected and P tuned down (be careful with the strength setting though - see below).&lt;/p&gt;
+
+&lt;p&gt;Yaw tune is disabled in any copter with less than 4 motors (like tricopters).&lt;/p&gt;
+
+&lt;p&gt;G-Tune in Horizon or Level mode will just affect Yaw axis (if more than 3 motors&amp;hellip;)&lt;/p&gt;
+
+&lt;p&gt;You will see the results in the GUI - the tuning results will only be saved if you enable G-Tune mode while the copter is disarmed and G-Tune was used before when armed. You also can save the configuration in an alternative way (like hitting save button in the GUI, casting an eepromwrite with trimming, acc calibration etc.)&lt;/p&gt;
+
+&lt;p&gt;TPA and G-Tune: It is not tested and will most likely not result into something good. However G-Tune might be able to replace TPA for you.&lt;/p&gt;
+
+&lt;h2&gt;Parameters and their function:&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;gtune_loP_rll        = 10  [0..200] Lower limit of ROLL P during G-Tune.  Note &amp;quot;10&amp;quot; means &amp;quot;1.0&amp;quot; in the GUI.
+gtune_loP_ptch       = 10  [0..200] Lower limit of PITCH P during G-Tune. Note &amp;quot;10&amp;quot; means &amp;quot;1.0&amp;quot; in the GUI.
+gtune_loP_yw         = 10  [0..200] Lower limit of YAW P during G-Tune.   Note &amp;quot;10&amp;quot; means &amp;quot;1.0&amp;quot; in the GUI.
+gtune_hiP_rll        = 100 [0..200] Higher limit of ROLL P during G-Tune. 0 Disables tuning for that axis.  Note &amp;quot;100&amp;quot; means &amp;quot;10.0&amp;quot; in the GUI.
+gtune_hiP_ptch       = 100 [0..200] Higher limit of PITCH P during G-Tune. 0 Disables tuning for that axis. Note &amp;quot;100&amp;quot; means &amp;quot;10.0&amp;quot; in the GUI.
+gtune_hiP_yw         = 100 [0..200] Higher limit of YAW P during G-Tune. 0 Disables tuning for that axis.   Note &amp;quot;100&amp;quot; means &amp;quot;10.0&amp;quot; in the GUI.
+gtune_pwr            = 0   [0..10] Strength of adjustment
+gtune_settle_time    = 450 [200..1000] Settle time in ms
+gtune_average_cycles = 16  [8..128] Number of looptime cycles used for gyro average calcullation
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;So you have lower and higher limits for each P for every axis. The preset range (GUI: 1.0 - 10.0) is quiet broad to represent most setups.&lt;/p&gt;
+
+&lt;p&gt;If you want tighter or more loose ranges change them here. gtune_loP_XXX can be configured lower than &amp;ldquo;10&amp;rdquo; that means a P of &amp;ldquo;1.0&amp;rdquo; in the GUI. So you can have &amp;ldquo;Zero P&amp;rdquo; but you may get sluggish initial control.&lt;/p&gt;
+
+&lt;p&gt;If you want to exclude one axis from the tuning you must set gtune_hiP_XXX to zero. Let&amp;rsquo;s say you want to disable yaw tuning write in CLI &lt;code&gt;set gtune_hiP_yw = 0&lt;/code&gt;. Note: The MultiWii Wiki advises you to trim the yaw axis on your transmitter. If you have done so (yaw not neutral on your RC) yaw tuning will be disabled.&lt;/p&gt;
+
+&lt;p&gt;You can adjust the strength of tuning by using &lt;code&gt;set gtune_pwr = N&lt;/code&gt;. My small copter works fine with 0 and doesn&amp;rsquo;t like a value of &amp;ldquo;3&amp;rdquo;. My big copter likes &amp;ldquo;gtune_pwr = 5&amp;rdquo;. It shifts the tuning to higher values and if too high can diminish the wobble blocking! So start with 0 (default). If you feel your resulting P is always too low for you, increase gtune_pwr. You will see it getting a little shaky if value is too high.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Gps</title>
+   <link href="http://localhost:3000/docs/gps"/>
+   <updated>2015-01-01T00:00:00+01:00</updated>
+   <id>http://localhost:3000/docs/gps</id>
    <content type="html">&lt;h1&gt;GPS&lt;/h1&gt;
 
 &lt;p&gt;GPS features in Cleanflight are experimental.  Please share your findings with the developers.&lt;/p&gt;
@@ -3786,40 +3884,40 @@ Below are some examples of user-tested hardware. &lt;/p&gt;
  
  <entry>
    <title>Getting Started</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/getting-started"/>
+   <link href="http://localhost:3000/docs/getting-started"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/getting-started</id>
+   <id>http://localhost:3000/docs/getting-started</id>
    <content type="html">&lt;h1&gt;Getting Started&lt;/h1&gt;
 
 &lt;p&gt;This is a step-by-step guide that can help a person that has never used Cleanflight before set up a flight controller and the aircraft around it for flight. Basic RC knowledge is required, though. A total beginner should first familiarize themselves with concepts and techniques of RC before using this (e.g. basic controls, soldering, transmitter operation etc). One could use &lt;a href=&quot;http://www.rcgroups.com/forums/index.php&quot;&gt;RCGroups&lt;/a&gt; and/or &lt;a href=&quot;https://www.youtube.com/user/flitetest&quot;&gt;the Youtube show FliteTest&lt;/a&gt; for this.&lt;/p&gt;
 
 &lt;p&gt;DISCLAIMER: This documents is a work in progress. We cannot guarantee the safety or success of your project. At this point the document is only meant to be a helping guide, not an authoritative checklist of everything you should do to be safe and successful. Always exercise common sense, critical thinking and caution.&lt;/p&gt;
 
-&lt;p&gt;Read the &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/introduction/&quot;&gt;Introduction&lt;/a&gt; chapter for an overview of Cleanflight and how the community works.&lt;/p&gt;
+&lt;p&gt;Read the &lt;a href=&quot;http://localhost:3000/docs/introduction/&quot;&gt;Introduction&lt;/a&gt; chapter for an overview of Cleanflight and how the community works.&lt;/p&gt;
 
 &lt;h2&gt;Hardware&lt;/h2&gt;
 
 &lt;p&gt;NOTE: Flight Controllers are typically equipped with accelerometers. These devices are sensitive to shocks. When the device is not yet installed  to an aircraft, it has very little mass by itself. If you drop or bump the controller, a big force will be applied on its accelerometers, which could potentially damage them. Bottom line: Handle the board very carefully until it&amp;rsquo;s installed on an aircraft!&lt;/p&gt;
 
-&lt;p&gt;For an overview of the hardware Cleanflight (hereby CF) can run on, see &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/boards/&quot;&gt;Boards.md&lt;/a&gt;. For information about specific boards, see the board specific documentation.&lt;/p&gt;
+&lt;p&gt;For an overview of the hardware Cleanflight (hereby CF) can run on, see &lt;a href=&quot;http://localhost:3000/docs/boards/&quot;&gt;Boards.md&lt;/a&gt;. For information about specific boards, see the board specific documentation.&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Assuming that you have a flight controller board (hereby FC) in hand, you should first read through the manual that it came with. You can skip the details about software setup, as we&amp;rsquo;ll cover that here.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Decide how you&amp;rsquo;ll connect your receiver by reading the &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/rx/&quot;&gt;receiver&lt;/a&gt; chapter, and how many pins you need on the outputs (to connect ESCs and servos) by reading about &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/mixer/&quot;&gt;Mixers&lt;/a&gt;. &lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;If you&amp;rsquo;re interested in monitoring your flight battery with CF, see &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/battery/&quot;&gt;Battery Monitoring&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;You may want audible feedback from your copter so skim through &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/buzzer/&quot;&gt;Buzzer&lt;/a&gt; and mark the pins that will be used.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Do you want your RC Receiver&amp;rsquo;s RSSI to be sent to the board? &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/rssi/&quot;&gt;The RSSI chapter&lt;/a&gt; explains how. You may or may not need to make an additional connection from your Receiver to the FC.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Would you like to try using a GPS unit to get your aircraft to Loiter or Return-To-Launch? Take a look at the &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/gps/&quot;&gt;GPS&lt;/a&gt; and &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/gps-tested-hardware/&quot;&gt;GPS Tested Hardware&lt;/a&gt; chapters.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;You may also want to read the &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/serial/&quot;&gt;Serial&lt;/a&gt; chapter to determine what extra devices (such as Blackbox, OSD, Telemetry) you may want to use, and how they should be connected.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Decide how you&amp;rsquo;ll connect your receiver by reading the &lt;a href=&quot;http://localhost:3000/docs/rx/&quot;&gt;receiver&lt;/a&gt; chapter, and how many pins you need on the outputs (to connect ESCs and servos) by reading about &lt;a href=&quot;http://localhost:3000/docs/mixer/&quot;&gt;Mixers&lt;/a&gt;. &lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If you&amp;rsquo;re interested in monitoring your flight battery with CF, see &lt;a href=&quot;http://localhost:3000/docs/battery/&quot;&gt;Battery Monitoring&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;You may want audible feedback from your copter so skim through &lt;a href=&quot;http://localhost:3000/docs/buzzer/&quot;&gt;Buzzer&lt;/a&gt; and mark the pins that will be used.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Do you want your RC Receiver&amp;rsquo;s RSSI to be sent to the board? &lt;a href=&quot;http://localhost:3000/docs/rssi/&quot;&gt;The RSSI chapter&lt;/a&gt; explains how. You may or may not need to make an additional connection from your Receiver to the FC.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Would you like to try using a GPS unit to get your aircraft to Loiter or Return-To-Launch? Take a look at the &lt;a href=&quot;http://localhost:3000/docs/gps/&quot;&gt;GPS&lt;/a&gt; and &lt;a href=&quot;http://localhost:3000/docs/gps-tested-hardware/&quot;&gt;GPS Tested Hardware&lt;/a&gt; chapters.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;You may also want to read the &lt;a href=&quot;http://localhost:3000/docs/serial/&quot;&gt;Serial&lt;/a&gt; chapter to determine what extra devices (such as Blackbox, OSD, Telemetry) you may want to use, and how they should be connected.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Now that you know what features you are going to use, and which pins you need, you can go ahead and solder them to your board, if they are not soldered already. Soldering only the pins required for the application may save weight and contribute to a neater looking setup, but if you need to use a new feature later you may have to unmount the board from the craft and solder missing pins, so plan accordingly.  Before soldering your FC please review a how-to-solder tutorial to avoid expensive mistakes, practice soldering on some scrap before soldering your FC.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;If you are going to use &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/oneshot/&quot;&gt;Oneshot125&lt;/a&gt;, you may need to enable that on your ESCs using a jumper or flashing them with the latest stable firmware and enable Damped Light in their settings, if it&amp;rsquo;s supported. Refer to the ESCs&amp;rsquo; documentation or online discussions to determine this.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If you are going to use &lt;a href=&quot;http://localhost:3000/docs/oneshot/&quot;&gt;Oneshot125&lt;/a&gt;, you may need to enable that on your ESCs using a jumper or flashing them with the latest stable firmware and enable Damped Light in their settings, if it&amp;rsquo;s supported. Refer to the ESCs&amp;rsquo; documentation or online discussions to determine this.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2&gt;Software setup&lt;/h2&gt;
 
 &lt;p&gt;Now that your board has pins on it, you are ready to connect it to your PC and flash it with CF. Install the Chromium browser or Google Chrome to your PC, if you don&amp;rsquo;t have it already, add the &lt;a href=&quot;https://chrome.google.com/webstore/detail/cleanflight-configurator/enacoimjcgeinfnnnpajinjgmkahmfgb&quot;&gt;Cleanflight Configurator&lt;/a&gt; to it, and start it.&lt;/p&gt;
 
-&lt;p&gt;Then follow these instructions for &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/installation/&quot;&gt;Installation&lt;/a&gt; of the firmware to the FC.&lt;/p&gt;
+&lt;p&gt;Then follow these instructions for &lt;a href=&quot;http://localhost:3000/docs/installation/&quot;&gt;Installation&lt;/a&gt; of the firmware to the FC.&lt;/p&gt;
 
 &lt;h2&gt;Cleanflight Configuration&lt;/h2&gt;
 
@@ -3827,7 +3925,7 @@ Below are some examples of user-tested hardware. &lt;/p&gt;
 
 &lt;!--- This next paragraph should probably contain less info, as this info already exists in Configuration.md --&gt;
 
-&lt;p&gt;Now, there are two ways to &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/configuration/&quot;&gt;configure CF&lt;/a&gt;; via  the Configurator&amp;rsquo;s tabs (in a &amp;ldquo;graphical&amp;rdquo; way, clicking through and selecting/changing values and tickboxes) and using the &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/cli/&quot;&gt;Command Line Interface (CLI)&lt;/a&gt;. Some settings may only be configurable using the CLI and some settings are best configured using the GUI (particularly the ports settings, which aren&amp;rsquo;t documented for the CLI as they&amp;rsquo;re not human friendly).&lt;/p&gt;
+&lt;p&gt;Now, there are two ways to &lt;a href=&quot;http://localhost:3000/docs/configuration/&quot;&gt;configure CF&lt;/a&gt;; via  the Configurator&amp;rsquo;s tabs (in a &amp;ldquo;graphical&amp;rdquo; way, clicking through and selecting/changing values and tickboxes) and using the &lt;a href=&quot;http://localhost:3000/docs/cli/&quot;&gt;Command Line Interface (CLI)&lt;/a&gt;. Some settings may only be configurable using the CLI and some settings are best configured using the GUI (particularly the ports settings, which aren&amp;rsquo;t documented for the CLI as they&amp;rsquo;re not human friendly).&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;It is now a good time to setup your RC Receiver and Transmitter. Set the Tx so that it outputs at least 4 channels (Aileron, Elevator, Throttle, Rudder) but preferably more. E.g. you can set channels 5 and 6 to be controlled by 3-position switches, to be used later. Maybe set up EXPO on AIL/ELE/RUD, but you should know that it can also be done in CF&amp;rsquo;s software later. If using RSSI over PPM or PWM, it&amp;rsquo;s now time to configure your Rx to output it on a spare channel.&lt;/p&gt;&lt;/li&gt;
@@ -3853,11 +3951,11 @@ Below are some examples of user-tested hardware. &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Check that the channel inputs move according to your Tx inputs. &lt;/li&gt;
 &lt;li&gt;Check that the Channel map is correct along with the RSSI Channel, if you use that.&lt;/li&gt;
-&lt;li&gt;Verify the range of each channel goes from ~1000 to ~2000.  See also &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/controls/&quot;&gt;controls&lt;/a&gt;. and &lt;code&gt;rx_min_usec&lt;/code&gt; and &lt;code&gt;rx_max_usec&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Verify the range of each channel goes from ~1000 to ~2000.  See also &lt;a href=&quot;http://localhost:3000/docs/controls/&quot;&gt;controls&lt;/a&gt;. and &lt;code&gt;rx_min_usec&lt;/code&gt; and &lt;code&gt;rx_max_usec&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;You can also set EXPO here instead of your Tx. &lt;/li&gt;
 &lt;li&gt;Click Save!&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Modes tab: Setup the desired modes. See the &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/modes/&quot;&gt;modes&lt;/a&gt; chapter for what each mode does, but for the beginning you mainly need HORIZON, if any.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Modes tab: Setup the desired modes. See the &lt;a href=&quot;http://localhost:3000/docs/modes/&quot;&gt;modes&lt;/a&gt; chapter for what each mode does, but for the beginning you mainly need HORIZON, if any.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Before finishing this section, you should calibrate the ESCs, install the FC to the frame, and connect the RSSI cable, buzzer and battery if you have chosen to use those.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -3866,8 +3964,8 @@ Below are some examples of user-tested hardware. &lt;/p&gt;
 &lt;p&gt;It&amp;rsquo;s important that you have configured CF properly, so that your aircraft does not fly away, or even worse fly into property and people! This is an important step that you should NOT postpone until after your maiden flight. Please do this now, before you head off to the flying field.&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;First, learn how to arm your FC, and about other &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/controls/&quot;&gt;controls&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Next up, setup &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/failsafe/&quot;&gt;Failsafe&lt;/a&gt;. Take your time, do it properly.&lt;/li&gt;
+&lt;li&gt;First, learn how to arm your FC, and about other &lt;a href=&quot;http://localhost:3000/docs/controls/&quot;&gt;controls&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Next up, setup &lt;a href=&quot;http://localhost:3000/docs/failsafe/&quot;&gt;Failsafe&lt;/a&gt;. Take your time, do it properly.&lt;/li&gt;
 &lt;li&gt;Now, on the bench, without props, test that failsafe works properly, according to the above doc.&lt;/li&gt;
 &lt;li&gt;Additionally, test the effect of AIL/ELE input of your Tx. Is the aircraft responding properly? Do the same for RUD input.&lt;/li&gt;
 &lt;li&gt;Test the direction of AIL/ELE auto correction. Raise throttle at 30% (no blades!); when you tilt the aircraft, do the motors try to compensate momentarily? This should simulate random wind forces that the FC should counteract&lt;/li&gt;
@@ -3885,26 +3983,26 @@ Below are some examples of user-tested hardware. &lt;/p&gt;
 &lt;p&gt;Some advanced configurations and features are documented in the following pages, but have not been touched-upon earlier:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/profiles/&quot;&gt;Profiles&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/pid-tuning/&quot;&gt;PID tuning&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/inflight-adjustments/&quot;&gt;In-flight Adjustments&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/autotune/&quot;&gt;Autotune&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/blackbox/&quot;&gt;Blackbox logging&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/sonar/&quot;&gt;Using a Sonar&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/spektrum-bind/&quot;&gt;Spektrum Bind&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/telemetry/&quot;&gt;Telemetry&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/display/&quot;&gt;Using a Display&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/ledstrip/&quot;&gt;Using a LED strip&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/migrating-from-baseflight/&quot;&gt;Migrating from baseflight&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://localhost:3000/docs/profiles/&quot;&gt;Profiles&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://localhost:3000/docs/pid-tuning/&quot;&gt;PID tuning&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://localhost:3000/docs/inflight-adjustments/&quot;&gt;In-flight Adjustments&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://localhost:3000/docs/autotune/&quot;&gt;Autotune&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://localhost:3000/docs/blackbox/&quot;&gt;Blackbox logging&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://localhost:3000/docs/sonar/&quot;&gt;Using a Sonar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://localhost:3000/docs/spektrum-bind/&quot;&gt;Spektrum Bind&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://localhost:3000/docs/telemetry/&quot;&gt;Telemetry&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://localhost:3000/docs/display/&quot;&gt;Using a Display&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://localhost:3000/docs/ledstrip/&quot;&gt;Using a LED strip&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://localhost:3000/docs/migrating-from-baseflight/&quot;&gt;Migrating from baseflight&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
  </entry>
  
  <entry>
    <title>Failsafe</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/failsafe"/>
+   <link href="http://localhost:3000/docs/failsafe"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/failsafe</id>
+   <id>http://localhost:3000/docs/failsafe</id>
    <content type="html">&lt;h1&gt;Failsafe&lt;/h1&gt;
 
 &lt;p&gt;There are two types of failsafe:&lt;/p&gt;
@@ -4052,9 +4150,9 @@ The idea is that you set throttle and other controls so the aircraft descends in
  
  <entry>
    <title>Display</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/display"/>
+   <link href="http://localhost:3000/docs/display"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/display</id>
+   <id>http://localhost:3000/docs/display</id>
    <content type="html">&lt;h1&gt;Display&lt;/h1&gt;
 
 &lt;p&gt;Cleanflight supports displays to provide information to you about your aircraft and cleanflight state.&lt;/p&gt;
@@ -4115,8 +4213,8 @@ or other display corruption.&lt;/p&gt;
 
 &lt;p&gt;More can be read about this procedure here: &lt;a href=&quot;http://www.multiwii.com/forum/viewtopic.php?f=6&amp;amp;t=2705&amp;amp;start=10&quot;&gt;http://www.multiwii.com/forum/viewtopic.php?f=6&amp;amp;t=2705&amp;amp;start=10&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/Crius%20CO-16%20OLED%20diagram.png&quot; alt=&quot;Crius CO-16 Diagram&quot;&gt;
-&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/Crius%20CO-16%20OLED%20modifications.jpg&quot; alt=&quot;Crius CO-16 Modification&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/Crius%20CO-16%20OLED%20diagram.png&quot; alt=&quot;Crius CO-16 Diagram&quot;&gt;
+&lt;img src=&quot;http://localhost:3000/assets/images/Crius%20CO-16%20OLED%20modifications.jpg&quot; alt=&quot;Crius CO-16 Modification&quot;&gt;&lt;/p&gt;
 
 &lt;h2&gt;Connections&lt;/h2&gt;
 
@@ -4128,9 +4226,9 @@ or other display corruption.&lt;/p&gt;
  
  <entry>
    <title>Development</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/development/development"/>
+   <link href="http://localhost:3000/docs/development/development"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/development/development</id>
+   <id>http://localhost:3000/docs/development/development</id>
    <content type="html">&lt;h1&gt;Development&lt;/h1&gt;
 
 &lt;p&gt;This document is primarily for developers only.&lt;/p&gt;
@@ -4241,9 +4339,9 @@ make
  
  <entry>
    <title>Controls</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/controls"/>
+   <link href="http://localhost:3000/docs/controls"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/controls</id>
+   <id>http://localhost:3000/docs/controls</id>
    <content type="html">&lt;h1&gt;Controls&lt;/h1&gt;
 
 &lt;h2&gt;Arming&lt;/h2&gt;
@@ -4446,9 +4544,9 @@ default). If you are having issues with your tail rotor contacting the ground du
  
  <entry>
    <title>Configuration Storage</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage"/>
+   <link href="http://localhost:3000/docs/development/configuration-storage"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/development/configuration-storage</id>
+   <id>http://localhost:3000/docs/development/configuration-storage</id>
    <content type="html">&lt;h1&gt;Configuration&lt;/h1&gt;
 
 &lt;p&gt;The configuration in cleanflight is stored at the end of the flash ram, currently it uses 2KB of flash.&lt;/p&gt;
@@ -4529,9 +4627,9 @@ J-Link&amp;gt;q
  
  <entry>
    <title>Configuration</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/configuration"/>
+   <link href="http://localhost:3000/docs/configuration"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/configuration</id>
+   <id>http://localhost:3000/docs/configuration</id>
    <content type="html">&lt;h1&gt;Configuration&lt;/h1&gt;
 
 &lt;p&gt;Cleanflight is configured primarily using the Cleanflight Configurator GUI.&lt;/p&gt;
@@ -4548,7 +4646,7 @@ some features and settings.&lt;/p&gt;
 
 &lt;h2&gt;GUI&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/cleanflight-gui.png&quot; alt=&quot;Cleanflight Gui&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/cleanflight-gui.png&quot; alt=&quot;Cleanflight Gui&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;The GUI tool is the preferred way of configuration.  The GUI tool also includes a terminal which
 can be used to interact with the CLI.&lt;/p&gt;
@@ -4570,9 +4668,9 @@ See the README file that comes with the configurator for installation instructio
  
  <entry>
    <title>Cli</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/cli"/>
+   <link href="http://localhost:3000/docs/cli"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/cli</id>
+   <id>http://localhost:3000/docs/cli</id>
    <content type="html">&lt;h1&gt;Command Line Interface (CLI)&lt;/h1&gt;
 
 &lt;p&gt;Cleanflight has a command line interface (CLI) that can be used to change settings and configure the FC.&lt;/p&gt;
@@ -6096,9 +6194,9 @@ dump rates
  
  <entry>
    <title>Buzzer</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/buzzer"/>
+   <link href="http://localhost:3000/docs/buzzer"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/buzzer</id>
+   <id>http://localhost:3000/docs/buzzer</id>
    <content type="html">&lt;h1&gt;Buzzer&lt;/h1&gt;
 
 &lt;p&gt;Cleanflight supports a buzzer which is used for the following purposes:&lt;/p&gt;
@@ -6169,9 +6267,9 @@ Connecting to PA15 requires careful soldering.&lt;/p&gt;
  
  <entry>
    <title>Building Manual</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/development/building-manual"/>
+   <link href="http://localhost:3000/docs/development/building-manual"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/development/building-manual</id>
+   <id>http://localhost:3000/docs/development/building-manual</id>
    <content type="html">&lt;h1&gt;Building Manual.&lt;/h1&gt;
 
 &lt;p&gt;The manual PDF file is generated by concatenating relevant markdown files and by transforming the result using Gimli to obtain the final PDF file. This steps are handled automatically by the &lt;code&gt;build_manual.sh&lt;/code&gt; script located in the root of the repository next to the Makefile.&lt;/p&gt;
@@ -6199,16 +6297,16 @@ doc_files=( &amp;#39;Configuration.md&amp;#39;
  
  <entry>
    <title>Building In Windows</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/development/building-in-windows"/>
+   <link href="http://localhost:3000/docs/development/building-in-windows"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/development/building-in-windows</id>
+   <id>http://localhost:3000/docs/development/building-in-windows</id>
    <content type="html">&lt;h1&gt;Building in windows&lt;/h1&gt;
 
 &lt;h2&gt;Setup Cygwin&lt;/h2&gt;
 
 &lt;p&gt;download the Setup*.exe from &lt;a href=&quot;https://www.cygwin.com/&quot;&gt;https://www.cygwin.com/&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/001.cygwin_dl.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/001.cygwin_dl.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;Execute the download Setup and step through the installation  wizard (no need to customize the settings here). Stop at the  &amp;ldquo;Select Packages&amp;rdquo; Screen and select the following Packages
 for Installation:&lt;/p&gt;
@@ -6223,19 +6321,19 @@ for Installation:&lt;/p&gt;
 &lt;li&gt;Shells/mintty (should be already selected)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/002.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/002.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/003.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/003.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/004.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/004.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/005.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/005.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/006.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/006.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;Continue with the Installation and accept all autodetected dependencies.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/007.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/007.cygwin_setup.png&quot; alt=&quot;Cygwin Installation&quot;&gt;&lt;/p&gt;
 
 &lt;h2&gt;Setup GNU ARM Toolchain&lt;/h2&gt;
 
@@ -6245,13 +6343,13 @@ for Installation:&lt;/p&gt;
 
 &lt;p&gt;Extract the contents of this archive to any folder of your choice, for instance &lt;code&gt;C:\dev\gcc-arm-none-eabi-4_8-2014q2&lt;/code&gt;. &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/008.toolchain.png&quot; alt=&quot;GNU ARM Toolchain Setup&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/008.toolchain.png&quot; alt=&quot;GNU ARM Toolchain Setup&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;add the &amp;ldquo;bin&amp;rdquo; subdirectory to the PATH Windows environment variable: &lt;code&gt;%PATH%;C:\dev\gcc-arm-none-eabi-4_8-2014q2\bin&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/009.toolchain_path.png&quot; alt=&quot;GNU ARM Toolchain Setup&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/009.toolchain_path.png&quot; alt=&quot;GNU ARM Toolchain Setup&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/010.toolchain_path.png&quot; alt=&quot;GNU ARM Toolchain Setup&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/010.toolchain_path.png&quot; alt=&quot;GNU ARM Toolchain Setup&quot;&gt;&lt;/p&gt;
 
 &lt;h2&gt;Checkout and compile Cleanflight&lt;/h2&gt;
 
@@ -6261,15 +6359,15 @@ for Installation:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;cd /cygdrive/c/dev
 git clone https://github.com/cleanflight/cleanflight.git
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/011.git_checkout.png&quot; alt=&quot;GIT Checkout&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/011.git_checkout.png&quot; alt=&quot;GIT Checkout&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/012.git_checkout.png&quot; alt=&quot;GIT Checkout&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/012.git_checkout.png&quot; alt=&quot;GIT Checkout&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;To compile your Cleanflight binaries, enter the cleanflight directory and build the project using the make command. You can append TARGET=[HARDWARE] if you want to build anything other than the default NAZE target:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;cd cleanflight
 make TARGET=NAZE
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/013.compile.png&quot; alt=&quot;GIT Checkout&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/013.compile.png&quot; alt=&quot;GIT Checkout&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;within few moments you should have your binary ready:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;(...)
@@ -6293,9 +6391,9 @@ make
  
  <entry>
    <title>Building In Ubuntu</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu"/>
+   <link href="http://localhost:3000/docs/development/building-in-ubuntu"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu</id>
+   <id>http://localhost:3000/docs/development/building-in-ubuntu</id>
    <content type="html">&lt;h1&gt;Building in Ubuntu&lt;/h1&gt;
 
 &lt;p&gt;Building for Ubuntu platform is remarkably easy. The only trick to understand is that the Ubuntu toolchain,
@@ -6387,9 +6485,9 @@ make
  
  <entry>
    <title>Building In Mac Os X</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x"/>
+   <link href="http://localhost:3000/docs/development/building-in-mac-os-x"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x</id>
+   <id>http://localhost:3000/docs/development/building-in-mac-os-x</id>
    <content type="html">&lt;h1&gt;Building in Mac OS X&lt;/h1&gt;
 
 &lt;p&gt;Building in Mac OS X can be accomplished in just a few steps:&lt;/p&gt;
@@ -6410,7 +6508,7 @@ already have the required development tools installed:&lt;/p&gt;
 &lt;p&gt;If it isn&amp;rsquo;t installed yet, you might get a popup like this. If so, click the &amp;ldquo;install&amp;rdquo; button to install the commandline
 developer tools:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/mac-prompt-tools-install.png&quot; alt=&quot;Prompt to install developer tools&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/mac-prompt-tools-install.png&quot; alt=&quot;Prompt to install developer tools&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;If you just get an error like this instead of a helpful popup prompt:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;-bash: make: command not found
@@ -6484,9 +6582,9 @@ make TARGET=CC3D OPBL=yes
  
  <entry>
    <title>Building In Eclipse</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse"/>
+   <link href="http://localhost:3000/docs/development/building-in-eclipse"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse</id>
+   <id>http://localhost:3000/docs/development/building-in-eclipse</id>
    <content type="html">&lt;h1&gt;Short Version&lt;/h1&gt;
 
 &lt;p&gt;Install the latest Eclipse Standard/SDK and install the &lt;strong&gt;C/C++ developments Tools&lt;/strong&gt; plugins
@@ -6569,9 +6667,9 @@ make TARGET=CC3D OPBL=yes
  
  <entry>
    <title>Boards</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/boards"/>
+   <link href="http://localhost:3000/docs/boards"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/boards</id>
+   <id>http://localhost:3000/docs/boards</id>
    <content type="html">&lt;h1&gt;Flight controller hardware&lt;/h1&gt;
 
 &lt;p&gt;The current focus is geared towards flight controller hardware that use the STM32F103 and STM32F303 series processors.  The core logic is separated from the hardware drivers, porting to other processors is possible.&lt;/p&gt;
@@ -6614,10 +6712,397 @@ make TARGET=CC3D OPBL=yes
  </entry>
  
  <entry>
-   <title>Board   Sparky</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/board---sparky"/>
+   <title>Board   Spracingf3</title>
+   <link href="http://localhost:3000/docs/board---spracingf3"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/board---sparky</id>
+   <id>http://localhost:3000/docs/board---spracingf3</id>
+   <content type="html">&lt;h1&gt;Board - SPRacingF3&lt;/h1&gt;
+
+&lt;p&gt;The Seriously Pro Racing MOF3 board (SPRacingF3) is the first board designed specifically for Cleanflight.&lt;/p&gt;
+
+&lt;p&gt;Full details available on the website, here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://seriouslypro.com/spracingf3&quot;&gt;http://seriouslypro.com/spracingf3&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;Hardware Features&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;No compromise I/O. Use all the features all the time; e.g. Connect your OSD + SmartPort + SBus + GPS + LED Strip + Battery Monitoring + Sonar + 8 motors - all at the same time!&lt;/li&gt;
+&lt;li&gt;On-board high-capacity black box flight log recorder - optimize your tuning and see the results of your setup without guesswork. (Acro and Deluxe)&lt;/li&gt;
+&lt;li&gt;Next-generation STM32 F3 processor with hardware floating point unit for efficient flight calculations and faster ARM-Cortex M4 core.&lt;/li&gt;
+&lt;li&gt;Stackable design - perfect for integrating with OSDs and power distribution boards.&lt;/li&gt;
+&lt;li&gt;16 PWM I/O lines for ESCs, Servos and legacy receivers. 8 available on standard pin headers. 8 via side mounted connectors.&lt;/li&gt;
+&lt;li&gt;Supports SBus, SumH, SumD, Spektrum1024/2048, XBus, PPM, PWM receivers. No external inverters required (built-in).&lt;/li&gt;
+&lt;li&gt;Dedicated output for programmable LEDs - great for orientation, racing and night flying.&lt;/li&gt;
+&lt;li&gt;Dedicated I2C port for connection of OLED display without needing flight battery.&lt;/li&gt;
+&lt;li&gt;Battery monitoring ports for voltage and current.&lt;/li&gt;
+&lt;li&gt;Buzzer port for audible warnings and notifications.&lt;/li&gt;
+&lt;li&gt;Solder pads in addition to connectors for Sonar, PPM, RSSI, Current, GPIO, LED Strip, 3.3v, &lt;/li&gt;
+&lt;li&gt;Developer friendly debugging port (SWD) and boot mode selection, unbrickable bootloader.&lt;/li&gt;
+&lt;li&gt;Symmetrical design for a super tidy wiring.&lt;/li&gt;
+&lt;li&gt;Wire up using using pin headers, JST-SH sockets or solder pads. Use either right-angled or straight pin-headers.&lt;/li&gt;
+&lt;li&gt;Barometer mounted on the bottom of the board for easy wind isolation.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Serial Ports&lt;/h2&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;th&gt;Identifier&lt;/th&gt;
+&lt;th&gt;RX&lt;/th&gt;
+&lt;th&gt;TX&lt;/th&gt;
+&lt;th&gt;5v Tolerant&lt;/th&gt;
+&lt;th&gt;Notes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;USART1&lt;/td&gt;
+&lt;td&gt;PA10&lt;/td&gt;
+&lt;td&gt;PA9&lt;/td&gt;
+&lt;td&gt;YES&lt;/td&gt;
+&lt;td&gt;Internally connected to USB port via CP2102 IC.  Also available on a USART1 JST connector and on through hole pins.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;USART2&lt;/td&gt;
+&lt;td&gt;PA15&lt;/td&gt;
+&lt;td&gt;PA14&lt;/td&gt;
+&lt;td&gt;YES&lt;/td&gt;
+&lt;td&gt;Available on USART2 JST port only.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;USART3&lt;/td&gt;
+&lt;td&gt;PB11 / IO2_3&lt;/td&gt;
+&lt;td&gt;PB10 / IO2_4&lt;/td&gt;
+&lt;td&gt;NO&lt;/td&gt;
+&lt;td&gt;Available on IO_2, USART3 JST port and through hole pins.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You cannot use SWD and USART2 at the same time.&lt;/li&gt;
+&lt;li&gt;You may encounter flashing problems if you have something connected to the USART1 RX/TX pins.   Power other devices of and/or disconnect them.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Pinouts&lt;/h2&gt;
+
+&lt;p&gt;Full pinout details are available in the manual, here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://seriouslypro.com/spracingf3#manual&quot;&gt;http://seriouslypro.com/spracingf3#manual&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;IO_1&lt;/h3&gt;
+
+&lt;p&gt;The 8 pin IO_1 connector has the following pinouts when used in RX_PARALLEL_PWM mode.&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Pin&lt;/th&gt;
+&lt;th&gt;Function&lt;/th&gt;
+&lt;th&gt;Notes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;Ground&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;VCC_IN&lt;/td&gt;
+&lt;td&gt;Voltage as-supplied by BEC.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;RC_CH1&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;RC_CH2&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;RC_CH5&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;RC_CH6&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;LED_STRIP&lt;/td&gt;
+&lt;td&gt;Enable &lt;code&gt;feature LED_STRIP&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;VCC&lt;/td&gt;
+&lt;td&gt;3.3v output for LOW CURRENT application only&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;When RX_PPM/RX_SERIAL is used the IO_1 pinout is as follows.&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Pin&lt;/th&gt;
+&lt;th&gt;Function&lt;/th&gt;
+&lt;th&gt;Notes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;Ground&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;VCC_IN&lt;/td&gt;
+&lt;td&gt;Voltage as-supplied by BEC.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;RX_PPM&lt;/td&gt;
+&lt;td&gt;Enable &lt;code&gt;feature RX_PPM&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;GPIO&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;SoftSerial1_RX&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;SoftSerial1_TX&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;LED_STRIP&lt;/td&gt;
+&lt;td&gt;Enable &lt;code&gt;feature LED_STRIP&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;VCC&lt;/td&gt;
+&lt;td&gt;3.3v output for LOW CURRENT application only&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h3&gt;IO_2&lt;/h3&gt;
+
+&lt;p&gt;The 8 pin IO_2 connector has the following pinouts when used in RX_PARALLEL_PWM mode.&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Pin&lt;/th&gt;
+&lt;th&gt;Function&lt;/th&gt;
+&lt;th&gt;Notes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;Ground&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;VCC_IN&lt;/td&gt;
+&lt;td&gt;Voltage as-supplied by BEC.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;RC_CH3&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;RC_CH4&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;RC_CH7/SONAR_TRIG&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;RC_CH8/SONAR_ECHO&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;ADC_1&lt;/td&gt;
+&lt;td&gt;Current Sensor&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;ADC_2&lt;/td&gt;
+&lt;td&gt;RSSI&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;When RX_PPM/RX_SERIAL is used the IO_2 pinout is as follows.&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Pin&lt;/th&gt;
+&lt;th&gt;Function&lt;/th&gt;
+&lt;th&gt;Notes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;Ground&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;VCC_IN&lt;/td&gt;
+&lt;td&gt;Voltage as-supplied by BEC.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;RX_SERIAL&lt;/td&gt;
+&lt;td&gt;UART3 RX&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;UART3_TX&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;SONAR_TRIG/SoftSerial2_RX&lt;/td&gt;
+&lt;td&gt;Enable &lt;code&gt;feature SONAR/SOFTSERIAL&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;SONAR_ECHO/SoftSerial2_TX&lt;/td&gt;
+&lt;td&gt;Enable &lt;code&gt;feature SONAR/SOFTSERIAL&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;ADC_1&lt;/td&gt;
+&lt;td&gt;Current Sensor&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;ADC_2&lt;/td&gt;
+&lt;td&gt;RSSI&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h3&gt;UART1/2/3&lt;/h3&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Pin&lt;/th&gt;
+&lt;th&gt;Function&lt;/th&gt;
+&lt;th&gt;Notes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;Ground&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;VCC_IN&lt;/td&gt;
+&lt;td&gt;Voltage as-supplied by BEC.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;TXD&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;RXD&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h3&gt;I2C&lt;/h3&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Pin&lt;/th&gt;
+&lt;th&gt;Function&lt;/th&gt;
+&lt;th&gt;Notes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;Ground&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;5.0v&lt;/td&gt;
+&lt;td&gt;Voltage as-supplied by BEC OR USB, always on&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;SCL&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;SDA&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h3&gt;SWD&lt;/h3&gt;
+
+&lt;p&gt;The port cannot be used at the same time as UART2.&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Pin&lt;/th&gt;
+&lt;th&gt;Function&lt;/th&gt;
+&lt;th&gt;Notes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;Ground&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;NRST&lt;/td&gt;
+&lt;td&gt;Voltage as-supplied by BEC OR USB, always on&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;SWDIO&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;SWDCLK&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Board   Sparky</title>
+   <link href="http://localhost:3000/docs/board---sparky"/>
+   <updated>2015-01-01T00:00:00+01:00</updated>
+   <id>http://localhost:3000/docs/board---sparky</id>
    <content type="html">&lt;h1&gt;Board - Sparky&lt;/h1&gt;
 
 &lt;p&gt;The Sparky is a very low cost and very powerful board.&lt;/p&gt;
@@ -6861,10 +7346,32 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
  </entry>
  
  <entry>
-   <title>Board   Paris Air Hero 32</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/board---paris-air-hero-32"/>
+   <title>Board   Rmdo</title>
+   <link href="http://localhost:3000/docs/board---rmdo"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/board---paris-air-hero-32</id>
+   <id>http://localhost:3000/docs/board---rmdo</id>
+   <content type="html">&lt;h1&gt;Board - RMDO&lt;/h1&gt;
+
+&lt;p&gt;The DoDo board is a clone of the SPRacingF3 board in terms of CPU pin mappings.  See the SPRacingF3 documentation.&lt;/p&gt;
+
+&lt;p&gt;Hardware differences compared to SPRacingF3 are as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Rev 1 and Rev 2: the CPU is the cheaper version of the F3 with only 128KB FLASH. Rev 3: the CPU is a F3 version with 256KB FLASH.&lt;/li&gt;
+&lt;li&gt;The external flash rom is the same size as found on the Naze32 (2MBit)&lt;/li&gt;
+&lt;li&gt;The barometer is the cheaper BMP280.&lt;/li&gt;
+&lt;li&gt;It does not have any compass sensor.&lt;/li&gt;
+&lt;li&gt;Onboard BEC.&lt;/li&gt;
+&lt;li&gt;Different physical connectors/pins/pads/ports.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Board   Paris Air Hero 32</title>
+   <link href="http://localhost:3000/docs/board---paris-air-hero-32"/>
+   <updated>2015-01-01T00:00:00+01:00</updated>
+   <id>http://localhost:3000/docs/board---paris-air-hero-32</id>
    <content type="html">&lt;h1&gt;Board - Paris Air Hero 32 / Acro Naze 32 Mini&lt;/h1&gt;
 
 &lt;p&gt;This board uses the same firmware as the Naze32 board.&lt;/p&gt;
@@ -7000,9 +7507,9 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
  
  <entry>
    <title>Board   Olimexino</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/board---olimexino"/>
+   <link href="http://localhost:3000/docs/board---olimexino"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/board---olimexino</id>
+   <id>http://localhost:3000/docs/board---olimexino</id>
    <content type="html">&lt;h1&gt;Board - Olimexino&lt;/h1&gt;
 
 &lt;p&gt;The Olimexino is a cheap and widely available development board&lt;/p&gt;
@@ -7177,9 +7684,9 @@ serial port depending on the placement of the Derial IO selection jumpers.&lt;/p
  
  <entry>
    <title>Board   Naze32</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/board---naze32"/>
+   <link href="http://localhost:3000/docs/board---naze32"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/board---naze32</id>
+   <id>http://localhost:3000/docs/board---naze32</id>
    <content type="html">&lt;h1&gt;Board - Naze32&lt;/h1&gt;
 
 &lt;p&gt;The Naze32 target supports all Naze hardware revisions.  Revision 4 and 5 are used and
@@ -7373,10 +7880,248 @@ if found please report via the &lt;a href=&quot;https://github.com/cleanflight/c
  </entry>
  
  <entry>
-   <title>Board   Cjmcu</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/board---cjmcu"/>
+   <title>Board   Motolab</title>
+   <link href="http://localhost:3000/docs/board---motolab"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/board---cjmcu</id>
+   <id>http://localhost:3000/docs/board---motolab</id>
+   <content type="html">&lt;h1&gt;Board - MotoLab&lt;/h1&gt;
+
+&lt;p&gt;The MOTOLAB build target supports the STM32F3-based boards provided by MotoLab.&lt;/p&gt;
+
+&lt;p&gt;At present this includes the TornadoFC and MotoF3. The TornadoFC is described here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.rcgroups.com/forums/showthread.php?t=2473157&quot;&gt;http://www.rcgroups.com/forums/showthread.php?t=2473157&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The MotoF3 documentation will be provided when the board is available.&lt;/p&gt;
+
+&lt;p&gt;Both boards use the STM32F303 microcontroller and have the following features:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;256K bytes of flash memory&lt;/li&gt;
+&lt;li&gt;Floating point math coprocessor&lt;/li&gt;
+&lt;li&gt;Three hardware serial port UARTs&lt;/li&gt;
+&lt;li&gt;USB using the built-in USB phy that does not interfere with any hadware UART&lt;/li&gt;
+&lt;li&gt;Stable voltage regulation&lt;/li&gt;
+&lt;li&gt;High-current buzzer/LED output&lt;/li&gt;
+&lt;li&gt;Serial LED interface&lt;/li&gt;
+&lt;li&gt;Low-pass filtered VBAT input with 1/10 divider ratio&lt;/li&gt;
+&lt;li&gt;8 short-circuit protected PWM outputs, with 5V buffering on the TornadoFC&lt;/li&gt;
+&lt;li&gt;On-board 6S-compatible switching regulator (MotoF3)&lt;/li&gt;
+&lt;li&gt;Direct mounting option for a Pololu switching regulator for up to 6S lipo operation (TornadoFC)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;Flashing&lt;/h1&gt;
+
+&lt;p&gt;The MotoLab boards use the internal DFU USB interface on the STM32F3 microcontroller which is not compatible with the Cleanflight configurator flashing tool.&lt;/p&gt;
+
+&lt;p&gt;Instead, on Windows you can use the Impulse Flashing Utility from ImpulseRC, available here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.warpquad.com/ImpulseFlash.zip&quot;&gt;http://www.warpquad.com/ImpulseFlash.zip&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Download and unzip the program. Start the program, plug in the USB on the target board, and drag and drop the intended binary file onto the program icon. The program will put the STM32F3 into bootloader mode automatically and load the binary file to the flash.&lt;/p&gt;
+
+&lt;p&gt;For programming on Linux, use the dfu-util program which is installed by default on Ubuntu-based systems. Connect the boot pins on the board and plug in the USB.&lt;/p&gt;
+
+&lt;p&gt;Verify that the system identifies the DFU device with this command:
+&lt;code&gt;
+dfu-util -l
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The output should list a &amp;ldquo;Found DFU&amp;rdquo; device, something like this:
+&amp;ldquo;`
+dfu-util 0.5&lt;/p&gt;
+
+&lt;p&gt;&amp;copy; 2005-2008 by Weston Schmidt, Harald Welte and OpenMoko Inc.
+&amp;copy; 2010-2011 Tormod Volden (DfuSe support)
+This program is Free Software and has ABSOLUTELY NO WARRANTY&lt;/p&gt;
+
+&lt;p&gt;dfu-util does currently only support DFU version 1.0&lt;/p&gt;
+
+&lt;p&gt;Found DFU: [0483:df11] devnum=0, cfg=1, intf=0, alt=0, name=&amp;rdquo;@Internal Flash  /0x08000000/128*0002Kg&amp;quot;
+Found DFU: [0483:df11] devnum=0, cfg=1, intf=0, alt=1, name=&amp;ldquo;@Option Bytes  /0x1FFFF800/01*016 e&amp;rdquo;
+&amp;ldquo;`&lt;/p&gt;
+
+&lt;p&gt;Use this command to load the binary file to the flash memory on the board:
+&lt;code&gt;
+dfu-util --alt 0 -s 0x08000000 -D &amp;lt;binfile&amp;gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The output should look something like this:
+&amp;rdquo;`
+dfu-util 0.5&lt;/p&gt;
+
+&lt;p&gt;&amp;copy; 2005-2008 by Weston Schmidt, Harald Welte and OpenMoko Inc.
+&amp;copy; 2010-2011 Tormod Volden (DfuSe support)
+This program is Free Software and has ABSOLUTELY NO WARRANTY&lt;/p&gt;
+
+&lt;p&gt;dfu-util does currently only support DFU version 1.0&lt;/p&gt;
+
+&lt;p&gt;Opening DFU USB device&amp;hellip; ID 0483:df11
+Run-time device DFU version 011a
+Found DFU: [0483:df11] devnum=0, cfg=1, intf=0, alt=0, name=&amp;ldquo;@Internal Flash  /0x08000000/128*0002Kg&amp;rdquo;
+Claiming USB DFU Interface&amp;hellip;
+Setting Alternate Setting #0 &amp;hellip;
+Determining device status: state = dfuDNLOAD-IDLE, status = 0
+aborting previous incomplete transfer
+Determining device status: state = dfuIDLE, status = 0
+dfuIDLE, continuing
+DFU mode device DFU version 011a
+Device returned transfer size 2048
+No valid DFU suffix signature
+Warning: File has no DFU suffix
+DfuSe interface name: &amp;ldquo;Internal Flash  &amp;rdquo;
+&amp;ldquo;`&lt;/p&gt;
+
+&lt;p&gt;A binary file is required for the Impulse flashing Utility and dfu-util. The binary file can be built as follows:
+&lt;code&gt;
+make TARGET=MOTOLAB clean
+make TARGET=MOTOLAB binary
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;To completely erase the flash, create an all-zero file with this command on linux: 
+&lt;code&gt;
+dd if=/dev/zero of=zero.bin bs=1 count=262144
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2&gt;Todo&lt;/h2&gt;
+
+&lt;p&gt;Pinout documentation&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Board   Colibrirace</title>
+   <link href="http://localhost:3000/docs/board---colibrirace"/>
+   <updated>2015-01-01T00:00:00+01:00</updated>
+   <id>http://localhost:3000/docs/board---colibrirace</id>
+   <content type="html">&lt;h1&gt;Board - Colibri RACE&lt;/h1&gt;
+
+&lt;p&gt;The Colibri RACE is a STM32F3 based flight control designed specifically to work with the TBS POWERCUBE multi rotor stack. &lt;/p&gt;
+
+&lt;h2&gt;Hardware Features:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;STM32F303 based chipset for ultimate performance&lt;/li&gt;
+&lt;li&gt;PPM, SBUS, DSM, DSMX input (5V and 3.3V provided over internal BUS). No inverters or hacks needed.&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;6 PWM ESC output channels (autoconnect, internal BUS)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;RGB LED strip support incl. power management&lt;/li&gt;
+&lt;li&gt;Extension port for GPS / external compass / pressure sensor&lt;/li&gt;
+&lt;li&gt;UART port for peripherals (Blackbox, FrSky telemetry etc.)&lt;/li&gt;
+&lt;li&gt;Choose between plug &amp;amp; play sockets or solder pads for R/C and buzzer&lt;/li&gt;
+&lt;li&gt;5V buzzer output&lt;/li&gt;
+&lt;li&gt;MPU6500 new generation accelerometer/gyro&lt;/li&gt;
+&lt;li&gt;3x status LED (DCDC pwr/ 3.3V pwr/ status)&lt;/li&gt;
+&lt;li&gt;Battery monitoring for 12V, 5V and VBat supply&lt;/li&gt;
+&lt;li&gt;Size: 36mmx36mm (30.5mm standard raster)&lt;/li&gt;
+&lt;li&gt;Weight: 4.4g&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For more details please visit:
+&lt;a href=&quot;http://www.team-blacksheep.com/powercube&quot;&gt;http://www.team-blacksheep.com/powercube&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Serial Ports&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;| Value | Identifier   | Board Markings | Notes                                     |
+| ----- | ------------ | -------------- | ------------------------------------------|
+| 1     | VCP          | USB PORT       | Main Port For MSP                         |
+| 2     | USART1       | FREE PORT      | PC4 and PC5(Tx and Rx respectively)       |
+| 3     | USART2       | PPM Serial     | PA15                                      |
+| 4     | USART3       | GPS PORT       | PB10 and PB11(Tx and Rx respectively)     |
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Pinouts&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Full pinout details are available in the manual, here:
+
+http://www.team-blacksheep.com/colibri_race
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;SWD - ICSP&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;| Pin | Function       | Notes                                        |
+| --- | -------------- | -------------------------------------------- |
+| 1   | VCC_IN         | 3.3 Volt                                     |
+| 2   | SWDIO          |                                              |
+| 3   | nRESET         |                                              |
+| 4   | SWCLK          |                                              |
+| 5   | Ground         |                                              |
+| 6   | SWO/TDO        |                                              |
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Internal Bus&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;| Pin | Function       | Notes                                        |
+| --- | -------------- | -------------------------------------------- |
+| 1   | PWM1           | MOTOR 1                                      |
+| 2   | PWM2           | MOTOR 2                                      |
+| 3   | PWM3           | MOTOR 3                                      |
+| 4   | PWM4           | MOTOR 4                                      |
+| 5   | PWM5           | MOTOR 5 (For Y6 or Hex X)                    |
+| 6   | PWM6           | MOTOR 6 (For Y6 or Hex X)                    |
+| 7   | BST SDA        | Use For TBS CorePro Control Device           |
+| 8   | BST SCL        | Use For TBS CorePro Control Device           |
+| 9   | PWM7           | Can be a normal GPIO (PA1) or PWM            |
+| 10  | PWM8           | Can be a normal GPIO (PA2) or PWM            |
+| 11  | 12.2V DCDC     | If 12v is detected, the Blue LED will turn on|
+| 12  | 5.1V DCDC      | Voltage for MCU                              |
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Servo&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;| Pin | Function       | Notes                                        |
+| --- | -------------- | -------------------------------------------- |
+| 1   | Ground         |                                              |
+| 2   | VCC_OUT        | 5.1 Volt output to LCD Strip                 |
+| 3   | PWM Servo      | PB14 - PWM10                                 |
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;IO_1 - LED Strip&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;| Pin | Function          | Notes                                        |
+| --- | ----------------- | -------------------------------------------- |
+| 1   | LED_STRIP         | Enable `feature LED_STRIP`                   |
+| 2   | VCC_OUT           | 5.1 Volt output to LCD Strip                 |
+| 3   | Ground            |                                              |
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;IO_2 - Sensor Interface&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;| Pin | Function          | Notes                                        |
+| --- | ----------------- | -------------------------------------------- |
+| 1   | VCC_OUT           | 4.7 Volt output to the device                |
+| 2   | Ground            |                                              |
+| 3   | UART3 TX          | GPS                                          |
+| 4   | UART3 RX          | GPS                                          |
+| 5   | SDA               | mag, pressure, or other i2c device           |
+| 6   | SCL               | mag, pressure, or other i2c device           |
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;IO_3 - RC input&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;IO_3 is used for RX_PPM/RX_SERIAL. Under the `PORT` tab, set RX_SERIAL to UART2 when using RX_SERIAL.
+
+| Pin | Function          | Notes                                        |
+| --- | ----------------- | -------------------------------------------- |
+| 1   | PPM/Serial        | Can PPM or Serial input                      |
+| 2   | VCC_OUT           | 3.3 Volt output to the device                |
+| 3   | Ground            |                                              |
+| 4   | VCC_OUT           | 5.1 Volt output to the device                |
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;IO_4 - Buzzer&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;| Pin | Function          | Notes                                        |
+| --- | ----------------- | -------------------------------------------- |
+| 1   | BUZZER            | Normal high (5.1v)                           |
+| 2   | VCC_OUT           | 5.1 Volt output to the device                |
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;IO_5 - Free UART&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;| Pin | Function          | Notes                                        |
+| --- | ----------------- | -------------------------------------------- |
+| 1   | UART1 TX          | Free UART                                    |
+| 2   | UART1 RX          | Free UART                                    |
+| 3   | Ground            |                                              |
+| 4   | VCC_OUT           | 4.7 Volt output to the device                |
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;IO_6 - IR TX (extension)&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;| Pin | Function          | Notes                                        |
+| --- | ----------------- | -------------------------------------------- |
+| 1   | IR TX             |                                              |
+| 2   | Ground            |                                              |
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Board   Cjmcu</title>
+   <link href="http://localhost:3000/docs/board---cjmcu"/>
+   <updated>2015-01-01T00:00:00+01:00</updated>
+   <id>http://localhost:3000/docs/board---cjmcu</id>
    <content type="html">&lt;h1&gt;Board - CJMCU&lt;/h1&gt;
 
 &lt;p&gt;The CJMCU is a tiny (80mm) board running a STM32F103, which contains a 3-Axis Compass (HMC5883L) 
@@ -7655,9 +8400,9 @@ for one of the the AUX channels which will result in it being always on&lt;/li&g
  
  <entry>
    <title>Board   Chebuzzf3</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/board---chebuzzf3"/>
+   <link href="http://localhost:3000/docs/board---chebuzzf3"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/board---chebuzzf3</id>
+   <id>http://localhost:3000/docs/board---chebuzzf3</id>
    <content type="html">&lt;h1&gt;Board - ChebuzzF3&lt;/h1&gt;
 
 &lt;p&gt;The ChebuzzF3 is a daugter board which connects to the bottom of an STM32F3Discovery board and provides pin headers and ports for various FC connections.&lt;/p&gt;
@@ -7756,9 +8501,9 @@ PC0 / ADC0 - ADC12_IN6&lt;/p&gt;
  
  <entry>
    <title>Board   Cc3d</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/board---cc3d"/>
+   <link href="http://localhost:3000/docs/board---cc3d"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/board---cc3d</id>
+   <id>http://localhost:3000/docs/board---cc3d</id>
    <content type="html">&lt;h1&gt;Board - CC3D&lt;/h1&gt;
 
 &lt;p&gt;The OpenPilot Copter Control 3D aka CC3D is a board more tuned to Acrobatic flying or GPS based
@@ -8135,9 +8880,9 @@ $
  
  <entry>
    <title>Board   Alienwii32</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/board---alienwii32"/>
+   <link href="http://localhost:3000/docs/board---alienwii32"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/board---alienwii32</id>
+   <id>http://localhost:3000/docs/board---alienwii32</id>
    <content type="html">&lt;h1&gt;Board - AlienWii32 (ALIENWIIF1 and ALIENWIIF3 target)&lt;/h1&gt;
 
 &lt;p&gt;The AlienWii32 is actually in prototype stage and few samples exist. There are some different variants and field testing with some users is ongoing. The information below is preliminary and will be updated as needed.&lt;/p&gt;
@@ -8166,7 +8911,7 @@ $
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;set serialrx_provider = 1   (0 for 1024bit, 1 for 2048bit) 
 set spektrum_sat_bind = 5
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;For more detail of the different bind modes please refer the &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/spektrum-bind/&quot;&gt;Spektrum Bind&lt;/a&gt; document&lt;/p&gt;
+&lt;p&gt;For more detail of the different bind modes please refer the &lt;a href=&quot;http://localhost:3000/docs/spektrum-bind/&quot;&gt;Spektrum Bind&lt;/a&gt; document&lt;/p&gt;
 
 &lt;p&gt;Deltang receivers in serial mode will work like any other Spektrum satellite receiver (10bit, 22ms) only the bind process will be different. &lt;/p&gt;
 
@@ -8176,18 +8921,868 @@ set spektrum_sat_bind = 5
 
 &lt;p&gt;The AlienWii32 F1 board can be flashed like the Naze board or the related clones. All the different methods will work in the same way.&lt;/p&gt;
 
-&lt;p&gt;The AlienWii32 F3 board needs to be flashed via the USB port in DFU mode. Flashing via the Cleanflight GUI is not possible yet. The DFU mode can be activated via setting the BOOT0 jumper during power on of the board. The second method is to connect with an terminal program (i.e. Putty) to the board and enter the character &amp;ldquo;R&amp;rdquo; immediately after connecting. Details about the flashing process can be found in the related section of the &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/board-sparky/&quot;&gt;Sparky&lt;/a&gt; documentation. The BOOT0 jumper should be removed and the board needs to be repowerd after firmware flashing. Please be aware, during reboot of the AlienWii F3 board, the GUI will disconnect and an manual reconnect is required.&lt;/p&gt;
+&lt;p&gt;The AlienWii32 F3 board needs to be flashed via the USB port in DFU mode. Flashing via the Cleanflight GUI is not possible yet. The DFU mode can be activated via setting the BOOT0 jumper during power on of the board. The second method is to connect with an terminal program (i.e. Putty) to the board and enter the character &amp;ldquo;R&amp;rdquo; immediately after connecting. Details about the flashing process can be found in the related section of the &lt;a href=&quot;http://localhost:3000/docs/board-sparky/&quot;&gt;Sparky&lt;/a&gt; documentation. The BOOT0 jumper should be removed and the board needs to be repowerd after firmware flashing. Please be aware, during reboot of the AlienWii F3 board, the GUI will disconnect and an manual reconnect is required.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Blackbox Internals</title>
+   <link href="http://localhost:3000/docs/development/blackbox-internals"/>
+   <updated>2015-01-01T00:00:00+01:00</updated>
+   <id>http://localhost:3000/docs/development/blackbox-internals</id>
+   <content type="html">&lt;h1&gt;Blackbox logging internals&lt;/h1&gt;
+
+&lt;p&gt;The Blackbox is designed to record the raw internal state of the flight controller at near-maximum rate. By logging the
+raw inputs and outputs of key flight systems, the Blackbox log aims to allow the offline bench-top simulation, debugging,
+and testing of flight control algorithms using data collected from real flights. &lt;/p&gt;
+
+&lt;p&gt;A typical logging regime might capture 30 different state variables (for an average of 28 bytes per frame) at a sample
+rate of 900Hz. That&amp;rsquo;s about 25,000 bytes per second, which is 250,000 baud with a typical 8-N-1 serial encoding.&lt;/p&gt;
+
+&lt;h2&gt;References&lt;/h2&gt;
+
+&lt;p&gt;Please refer to the source code to clarify anything this document leaves unclear:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cleanflight&amp;rsquo;s Blackbox logger: &lt;a href=&quot;https://github.com/cleanflight/cleanflight/blob/master/src/main/blackbox/blackbox.c&quot;&gt;blackbox.c&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/cleanflight/cleanflight/blob/master/src/main/blackbox/blackbox_io.c&quot;&gt;blackbox_io.c&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/cleanflight/cleanflight/blob/master/src/main/blackbox/blackbox_fielddefs.h&quot;&gt;blackbox_fielddefs.h&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/cleanflight/blackbox-tools/blob/master/src/parser.c&quot;&gt;C implementation of the Blackbox log decoder&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/cleanflight/blackbox-log-viewer/blob/master/js/flightlog_parser.js&quot;&gt;JavaScript implementation of the Blackbox log decoder&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Logging cycle&lt;/h2&gt;
+
+&lt;p&gt;Blackbox is designed for flight controllers that are based around the concept of a &amp;ldquo;main loop&amp;rdquo;. During each main loop
+iteration, the flight controller will read some state from sensors, run some flight control algorithms, and produce some
+outputs. For each of these loop iterations, a Blackbox &amp;ldquo;logging iteration&amp;rdquo; will be executed. This will read data that
+was stored during the execution of the main loop and log this data to an attached logging device. The data will include
+algorithm inputs such as sensor and RC data, intermediate results from flight control algorithms, and algorithm outputs
+such as motor commands.&lt;/p&gt;
+
+&lt;h2&gt;Log frame types&lt;/h2&gt;
+
+&lt;p&gt;Each event which is recorded to the log is packaged as a &amp;ldquo;log frame&amp;rdquo;. Blackbox only uses a handful of different types of
+log frames. Each frame type is identified by a single capital letter.&lt;/p&gt;
+
+&lt;h3&gt;Main frames: I, P&lt;/h3&gt;
+
+&lt;p&gt;The most basic kind of logged frames are the &amp;ldquo;main frames&amp;rdquo;. These record the primary state of the flight controller (RC
+input, gyroscopes, flight control algorithm intermediates, motor outputs), and are logged during every logging
+iteration.&lt;/p&gt;
+
+&lt;p&gt;Each main frame must contain at least two fields, &amp;ldquo;loopIteration&amp;rdquo; which records the index of the current main loop
+iteration (starting at zero for the first logged iteration), and &amp;ldquo;time&amp;rdquo; which records the timestamp of the beginning of
+the main loop in microseconds (this needn&amp;rsquo;t start at zero, on Cleanflight it represents the system uptime).&lt;/p&gt;
+
+&lt;p&gt;There are two kinds of main frames, &amp;ldquo;I&amp;rdquo; and &amp;ldquo;P&amp;rdquo;. &amp;ldquo;I&amp;rdquo;, or &amp;ldquo;intra&amp;rdquo; frames are like video keyframes. They can be decoded
+without reference to any previous frame, so they allow log decoding to be resynchronized in the event of log damage. &amp;ldquo;P&amp;rdquo;
+or &amp;ldquo;inter&amp;rdquo; frames use an encoding which references previously logged frames in order to reduce the required datarate.
+When one interframe fails to decode, all following interframes will be undecodable up until the next intraframe.&lt;/p&gt;
+
+&lt;h3&gt;GPS frames: G, H&lt;/h3&gt;
+
+&lt;p&gt;Because the GPS is updated so infrequently, GPS data is logged in its own dedicated frames. These are recorded whenever
+the GPS data changes (not necessarily alongside every main frame). Like the main frames, the GPS frames have their own
+intra/inter encoding system.&lt;/p&gt;
+
+&lt;p&gt;The &amp;ldquo;H&amp;rdquo; or &amp;ldquo;home&amp;rdquo; frame records the lat/lon of a reference point. The &amp;ldquo;G&amp;rdquo; or &amp;ldquo;GPS&amp;rdquo; frame records the current state of
+the GPS system (current position, altitude etc.) based on the reference point. The reference point can be updated
+(infrequently) during the flight, and is logged whenever it changes. &lt;/p&gt;
+
+&lt;p&gt;To allow &amp;ldquo;G&amp;rdquo; frames to continue be decoded in the event that an &amp;ldquo;H&amp;rdquo; update is dropped from the log, the &amp;ldquo;H&amp;rdquo; frame is
+logged periodically even if it has not changed (say, every 10 seconds). This caps the duration of unreadble &amp;ldquo;G&amp;rdquo; frames
+that will result from a single missed &amp;ldquo;H&amp;rdquo; change.&lt;/p&gt;
+
+&lt;h3&gt;Slow frames: S&lt;/h3&gt;
+
+&lt;p&gt;Some flight controller state is updated very infrequently (on the order of once or twice a minute). Logging the fact
+that this data had not been updated during every single logging iteration would be a waste of bandwidth, so these frames
+are only logged when the &amp;ldquo;slow&amp;rdquo; state actually changes.&lt;/p&gt;
+
+&lt;p&gt;All Slow frames are logged as intraframes. An interframe encoding scheme can&amp;rsquo;t be used for Slow frames, because one
+damaged frame causes all subsequent interframes to be undecodable. Because Slow frames are written so infrequently, one
+missing Slow frame could invalidate minutes worth of Slow state.&lt;/p&gt;
+
+&lt;p&gt;On Cleanflight, Slow frames are currently used to log data like the user-chosen flight mode and the current failsafe
+state.&lt;/p&gt;
+
+&lt;h3&gt;Event frames: E&lt;/h3&gt;
+
+&lt;p&gt;Some flight controller data is updated so infrequently or exists so transiently that we do not log it as a flight
+controller &amp;ldquo;state&amp;rdquo;. Instead, we log it as a state &lt;em&gt;transition&lt;/em&gt; . This data is logged in &amp;ldquo;E&amp;rdquo; or &amp;ldquo;event&amp;rdquo; frames. Each event
+frame payload begins with a single byte &amp;ldquo;event type&amp;rdquo; field. The format of the rest of the payload is not encoded in the
+flight log, so its interpretation is left up to an agreement of the writer and the decoder.&lt;/p&gt;
+
+&lt;p&gt;For example, one event that Cleanflight logs is that the user has adjusted a system setting (such as a PID setting)
+using Cleanflight&amp;rsquo;s inflight adjustments feature. The event payload notes which setting was adjusted and the new value
+for the setting. &lt;/p&gt;
+
+&lt;p&gt;Because these setting updates are so rare, it would be wasteful to treat the settings as &amp;ldquo;state&amp;rdquo; and log the fact that
+the setting had not been changed during every logging iteration. It would be infeasible to periodically log the system
+settings using an intra/interframe scheme, because the intraframes would be so large. Instead we only log the
+transitions as events, accept the small probability that any one of those events will be damaged/absent in the log, and
+leave it up to log readers to decide the extent to which they are willing to assume that the state of the setting
+between successfully-decoded transition events was truly unchanged.&lt;/p&gt;
+
+&lt;h2&gt;Log field format&lt;/h2&gt;
+
+&lt;p&gt;For every field in a given frame type, there is an associated name, predictor, and encoding.&lt;/p&gt;
+
+&lt;p&gt;When a field is written, the chosen predictor is computed for the field, then this predictor value is subtracted from
+the raw field value. Finally, the encoder is used to transform the value into bytes to be written to the logging device.&lt;/p&gt;
+
+&lt;h3&gt;Field predictors&lt;/h3&gt;
+
+&lt;p&gt;The job of the predictor is to bring the value to be encoded as close to zero as possible. The predictor may be based
+on the values seen for the field in a previous frame, or some other value such as a fixed value or a value recorded in
+the log headers. For example, the battery voltage values in &amp;ldquo;I&amp;rdquo; intraframes in Cleanflight use a reference voltage that
+is logged as part of the headers as a predictor. This assumes that battery voltages will be broadly similar to the
+initial pack voltage of the flight (e.g. 4S battery voltages are likely to lie within a small range for the whole
+flight). In &amp;ldquo;P&amp;rdquo; interframes, the battery voltage will instead use the previously-logged voltage as a predictor, because
+the correlation between successive voltage readings is high.&lt;/p&gt;
+
+&lt;p&gt;These predictors are presently available:&lt;/p&gt;
+
+&lt;h4&gt;Predict zero (0)&lt;/h4&gt;
+
+&lt;p&gt;This predictor is the null-predictor which doesn&amp;rsquo;t modify the field value at all. It is a common choice for fields
+which are already close to zero, or where no better history is available (e.g. in intraframes which may not rely on the
+previous value of fields).&lt;/p&gt;
+
+&lt;h4&gt;Predict last value (1)&lt;/h4&gt;
+
+&lt;p&gt;This is the most common predictor in interframes. The last-logged value of the field will be used as the predictor, and
+subtracted from the raw field value. For fields which don&amp;rsquo;t change very often, this will make their encoded value be
+normally zero. Most fields have some time-correlation, so this predictor should reduce the magnitude of all but the
+noisiest fields.&lt;/p&gt;
+
+&lt;h4&gt;Predict straight line (2)&lt;/h4&gt;
+
+&lt;p&gt;This predictor assumes that the slope between the current measurement and the previous one will be similar to the
+slope between the previous measurement and the one before that. This is common for fields which increase at a steady rate,
+such as the &amp;ldquo;time&amp;rdquo; field. The predictor is &lt;code&gt;history_age_2 - 2 * history_age_1&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4&gt;Predict average 2 (3)&lt;/h4&gt;
+
+&lt;p&gt;This predictor is the average of the two previously logged values of the field (i.e. &lt;code&gt;(history_age_1 + history_age_2) / 2&lt;/code&gt;
+). It is used when there is significant random noise involved in the field, which means that the average of the recent
+history is a better predictor of the next value than the previous value on its own would be (for example, in gyroscope
+or motor measurements).&lt;/p&gt;
+
+&lt;h4&gt;Predict minthrottle (4)&lt;/h4&gt;
+
+&lt;p&gt;This predictor subtracts the value of &amp;ldquo;minthrottle&amp;rdquo; which is included in the log header. In Cleanflight, motors always
+lie in the range of &lt;code&gt;[minthrottle ... maxthrottle]&lt;/code&gt; when the craft is armed, so this predictor is used for the first
+motor value in intraframes.&lt;/p&gt;
+
+&lt;h4&gt;Predict motor&lt;a href=&quot;5&quot;&gt;0&lt;/a&gt;&lt;/h4&gt;
+
+&lt;p&gt;This predictor is set to the value of &lt;code&gt;motor[0]&lt;/code&gt; which was decoded earlier within the current frame. It is used in
+intraframes for every motor after the first one, because the motor commands typically lie in a tight grouping.&lt;/p&gt;
+
+&lt;h4&gt;Predict increment (6)&lt;/h4&gt;
+
+&lt;p&gt;This predictor assumes that the field will be incremented by 1 unit for every main loop iteration. This is used to
+predict the &lt;code&gt;loopIteration&lt;/code&gt; field, which increases by 1 for every loop iteration.&lt;/p&gt;
+
+&lt;h4&gt;Predict home-coord (7)&lt;/h4&gt;
+
+&lt;p&gt;This predictor is set to the corresponding latitude or longitude field from the GPS home coordinate (which was logged in
+a preceding &amp;ldquo;H&amp;rdquo; frame). If no preceding &amp;ldquo;H&amp;rdquo; frame exists, the value is marked as invalid.&lt;/p&gt;
+
+&lt;h4&gt;Predict 1500 (8)&lt;/h4&gt;
+
+&lt;p&gt;This predictor is set to a fixed value of 1500. It is preferred for logging servo values in intraframes, since these 
+typically lie close to the midpoint of 1500us.&lt;/p&gt;
+
+&lt;h4&gt;Predict vbatref (9)&lt;/h4&gt;
+
+&lt;p&gt;This predictor is set to the &amp;ldquo;vbatref&amp;rdquo; field written in the log header. It is used when logging intraframe battery
+voltages in Cleanflight, since these are expected to be broadly similar to the first battery voltage seen during
+arming.&lt;/p&gt;
+
+&lt;h4&gt;Predict last main-frame time (10)&lt;/h4&gt;
+
+&lt;p&gt;This predictor is set to the last logged &lt;code&gt;time&lt;/code&gt; field from the main frame. This is used when predicting timestamps of
+non-main frames (e.g. that might be logging the timing of an event that happened during the main loop cycle, like a GPS
+reading).&lt;/p&gt;
+
+&lt;h3&gt;Field encoders&lt;/h3&gt;
+
+&lt;p&gt;The field encoder&amp;rsquo;s job is to use fewer bits to represent values which are closer to zero than for values that are
+further from zero. Blackbox supports a range of different encoders, which should be chosen on a per-field basis in order
+to minimize the encoded data size. The choice of best encoder is based on the probability distribution of the values
+which are to be encoded. For example, if a field is almost always zero, then an encoding should be chosen for it which
+can encode that case into a very small number of bits, such as one. Conversely, if a field is normally 8-16 bits large,
+it would be wasteful to use an encoder which provided a special short encoded representation for zero values, because
+this will increase the encoded length of larger values.&lt;/p&gt;
+
+&lt;p&gt;These encoders are presently available:&lt;/p&gt;
+
+&lt;h4&gt;Unsigned variable byte (1)&lt;/h4&gt;
+
+&lt;p&gt;This is the most straightforward encoding. This encoding uses the lower 7 bits of an encoded byte to store the lower 7
+bits of the field&amp;rsquo;s value. The high bit of that encoded byte is set to one if more than 7 bits are required to store the
+value. If the value did exceed 7 bits, the lower 7 bits of the value (which were written to the log) are removed from
+the value (by right shift), and the encoding process begins again with the new value.&lt;/p&gt;
+
+&lt;p&gt;This can be represented by the following algorithm:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;while (value &amp;gt; 127) {
+    writeByte((uint8_t) (value | 0x80)); // Set the high bit to mean &amp;quot;more bytes follow&amp;quot;
+    value &amp;gt;&amp;gt;= 7;
+}
+writeByte(value);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Here are some example values encoded using variable-byte encoding:&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Input value&lt;/th&gt;
+&lt;th&gt;Output encoding&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;0x01&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;42&lt;/td&gt;
+&lt;td&gt;0x2A&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;127&lt;/td&gt;
+&lt;td&gt;0x7F&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;128&lt;/td&gt;
+&lt;td&gt;0x80 0x01&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;129&lt;/td&gt;
+&lt;td&gt;0x81 0x01&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;23456&lt;/td&gt;
+&lt;td&gt;0xA0 0xB7 0x01&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h4&gt;Signed variable byte (0)&lt;/h4&gt;
+
+&lt;p&gt;This encoding applies a pre-processing step to fold negative values into positive ones, then the resulting unsigned
+number is encoded using unsigned variable byte encoding. The folding is accomplished by &amp;ldquo;ZigZag&amp;rdquo; encoding, which is
+represented by:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;unsigned32 = (signed32 &amp;lt;&amp;lt; 1) ^ (signed32 &amp;gt;&amp;gt; 31)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;ZigZag encoding is preferred against simply casting the signed integer to unsigned, because casting would cause small
+negative quantities to appear to be very large unsigned integers, causing the encoded length to be similarly large.
+ZigZag encoding ensures that values near zero are still near zero after encoding.&lt;/p&gt;
+
+&lt;p&gt;Here are some example integers encoded using ZigZag encoding:&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Input value&lt;/th&gt;
+&lt;th&gt;ZigZag encoding&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-1&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-2&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2147483647&lt;/td&gt;
+&lt;td&gt;4294967294&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-2147483648&lt;/td&gt;
+&lt;td&gt;4294967295&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h4&gt;Neg 14-bit (3)&lt;/h4&gt;
+
+&lt;p&gt;The value is negated, treated as an unsigned 14 bit integer, then encoded using unsigned variable byte encoding. This
+bizarre encoding is used in Cleanflight for battery pack voltages. This is because battery voltages are measured using a
+14-bit ADC, with a predictor which is set to the battery voltage during arming, which is expected to be higher than any
+voltage experienced during flight. After the predictor is subtracted, the battery voltage will almost certainly be below
+zero.&lt;/p&gt;
+
+&lt;p&gt;This results in small encoded values when the voltage is closely below the initial one, at the expense of very large
+encoded values if the voltage rises higher than the initial one.&lt;/p&gt;
+
+&lt;h4&gt;Elias delta unsigned 32-bit (4)&lt;/h4&gt;
+
+&lt;p&gt;Because this encoding produces a bitstream, this is the only encoding for which the encoded value might not be a whole
+number of bytes. If the bitstream isn&amp;rsquo;t aligned on a byte boundary by the time the next non-Elias Delta field arrives,
+or the end of the frame is reached, the final byte is padded with zeros byte-align the stream. This encoding requires
+more CPU time than the other encodings because of the bit juggling involved in writing the bitstream.&lt;/p&gt;
+
+&lt;p&gt;When this encoder is chosen to encode all of the values in Cleanflight interframes, it saves about 10% bandwidth
+compared to using a mixture of the other encodings, but uses too much CPU time to be practical.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Elias_delta_coding&quot;&gt;The basic encoding algorithm is defined on Wikipedia&lt;/a&gt;. Given these
+utility functions:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;/* Write `bitCount` bits from the least-significant end of the `bits` integer to the bitstream. The most-significant bit
+ * will be written first
+ */ 
+void writeBits(uint32_t bits, unsigned int bitCount);
+
+/* Returns the number of bits needed to hold the top-most 1-bit of the integer &amp;#39;i&amp;#39;. &amp;#39;i&amp;#39; must not be zero. */
+unsigned int numBitsToStoreInteger(uint32_t i);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This is our reference implementation of Elias Delta:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;// Value must be more than zero
+void writeU32EliasDeltaInternal(uint32_t value)
+{
+    unsigned int valueLen, lengthOfValueLen;
+
+    valueLen = numBitsToStoreInteger(value);
+    lengthOfValueLen = numBitsToStoreInteger(valueLen);
+
+    // Use unary to encode the number of bits we&amp;#39;ll need to write the length of the value
+    writeBits(0, lengthOfValueLen - 1);
+
+    // Now write the length of the value
+    writeBits(valueLen, lengthOfValueLen);
+
+    // Having now encoded the position of the top bit of value, write its remaining bits
+    writeBits(value, valueLen - 1);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To this we add a wrapper which allows encoding both the value zero and MAXINT:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;void writeU32EliasDelta(uint32_t value)
+{
+    /* We can&amp;#39;t encode value==0, so we need to add 1 to the value before encoding
+     *
+     * That would make it impossible to encode MAXINT, so use 0xFFFFFFFF as an escape 
+     * code with an additional bit to choose between MAXINT-1 or MAXINT.
+     */
+    if (value &amp;gt;= 0xFFFFFFFE) {
+        // Write the escape code
+        writeU32EliasDeltaInternal(0xFFFFFFFF);
+        // Add a one bit after the escape code if we wanted &amp;quot;MAXINT&amp;quot;, or a zero if we wanted &amp;quot;MAXINT - 1&amp;quot;
+        writeBits(value - 0xFFFFFFFE, 1);
+    } else {
+        writeU32EliasDeltaInternal(value + 1);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Here are some reference encoded bit patterns produced by writeU32EliasDelta:&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Input value&lt;/th&gt;
+&lt;th&gt;Encoded bit string&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;0100&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;0101&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;01100&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;01101&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;01110&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;01111&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;00100000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;00100001&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;9&lt;/td&gt;
+&lt;td&gt;00100010&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;00100011&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;td&gt;00100100&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;td&gt;00100101&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;13&lt;/td&gt;
+&lt;td&gt;00100110&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;14&lt;/td&gt;
+&lt;td&gt;00100111&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;15&lt;/td&gt;
+&lt;td&gt;001010000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;225&lt;/td&gt;
+&lt;td&gt;00010001100010&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4294967292&lt;/td&gt;
+&lt;td&gt;000001000001111111111111111111111111111101&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4294967293&lt;/td&gt;
+&lt;td&gt;000001000001111111111111111111111111111110&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4294967294&lt;/td&gt;
+&lt;td&gt;0000010000011111111111111111111111111111110&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4294967295&lt;/td&gt;
+&lt;td&gt;0000010000011111111111111111111111111111111&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;Note that the very common value of zero encodes to a single bit, medium-sized values like 225 encode to 14 bits (an
+overhead of 4 bits over writing a plain 8 bit value), and typical 32-bit values like 4294967293 encode into 42 bits, an
+overhead of 10 bits.&lt;/p&gt;
+
+&lt;h4&gt;Elias delta signed 32-bit (5)&lt;/h4&gt;
+
+&lt;p&gt;The value is first converted to unsigned using ZigZag encoding, then unsigned Elias-delta encoding is applied.&lt;/p&gt;
+
+&lt;h4&gt;TAG8_8SVB (6)&lt;/h4&gt;
+
+&lt;p&gt;First, an 8-bit (one byte) header is written. This header has its bits set to zero when the corresponding field (from a
+maximum of 8 fields) is set to zero, otherwise the bit is set to one. The least-signficant bit in the header corresponds
+to the first field to be written. This header is followed by the values of only the fields which are non-zero, written
+using signed variable byte encoding.&lt;/p&gt;
+
+&lt;p&gt;This encoding is preferred for groups of fields in interframes which are infrequently updated by the flight controller.
+This will mean that their predictions are usually perfect, and so the value to be encoded for each field will normally
+be zero. This is common for values like RC inputs and barometer readings, which are updated in only a fraction of main
+loop iterations.&lt;/p&gt;
+
+&lt;p&gt;For example, given these field values to encode:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;0, 0, 4, 0, 8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This would be encoded:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;0b00010100, 0x04, 0x08
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;TAG2_3S32 (7)&lt;/h4&gt;
+
+&lt;p&gt;A 2-bit header is written, followed by 3 signed field values of up to 32 bits each. The header value is based on the
+maximum size in bits of the three values to be encoded as follows:&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Header value&lt;/th&gt;
+&lt;th&gt;Maximum field value size&lt;/th&gt;
+&lt;th&gt;Field range&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;2 bits&lt;/td&gt;
+&lt;td&gt;[-2&amp;hellip;1]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;4 bits&lt;/td&gt;
+&lt;td&gt;[-8&amp;hellip;7]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;6 bits&lt;/td&gt;
+&lt;td&gt;[-32&amp;hellip;31]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;Up to 32 bits&lt;/td&gt;
+&lt;td&gt;[-2147483648&amp;hellip;2147483647]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;If any of the three values requires more than 6 bits to encode, a second, 6-bit header value is written in the lower
+bits of the initial header byte. This second header has 2 bits for each of the encoded values which represents how many
+bytes are required to encode that value. The least-significant bits of the header represent the first field which is
+encoded. The values for each possibility are as follows:&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Header value&lt;/th&gt;
+&lt;th&gt;Field size&lt;/th&gt;
+&lt;th&gt;Field range&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;1 byte&lt;/td&gt;
+&lt;td&gt;[-127&amp;hellip;128]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;2 bytes&lt;/td&gt;
+&lt;td&gt;[-32768&amp;hellip;32767]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;3 bytes&lt;/td&gt;
+&lt;td&gt;[-8388608&amp;hellip;8388607]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;4 bytes&lt;/td&gt;
+&lt;td&gt;[-2147483648&amp;hellip;2147483647]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;This header is followed by the actual field values in order, written least-significant byte first, using the byte
+lengths specified in the header.&lt;/p&gt;
+
+&lt;p&gt;So bringing it all together, these encoded bit patterns are possible, where &amp;ldquo;0&amp;rdquo; and &amp;ldquo;1&amp;rdquo; mean bits fixed to be those
+values, &amp;ldquo;A&amp;rdquo;, &amp;ldquo;B&amp;rdquo;, and &amp;ldquo;C&amp;rdquo; represent the first, second and third fields, and &amp;ldquo;s&amp;rdquo; represents the bits of the secondary
+header in the case that any field is larger than 6 bits:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;00AA BBCC,
+0100 AAAA BBBB CCCC
+10AA AAAA 00BB BBBB 00CC CCCC
+11ss ssss (followed by fields of byte lengths specified in the &amp;quot;s&amp;quot; header)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This encoding is useful for fields like 3-axis gyroscopes, which are frequently small and typically have similar
+magnitudes.&lt;/p&gt;
+
+&lt;h4&gt;TAG8_4S16 (8)&lt;/h4&gt;
+
+&lt;p&gt;An 8-bit header is written, followed by 4 signed field values of up to 16 bits each. The 8-bit header value has 2 bits
+for each of the encoded fields (the least-significant bits represent the first field) which represent the
+number of bits required to encode that field as follows:&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Header value&lt;/th&gt;
+&lt;th&gt;Field value size&lt;/th&gt;
+&lt;th&gt;Field range&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0 bits&lt;/td&gt;
+&lt;td&gt;[0&amp;hellip;0]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;4 bits&lt;/td&gt;
+&lt;td&gt;[-8&amp;hellip;7]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;8 bits&lt;/td&gt;
+&lt;td&gt;[-128&amp;hellip;127]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;16 bits&lt;/td&gt;
+&lt;td&gt;[-32768&amp;hellip;32767]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;This header is followed by the actual field values in order, written as if the output stream was a bit-stream, with the 
+most-significant bit of the first field ending up in the most-significant bits of the first written byte. If the number
+of nibbles written is odd, the final byte has its least-significant nibble set to zero.&lt;/p&gt;
+
+&lt;p&gt;For example, given these field values:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;13, 0, 4, 2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Choosing from the allowable field value sizes, they may be encoded using this many bits each:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;8, 0, 4, 4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The corresponding header values for these lengths would be:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;2, 0, 1, 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;So the header and fields would be encoded together as:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;0b01010010, 0x0D, 0x42
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;NULL (9)&lt;/h4&gt;
+
+&lt;p&gt;This encoding does not write any bytes to the file. It is used when the predictor will always perfectly predict the
+value of the field, so the remainder is always zero. In practice this is only used for the &amp;ldquo;loopIteration&amp;rdquo; field in
+interframes, which is always perfectly predictable based on the logged frame&amp;rsquo;s position in the sequence of frames and
+the &amp;ldquo;P interval&amp;rdquo; setting from the header.&lt;/p&gt;
+
+&lt;h2&gt;Log file structure&lt;/h2&gt;
+
+&lt;p&gt;A logging session begins with a log start marker, then a header section which describes the format of the log, then the
+log payload data, and finally an optional &amp;ldquo;log end&amp;rdquo; event (&amp;ldquo;E&amp;rdquo; frame).&lt;/p&gt;
+
+&lt;p&gt;A single log file can be comprised of one or more logging sessions. Each session may be preceded and followed by any
+amount of non-Blackbox data. This data is ignored by the Blackbox log decoding tools. This allows for the logging device
+to be alternately used by the Blackbox and some other system (such as MSP) without requiring the ability to begin a 
+separate log file for each separate activity.&lt;/p&gt;
+
+&lt;h3&gt;Log start marker&lt;/h3&gt;
+
+&lt;p&gt;The log start marker is &amp;ldquo;H Product:Blackbox flight data recorder by Nicholas Sherlock\n&amp;rdquo;. This marker is
+used to discover the beginning of the flight log if the log begins partway through a file. Because it is such a long
+string, it is not expected to occur by accident in any sequence of random bytes from other log device users.&lt;/p&gt;
+
+&lt;h3&gt;Log header&lt;/h3&gt;
+
+&lt;p&gt;The header is comprised of a sequence of lines of plain ASCII text. Each header line has the format &lt;code&gt;H fieldname:value&lt;/code&gt; 
+and ends with a &amp;rsquo;\n&amp;rsquo;. The overall header does not have a terminator to separate it from the log payload
+(the header implicitly ends when a line does not begin with an &amp;lsquo;H&amp;rsquo; character).&lt;/p&gt;
+
+&lt;p&gt;The header can contain some of these fields:&lt;/p&gt;
+
+&lt;h4&gt;Data version (required)&lt;/h4&gt;
+
+&lt;p&gt;When the interpretation of the Blackbox header changes due to Blackbox specification updates, the log version is 
+incremented to allow backwards-compatibility in the decoder:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;H Data version:2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Logging interval&lt;/h4&gt;
+
+&lt;p&gt;Not every main loop iteration needs to result in a Blackbox logging iteration. When a loop iteration is not logged,
+Blackbox is not called, no state is read from the flight controller, and nothing is written to the log. Two header lines
+are included to note which main loop iterations will be logged:&lt;/p&gt;
+
+&lt;h5&gt;I interval&lt;/h5&gt;
+
+&lt;p&gt;This header notes which of the main loop iterations will record an &amp;ldquo;I&amp;rdquo; intraframe to the log. If main loop iterations
+with indexes divisible by 32 will be logged as &amp;ldquo;I&amp;rdquo; frames, the header will be:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;H I interval: 32
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The first main loop iteration seen by Blackbox will be numbered with index 0, so the first main loop iteration will
+always be logged as an intraframe.&lt;/p&gt;
+
+&lt;h5&gt;P interval&lt;/h5&gt;
+
+&lt;p&gt;Not every &amp;ldquo;P&amp;rdquo; interframe needs to be logged. Blackbox will log a portion of iterations in order to bring the total
+portion of logged main frames to a user-chosen fraction. This fraction is called the logging rate. The smallest possible
+logging rate is &lt;code&gt;(1/I interval)&lt;/code&gt; which corresponds to logging only &amp;ldquo;I&amp;rdquo; frames at the &amp;ldquo;I&amp;rdquo; interval and discarding all
+other loop iterations. The maximum logging rate is &lt;code&gt;1/1&lt;/code&gt;, where every main loop iteration that is not an &amp;ldquo;I&amp;rdquo; frame is
+logged as a &amp;ldquo;P&amp;rdquo; frame. The header records the logging rate fraction in &lt;code&gt;numerator/denominator&lt;/code&gt; format like so:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;H P interval:1/2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The logging fraction given by &lt;code&gt;num/denom&lt;/code&gt; should be simplified (i.e. rather than 2/6, a logging rate of 1/3 should
+be used).&lt;/p&gt;
+
+&lt;p&gt;Given a logging rate of &lt;code&gt;num/denom&lt;/code&gt; and an I-frame interval of &lt;code&gt;I_INTERVAL&lt;/code&gt;, the frame type to log for an iteration
+of index &lt;code&gt;iteration&lt;/code&gt; is given by:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;if (iteration % I_INTERVAL == 0)
+    return &amp;#39;I&amp;#39;;
+
+if ((iteration % I_INTERVAL + num - 1) % denom &amp;lt; num)
+    return &amp;#39;P&amp;#39;;
+
+return &amp;#39;.&amp;#39;; // i.e. don&amp;#39;t log this iteration
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;For an I-interval of 32, these are the resulting logging patterns at some different P logging rates.&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Logging rate&lt;/th&gt;
+&lt;th&gt;Main frame pattern&lt;/th&gt;
+&lt;th&gt;Actual portion logged&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1 / 32&lt;/td&gt;
+&lt;td&gt;I&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;.I&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;.I&lt;/td&gt;
+&lt;td&gt;0.03&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1 / 6&lt;/td&gt;
+&lt;td&gt;I&amp;hellip;..P&amp;hellip;..P&amp;hellip;..P&amp;hellip;..P&amp;hellip;..P.I&amp;hellip;..P&amp;hellip;..P&amp;hellip;..P&amp;hellip;..P&amp;hellip;..P.I&lt;/td&gt;
+&lt;td&gt;0.19&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1 / 3&lt;/td&gt;
+&lt;td&gt;I..P..P..P..P..P..P..P..P..P..P.I..P..P..P..P..P..P..P..P..P..P.I&lt;/td&gt;
+&lt;td&gt;0.34&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1 / 2&lt;/td&gt;
+&lt;td&gt;I.P.P.P.P.P.P.P.P.P.P.P.P.P.P.P.I.P.P.P.P.P.P.P.P.P.P.P.P.P.P.P.I&lt;/td&gt;
+&lt;td&gt;0.50&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2 / 3&lt;/td&gt;
+&lt;td&gt;I.PP.PP.PP.PP.PP.PP.PP.PP.PP.PP.I.PP.PP.PP.PP.PP.PP.PP.PP.PP.PP.I&lt;/td&gt;
+&lt;td&gt;0.66&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5 / 6&lt;/td&gt;
+&lt;td&gt;I.PPPPP.PPPPP.PPPPP.PPPPP.PPPPP.I.PPPPP.PPPPP.PPPPP.PPPPP.PPPPP.I&lt;/td&gt;
+&lt;td&gt;0.81&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1 / 1&lt;/td&gt;
+&lt;td&gt;IPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPIPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPI&lt;/td&gt;
+&lt;td&gt;1.00&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h4&gt;Firmware type (optional)&lt;/h4&gt;
+
+&lt;p&gt;Because Blackbox records the internal flight controller state, the interpretation of the logged data will depend
+on knowing which flight controller recorded it. To accomodate this, the name of the flight controller should be recorded:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;H Firmware type:Cleanflight
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;More details should be included to help narrow down the precise flight-controller version (but these are not required):&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;H Firmware revision:c49bd40
+H Firmware date:Aug 28 2015 16:49:11
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Field X name (required)&lt;/h4&gt;
+
+&lt;p&gt;This header is a comma-separated list of the names for the fields in the &amp;#39;X&amp;rsquo; frame type:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;H Field I name:loopIteration,time,axisP[0],axisP[1]...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The decoder assumes that the fields in the &amp;#39;P&amp;rsquo; frame type will all have the same names as those in the &amp;#39;I&amp;rsquo; frame, so
+a &amp;ldquo;Field P name&amp;rdquo; header does not need to be supplied.&lt;/p&gt;
+
+&lt;h4&gt;Field X signed (optional)&lt;/h4&gt;
+
+&lt;p&gt;This is a comma-separated list of integers which are set to &amp;#39;1&amp;rsquo; when their corresponding field&amp;rsquo;s value should be
+interpreted as signed after decoding, or &amp;#39;0&amp;rsquo; otherwise:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;H Field I signed:0,0,1,1...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Field X predictor (required)&lt;/h4&gt;
+
+&lt;p&gt;This is a comma-separated list of integers which specify the predictors for each field in the specified frame type:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;H Field I predictor:0,0,0,0...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Field X encoding (required)&lt;/h4&gt;
+
+&lt;p&gt;This is a comma-separated list of integers which specify the encoding used for each field in the specified frame type:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;H Field X encoding:1,1,0,0...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;vbatref&lt;/h4&gt;
+
+&lt;p&gt;This header provides the reference voltage that will be used by predictor #9.&lt;/p&gt;
+
+&lt;h4&gt;minthrottle&lt;/h4&gt;
+
+&lt;p&gt;This header provides the minimum value sent by Cleanflight to the ESCs when armed, it is used by predictor #4.&lt;/p&gt;
+
+&lt;h4&gt;Additional headers&lt;/h4&gt;
+
+&lt;p&gt;The decoder ignores headers that it does not understand, so you can freely add any headers that you require in order to
+properly interpret the meaning of the logged values. &lt;/p&gt;
+
+&lt;p&gt;For example, to create a graphical displays of RC sticks and motor percentages, the Blackbox rendering tool requires
+the additional headers &amp;ldquo;rcRate&amp;rdquo; and &amp;ldquo;maxthrottle&amp;rdquo;. In order to convert raw gyroscope, accelerometer and voltage readings
+into real-world units, the Blackbox decoder requires the calibration constants &amp;ldquo;gyro.scale&amp;rdquo;, &amp;ldquo;acc_1G&amp;rdquo; and &amp;ldquo;vbatscale&amp;rdquo;.
+These headers might look like:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;H rcRate:100
+H maxthrottle:1980
+H gyro.scale:0x3d79c190
+H acc_1G:4096
+H vbatscale:110
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Log payload&lt;/h3&gt;
+
+&lt;p&gt;The log payload is a concatenated sequence of logged frames. Each frame type which is present in the log payload must
+have been previously described in the log header (with Frame X name, etc. headers). Each frame begins with a single
+capital letter to specify the type of frame (I, P, etc), which is immediately followed by the frame&amp;rsquo;s field data. There
+is no frame length field, checksum, or trailer.&lt;/p&gt;
+
+&lt;p&gt;The field data is encoded by taking an array of raw field data, computing the predictor for each field, subtrating this
+predictor from the field, then applying the field encoders to each field in sequence to serialize them to the log.&lt;/p&gt;
+
+&lt;p&gt;For example, imagine that we are encoding three fields in an intraframe, are using zero-predictors for each field (#0),
+and are encoding the values using the unsigned variable byte encoding (#1). For these field values:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;1, 2, 3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We would encode a frame:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;#39;I&amp;#39;, 0x01, 0x02, 0x03
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Imagine that we are encoding an array of motor commands in an interframe. We will use the previous motor commands as a
+predictor, and encode the resulting values using signed variable byte encoding. The motor command values seen in the
+previous logged iteration were:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;1430, 1500, 1470, 1490
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And the motor commands to be logged in this iteration are:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;1635, 1501, 1469, 1532
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;After subtracting the predictors for each field, we will be left with:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;205, 1, -1, 42
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We will apply ZigZag encoding to each field, which will give us:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;410, 2, 1, 84
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We will use unsigned variable byte encoding to write the resulting values to the log, which will give us:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;#39;P&amp;#39;, 0x9A, 0x03, 0x02, 0x01, 0x54
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Log end marker&lt;/h3&gt;
+
+&lt;p&gt;The log end marker is an optional Event (&amp;ldquo;E&amp;rdquo;) frame of type 0xFF whose payload is the string &amp;ldquo;End of log\0&amp;rdquo;. The
+payload ensures that random data does not look like an end-of-log marker by chance. This event signals the tidy ending
+of the log. All following bytes until the next log-begin marker (or end of file) should be ignored by the log
+decoder.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;#39;E&amp;#39;, 0xFF, &amp;quot;End of log &amp;quot;, 0x00
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Log validation&lt;/h2&gt;
+
+&lt;p&gt;Any damage experienced to the log during recording is overwhelmingly due to subsequences of bytes being dropped by the
+logging device due to overflowing buffers. Accordingly, Blackbox logs do not bother to include any checksums (bytes are
+not expected to be damaged by the logging device without changing the length of the message). Because of the tight
+bandwidth requirements of logging, neither a frame length field nor frame trailer is recorded that would allow for the
+detection of missing bytes.&lt;/p&gt;
+
+&lt;p&gt;Instead, the decoder uses a heuristic in order to detect damaged frames. The decoder reads an entire frame from the log
+(using the decoder for each field which is the counterpart of the encoder specified in the header), then it checks to
+see if the byte immediately following the frame, which should be the beginning of a next frame, is a recognized
+frame-type byte (e.g. &amp;#39;I&amp;rsquo;, &amp;#39;P&amp;rsquo;, &amp;#39;E&amp;rsquo;, etc). If that following byte represents a valid frame type, it is assumed that the
+decoded frame was the correct length (so was unlikely to have had random ranges of bytes removed from it, which would
+have likely altered the frame length). Otherwise, the frame is rejected, and a valid frame-type byte is looked for
+immediately after the frame-start byte of the frame that was rejected. A rejected frame causes all subsequent
+interframes to be rejected as well, up until the next intraframe.&lt;/p&gt;
+
+&lt;p&gt;A frame is also rejected if the &amp;ldquo;loopIteration&amp;rdquo; or &amp;ldquo;time&amp;rdquo; fields have made unreasonable leaps forward, or moved at
+all backwards. This suffices to detect almost all log corruption.&lt;/p&gt;
 </content>
  </entry>
  
  <entry>
    <title>Blackbox</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/blackbox"/>
+   <link href="http://localhost:3000/docs/blackbox"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/blackbox</id>
+   <id>http://localhost:3000/docs/blackbox</id>
    <content type="html">&lt;h1&gt;Blackbox flight data recorder&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/blackbox-screenshot-1.jpg&quot; alt=&quot;Rendered flight log frame&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/blackbox-screenshot-1.jpg&quot; alt=&quot;Rendered flight log frame&quot;&gt;&lt;/p&gt;
 
 &lt;h2&gt;Introduction&lt;/h2&gt;
 
@@ -8311,7 +9906,7 @@ pin to the OpenLog.&lt;/p&gt;
 carbon fiber), but this makes its status LEDs impossible to see. I recommend wrapping it with some clear heatshrink
 tubing instead.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/blackbox-installation-1.jpg&quot; alt=&quot;OpenLog installed&quot; title=&quot;OpenLog installed with double-sided tape, SDCard slot pointing outward&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/blackbox-installation-1.jpg&quot; alt=&quot;OpenLog installed&quot; title=&quot;OpenLog installed with double-sided tape, SDCard slot pointing outward&quot;&gt;&lt;/p&gt;
 
 &lt;h3&gt;Onboard dataflash storage&lt;/h3&gt;
 
@@ -8403,7 +9998,7 @@ tools will ask you to pick which one of these flights you want to display/decode
 computer. Go to the &amp;ldquo;dataflash&amp;rdquo; tab and click the &amp;ldquo;save flash to file&amp;hellip;&amp;rdquo; button. Saving the log can take 2 or 3
 minutes.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://shipow.github.io/cleanflight-web/assets/images/blackbox-dataflash.png&quot; alt=&quot;Dataflash tab in Configurator&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/blackbox-dataflash.png&quot; alt=&quot;Dataflash tab in Configurator&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;After downloading the log, be sure to erase the chip to make it ready for reuse by clicking the &amp;ldquo;erase flash&amp;rdquo; button.&lt;/p&gt;
 
@@ -8431,12 +10026,12 @@ tool:&lt;/p&gt;
  
  <entry>
    <title>Battery</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/battery"/>
+   <link href="http://localhost:3000/docs/battery"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/battery</id>
+   <id>http://localhost:3000/docs/battery</id>
    <content type="html">&lt;h1&gt;Battery Monitoring&lt;/h1&gt;
 
-&lt;p&gt;Cleanflight has a battery monitoring feature.  The voltage of the main battery can be measured by the system and used to trigger a low-battery warning &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/buzzer/&quot;&gt;buzzer&lt;/a&gt;, on-board status LED flashing and LED strip patterns.&lt;/p&gt;
+&lt;p&gt;Cleanflight has a battery monitoring feature.  The voltage of the main battery can be measured by the system and used to trigger a low-battery warning &lt;a href=&quot;http://localhost:3000/docs/buzzer/&quot;&gt;buzzer&lt;/a&gt;, on-board status LED flashing and LED strip patterns.&lt;/p&gt;
 
 &lt;p&gt;Low battery warnings can:&lt;/p&gt;
 
@@ -8482,7 +10077,7 @@ GND/+5/PPM signal input.&lt;/p&gt;&lt;/li&gt;
 
 &lt;h3&gt;Sparky&lt;/h3&gt;
 
-&lt;p&gt;See the &lt;a href=&quot;http://shipow.github.io/cleanflight-web/docs/board-sparky/&quot;&gt;Sparky board chapter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;See the &lt;a href=&quot;http://localhost:3000/docs/board-sparky/&quot;&gt;Sparky board chapter&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2&gt;Configuration&lt;/h2&gt;
 
@@ -8634,9 +10229,9 @@ current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_mete
  
  <entry>
    <title>Autotune</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/autotune"/>
+   <link href="http://localhost:3000/docs/autotune"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/autotune</id>
+   <id>http://localhost:3000/docs/autotune</id>
    <content type="html">&lt;h1&gt;Autotune&lt;/h1&gt;
 
 &lt;p&gt;Autotune helps to automatically tune your multirotor.&lt;/p&gt;
@@ -8679,9 +10274,9 @@ A beeper will sound indicating the settings are saved.&lt;/p&gt;&lt;/li&gt;
  
  <entry>
    <title>Atomic Barrier</title>
-   <link href="http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier"/>
+   <link href="http://localhost:3000/docs/development/atomic-barrier"/>
    <updated>2015-01-01T00:00:00+01:00</updated>
-   <id>http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier</id>
+   <id>http://localhost:3000/docs/development/atomic-barrier</id>
    <content type="html">&lt;h1&gt;Atomic Barrier Warning&lt;/h1&gt;
 
 &lt;p&gt;If GCC is upgraded and a warning appears when compiling then the generated asm source must be verified.&lt;/p&gt;
@@ -8727,6 +10322,99 @@ markme++;
 &lt;p&gt;attribute(cleanup) is probably safer way to implement atomic sections - another possibility is to explicitly place barriers in code, but that can (and will eventually) lead to missed barrier/basepri restore on same path creating very hard to find bug.&lt;/p&gt;
 
 &lt;p&gt;The MEMORY_BARRIER() code can be omitted and use ATOMIC_BLOCK with full memory barriers, but IMO it is better to explicitly state what memory is protected by barrier and gcc can use this knowledge to greatly improve generated code in future.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>1wire</title>
+   <link href="http://localhost:3000/docs/1wire"/>
+   <updated>2015-01-01T00:00:00+01:00</updated>
+   <id>http://localhost:3000/docs/1wire</id>
+   <content type="html">&lt;h1&gt;1-wire passthrough esc programming&lt;/h1&gt;
+
+&lt;h3&gt;ESCs must have the BlHeli Bootloader.&lt;/h3&gt;
+
+&lt;p&gt;If your ESCs didn&amp;rsquo;t come with BlHeli Bootloader, you&amp;rsquo;ll need to flash them with an ArduinoISP programmer first. &lt;a href=&quot;http://bit.ly/blheli-f20&quot;&gt;Here&amp;rsquo;s a guide&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This is the option you need to select for the bootloader:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/blheli-bootloader.png&quot; alt=&quot;Flashing BlHeli Bootloader&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Currently supported on the SPRACINGF3, STM32F3DISCOVERY, NAZE32 (including clones such as the FLIP32) and CC3D.&lt;/p&gt;
+
+&lt;h2&gt;Wiring&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;For the NAZE, no external wiring is necessary. Simply plug in the board via USB cable.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;For the CC3D, connect &lt;a href=&quot;http://bit.ly/cf-cp2102&quot;&gt;a USB to UART adapter&lt;/a&gt; to the flex port.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ensure MSP is enabled on the flex port. Unfortunatly the main port cannot be used in the current configuration due to the inverter on this port.&lt;/li&gt;
+&lt;li&gt;You&amp;rsquo;ll only need this connection to the CC3D, do not plug in the normal USB connection.&lt;/li&gt;
+&lt;li&gt;If you need one, I prefer the &lt;a href=&quot;http://bit.ly/cf-cp2102&quot;&gt;CP2102&lt;/a&gt; as it is cheap and &lt;a href=&quot;https://www.silabs.com/products/mcu/Pages/USBtoUARTBridgeVCPDrivers.aspx&quot;&gt;the driver&lt;/a&gt; is readily available.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;In the case that your board does not power on fully without a battery attached, it is OK to attach the battery before following the steps below. However, it may not be necessary in all cases.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Usage&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Plug in the USB cable and connect to your board with the CleanFlight configurator.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;For boards without a built in USB/UART adapter, you&amp;rsquo;ll need to plug an external one in. Here is how you wire up the CC3D. Plug your USB/UART adapter into the Flexi port:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:3000/assets/images/serial1wire-cc3d-wiring.jpg&quot; alt=&quot;Flashing BlHeli Bootloader&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Open the BlHeli Suite.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ensure you have selected the correct Atmel or SILABS &amp;ldquo;Cleanflight&amp;rdquo; option under the &amp;ldquo;Select ATMEL / SILABS Interface&amp;rdquo; menu option.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ensure you have port for your external USB/UART adapter selected, if you&amp;rsquo;re using one, otherwise pick the same COM port that you normally use for Cleanflight.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Click &amp;ldquo;Connect&amp;rdquo; and wait for the connection to complete. If you get a COM error, hit connect again. It will probably work.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Use the boxes at the bottom to select the ESCs you have connected. Note that the boxes correspond directly to the ports on your flight controller. For example if you have motors on ports 1-4, pick boxes 1-4 or in the case of a tri-copter that uses motors on ports 3, 4 and 5, select those ports in BlHeli.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Click &amp;ldquo;Read Setup&amp;rdquo;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Use BlHeli suite as normal.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;When you&amp;rsquo;re finished with one ESC, click &amp;ldquo;Disconnect&amp;rdquo;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Implementing and Configuring targets&lt;/h2&gt;
+
+&lt;p&gt;The following parameters can be used to enable and configure this in the related target.h file:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;USE_SERIAL_1WIRE              Enables the 1wire code, defined in target.h
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;For new targets&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;in &lt;code&gt;target.h&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;// Turn on serial 1wire passthrough
+#define USE_SERIAL_1WIRE
+// How many escs does this board support?
+#define ESC_COUNT 6
+// STM32F3DISCOVERY TX - PC3 connects to UART RX
+#define S1W_TX_GPIO         GPIOC
+#define S1W_TX_PIN          GPIO_Pin_3
+// STM32F3DISCOVERY RX - PC1 connects to UART TX
+#define S1W_RX_GPIO         GPIOC
+#define S1W_RX_PIN          GPIO_Pin_1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;in &lt;code&gt;serial_1wire.c&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;   // Define your esc hardware
+   #if defined(STM32F3DISCOVERY) &amp;amp;&amp;amp; !(defined(CHEBUZZF3))
+   const escHardware_t escHardware[ESC_COUNT] = {
+     { GPIOD, 12 },
+     { GPIOD, 13 },
+     { GPIOD, 14 },
+     { GPIOD, 15 },
+     { GPIOA, 1 },
+     { GPIOA, 2 }
+   };
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Development Notes&lt;/h2&gt;
+
+&lt;p&gt;On the STM32F3DISCOVERY, an external pullup on the ESC line may be necessary. I needed a 3v, 4.7k pullup.&lt;/p&gt;
 </content>
  </entry>
  

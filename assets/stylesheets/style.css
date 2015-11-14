@@ -28,7 +28,7 @@ nav.navbar {
     position: absolute;
     width: 655px;
     padding: 50px;
-    background-image: url('../images/MB-screen.png');
+    background-image: url("../images/MB-screen.png");
     background-size: 100%;
     background-repeat: no-repeat; }
   .jumbotron img.anim {
@@ -51,6 +51,7 @@ i.fa-3x {
 
 .post h1 {
   border-bottom: 2px solid rgba(89, 170, 43, 0.3); }
+
 .post img {
   max-width: 100%; }
 
@@ -85,7 +86,10 @@ table {
   width: 100%;
   max-width: 100%;
   margin-bottom: 16px; }
-  table > tbody > tr > th, table > tbody > tr > td, table > tfoot > tr > th, table > tfoot > tr > td {
+  table > tbody > tr > th,
+  table > tbody > tr > td,
+  table > tfoot > tr > th,
+  table > tfoot > tr > td {
     padding: 8px 6px;
     line-height: 20px;
     vertical-align: top;
@@ -96,7 +100,8 @@ table {
 .twitter-typeahead {
   width: 100%; }
 
-.twitter-typeahead .tt-input, .twitter-typeahead .tt-hint {
+.twitter-typeahead .tt-input,
+.twitter-typeahead .tt-hint {
   width: 100%;
   margin: 0px;
   padding: 8px 12px;

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://shipow.github.io/cleanflight-web/</loc>
-    <lastmod>2015-06-25T13:09:09+02:00</lastmod>
+    <loc>http://localhost:3000/</loc>
+    <lastmod>2015-11-14T17:18:40+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/development/travis</loc>
+      <loc>http://localhost:3000/docs/usb-flashing</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -21,7 +21,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/telemetry</loc>
+      <loc>http://localhost:3000/docs/development/travis</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -34,7 +34,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/spektrum-bind</loc>
+      <loc>http://localhost:3000/docs/telemetry</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -47,7 +47,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/sonar</loc>
+      <loc>http://localhost:3000/docs/spektrum-bind</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -60,7 +60,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/serial</loc>
+      <loc>http://localhost:3000/docs/sonar</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -73,7 +73,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/safety</loc>
+      <loc>http://localhost:3000/docs/serial</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -86,7 +86,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/rx</loc>
+      <loc>http://localhost:3000/docs/safety</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -99,7 +99,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/rssi</loc>
+      <loc>http://localhost:3000/docs/rx</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -112,7 +112,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/profiles</loc>
+      <loc>http://localhost:3000/docs/rssi</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -125,7 +125,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/pid-tuning</loc>
+      <loc>http://localhost:3000/docs/profiles</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -138,7 +138,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/development/pid-internals</loc>
+      <loc>http://localhost:3000/docs/pid-tuning</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -151,7 +151,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/oneshot</loc>
+      <loc>http://localhost:3000/docs/development/pid-internals</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -164,7 +164,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/api/msp_extensions</loc>
+      <loc>http://localhost:3000/docs/oneshot</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -177,7 +177,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/modes</loc>
+      <loc>http://localhost:3000/docs/api/msp_extensions</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -190,7 +190,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/mixer</loc>
+      <loc>http://localhost:3000/docs/modes</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -203,7 +203,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/migrating-from-baseflight</loc>
+      <loc>http://localhost:3000/docs/mixer</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -216,7 +216,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/ledstrip</loc>
+      <loc>http://localhost:3000/docs/migrating-from-baseflight</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -229,7 +229,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/introduction</loc>
+      <loc>http://localhost:3000/docs/ledstrip</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -242,7 +242,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/installation</loc>
+      <loc>http://localhost:3000/docs/introduction</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -255,7 +255,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/inflight-adjustments</loc>
+      <loc>http://localhost:3000/docs/installation</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -268,7 +268,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse</loc>
+      <loc>http://localhost:3000/docs/inflight-adjustments</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -281,7 +281,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging</loc>
+      <loc>http://localhost:3000/docs/development/hardware-debugging-in-eclipse</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -294,7 +294,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/gps</loc>
+      <loc>http://localhost:3000/docs/development/hardware-debugging</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -307,7 +307,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/getting-started</loc>
+      <loc>http://localhost:3000/docs/gtune</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -320,7 +320,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/failsafe</loc>
+      <loc>http://localhost:3000/docs/gps</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -333,7 +333,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/display</loc>
+      <loc>http://localhost:3000/docs/getting-started</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -346,7 +346,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/development/development</loc>
+      <loc>http://localhost:3000/docs/failsafe</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -359,7 +359,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/controls</loc>
+      <loc>http://localhost:3000/docs/display</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -372,7 +372,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/development/configuration-storage</loc>
+      <loc>http://localhost:3000/docs/development/development</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -385,7 +385,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/configuration</loc>
+      <loc>http://localhost:3000/docs/controls</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -398,7 +398,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/cli</loc>
+      <loc>http://localhost:3000/docs/development/configuration-storage</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -411,7 +411,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/buzzer</loc>
+      <loc>http://localhost:3000/docs/configuration</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -424,7 +424,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/development/building-manual</loc>
+      <loc>http://localhost:3000/docs/cli</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -437,7 +437,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/development/building-in-windows</loc>
+      <loc>http://localhost:3000/docs/buzzer</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -450,7 +450,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu</loc>
+      <loc>http://localhost:3000/docs/development/building-manual</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -463,7 +463,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x</loc>
+      <loc>http://localhost:3000/docs/development/building-in-windows</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -476,7 +476,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse</loc>
+      <loc>http://localhost:3000/docs/development/building-in-ubuntu</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -489,7 +489,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/boards</loc>
+      <loc>http://localhost:3000/docs/development/building-in-mac-os-x</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -502,7 +502,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/board---sparky</loc>
+      <loc>http://localhost:3000/docs/development/building-in-eclipse</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -515,7 +515,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/board---paris-air-hero-32</loc>
+      <loc>http://localhost:3000/docs/boards</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -528,7 +528,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/board---olimexino</loc>
+      <loc>http://localhost:3000/docs/board---spracingf3</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -541,7 +541,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/board---naze32</loc>
+      <loc>http://localhost:3000/docs/board---sparky</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -554,7 +554,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/board---cjmcu</loc>
+      <loc>http://localhost:3000/docs/board---rmdo</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -567,7 +567,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/board---chebuzzf3</loc>
+      <loc>http://localhost:3000/docs/board---paris-air-hero-32</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -580,7 +580,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/board---cc3d</loc>
+      <loc>http://localhost:3000/docs/board---olimexino</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -593,7 +593,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/board---alienwii32</loc>
+      <loc>http://localhost:3000/docs/board---naze32</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -606,7 +606,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/blackbox</loc>
+      <loc>http://localhost:3000/docs/board---motolab</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -619,7 +619,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/battery</loc>
+      <loc>http://localhost:3000/docs/board---colibrirace</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -632,7 +632,7 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/autotune</loc>
+      <loc>http://localhost:3000/docs/board---cjmcu</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -645,7 +645,111 @@
     </url>
   
     <url>
-      <loc>http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier</loc>
+      <loc>http://localhost:3000/docs/board---chebuzzf3</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>http://localhost:3000/docs/board---cc3d</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>http://localhost:3000/docs/board---alienwii32</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>http://localhost:3000/docs/development/blackbox-internals</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>http://localhost:3000/docs/blackbox</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>http://localhost:3000/docs/battery</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>http://localhost:3000/docs/autotune</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>http://localhost:3000/docs/development/atomic-barrier</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>http://localhost:3000/docs/1wire</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -659,9 +763,9 @@
   
   
   <url>
-    <loc>http://shipow.github.io/cleanflight-web/404.html</loc>
+    <loc>http://localhost:3000/404.html</loc>
     
-      <lastmod>2015-06-25T13:09:09+02:00</lastmod>
+      <lastmod>2015-11-14T17:18:40+01:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -672,22 +776,9 @@
   </url>
   
   <url>
-    <loc>http://shipow.github.io/cleanflight-web/about.html</loc>
+    <loc>http://localhost:3000/about.html</loc>
     
-      <lastmod>2015-06-25T13:09:09+02:00</lastmod>
-    
-    
-      <changefreq>monthly</changefreq>
-    
-    
-      <priority>0.3</priority>
-    
-  </url>
-  
-  <url>
-    <loc>http://shipow.github.io/cleanflight-web/atom.xml</loc>
-    
-      <lastmod>2015-06-25T13:09:09+02:00</lastmod>
+      <lastmod>2015-11-14T17:18:40+01:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -698,22 +789,9 @@
   </url>
   
   <url>
-    <loc>http://shipow.github.io/cleanflight-web/index.html</loc>
+    <loc>http://localhost:3000/atom.xml</loc>
     
-      <lastmod>2015-06-25T13:09:09+02:00</lastmod>
-    
-    
-      <changefreq>monthly</changefreq>
-    
-    
-      <priority>0.3</priority>
-    
-  </url>
-  
-  <url>
-    <loc>http://shipow.github.io/cleanflight-web/sitemap.xml</loc>
-    
-      <lastmod>2015-06-25T13:09:09+02:00</lastmod>
+      <lastmod>2015-11-14T17:18:40+01:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -724,22 +802,9 @@
   </url>
   
   <url>
-    <loc>http://shipow.github.io/cleanflight-web/categories/docs/index.html</loc>
+    <loc>http://localhost:3000/index.html</loc>
     
-      <lastmod>2015-06-25T13:09:09+02:00</lastmod>
-    
-    
-      <changefreq>monthly</changefreq>
-    
-    
-      <priority>0.3</priority>
-    
-  </url>
-  
-  <url>
-    <loc>http://shipow.github.io/cleanflight-web/categories/development/index.html</loc>
-    
-      <lastmod>2015-06-25T13:09:09+02:00</lastmod>
+      <lastmod>2015-11-14T17:18:40+01:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -750,9 +815,48 @@
   </url>
   
   <url>
-    <loc>http://shipow.github.io/cleanflight-web/categories/api/index.html</loc>
+    <loc>http://localhost:3000/sitemap.xml</loc>
     
-      <lastmod>2015-06-25T13:09:09+02:00</lastmod>
+      <lastmod>2015-11-14T17:18:40+01:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>http://localhost:3000/categories/docs/index.html</loc>
+    
+      <lastmod>2015-11-14T17:18:40+01:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>http://localhost:3000/categories/development/index.html</loc>
+    
+      <lastmod>2015-11-14T17:18:40+01:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>http://localhost:3000/categories/api/index.html</loc>
+    
+      <lastmod>2015-11-14T17:18:40+01:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
