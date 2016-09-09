@@ -30,7 +30,7 @@ layout: default
                 {% for post in posts %}
                   {% if post.url %}
                     <li>
-                      <a href="{{ post.url }}">
+                      <a href="{{ site.url }}{{ post.url }}">
                         {{ post.title }}
                       </a>
                     </li>

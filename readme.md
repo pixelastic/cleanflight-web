@@ -9,17 +9,7 @@ Website for the Cleanflight project
 * ruby bundler 1.1.4
 * node.js 0.12.5
 
-easiest way to set up ruby, rubygems and bundler in their correct versions is to use rvm:
-
-```
-gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-curl -sSL https://get.rvm.io | bash -s stable
-source ~/.rvm/scripts/rvm
-rvm install 1.9.3
-rvm --default 1.9.3
-```
-
-
+easiest way to set up ruby, rubygems and bundler in their correct versions is to use rvm
 
 ##Installation
 
@@ -41,7 +31,6 @@ within the ```cleanflight-web``` directory:
 ### nmp and node
 ```
 npm install
-# wait a couple of minues, grab a coffee or something.
 sudo npm install -g gulp
 ```
 
