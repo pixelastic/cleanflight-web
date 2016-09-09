@@ -93,7 +93,8 @@
 <h2>Introduction</h2>
 
 <p>This feature transmits your flight data information on every control loop iteration over a serial port to an external
-logging device to be recorded, or to a dataflash chip which is present on some flight controllers.</p>
+logging device like an OpenLog to be recorded, to an onboard dataflash chip which is present on some flight controllers,
+or to an onboard SD card socket.</p>
 
 <p>After your flight, you can view the resulting logs using the interactive log viewer:</p>
 
@@ -213,9 +214,7 @@ telemetry pins.</p>
 
 <p>Pin RC3 on the side of the board is UART2&rsquo;s Tx pin. If Blackbox is configured on UART2, MSP can still be used on UART1
 when the board is armed, which means that the Configurator will continue to work simultaneously with Blackbox logging.
-However, the RC3 pin is only available for use by UART2 if the receiver mode is <u>not</u> <code>PARALLEL_PWM</code>. In other words, a
-PPM or Serial receiver must be used. If a PWM receiver is used, the RC3 and RC4 pins are used for channel input from the
-receiver. Sharing UART1 between Blackbox and MSP is the only way to use Blackbox on a Naze32 with a PWM receiver.</p>
+Note that in <code>PARALLEL_PWM</code> mode this leaves the board with 6 input channels as RC3 and RC4 pins are used by UART2 as Tx and Rx. Cleanflight automatically shifts logical channel mapping for you when UART2 is enabled in <code>Ports</code> tab so you&rsquo;ll have to shift receiver pins that are connected to Naze32 pins 3 to 6 by two.</p>
 
 <p>The OpenLog tolerates a power supply of between 3.3V and 12V. If you are powering your Naze32 with a standard 5V BEC,
 then you can use a spare motor header&rsquo;s +5V and GND pins to power the OpenLog with.</p>
@@ -283,6 +282,33 @@ chip with 8 fat legs, which can be found at the base of the Naze32&rsquo;s direc
 <p>On the Configurator&rsquo;s CLI tab, you must enter <code>set blackbox_device=SPIFLASH</code> to switch to logging to an onboard dataflash chip,
 then save.</p>
 
+<h3>Onboard SD card socket</h3>
+
+<p>Some flight controllers have an SD or Micro SD card socket on their circuit boards. This allows for very high speed
+logging (1KHz or faster, which is a looptime of 1000 or lower) on suitable cards.</p>
+
+<p>The card can be either Standard (SDSC) or High capacity (SDHC), and must be formatted with the FAT16 or FAT32
+filesystems. This covers a range of card capacities from 1 to 32GB. Extended capacity cards (SDXC) are not supported.</p>
+
+<p>The first time you power up Cleanflight with a new card inserted, the flight controller will spend a few seconds
+scanning the disk for free space and collecting this space together into a file called &ldquo;FREESPAC.E&rdquo;. During flight,
+Cleanflight will carve chunks from this file to create new log files. You must not edit this file on your computer (i.e.
+open it in a program and save changes) because this may cause it to become fragmented. Don&rsquo;t run any defragmentation
+tools on the card either.</p>
+
+<p>You can delete the FREESPAC.E file if you want to free up space on the card to fit non-Blackbox files (Cleanflight will 
+recreate the FREESPAC.E file next time it starts, using whatever free space was left over).</p>
+
+<p>The maximum size of the FREESPAC.E file is currently 4GB. Once 4GB worth of logs have been recorded, the FREESPAC.E
+file will be nearly empty and no more logs will be able to be recorded. At this point you should either delete the 
+FREESPAC.E file (and any logs left on the card to free up space), or just reformat the card. A new FREESPAC.E file 
+will be created by Cleanflight on its next boot.</p>
+
+<h4>Enable recording to SD card</h4>
+
+<p>On the Configurator&rsquo;s CLI tab, you must enter <code>set blackbox_device=SDCARD</code> to switch to logging to an onboard SD card,
+then save.</p>
+
 <h2>Configuring the Blackbox</h2>
 
 <p>The Blackbox currently provides two settings (<code>blackbox_rate_num</code> and <code>blackbox_rate_denom</code>) that allow you to control 
@@ -345,6 +371,18 @@ minutes.</p>
 <p>If you try to start recording a new flight when the dataflash is already full, Blackbox logging will be disabled and
 nothing will be recorded.</p>
 
+<h3>Usage - Onboard SD card socket</h3>
+
+<p>You must insert your SD card before powering on your flight controller. You can remove the SD card while the board is
+powered up, but you must wait 5 seconds after disarming before you do so in order to give Cleanflight a chance to finish
+saving your log (otherwise the filesystem may become corrupted).</p>
+
+<p>Cleanflight will create a new log file in the &ldquo;LOG&rdquo; directory each time the craft is armed. If you are using a Blackbox
+logging switch and you keep it paused for the entire flight, the resulting empty log file will be deleted after disarming.</p>
+
+<p>To read your logs, you must remove the SD card and insert it into a card reader on your computer (Cleanflight doesn&rsquo;t
+support reading these logs directly through the Configurator).</p>
+
 <h3>Usage - Logging switch</h3>
 
 <p>If you&rsquo;re recording to an onboard flash chip, you probably want to disable Blackbox recording when not required in order
@@ -398,6 +436,10 @@ another software package.</p>
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -415,6 +457,10 @@ another software package.</p>
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -443,6 +489,14 @@ another software package.</p>
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -585,6 +639,10 @@ another software package.</p>
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -605,7 +663,7 @@ another software package.</p>
                 
                   
                     <li>
-                      <a href="/docs/api/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -629,7 +687,7 @@ another software package.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -637,7 +695,7 @@ another software package.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -645,7 +703,7 @@ another software package.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -653,7 +711,7 @@ another software package.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -661,7 +719,7 @@ another software package.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -669,7 +727,7 @@ another software package.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -677,7 +735,15 @@ another software package.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -685,7 +751,7 @@ another software package.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -693,7 +759,7 @@ another software package.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -701,7 +767,7 @@ another software package.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -709,7 +775,15 @@ another software package.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -717,7 +791,7 @@ another software package.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -725,7 +799,7 @@ another software package.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -739,6 +813,7 @@ another software package.</p>
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>

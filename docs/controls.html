@@ -97,6 +97,40 @@ that is not recommended).</p>
 <p>By default, arming and disarming is done using stick positions.  (NOTE: this feature is disabled when using a
 switch to arm.)</p>
 
+<p>Some conditions will disable arming. In this case the Warning LED on the board will flash a certain number of times, indicating what the condition is:</p>
+
+<table><thead>
+<tr>
+<th>Reason for disabled Arming</th>
+<th>LED Flashes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CLI is active in the configurator</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Failsafe mode is active</td>
+<td>3</td>
+</tr>
+<tr>
+<td>The aircraft has landed in failsafe mode</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Maximum arming angle is exceeded</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Calibration is active</td>
+<td>5</td>
+</tr>
+<tr>
+<td>The system is overloaded</td>
+<td>6</td>
+</tr>
+</tbody></table>
+
 <h2>Stick Positions</h2>
 
 <p>The three stick positions are:</p>
@@ -258,7 +292,7 @@ from trying to yaw during arming/disarming while on the ground, your yaw input w
 throttle is LOW (i.e. below the <code>min_check</code> setting).</p>
 
 <p>For tricopters, you may want to retain the ability to yaw while on the ground, so that you can verify that your tail
-servo is working correctly before takeoff. You can do this by setting <code>tri_unarmed_servo</code> to <code>1</code> on the CLI (this is the
+servo is working correctly before takeoff. You can do this by setting <code>tri_unarmed_servo</code> to <code>ON</code> on the CLI (this is the
 default). If you are having issues with your tail rotor contacting the ground during arm/disarm, you can set this to
 <code>0</code> instead. Check this table to decide which setting will suit you:</p>
 
@@ -273,18 +307,51 @@ default). If you are having issues with your tail rotor contacting the ground du
         <th></th><th>Throttle low</th><th>Throttle normal</th><th>Throttle low</th><th>Throttle normal</th>
     </tr>
     <tr>
-        <td rowspan="2">tri_unarmed_servo = 0</td><td>No</td><td>No</td><td>No</td><td>Yes</td>
+        <td rowspan="2">tri_unarmed_servo = OFF</td><td>No</td><td>No</td><td>No</td><td>Yes</td>
     </tr>
     <tr>
         <td>No</td><td>No</td><td>No</td><td>Yes</td>
     </tr>
     <tr>
-        <td rowspan="2">tri_unarmed_servo = 1</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td>
+        <td rowspan="2">tri_unarmed_servo = ON</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td>
     </tr>
     <tr>
         <td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td>
     </tr>
 </table>
+
+<h2>Throttle settings and their interaction</h2>
+
+<p><code>min_command</code> -
+With motor stop enabled this is the command sent to the esc&rsquo;s when the throttle is below min_check or disarmed. With motor stop disabled, this is the command sent only when the copter is disarmed. This must be set well below motors spinning for safety. </p>
+
+<p><code>min_check</code> - 
+With switch arming mode is in use, lowering your throttle below min_check will result in motors spinning at min_throttle. When using the default stick arming, lowering your throttle below min_check will result in motors spinning at min_throttle and yaw being disabled so that you may arm/disarm. With motor stop enabled, lowering your throttle below min_check will also result in motors off and the esc&rsquo;s being sent min_command. Min_check must be set to a level that is 100% reliably met by the throttle throw. A setting too low may result in a dangerous condition where the copter can’t be disarmed. It is ok to set this below min_throttle because the FC will automaticly scale the output to the esc&rsquo;s</p>
+
+<p><code>min_throttle</code> -
+Typically set to just above reliable spin up of all motors. Sometimes this is set slightly higher for prop stall prevention during advanced maneuvers or sometimes considerably higher to produce a desired result. When armed with motor stop off, your motors will spin at this command so keep that in mind from a safety stand point.  </p>
+
+<p><code>max_check</code> -
+Throttle positions above this level will send max_command to the esc&rsquo;s. </p>
+
+<p><code>max_throttle</code> -
+This is the max command to the esc&rsquo;s from the flight controller. </p>
+
+<p>In depth videos explaining these terms are available from Joshua Bardwell here:</p>
+
+<p><a href="https://www.youtube.com/watch?v=WFU3VewGbbA">https://www.youtube.com/watch?v=WFU3VewGbbA</a></p>
+
+<p><a href="https://www.youtube.com/watch?v=YNRl0OTKRGA">https://www.youtube.com/watch?v=YNRl0OTKRGA</a></p>
+
+<h2>Deadband</h2>
+
+<p>If yaw, roll or pitch sticks do not reliably return to centre or the radio has a lot of jitter around the centrepoint, deadband can be applied. The whole deadband value is applied <em>either side</em> of the center point rather than half the value above and half the value below. The deadband value will have an effect on stick endpoint values as the axis value will be reduced by the amount of deadband applied. </p>
+
+<p><code>deadband</code> -
+Applied to roll, pitch.</p>
+
+<p><code>yaw_deadband</code>
+Only applied to yaw. </p>
 
       </div>
     </div>
@@ -311,6 +378,10 @@ default). If you are having issues with your tail rotor contacting the ground du
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -328,6 +399,10 @@ default). If you are having issues with your tail rotor contacting the ground du
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -356,6 +431,14 @@ default). If you are having issues with your tail rotor contacting the ground du
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -498,6 +581,10 @@ default). If you are having issues with your tail rotor contacting the ground du
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -518,7 +605,7 @@ default). If you are having issues with your tail rotor contacting the ground du
                 
                   
                     <li>
-                      <a href="/docs/api/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -542,7 +629,7 @@ default). If you are having issues with your tail rotor contacting the ground du
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -550,7 +637,7 @@ default). If you are having issues with your tail rotor contacting the ground du
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -558,7 +645,7 @@ default). If you are having issues with your tail rotor contacting the ground du
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -566,7 +653,7 @@ default). If you are having issues with your tail rotor contacting the ground du
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -574,7 +661,7 @@ default). If you are having issues with your tail rotor contacting the ground du
                 
                   
                     <li>
-                      <a href="/docs/development/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -582,7 +669,7 @@ default). If you are having issues with your tail rotor contacting the ground du
                 
                   
                     <li>
-                      <a href="/docs/development/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -590,7 +677,15 @@ default). If you are having issues with your tail rotor contacting the ground du
                 
                   
                     <li>
-                      <a href="/docs/development/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -598,7 +693,7 @@ default). If you are having issues with your tail rotor contacting the ground du
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -606,7 +701,7 @@ default). If you are having issues with your tail rotor contacting the ground du
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -614,7 +709,7 @@ default). If you are having issues with your tail rotor contacting the ground du
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -622,7 +717,15 @@ default). If you are having issues with your tail rotor contacting the ground du
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -630,7 +733,7 @@ default). If you are having issues with your tail rotor contacting the ground du
                 
                   
                     <li>
-                      <a href="/docs/development/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -638,7 +741,7 @@ default). If you are having issues with your tail rotor contacting the ground du
                 
                   
                     <li>
-                      <a href="/docs/development/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -652,6 +755,7 @@ default). If you are having issues with your tail rotor contacting the ground du
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>

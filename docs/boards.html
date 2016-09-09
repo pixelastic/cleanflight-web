@@ -90,30 +90,42 @@
 
 <p>The current focus is geared towards flight controller hardware that use the STM32F303 and legacy STM32F103 series processors.  The core logic is separated from the hardware drivers, porting to other processors is possible.</p>
 
-<p>The core set of supported flyable boards are:</p>
+<p>If you want a fully featured version of Cleanflight then the recommendation for new purchases is an STM32 F3 based board with 256KB of flash memory.  The F3 processor is faster, has built in USB support and supports more hardware without the need for additional adaptors and cables.</p>
+
+<p>The core set of recommended boards are:</p>
 
 <ul>
-<li>AlienWii32</li>
-<li>CC3D</li>
-<li>CJMCU</li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/board-20-20spracingf3mini/">Seriously Pro SPRacingF3Mini</a></li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/board-20-20spracingf3/">Seriously Pro SPRacingF3</a></li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/board-20-20spracingf3evo/">Seriously Pro SPRacingF3EVO</a></li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/board-20-20colibrirace/">TBS Colibri Race</a></li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/board-20-20alienflight/">AlienFlightF3</a></li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/board-20-20sparky/">TauLabs Sparky</a></li>
+</ul>
+
+<p>The core set of legacy boards are:</p>
+
+<ul>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/board-20-20alienflight/">AlienFlightF1</a></li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/board-20-20cc3d/">OpenPilot CC3D</a></li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/board-20-20cjmcu/">CJMCU</a></li>
 <li>Flip32+</li>
-<li>Naze32</li>
-<li>Sparky</li>
-<li>SPRacingF3</li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/board-20-20naze32/">AbuseMark Naze32</a></li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/board-20-20rmdo/">RMRC Dodo</a></li>
 </ul>
 
 <p>Cleanflight also runs on the following developer boards:</p>
 
 <ul>
-<li>STM32F3Discovery</li>
-<li>Port103R</li>
-<li>EUSTM32F103RB</li>
+<li>STM32F3Discovery - Recommended for developers.</li>
+<li>Port103R - Recommended for F1 developers.</li>
+<li>EUSTM32F103RB - Legacy.</li>
 </ul>
 
 <p>There is also limited support for the following boards which may be removed due to lack of users or commercial availability.</p>
 
 <ul>
-<li>Olimexino</li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/board-20-20olimexino/">Olimexino</a></li>
 <li>Naze32Pro</li>
 <li>STM32F3Discovery with Chebuzz F3 shield.</li>
 </ul>
@@ -154,6 +166,10 @@ NOTE: Hardware developers should not design new boards that have CPUs with less 
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -171,6 +187,10 @@ NOTE: Hardware developers should not design new boards that have CPUs with less 
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -199,6 +219,14 @@ NOTE: Hardware developers should not design new boards that have CPUs with less 
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -341,6 +369,10 @@ NOTE: Hardware developers should not design new boards that have CPUs with less 
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -361,7 +393,7 @@ NOTE: Hardware developers should not design new boards that have CPUs with less 
                 
                   
                     <li>
-                      <a href="/docs/api/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -385,7 +417,7 @@ NOTE: Hardware developers should not design new boards that have CPUs with less 
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -393,7 +425,7 @@ NOTE: Hardware developers should not design new boards that have CPUs with less 
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -401,7 +433,7 @@ NOTE: Hardware developers should not design new boards that have CPUs with less 
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -409,7 +441,7 @@ NOTE: Hardware developers should not design new boards that have CPUs with less 
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -417,7 +449,7 @@ NOTE: Hardware developers should not design new boards that have CPUs with less 
                 
                   
                     <li>
-                      <a href="/docs/development/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -425,7 +457,7 @@ NOTE: Hardware developers should not design new boards that have CPUs with less 
                 
                   
                     <li>
-                      <a href="/docs/development/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -433,7 +465,15 @@ NOTE: Hardware developers should not design new boards that have CPUs with less 
                 
                   
                     <li>
-                      <a href="/docs/development/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -441,7 +481,7 @@ NOTE: Hardware developers should not design new boards that have CPUs with less 
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -449,7 +489,7 @@ NOTE: Hardware developers should not design new boards that have CPUs with less 
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -457,7 +497,7 @@ NOTE: Hardware developers should not design new boards that have CPUs with less 
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -465,7 +505,15 @@ NOTE: Hardware developers should not design new boards that have CPUs with less 
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -473,7 +521,7 @@ NOTE: Hardware developers should not design new boards that have CPUs with less 
                 
                   
                     <li>
-                      <a href="/docs/development/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -481,7 +529,7 @@ NOTE: Hardware developers should not design new boards that have CPUs with less 
                 
                   
                     <li>
-                      <a href="/docs/development/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -495,6 +543,7 @@ NOTE: Hardware developers should not design new boards that have CPUs with less 
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>

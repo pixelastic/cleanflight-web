@@ -100,18 +100,18 @@
 
 <h2>Safety preamble: <u>Use at your own risk</u></h2>
 
-<p>The implementation you have here is quiet different and just for adjusting the P values of ROLL/PITCH/YAW in Acro mode.
+<p>The implementation you have here is quite different and just for adjusting the P values of ROLL/PITCH/YAW in Acro mode.
 When flying in Acro mode (yaw tune in other modes possible as well - see below) you can activate G-Tune with an AUX box (switch) while the copter is armed.</p>
 
-<p>It will start tuning the wanted / possible axes (see below) in a predefined range (see below).</p>
+<p>It will start tuning the wanted / possible axis (see below) in a predefined range (see below).</p>
 
 <p>After activation you will probably notice nothing! That means G-Tune will not start shaking your copter, you will have to do it (or simply fly and let it work).</p>
 
-<p>The G-Tune is based on the gyro error so it is only active when you give no RC input (that would be an additional error). So if you just roll only pitch and yaw are tuned. If you stop rolling G-Tune will wait ca. 450ms to let the axis settle and then start tuning that axis again. All axes are treated independently.</p>
+<p>The G-Tune is based on the gyro error so it is only active when you give no RC input (that would be an additional error). So if you just roll only pitch and yaw are tuned. If you stop rolling G-Tune will wait ca. 450ms to let the axis settle and then start tuning that axis again. All axis are treated independently.</p>
 
-<p>The easiest way to tune all axes at once is to do some air-jumps with the copter in Acro (RC centered and G-Tune activated&hellip; of course..).</p>
+<p>The easiest way to tune all axis at once is to do some air-jumps with the copter in Acro (RC centered and G-Tune activated&hellip; of course..).</p>
 
-<p>You can set a too high P for the axes as default in the GUI, when the copter starts shaking the wobbles will be detected and P tuned down (be careful with the strength setting though - see below).</p>
+<p>You can set a too high P for the axis as default in the GUI, when the copter starts shaking the wobbles will be detected and P tuned down (be careful with the strength setting though - see below).</p>
 
 <p>Yaw tune is disabled in any copter with less than 4 motors (like tricopters).</p>
 
@@ -120,6 +120,29 @@ When flying in Acro mode (yaw tune in other modes possible as well - see below) 
 <p>You will see the results in the GUI - the tuning results will only be saved if you enable G-Tune mode while the copter is disarmed and G-Tune was used before when armed. You also can save the configuration in an alternative way (like hitting save button in the GUI, casting an eepromwrite with trimming, acc calibration etc.)</p>
 
 <p>TPA and G-Tune: It is not tested and will most likely not result into something good. However G-Tune might be able to replace TPA for you.</p>
+
+<p>A typical use may go in this order:</p>
+
+<ol>
+<li>Arm</li>
+<li>Enable G-tune</li>
+<li>Lift off slowly, avoid stick inputs (Roll, Pitch / Yaw).</li>
+<li>Eventually the copter should fly well. Perhaps do a few throttle punch outs and fly around a bit. Take note if each punch out seems to become smoother with less oscillation and the overall flight performance.</li>
+<li>Disable G-tune</li>
+<li>Land </li>
+<li>Disarm, but don’t power off. </li>
+<li>If these are desired results then either a) Connect cleanflight configurator review and save the configuration. or b) Enable G-Tune again to save settings. </li>
+<li>Power off. </li>
+</ol>
+
+<p>If the results are not desired look into changing the parameters as shown below and try again.</p>
+
+<p>Some other notes and instructions can be found here:</p>
+
+<blockquote>
+<p><a href="http://www.rcgroups.com/forums/showpost.php?p=31321635&amp;postcount=6160">http://www.rcgroups.com/forums/showpost.php?p=31321635&amp;postcount=6160</a>
+<a href="http://www.rcgroups.com/forums/showpost.php?p=31525114&amp;postcount=7150">http://www.rcgroups.com/forums/showpost.php?p=31525114&amp;postcount=7150</a></p>
+</blockquote>
 
 <h2>Parameters and their function:</h2>
 <figure class="highlight"><pre><code class="language-text" data-lang="text">gtune_loP_rll        = 10  [0..200] Lower limit of ROLL P during G-Tune.  Note &quot;10&quot; means &quot;1.0&quot; in the GUI.
@@ -165,6 +188,10 @@ gtune_average_cycles = 16  [8..128] Number of looptime cycles used for gyro aver
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -182,6 +209,10 @@ gtune_average_cycles = 16  [8..128] Number of looptime cycles used for gyro aver
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -210,6 +241,14 @@ gtune_average_cycles = 16  [8..128] Number of looptime cycles used for gyro aver
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -352,6 +391,10 @@ gtune_average_cycles = 16  [8..128] Number of looptime cycles used for gyro aver
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -372,7 +415,7 @@ gtune_average_cycles = 16  [8..128] Number of looptime cycles used for gyro aver
                 
                   
                     <li>
-                      <a href="/docs/api/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -396,7 +439,7 @@ gtune_average_cycles = 16  [8..128] Number of looptime cycles used for gyro aver
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -404,7 +447,7 @@ gtune_average_cycles = 16  [8..128] Number of looptime cycles used for gyro aver
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -412,7 +455,7 @@ gtune_average_cycles = 16  [8..128] Number of looptime cycles used for gyro aver
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -420,7 +463,7 @@ gtune_average_cycles = 16  [8..128] Number of looptime cycles used for gyro aver
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -428,7 +471,7 @@ gtune_average_cycles = 16  [8..128] Number of looptime cycles used for gyro aver
                 
                   
                     <li>
-                      <a href="/docs/development/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -436,7 +479,7 @@ gtune_average_cycles = 16  [8..128] Number of looptime cycles used for gyro aver
                 
                   
                     <li>
-                      <a href="/docs/development/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -444,7 +487,15 @@ gtune_average_cycles = 16  [8..128] Number of looptime cycles used for gyro aver
                 
                   
                     <li>
-                      <a href="/docs/development/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -452,7 +503,7 @@ gtune_average_cycles = 16  [8..128] Number of looptime cycles used for gyro aver
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -460,7 +511,7 @@ gtune_average_cycles = 16  [8..128] Number of looptime cycles used for gyro aver
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -468,7 +519,7 @@ gtune_average_cycles = 16  [8..128] Number of looptime cycles used for gyro aver
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -476,7 +527,15 @@ gtune_average_cycles = 16  [8..128] Number of looptime cycles used for gyro aver
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -484,7 +543,7 @@ gtune_average_cycles = 16  [8..128] Number of looptime cycles used for gyro aver
                 
                   
                     <li>
-                      <a href="/docs/development/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -492,7 +551,7 @@ gtune_average_cycles = 16  [8..128] Number of looptime cycles used for gyro aver
                 
                   
                     <li>
-                      <a href="/docs/development/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -506,6 +565,7 @@ gtune_average_cycles = 16  [8..128] Number of looptime cycles used for gyro aver
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>

@@ -124,6 +124,12 @@ auxillary receiver channels and other events such as failsafe detection.</p>
 <td>Altitude hold mode (Requires barometer sensor)</td>
 </tr>
 <tr>
+<td>4</td>
+<td>N/A</td>
+<td>VARIO</td>
+<td>Unused</td>
+</tr>
+<tr>
 <td>5</td>
 <td>4</td>
 <td>MAG</td>
@@ -151,7 +157,7 @@ auxillary receiver channels and other events such as failsafe detection.</p>
 <td>9</td>
 <td>8</td>
 <td>CAMTRIG</td>
-<td></td>
+<td>Unused</td>
 </tr>
 <tr>
 <td>10</td>
@@ -205,7 +211,7 @@ auxillary receiver channels and other events such as failsafe detection.</p>
 <td>18</td>
 <td>17</td>
 <td>GOV</td>
-<td></td>
+<td>Unused</td>
 </tr>
 <tr>
 <td>19</td>
@@ -220,10 +226,34 @@ auxillary receiver channels and other events such as failsafe detection.</p>
 <td>Enable telemetry via switch</td>
 </tr>
 <tr>
+<td>21</td>
+<td>20</td>
+<td>GTUNE</td>
+<td>G-Tune - auto tuning of Pitch/Roll/Yaw P values</td>
+</tr>
+<tr>
 <td>22</td>
 <td>21</td>
 <td>SONAR</td>
 <td>Altitude hold mode (sonar sensor only)</td>
+</tr>
+<tr>
+<td>23</td>
+<td>22</td>
+<td>SERVO1</td>
+<td>Servo 1</td>
+</tr>
+<tr>
+<td>24</td>
+<td>23</td>
+<td>SERVO2</td>
+<td>Servo 2</td>
+</tr>
+<tr>
+<td>25</td>
+<td>24</td>
+<td>SERVO3</td>
+<td>Servo 3</td>
 </tr>
 <tr>
 <td>26</td>
@@ -234,8 +264,14 @@ auxillary receiver channels and other events such as failsafe detection.</p>
 <tr>
 <td>27</td>
 <td>26</td>
-<td>GTUNE</td>
-<td>G-Tune - auto tuning of Pitch/Roll/Yaw P values</td>
+<td>FAILSAFE</td>
+<td>Enter failsafe stage 2 manually</td>
+</tr>
+<tr>
+<td>28</td>
+<td>27</td>
+<td>AIRMODE</td>
+<td>Alternative mixer and additional PID logic for more stable copter</td>
 </tr>
 </tbody></table>
 
@@ -268,6 +304,25 @@ auxillary receiver channels and other events such as failsafe detection.</p>
 <p>This mode should be enabled in conjunction with Angle or Horizon modes and an Altitude hold mode.</p>
 
 <p>Requires a 3D GPS fix and minimum of 5 satellites in view.</p>
+
+<h2>Airmode</h2>
+
+<p>In the standard mixer / mode, when the roll, pitch and yaw gets calculated and saturates a motor, all motors
+will be reduced equally. When motor goes below minimum it gets clipped off.
+Say you had your throttle just above minimum and tried to pull a quick roll - since two motors can&rsquo;t go
+any lower, you essentially get half the power (half of your PID gain).
+If your inputs would asked for more than 100% difference between the high and low motors, the low motors
+would get clipped, breaking the symmetry of the motor balance by unevenly reducing the gain.
+Airmode will enable full PID correction during zero throttle and give you ability for nice zero throttle
+gliding and actobatics. But also the cornering / turns will be much tighter now as there is always maximum
+possible correction performed. Airmode can also be enabled to work at all times by always putting it on the
+same switch like your arm switch or you can enable/disable it in air. Additional things and benefits: Airmode
+will additionally fully enable Iterm at zero throttle. Note that there is still some protection on the ground
+when throttle zeroed (below min_check) and roll/pitch sticks centered. This is a basic protection to limit
+motors spooling up on the ground. Also the Iterm will be reset above 70% of stick input in acro mode to prevent
+quick Iterm windups during finishes of rolls and flips, which will provide much cleaner and more natural stops
+of flips and rolls what again opens the ability to have higher I gains for some.
+Note that AIRMODE will also overrule motor stop function! It will basically also act as an idle up switch.</p>
 
 <h2>Auxillary Configuration</h2>
 
@@ -329,6 +384,10 @@ auxillary receiver channels and other events such as failsafe detection.</p>
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -346,6 +405,10 @@ auxillary receiver channels and other events such as failsafe detection.</p>
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -374,6 +437,14 @@ auxillary receiver channels and other events such as failsafe detection.</p>
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -516,6 +587,10 @@ auxillary receiver channels and other events such as failsafe detection.</p>
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -536,7 +611,7 @@ auxillary receiver channels and other events such as failsafe detection.</p>
                 
                   
                     <li>
-                      <a href="/docs/api/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -560,7 +635,7 @@ auxillary receiver channels and other events such as failsafe detection.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -568,7 +643,7 @@ auxillary receiver channels and other events such as failsafe detection.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -576,7 +651,7 @@ auxillary receiver channels and other events such as failsafe detection.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -584,7 +659,7 @@ auxillary receiver channels and other events such as failsafe detection.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -592,7 +667,7 @@ auxillary receiver channels and other events such as failsafe detection.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -600,7 +675,7 @@ auxillary receiver channels and other events such as failsafe detection.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -608,7 +683,15 @@ auxillary receiver channels and other events such as failsafe detection.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -616,7 +699,7 @@ auxillary receiver channels and other events such as failsafe detection.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -624,7 +707,7 @@ auxillary receiver channels and other events such as failsafe detection.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -632,7 +715,7 @@ auxillary receiver channels and other events such as failsafe detection.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -640,7 +723,15 @@ auxillary receiver channels and other events such as failsafe detection.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -648,7 +739,7 @@ auxillary receiver channels and other events such as failsafe detection.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -656,7 +747,7 @@ auxillary receiver channels and other events such as failsafe detection.</p>
                 
                   
                     <li>
-                      <a href="/docs/development/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -670,6 +761,7 @@ auxillary receiver channels and other events such as failsafe detection.</p>
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>

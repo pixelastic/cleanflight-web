@@ -86,20 +86,335 @@
   <div class="row post-full">
     <div class="col-md-9">
       <div class="content">
-        <h1>Board - RMDO</h1>
+        <h1>Board - RMRC Dodo</h1>
 
-<p>The DoDo board is a clone of the SPRacingF3 board in terms of CPU pin mappings.  See the SPRacingF3 documentation.</p>
+<p>The RMRC Dodo board is made and sold by Ready Made RC. In terms of CPU pin mapping it is a clone of the SPRacingF3 board (also see the SPRacingF3 documentation). Currently there are three versions with slightly different hardware available: Rev. 1, 2, and 3.</p>
 
-<p>Hardware differences compared to SPRacingF3 are as follows:</p>
+<p>The revision 3 board changed the CPU from one with 128KB to one with 256KB however, for compatibility reasons, Cleanflight only supports and uses 128KB of it.  The same binary can be used on all DODO boards.</p>
+
+<h2>Hardware Features</h2>
 
 <ul>
-<li>Rev 1 and Rev 2: the CPU is the cheaper version of the F3 with only 128KB FLASH. Rev 3: the CPU is a F3 version with 256KB FLASH.</li>
-<li>The external flash rom is the same size as found on the Naze32 (2MBit)</li>
-<li>The barometer is the cheaper BMP280.</li>
-<li>It does not have any compass sensor.</li>
-<li>Onboard BEC.</li>
-<li>Different physical connectors/pins/pads/ports.</li>
+<li>STM32 F3 ARM Cortex-M processor with 128KB or 256KB flash program memory (Rev. 1 and 2: 128KB flash, Rev 3 256K).</li>
+<li>2MB external flash memory for storage.</li>
+<li>MPU6050 accelerometer/gyro (Rev. 2: MPU6000)</li>
+<li>BMP280 Barometer</li>
+<li>No compass sensor.</li>
+<li>3 hardware UARTs (+ 2 software) for GPS, telemetry, OSD, etc., 5V compatible</li>
+<li>On-board 5V/0.5A BEC directly powered off 2-6S main battery pack. No external BEC/regulator necessary.</li>
+<li>On-board 3.3V regulator to power peripherials like Spektrum satellite receiver.</li>
+<li>36x36mm board with 30.5mm mounting holes pattern (same as CC3D or Naze32, but different pin-out).</li>
 </ul>
+
+<p>Note: Earlier revisions had issues with the buzzer circuit. </p>
+
+<h2>Serial Ports</h2>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Name</th>
+<th style="text-align: center">RX (Board)</th>
+<th style="text-align: center">TX (Board)</th>
+<th style="text-align: center">RX (MCU)</th>
+<th style="text-align: center">TX (MCU)</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">UART1</td>
+<td style="text-align: center">U1RX</td>
+<td style="text-align: center">U1TX</td>
+<td style="text-align: center">PA10</td>
+<td style="text-align: center">PA9</td>
+<td>Shared with USB connection</td>
+</tr>
+<tr>
+<td style="text-align: center">UART2</td>
+<td style="text-align: center">U2RX</td>
+<td style="text-align: center">U2TX/SWCLK</td>
+<td style="text-align: center">PA15</td>
+<td style="text-align: center">PA14</td>
+<td>Shared with SWD</td>
+</tr>
+<tr>
+<td style="text-align: center">UART3</td>
+<td style="text-align: center">U3RX/3</td>
+<td style="text-align: center">U3TX/4</td>
+<td style="text-align: center">PB11</td>
+<td style="text-align: center">PB10</td>
+<td>RX also connected to Spektrum satellite port</td>
+</tr>
+</tbody></table>
+
+<h2>Pinouts</h2>
+
+<h3>Starboard (Front to back)</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Label</th>
+<th style="text-align: center">Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">RC_IN_8/SOFTSERIAL2_TX</td>
+<td style="text-align: center">RC8 ppm input or soft-serial 2 transmit</td>
+</tr>
+<tr>
+<td style="text-align: center">RC_IN_7/SOFTSERIAL2_RX</td>
+<td style="text-align: center">RC7 ppm input or soft-serial 2 receive</td>
+</tr>
+<tr>
+<td style="text-align: center">RC_IN_6/SOFTSERIAL1_TX</td>
+<td style="text-align: center">RC6 ppm input or soft-serial 1 transmit</td>
+</tr>
+<tr>
+<td style="text-align: center">RC_IN_5/SOFTSERIAL1_RX</td>
+<td style="text-align: center">RC5 ppm input or soft-serial 2 receive</td>
+</tr>
+<tr>
+<td style="text-align: center">RC_IN_4/U3TX</td>
+<td style="text-align: center">RC4 ppm input or UART3 transmit</td>
+</tr>
+<tr>
+<td style="text-align: center">RC_IN_3/U3RX</td>
+<td style="text-align: center">RC3 ppm input or UART3 receive</td>
+</tr>
+<tr>
+<td style="text-align: center">RC_IN_2</td>
+<td style="text-align: center">RC2 ppm input</td>
+</tr>
+<tr>
+<td style="text-align: center">RC_IN_1/PPM IN</td>
+<td style="text-align: center">RC1 ppm input or SUM/CPPM</td>
+</tr>
+<tr>
+<td style="text-align: center">5V</td>
+<td style="text-align: center">5V bus</td>
+</tr>
+<tr>
+<td style="text-align: center">GND</td>
+<td style="text-align: center">Ground</td>
+</tr>
+</tbody></table>
+
+<h3>Back (Left to right)</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Label</th>
+<th style="text-align: center">Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">SPEKTRUM_VCC/3V3</td>
+<td style="text-align: center">3.3V output</td>
+</tr>
+<tr>
+<td style="text-align: center">SPEKTRUM_GND/GND</td>
+<td style="text-align: center">Ground</td>
+</tr>
+<tr>
+<td style="text-align: center">SPEKTRUM_DATA/U3RX</td>
+<td style="text-align: center">UART3 receive</td>
+</tr>
+<tr>
+<td style="text-align: center">USB</td>
+<td style="text-align: center">Micro USB socket</td>
+</tr>
+<tr>
+<td style="text-align: center">BAT+</td>
+<td style="text-align: center">Main battery (2S - 6S) positive lead</td>
+</tr>
+<tr>
+<td style="text-align: center">GND/BAT-</td>
+<td style="text-align: center">Main battery negative lead</td>
+</tr>
+</tbody></table>
+
+<h3>Front (Left to right)</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Label</th>
+<th style="text-align: center">Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">BZ_5V/BZ+</td>
+<td style="text-align: center">5V, connect to positive (+) terminal of buzzer</td>
+</tr>
+<tr>
+<td style="text-align: center">BZ_OC/BZ-</td>
+<td style="text-align: center">Open-collector output, connect to negative (-) terminal of buzzer</td>
+</tr>
+<tr>
+<td style="text-align: center">RC_OUT_1</td>
+<td style="text-align: center">ESC 1 output (rear, starboard, CW on quad)</td>
+</tr>
+<tr>
+<td style="text-align: center">RC_OUT_2</td>
+<td style="text-align: center">ESC 2 output (front, starboard, CCW on quad)</td>
+</tr>
+<tr>
+<td style="text-align: center">RC_OUT_3</td>
+<td style="text-align: center">ESC 3 output (front, port, CW on quad)</td>
+</tr>
+<tr>
+<td style="text-align: center">RC_OUT_4</td>
+<td style="text-align: center">ESC 4 output (rear, port, CCW on quad)</td>
+</tr>
+<tr>
+<td style="text-align: center">RC_OUT_5</td>
+<td style="text-align: center">PPM output 5</td>
+</tr>
+<tr>
+<td style="text-align: center">RC_OUT_6</td>
+<td style="text-align: center">PPM output 6</td>
+</tr>
+<tr>
+<td style="text-align: center">RC_OUT_7</td>
+<td style="text-align: center">PPM output 7</td>
+</tr>
+<tr>
+<td style="text-align: center">RC_OUT_8</td>
+<td style="text-align: center">PPM output 8</td>
+</tr>
+<tr>
+<td style="text-align: center">LED_OUT</td>
+<td style="text-align: center">WS2811 led output</td>
+</tr>
+<tr>
+<td style="text-align: center">LED_GND/GND</td>
+<td style="text-align: center">Ground</td>
+</tr>
+</tbody></table>
+
+<h3>Starboard (Front to back)</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Label</th>
+<th style="text-align: center">Column</th>
+<th style="text-align: center">Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">GND</td>
+<td style="text-align: center">Outside</td>
+<td style="text-align: center">Ground</td>
+</tr>
+<tr>
+<td style="text-align: center">U1TX</td>
+<td style="text-align: center">Outside</td>
+<td style="text-align: center">UART1 transmit (1)</td>
+</tr>
+<tr>
+<td style="text-align: center">U1RX</td>
+<td style="text-align: center">Outside</td>
+<td style="text-align: center">UART1 receive (1)</td>
+</tr>
+<tr>
+<td style="text-align: center">5V</td>
+<td style="text-align: center">Outside</td>
+<td style="text-align: center">5V bus</td>
+</tr>
+<tr>
+<td style="text-align: center">3V3</td>
+<td style="text-align: center">Outside</td>
+<td style="text-align: center">3.3V output (2)</td>
+</tr>
+<tr>
+<td style="text-align: center">GND</td>
+<td style="text-align: center">Inside</td>
+<td style="text-align: center">Ground</td>
+</tr>
+<tr>
+<td style="text-align: center">SDA</td>
+<td style="text-align: center">Inside</td>
+<td style="text-align: center">I2C data</td>
+</tr>
+<tr>
+<td style="text-align: center">SCL</td>
+<td style="text-align: center">Inside</td>
+<td style="text-align: center">I2C clock</td>
+</tr>
+<tr>
+<td style="text-align: center">3V3</td>
+<td style="text-align: center">Inside</td>
+<td style="text-align: center">3.3V output</td>
+</tr>
+<tr>
+<td style="text-align: center">PPM_RSSI</td>
+<td style="text-align: center">Inside</td>
+<td style="text-align: center">Low-pass filtered PPM-style RSSI input (FrSky or EzUHF)</td>
+</tr>
+<tr>
+<td style="text-align: center">U2RX</td>
+<td style="text-align: center">Outside</td>
+<td style="text-align: center">UART2 receive</td>
+</tr>
+<tr>
+<td style="text-align: center">U2TX/SWCLK</td>
+<td style="text-align: center">Outside</td>
+<td style="text-align: center">UART2 transmit or SWD clock</td>
+</tr>
+<tr>
+<td style="text-align: center">SWDIO</td>
+<td style="text-align: center">Outside</td>
+<td style="text-align: center">SWD input/output</td>
+</tr>
+<tr>
+<td style="text-align: center">GND</td>
+<td style="text-align: center">Outside</td>
+<td style="text-align: center">Ground</td>
+</tr>
+</tbody></table>
+
+<ol>
+<li>Shared with USB.</li>
+<li>Can be used to power external low-power devices like Spektrum satellite receiver.</li>
+</ol>
+
+<h3>Top pads</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Label</th>
+<th style="text-align: center">Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">CURR</td>
+<td style="text-align: center">Current sensor ADC input, unbuffered</td>
+</tr>
+<tr>
+<td style="text-align: center">RSSI</td>
+<td style="text-align: center">RSSI ADC input, unbuffered. Use PPM_RSSI for filtered input.</td>
+</tr>
+<tr>
+<td style="text-align: center">BOOT</td>
+<td style="text-align: center">BOOT jumper for recovering a bricked boot loader</td>
+</tr>
+</tbody></table>
+
+<h3>Bottom pads</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Label</th>
+<th style="text-align: left">Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">TRIG</td>
+<td style="text-align: left">Trigger for sonar (on-board 1kOhm series resistor for 5V compatibility)</td>
+</tr>
+<tr>
+<td style="text-align: center">ECHO</td>
+<td style="text-align: left">Echo for sonar (on-board 1kOhm series resistor for 5V compatibility)</td>
+</tr>
+</tbody></table>
 
       </div>
     </div>
@@ -126,6 +441,10 @@
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -143,6 +462,10 @@
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -171,6 +494,14 @@
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -313,6 +644,10 @@
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -333,7 +668,7 @@
                 
                   
                     <li>
-                      <a href="/docs/api/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -357,7 +692,7 @@
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -365,7 +700,7 @@
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -373,7 +708,7 @@
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -381,7 +716,7 @@
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -389,7 +724,7 @@
                 
                   
                     <li>
-                      <a href="/docs/development/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -397,7 +732,7 @@
                 
                   
                     <li>
-                      <a href="/docs/development/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -405,7 +740,15 @@
                 
                   
                     <li>
-                      <a href="/docs/development/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -413,7 +756,7 @@
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -421,7 +764,7 @@
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -429,7 +772,7 @@
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -437,7 +780,15 @@
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -445,7 +796,7 @@
                 
                   
                     <li>
-                      <a href="/docs/development/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -453,7 +804,7 @@
                 
                   
                     <li>
-                      <a href="/docs/development/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -467,6 +818,7 @@
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>

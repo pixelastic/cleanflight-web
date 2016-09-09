@@ -90,7 +90,7 @@
 
 <p>Spektrum bind with hardware bind plug support.</p>
 
-<p>The Spektrum bind code is actually enabled for the NAZE, NAZE32PRO, CJMCU, EUSTM32F103RC, SPARKY, CC3D, ALIENWIIF1, ALIENWIIF3 targets.</p>
+<p>The Spektrum bind code is actually enabled for the NAZE, NAZE32PRO, CJMCU, EUSTM32F103RC, SPARKY, CC3D, ALIENFLIGHTF1, ALIENFLIGHTF3 targets.</p>
 
 <h2>Configure the bind code</h2>
 
@@ -106,7 +106,7 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
 </code></pre></figure>
 <h2>Hardware</h2>
 
-<p>The hardware bind plug will be enabled via defining HARDWARE_BIND_PLUG during building of the firmware. BINDPLUG_PORT and BINDPLUG_PIN also need to be defined (please see above). This is done automatically if the AlienWii32 firmware is built. The hardware bind plug is expected between the defined bind pin and ground. </p>
+<p>The hardware bind plug will be enabled via defining HARDWARE_BIND_PLUG during building of the firmware. BINDPLUG_PORT and BINDPLUG_PIN also need to be defined (please see above). This is done automatically if the AlienFlight firmware is built. The hardware bind plug is expected between the defined bind pin and ground. </p>
 
 <h2>Function</h2>
 
@@ -135,7 +135,7 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
 <tr>
 <td>5</td>
 <td>DSM2 2048bit/11ms</td>
-<td>default AlienWii32</td>
+<td>default AlienFlight</td>
 </tr>
 <tr>
 <td>7</td>
@@ -143,14 +143,16 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
 <td></td>
 </tr>
 <tr>
+<td>8</td>
+<td>DSMX 2048bit/22ms</td>
+<td>Used by new DXe</td>
+</tr>
+<tr>
 <td>9</td>
 <td>DSMX 2048bit/11ms</td>
 <td></td>
 </tr>
 </tbody></table>
-
-<p>More detailed information regarding the satellite binding process can be found here:
-<a href="http://wiki.openpilot.org/display/Doc/Spektrum+Satellite">http://wiki.openpilot.org/display/Doc/Spektrum+Satellite</a></p>
 
 <h3>Supported Hardware</h3>
 
@@ -177,6 +179,11 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
 <td>Bind value 3</td>
 </tr>
 <tr>
+<td>Lemon RX DSMX</td>
+<td>Spektrum DX6i</td>
+<td>Bind value 9</td>
+</tr>
+<tr>
 <td>Lemon RX DSM2/DSMX</td>
 <td>Spektrum DX8</td>
 <td>Bind value 5</td>
@@ -190,6 +197,11 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
 <td>Lemon RX DSM2</td>
 <td>Walkera Devo7</td>
 <td>Bind value 9, Deviation firmware</td>
+</tr>
+<tr>
+<td>Lemon RX DSMX</td>
+<td>Spektrum DXe</td>
+<td>Bind value 8, Supports up to 9 channels</td>
 </tr>
 </tbody></table>
 
@@ -218,6 +230,10 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -235,6 +251,10 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -263,6 +283,14 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -405,6 +433,10 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -425,7 +457,7 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
                 
                   
                     <li>
-                      <a href="/docs/api/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -449,7 +481,7 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -457,7 +489,7 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -465,7 +497,7 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -473,7 +505,7 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -481,7 +513,7 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
                 
                   
                     <li>
-                      <a href="/docs/development/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -489,7 +521,7 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
                 
                   
                     <li>
-                      <a href="/docs/development/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -497,7 +529,15 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
                 
                   
                     <li>
-                      <a href="/docs/development/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -505,7 +545,7 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -513,7 +553,7 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -521,7 +561,7 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -529,7 +569,15 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -537,7 +585,7 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
                 
                   
                     <li>
-                      <a href="/docs/development/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -545,7 +593,7 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
                 
                   
                     <li>
-                      <a href="/docs/development/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -559,6 +607,7 @@ BINDPLUG_PIN   Pin_5   Defines the hardware bind plug pin
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>

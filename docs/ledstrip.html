@@ -101,15 +101,13 @@ supports the following:</p>
 <li>Heading/Orientation lights.</li>
 <li>Flight mode specific color schemes.</li>
 <li>Low battery warning.</li>
-<li>AUX operated on/off switch</li>
+<li>AUX operated on/off switch.</li>
+<li>GPS state.</li>
+<li>RSSI level.</li>
+<li>Battery level.</li>
 </ul>
 
-<p>The function and orientation configuration is fixed for now but later it should be able to be set via the UI or CLI..</p>
-
-<p>In the future, if someone codes it, they could be used to show GPS navigation status, thrust levels, RSSI, etc.
-Lots of scope for ideas and improvements.</p>
-
-<p>Likewise, support for more than 32 LEDs is possible, it just requires additional development.</p>
+<p>Support for more than 32 LEDs is possible, it just requires additional development.</p>
 
 <h2>Supported hardware</h2>
 
@@ -195,7 +193,7 @@ Some LEDs are more tolerant of this than others.</p>
 
 <h2>Configuration</h2>
 
-<p>The led strip feature can be configured via the GUI</p>
+<p>The led strip feature can be configured via the GUI.</p>
 
 <p>GUI:
 Enable the Led Strip feature via the GUI under setup.</p>
@@ -233,27 +231,41 @@ Enable the <code>LED_STRIP</code> feature via the cli:</p>
 
 <p>Note: It is perfectly possible to configure an LED to have all directions <code>NESWUD</code> but probably doesn&rsquo;t make sense.</p>
 
-<p><code>mmm</code> specifies the modes that should be applied an LED.  Modes are:</p>
+<p><code>mmm</code> specifies the modes that should be applied an LED.</p>
+
+<p>Each LED has one base function:</p>
+
+<ul>
+<li><code>C</code> - <code>C</code>olor.</li>
+<li><code>F</code> - <code>F</code>light mode &amp; Orientation</li>
+<li><code>A</code> - <code>A</code>rmed state.</li>
+<li><code>R</code> - <code>R</code>ing thrust state.</li>
+<li><code>G</code> - <code>G</code>PS state.</li>
+<li><code>S</code> - R<code>S</code>SSI level.</li>
+<li><code>L</code> - Battery <code>L</code>evel.</li>
+</ul>
+
+<p>And each LED has overlays:</p>
 
 <ul>
 <li><code>W</code> - <code>W</code>warnings.</li>
-<li><code>F</code> - <code>F</code>light mode &amp; Orientation</li>
 <li><code>I</code> - <code>I</code>ndicator.</li>
-<li><code>A</code> - <code>A</code>rmed state.</li>
 <li><code>T</code> - <code>T</code>hrust state.</li>
-<li><code>R</code> - <code>R</code>ing thrust state.</li>
-<li><code>C</code> - <code>C</code>olor.</li>
+<li><code>B</code> - <code>B</code>link (flash twice) mode.</li>
+<li><code>O</code> - Lars<code>O</code>n Scanner (Cylon Effect).</li>
+<li><code>N</code> - Blink on la<code>N</code>ding (throttle &lt; 50%).</li>
 </ul>
 
 <p><code>cc</code> specifies the color number (0 based index).</p>
 
 <p>Example:</p>
-<figure class="highlight"><pre><code class="language-text" data-lang="text">led 0 0,15:SD:IAW:0
-led 1 15,0:ND:IAW:0
-led 2 0,0:ND:IAW:0
-led 3 0,15:SD:IAW:0
+<figure class="highlight"><pre><code class="language-text" data-lang="text">led 0 0,15:SD:AWI:0
+led 1 15,0:ND:AWI:0
+led 2 0,0:ND:AWI:0
+led 3 0,15:SD:AWI:0
 led 4 7,7::C:1
 led 5 8,8::C:2
+led 6 8,9::B:1
 </code></pre></figure>
 <p>To erase an led, and to mark the end of the chain, use <code>0,0::</code> as the second argument, like this:</p>
 <figure class="highlight"><pre><code class="language-text" data-lang="text">led 4 0,0:::
@@ -291,6 +303,106 @@ led 5 8,8::C:2
 </tbody></table>
 
 <p>Flash patterns appear in order, so that it&rsquo;s clear which warnings are enabled.</p>
+
+<h4>GPS state</h4>
+
+<p>This mode shows the GPS state and satellite count.</p>
+
+<p>No fix = red LED
+3D fix = green LED</p>
+
+<p>The LEDs will blink as many times as the satellite count, then pause and start again.</p>
+
+<h4>RSSI level</h4>
+
+<p>This mode binds the LED color to RSSI level.</p>
+
+<table><thead>
+<tr>
+<th>Color</th>
+<th>RSSI</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Green</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Lime green</td>
+<td>80%</td>
+</tr>
+<tr>
+<td>Yellow</td>
+<td>60%</td>
+</tr>
+<tr>
+<td>Orange</td>
+<td>40%</td>
+</tr>
+<tr>
+<td>Red</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>Deep pink</td>
+<td>0%</td>
+</tr>
+</tbody></table>
+
+<p>When RSSI is below 50% is reached, LEDs will blink slowly, and they will blink fast when under 20%.</p>
+
+<h4>Battery level</h4>
+
+<p>This mode binds the LED color to remaining battery capacity.</p>
+
+<table><thead>
+<tr>
+<th>Color</th>
+<th>Capacity</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Green</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Lime green</td>
+<td>80%</td>
+</tr>
+<tr>
+<td>Yellow</td>
+<td>60%</td>
+</tr>
+<tr>
+<td>Orange</td>
+<td>40%</td>
+</tr>
+<tr>
+<td>Red</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>Deep pink</td>
+<td>0%</td>
+</tr>
+</tbody></table>
+
+<p>When Warning or Critial voltage is reached, LEDs will blink slowly or fast.
+Note: this mode requires a current sensor. If you don&rsquo;t have the actual device you can set up a virtual current sensor (<a href="http://shipow.github.io/cleanflight-web/docs/see-battery-battery/)">http://shipow.github.io/cleanflight-web/docs/see-battery-battery/)</a>).</p>
+
+<h4>Blink</h4>
+
+<p>This mode blinks the current LED, alternatively from black to the current active color.</p>
+
+<h4>Blink on landing</h4>
+
+<p>This mode blinks the current LED, alternatively from black to the current active color, when throttle is below 50% and the craft is armed.</p>
+
+<h4>Larson Scanner (Cylon Effect)</h4>
+
+<p>The Larson Scanner replicates the scanning &ldquo;eye&rdquo; effect seen on the mechanical Cylons and on Kitt from Knight Rider.</p>
+
+<p>This overlay merely varies the brightness of each LED&rsquo;s current color.</p>
 
 <h4>Flight Mode &amp; Orientation</h4>
 
@@ -539,7 +651,7 @@ the same time.  Thrust should normally be combined with Color or Mode/Orientatio
 
 <h4>Thrust ring state</h4>
 
-<p>This mode is allows you to use a 12, 16 or 24 leds ring (e.g. NeoPixel ring) for an afterburner effect. When armed the leds use the following sequences: 2 On, 4 Off, 2 On, 4 Off, and so on.  The light pattern rotates clockwise as throttle increases. </p>
+<p>This mode is allows you to use one or multiple led rings (e.g. NeoPixel ring) for an afterburner effect.  The light pattern rotates clockwise as throttle increases. </p>
 
 <p>A better effect is acheived when LEDs configured for thrust ring have no other functions.</p>
 
@@ -663,6 +775,139 @@ color 13 330,0,255
 color 14 0,0,0
 color 15 0,0,0
 </code></pre></figure>
+<h3>Mode Colors Assignement</h3>
+
+<p>Mode Colors can be configured using the cli <code>mode_color</code> command.</p>
+
+<ul>
+<li>No arguments: lists all mode colors</li>
+<li>arguments: mode, function, color</li>
+</ul>
+
+<p>First 6 groups of ModeIndexes are :</p>
+
+<table><thead>
+<tr>
+<th>mode</th>
+<th>name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>orientation</td>
+</tr>
+<tr>
+<td>1</td>
+<td>headfree</td>
+</tr>
+<tr>
+<td>2</td>
+<td>horizon</td>
+</tr>
+<tr>
+<td>3</td>
+<td>angle</td>
+</tr>
+<tr>
+<td>4</td>
+<td>mag</td>
+</tr>
+<tr>
+<td>5</td>
+<td>baro</td>
+</tr>
+<tr>
+<td>6</td>
+<td>special</td>
+</tr>
+</tbody></table>
+
+<p>Modes 0 to 5 functions:</p>
+
+<table><thead>
+<tr>
+<th>function</th>
+<th>name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>north</td>
+</tr>
+<tr>
+<td>1</td>
+<td>east</td>
+</tr>
+<tr>
+<td>2</td>
+<td>south</td>
+</tr>
+<tr>
+<td>3</td>
+<td>west</td>
+</tr>
+<tr>
+<td>4</td>
+<td>up</td>
+</tr>
+<tr>
+<td>5</td>
+<td>down</td>
+</tr>
+</tbody></table>
+
+<p>Mode 6 use these functions:</p>
+
+<table><thead>
+<tr>
+<th>function</th>
+<th>name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>disarmed</td>
+</tr>
+<tr>
+<td>1</td>
+<td>armed</td>
+</tr>
+<tr>
+<td>2</td>
+<td>animation</td>
+</tr>
+<tr>
+<td>3</td>
+<td>background</td>
+</tr>
+<tr>
+<td>4</td>
+<td>blink background</td>
+</tr>
+<tr>
+<td>5</td>
+<td>gps: no satellites</td>
+</tr>
+<tr>
+<td>6</td>
+<td>gps: no fix</td>
+</tr>
+<tr>
+<td>7</td>
+<td>gps: 3D fix</td>
+</tr>
+</tbody></table>
+
+<p>The ColorIndex is picked from the colors array (&ldquo;palette&rdquo;).</p>
+
+<p>Examples (using the default colors):</p>
+
+<ul>
+<li>set armed color to red: <code>mode_color 6 1 2</code></li>
+<li>set disarmed color to yellow: <code>mode_color 6 0 4</code></li>
+<li>set Headfree mode &lsquo;south&rsquo; to Cyan: <code>mode_color 1 2 8</code></li>
+</ul>
+
 <h2>Positioning</h2>
 
 <p>Cut the strip into sections as per diagrams below.  When the strips are cut ensure you reconnect each output to each input with cable where the break is made.
@@ -845,6 +1090,10 @@ This also means that you can make sure that each R,G and B LED in each LED modul
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -862,6 +1111,10 @@ This also means that you can make sure that each R,G and B LED in each LED modul
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -890,6 +1143,14 @@ This also means that you can make sure that each R,G and B LED in each LED modul
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -1032,6 +1293,10 @@ This also means that you can make sure that each R,G and B LED in each LED modul
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -1052,7 +1317,7 @@ This also means that you can make sure that each R,G and B LED in each LED modul
                 
                   
                     <li>
-                      <a href="/docs/api/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -1076,7 +1341,7 @@ This also means that you can make sure that each R,G and B LED in each LED modul
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -1084,7 +1349,7 @@ This also means that you can make sure that each R,G and B LED in each LED modul
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -1092,7 +1357,7 @@ This also means that you can make sure that each R,G and B LED in each LED modul
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -1100,7 +1365,7 @@ This also means that you can make sure that each R,G and B LED in each LED modul
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -1108,7 +1373,7 @@ This also means that you can make sure that each R,G and B LED in each LED modul
                 
                   
                     <li>
-                      <a href="/docs/development/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -1116,7 +1381,7 @@ This also means that you can make sure that each R,G and B LED in each LED modul
                 
                   
                     <li>
-                      <a href="/docs/development/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -1124,7 +1389,15 @@ This also means that you can make sure that each R,G and B LED in each LED modul
                 
                   
                     <li>
-                      <a href="/docs/development/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -1132,7 +1405,7 @@ This also means that you can make sure that each R,G and B LED in each LED modul
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -1140,7 +1413,7 @@ This also means that you can make sure that each R,G and B LED in each LED modul
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -1148,7 +1421,7 @@ This also means that you can make sure that each R,G and B LED in each LED modul
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -1156,7 +1429,15 @@ This also means that you can make sure that each R,G and B LED in each LED modul
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -1164,7 +1445,7 @@ This also means that you can make sure that each R,G and B LED in each LED modul
                 
                   
                     <li>
-                      <a href="/docs/development/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -1172,7 +1453,7 @@ This also means that you can make sure that each R,G and B LED in each LED modul
                 
                   
                     <li>
-                      <a href="/docs/development/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -1186,6 +1467,7 @@ This also means that you can make sure that each R,G and B LED in each LED modul
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>

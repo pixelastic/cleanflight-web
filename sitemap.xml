@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://shipow.github.io/cleanflight-web/</loc>
-    <lastmod>2015-11-14T22:09:34+01:00</lastmod>
+    <lastmod>2016-09-09T10:00:32+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -86,6 +86,19 @@
     </url>
   
     <url>
+      <loc>http://shipow.github.io/cleanflight-web/development/docs/configuration-format.html</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
       <loc>http://shipow.github.io/cleanflight-web/development/docs/building-manual.html</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
@@ -126,6 +139,19 @@
   
     <url>
       <loc>http://shipow.github.io/cleanflight-web/development/docs/building-in-mac-os-x.html</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>http://shipow.github.io/cleanflight-web/development/docs/building-in-fedora.html</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -554,6 +580,32 @@
     </url>
   
     <url>
+      <loc>http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
       <loc>http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
@@ -645,6 +697,19 @@
     </url>
   
     <url>
+      <loc>http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
       <loc>http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
@@ -698,6 +763,19 @@
   
     <url>
       <loc>http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html</loc>
+      
+        <lastmod>2015-01-01T00:00:00+01:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>http://shipow.github.io/cleanflight-web/docs/board-alienflight.html</loc>
       
         <lastmod>2015-01-01T00:00:00+01:00</lastmod>
       
@@ -765,7 +843,7 @@
   <url>
     <loc>http://shipow.github.io/cleanflight-web/404</loc>
     
-      <lastmod>2015-11-14T22:09:34+01:00</lastmod>
+      <lastmod>2016-09-09T10:00:32+02:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -778,7 +856,7 @@
   <url>
     <loc>http://shipow.github.io/cleanflight-web/about</loc>
     
-      <lastmod>2015-11-14T22:09:34+01:00</lastmod>
+      <lastmod>2016-09-09T10:00:32+02:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -791,7 +869,7 @@
   <url>
     <loc>http://shipow.github.io/cleanflight-web/atom.xml</loc>
     
-      <lastmod>2015-11-14T22:09:34+01:00</lastmod>
+      <lastmod>2016-09-09T10:00:32+02:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -804,7 +882,7 @@
   <url>
     <loc>http://shipow.github.io/cleanflight-web/</loc>
     
-      <lastmod>2015-11-14T22:09:34+01:00</lastmod>
+      <lastmod>2016-09-09T10:00:32+02:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -817,7 +895,7 @@
   <url>
     <loc>http://shipow.github.io/cleanflight-web/sitemap.xml</loc>
     
-      <lastmod>2015-11-14T22:09:34+01:00</lastmod>
+      <lastmod>2016-09-09T10:00:32+02:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -830,7 +908,7 @@
   <url>
     <loc>http://shipow.github.io/cleanflight-web/categories/docs/</loc>
     
-      <lastmod>2015-11-14T22:09:34+01:00</lastmod>
+      <lastmod>2016-09-09T10:00:32+02:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -843,7 +921,7 @@
   <url>
     <loc>http://shipow.github.io/cleanflight-web/categories/api/</loc>
     
-      <lastmod>2015-11-14T22:09:34+01:00</lastmod>
+      <lastmod>2016-09-09T10:00:32+02:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -856,7 +934,7 @@
   <url>
     <loc>http://shipow.github.io/cleanflight-web/categories/development/</loc>
     
-      <lastmod>2015-11-14T22:09:34+01:00</lastmod>
+      <lastmod>2016-09-09T10:00:32+02:00</lastmod>
     
     
       <changefreq>monthly</changefreq>

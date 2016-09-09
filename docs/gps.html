@@ -101,7 +101,7 @@
 <p>Enable the GPS from the CLI as follows:</p>
 
 <ol>
-<li>configure a serial port to use for GPS.</li>
+<li><a href="http://shipow.github.io/cleanflight-web/docs/serial/">configure a serial port to use for GPS.</a> </li>
 <li>set your GPS baud rate</li>
 <li>enable the <code>feature GPS</code></li>
 <li>set the <code>gps_provider</code></li>
@@ -115,20 +115,17 @@
 
 <h3>GPS Provider</h3>
 
-<p>Set the <code>gps_provider</code> appropriately.</p>
+<p>Set the <code>gps_provider</code> appropriately, for example <code>set gps_provider=UBLOX</code></p>
 
 <table><thead>
 <tr>
 <th>Value</th>
-<th>Meaning</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>0</td>
 <td>NMEA</td>
 </tr>
 <tr>
-<td>1</td>
 <td>UBLOX</td>
 </tr>
 </tbody></table>
@@ -137,7 +134,7 @@
 
 <p>When using UBLOX it is a good idea to use GPS auto configuration so your FC gets the GPS messages it needs.</p>
 
-<p>Enable GPS auto configuration as follows <code>set gps_auto_config=1</code>.</p>
+<p>Enable GPS auto configuration as follows <code>set gps_auto_config=ON</code>.</p>
 
 <p>If you are not using GPS auto configuration then ensure your GPS receiver sends out the correct messages at the right frequency.  See below for manual UBlox settings.</p>
 
@@ -150,32 +147,26 @@
 <table><thead>
 <tr>
 <th>Value</th>
-<th>Meaning</th>
 <th>Region</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>0</td>
 <td>AUTO</td>
 <td>Global</td>
 </tr>
 <tr>
-<td>1</td>
 <td>EGNOS</td>
 <td>Europe</td>
 </tr>
 <tr>
-<td>2</td>
 <td>WAAS</td>
 <td>North America</td>
 </tr>
 <tr>
-<td>3</td>
 <td>MSAS</td>
 <td>Asia</td>
 </tr>
 <tr>
-<td>4</td>
 <td>GAGAN</td>
 <td>India</td>
 </tr>
@@ -183,7 +174,7 @@
 
 <p>If you use a regional specific setting you may achieve a faster GPS lock than using AUTO.</p>
 
-<p>This setting only works when <code>gps_auto_config=1</code></p>
+<p>This setting only works when <code>gps_auto_config=ON</code></p>
 
 <h2>GPS Receiver Configuration</h2>
 
@@ -285,7 +276,7 @@ Below are some examples of user-tested hardware. </p>
 </thead><tbody>
 <tr>
 <td>U-blox Neo-M8N w/Compass</td>
-<td></td>
+<td>Pinout can be found in Pixfalcon manual. SDA and SCL can be attached to I2C bus for compass, TX and RX can be attached to UART for GPS. Power must be applied for either to function.</td>
 </tr>
 <tr>
 <td>Reyax RY825AI</td>
@@ -303,7 +294,7 @@ Below are some examples of user-tested hardware. </p>
 </thead><tbody>
 <tr>
 <td>U-blox Neo-7M w/Compass</td>
-<td><a href="http://www.hobbyking.com/hobbyking/store/__55558__Ublox_Neo_7M_GPS_with_Compass_and_Pedestal_Mount.html">HobbyKing</a></td>
+<td><a href="http://www.hobbyking.com/hobbyking/store/__55558__Ublox_Neo_7M_GPS_with_Compass_and_Pedestal_Mount.html">HobbyKing</a> You have to set align_mag in the CLI to get the magnetometer working correctly: <code>set align_mag = 8</code> and don&rsquo;t forget to <code>save</code>.</td>
 </tr>
 </tbody></table>
 
@@ -362,6 +353,10 @@ Below are some examples of user-tested hardware. </p>
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -379,6 +374,10 @@ Below are some examples of user-tested hardware. </p>
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -407,6 +406,14 @@ Below are some examples of user-tested hardware. </p>
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -549,6 +556,10 @@ Below are some examples of user-tested hardware. </p>
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -569,7 +580,7 @@ Below are some examples of user-tested hardware. </p>
                 
                   
                     <li>
-                      <a href="/docs/api/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -593,7 +604,7 @@ Below are some examples of user-tested hardware. </p>
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -601,7 +612,7 @@ Below are some examples of user-tested hardware. </p>
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -609,7 +620,7 @@ Below are some examples of user-tested hardware. </p>
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -617,7 +628,7 @@ Below are some examples of user-tested hardware. </p>
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -625,7 +636,7 @@ Below are some examples of user-tested hardware. </p>
                 
                   
                     <li>
-                      <a href="/docs/development/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -633,7 +644,7 @@ Below are some examples of user-tested hardware. </p>
                 
                   
                     <li>
-                      <a href="/docs/development/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -641,7 +652,15 @@ Below are some examples of user-tested hardware. </p>
                 
                   
                     <li>
-                      <a href="/docs/development/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -649,7 +668,7 @@ Below are some examples of user-tested hardware. </p>
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -657,7 +676,7 @@ Below are some examples of user-tested hardware. </p>
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -665,7 +684,7 @@ Below are some examples of user-tested hardware. </p>
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -673,7 +692,15 @@ Below are some examples of user-tested hardware. </p>
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -681,7 +708,7 @@ Below are some examples of user-tested hardware. </p>
                 
                   
                     <li>
-                      <a href="/docs/development/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -689,7 +716,7 @@ Below are some examples of user-tested hardware. </p>
                 
                   
                     <li>
-                      <a href="/docs/development/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -703,6 +730,7 @@ Below are some examples of user-tested hardware. </p>
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>

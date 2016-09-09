@@ -253,8 +253,8 @@
 <tr>
 <td>CUSTOM AIRPLANE</td>
 <td>User-defined airplane</td>
-<td></td>
-<td></td>
+<td>M1-M2</td>
+<td>S1-S8</td>
 </tr>
 <tr>
 <td>CUSTOM TRICOPTER</td>
@@ -266,26 +266,33 @@
 
 <h2>Servo configuration</h2>
 
-<p>The cli <code>servo</code> command defines the settings for the servo outputs. 
-The cli mixer <code>smix</code> command controllers how the mixer maps internal FC data (RC input, PID stabilisation output, channel forwarding, etc) to servo outputs.</p>
+<p>The cli <code>servo</code> command defines the settings for the servo outputs.
+The cli mixer <code>smix</code> command controls how the mixer maps internal FC data (RC input, PID stabilization output, channel forwarding, etc) to servo outputs.</p>
+
+<h3>cli <code>servo</code></h3>
+
+<p><code>servo &lt;min&gt; &lt;max&gt; &lt;middle&gt; &lt;angleMin&gt; &lt;angleMax&gt; &lt;rate&gt; &lt;forwardFromChannel&gt;</code></p>
+
+<ul>
+<li><p><code>&lt;min&gt;</code>, <code>&lt;max&gt;</code> - limit servo travel, in uS</p></li>
+<li><p><code>&lt;middle&gt;</code> - mid value when not forwarding, value from servo mixer is added to this.</p></li>
+<li><p><code>&lt;angleMin&gt;</code>,  <code>&lt;angleMax&gt;</code> - unused</p></li>
+<li><p><code>&lt;rate&gt;</code> - scale for value from servo mixer or gimbal input, -100% .. 100%</p></li>
+<li><p><code>&lt;forwardFromChannel&gt;</code> - use RC channel value as reference instead of <code>&lt;middle&gt;</code>. Servo will follow given RC channel, with possible correction from servo mixer. <code>&lt;min&gt;</code>, <code>&lt;max&gt;</code> are still honored.</p></li>
+</ul>
 
 <h2>Servo filtering</h2>
 
-<p>A low-pass filter can be enabled for the servos.  It may be useful for avoiding structural modes in the airframe, for example.  </p>
+<p>A low-pass filter can be enabled for the servos.  It may be useful for avoiding structural modes in the airframe, for example.</p>
 
 <h3>Configuration</h3>
 
 <p>Currently it can only be configured via the CLI:</p>
 
 <ol>
-<li>Use <code>set servo_lowpass_freq = nnn</code> to select the cutoff frequency.  Valid values range from 10 to 400.  This is a fraction of the loop frequency in 1/1000ths. For example, <code>40</code> means <code>0.040</code>.</li>
-<li>Use <code>set servo_lowpass_enable = 1</code> to enable filtering.</li>
+<li>Use <code>set servo_lowpass_freq = nnn</code> to select the cutoff frequency.  Valid values range from 10Hz to 400Hz, second order filter is used.</li>
+<li>Use <code>set servo_lowpass_enable = ON</code> to enable filtering.</li>
 </ol>
-
-<p>The cutoff frequency can be determined by the following formula:
-<code>Frequency = 1000 * servo_lowpass_freq / looptime</code></p>
-
-<p>For example, if <code>servo_lowpass_freq</code> is set to 40, and looptime is set to the default of 3500 us, the cutoff frequency will be 11.43 Hz.</p>
 
 <h3>Tuning</h3>
 
@@ -300,17 +307,18 @@ The cli mixer <code>smix</code> command controllers how the mixer maps internal 
 
 <h2>Custom Motor Mixing</h2>
 
-<p>Custom motor mixing allows for completely customized motor configurations. Each motor must be defined with a custom mixing table for that motor. The mix must reflect how close each motor is with reference to the CG (Center of Gravity) of the flight controller. A motor closer to the CG of the flight controller will need to travel less distance than a motor further away.  </p>
+<p>Custom motor mixing allows for completely customized motor configurations. Each motor must be defined with a custom mixing table for that motor. The mix must reflect how close each motor is with reference to the CG (Center of Gravity) of the flight controller. A motor closer to the CG of the flight controller will need to travel less distance than a motor further away.</p>
 
 <p>Steps to configure custom mixer in the CLI:</p>
 
 <ol>
 <li>Use <code>mixer custom</code> to enable the custom mixing.</li>
-<li>Use <code>mmix reset</code> to erase the any existing custom mixing. </li>
-<li>Issue a <code>mmix</code> statement for each motor. </li>
+<li>Use <code>mmix reset</code> to erase the any existing custom mixing.</li>
+<li>Optionally use <code>mmix load &lt;name&gt;</code> to start with one of available mixers.</li>
+<li>Issue a <code>mmix</code> statement for each motor.</li>
 </ol>
 
-<p>The mmix statement has the following syntax: <code>mmix n THROTTLE ROLL PITCH YAW</code> </p>
+<p>The <code>mmix</code> statement has the following syntax: <code>mmix n THROTTLE ROLL PITCH YAW</code></p>
 
 <table><thead>
 <tr>
@@ -324,15 +332,15 @@ The cli mixer <code>smix</code> command controllers how the mixer maps internal 
 </tr>
 <tr>
 <td>THROTTLE</td>
-<td>All motors that are used in this configuration are set to 1.0. Unused set to 0.0.</td>
+<td>Indicates how much throttle is mixed for this motor. All values used in current configurations are set to 1.0 (full throttle mixing), but other non-zero values may be used. Unused set to 0.0.</td>
 </tr>
 <tr>
 <td>ROLL</td>
-<td>Indicates how much roll authority this motor imparts to the roll of the flight controller. Accepts values nominally from 1.0 to -1.0.</td>
+<td>Indicates how much roll authority this motor imparts to the roll of the flight controller. Accepts values nominally from -1.0 to 1.0.</td>
 </tr>
 <tr>
 <td>PITCH</td>
-<td>Indicates the pitch authority this motor has over the flight controller. Also accepts values nominally from 1.0 to -1.0.</td>
+<td>Indicates the pitch authority this motor has over the flight controller. Also accepts values nominally from -1.0 to 1.0.</td>
 </tr>
 <tr>
 <td>YAW</td>
@@ -340,11 +348,34 @@ The cli mixer <code>smix</code> command controllers how the mixer maps internal 
 </tr>
 </tbody></table>
 
-<p>Note: the <code>mmix</code> command may show a motor mix that is not active, custom motor mixes are only active for models that use custom mixers. </p>
+<p>Note: the <code>mmix</code> command may show a motor mix that is not active, custom motor mixes are only active for models that use custom mixers.</p>
+
+<p>Note: You have to configure every motor number starting at 0. Your command will be ignored if there was no <code>mmix</code> command for the previous motor number (mixer stops on first THROTTLE value that is zero). See example 5.</p>
 
 <h2>Custom Servo Mixing</h2>
 
 <p>Custom servo mixing rules can be applied to each servo.  Rules are applied in the order they are defined.</p>
+
+<h5><code>smix</code></h5>
+
+<p>Prints current servo mixer</p>
+
+<p>Note: the <code>smix</code> command may show a servo mix that is not active, custom servo mixes are only active for models that use custom mixers.</p>
+
+<h5><code>smix reset</code></h5>
+
+<p>Erase custom mixer. Servo reversal in current profile ONLY is erased too.</p>
+
+<h5><code>smix load &lt;name&gt;</code></h5>
+
+<p>Load servo part of given configuration (<code>&lt;name&gt;</code> is from <code>mixer list</code>)</p>
+
+<h5><code>smix &lt;rule&gt; &lt;servo&gt; &lt;source&gt; &lt;rate&gt; &lt;speed&gt; &lt;min&gt; &lt;max&gt; &lt;box&gt;</code></h5>
+
+<ul>
+<li><p><code>&lt;rule&gt;</code> is index of rule, used mainly for bookkeeping. Rules are applied in this order, but ordering has no influence on result in current code.</p></li>
+<li><p><code>&lt;servo&gt;</code></p></li>
+</ul>
 
 <table><thead>
 <tr>
@@ -386,6 +417,17 @@ The cli mixer <code>smix</code> command controllers how the mixer maps internal 
 </tr>
 </tbody></table>
 
+<p>Only some <code>&lt;servo&gt;</code> channels are connected to output, based on mode. For custom modes:
+  - RUDDER for CUSTOM_TRI
+  - ELEVATOR &hellip; FLAPS for CUSTOM_AIRPLANE
+  - no servos for CUSTOM</p>
+
+<p>GIMBAL handling is hard-coded, mmix rule is ignored.</p>
+
+<ul>
+<li><code>&lt;source&gt;</code></li>
+</ul>
+
 <table><thead>
 <tr>
 <th>id</th>
@@ -394,19 +436,19 @@ The cli mixer <code>smix</code> command controllers how the mixer maps internal 
 </thead><tbody>
 <tr>
 <td>0</td>
-<td>Stabilised ROLL</td>
+<td>Stabilized ROLL</td>
 </tr>
 <tr>
 <td>1</td>
-<td>Stabilised PITCH</td>
+<td>Stabilized PITCH</td>
 </tr>
 <tr>
 <td>2</td>
-<td>Stabilised YAW</td>
+<td>Stabilized YAW</td>
 </tr>
 <tr>
 <td>3</td>
-<td>Stabilised THROTTLE</td>
+<td>Stabilized THROTTLE (ONLY the first motor output)</td>
 </tr>
 <tr>
 <td>4</td>
@@ -450,23 +492,35 @@ The cli mixer <code>smix</code> command controllers how the mixer maps internal 
 </tr>
 </tbody></table>
 
-<p>Note: the <code>smix</code> command may show a servo mix that is not active, custom servo mixes are only active for models that use custom mixers. </p>
+<p>Stabilized ROLL/PITCH/YAW is taken directly from RC command when in PASSTHRU mode.</p>
 
-<h2>Servo Reversing</h2>
+<ul>
+<li><p><code>&lt;rate&gt;</code> is used to scale <code>&lt;source&gt;</code>, -100% - 100% is allowed. Note that servo reversal may be applied, see below. Zero <code>&lt;rate&gt;</code> will terminate smix table.</p></li>
+<li><p><code>&lt;speed&gt;</code> will limit <source> speed when non-zero. This speed is taken per-rule, so you may limit only some sources. Value is maximal change of value per loop (1ms with default configuration)</p></li>
+<li><p><code>&lt;min&gt;</code> <code>&lt;max&gt;</code> - Value in percentage of full servo range. For symmetrical servo limits (equal distance between mid and min/max), 0% is servo min, 50% is servo center, 100% is max servo position. When mid position is asymmetrical, 0% and 100% limits will be shifted.</p></li>
+<li><p><code>&lt;box&gt;</code> rule will be applied only when <code>&lt;box&gt;</code> is zero or corresponding SERVOx mode is enabled.</p></li>
+</ul>
 
-<p>Servos are reversed using the <code>smix reverse</code> command.</p>
+<h5><code>smix reverse</code></h5>
+
+<p>Print current servo reversal configuration</p>
+
+<h5><code>smix reverse &lt;servo&gt; &lt;source&gt; r|n</code></h5>
+
+<p>Each <code>&lt;source&gt;</code> may be <code>r</code>eversed or <code>n</code>ormal for given <code>&lt;servo&gt;</code>. It is almost equivalent to using negative <rate> in given rule, but <code>&lt;min&gt;,</code><max><code>limits are applied to value before reversing.
+</code>smix reverse` works for non-custom mixers too.</p>
 
 <p>e.g. when using the TRI mixer to reverse the tail servo on a tricopter use this:</p>
 
 <p><code>smix reverse 5 2 r</code></p>
 
-<p>i.e. when mixing rudder servo slot (<code>5</code>) using Stabilised YAW input source (<code>2</code>) reverse the direction (<code>r</code>)</p>
+<p>i.e. when mixing rudder servo slot (<code>5</code>) using Stabilized YAW input source (<code>2</code>) reverse the direction (<code>r</code>)</p>
 
 <p><code>smix reverse</code> is a per-profile setting.  So ensure you configure it for your profiles as required.</p>
 
 <h3>Example 1: A KK2.0 wired motor setup</h3>
 
-<p>Here&rsquo;s an example of a X configuration quad, but the motors are still wired using the KK board motor numbering scheme. </p>
+<p>Here&rsquo;s an example of a X configuration quad, but the motors are still wired using the KK board motor numbering scheme.</p>
 <figure class="highlight"><pre><code class="language-text" data-lang="text">KK2.0 Motor Layout
 
   1CW      2CCW
@@ -478,7 +532,7 @@ The cli mixer <code>smix</code> command controllers how the mixer maps internal 
 <ol>
 <li>Use <code>mixer custom</code></li>
 <li>Use <code>mmix reset</code></li>
-<li>Use <code>mmix 0 1.0,  1.0, -1.0, -1.0</code> for the Front Left motor. It tells the flight controller the #1 motor is used, provides positive roll, provides negative pitch and is turning CW.<br></li>
+<li>Use <code>mmix 0 1.0,  1.0, -1.0, -1.0</code> for the Front Left motor. It tells the flight controller the #1 motor is used, provides positive roll, provides negative pitch and is turning CW.</li>
 <li>Use <code>mmix 1 1.0, -1.0, -1.0,  1.0</code> for the Front Right motor. It still provides a negative pitch authority, but unlike the front left, it provides negative roll authority and turns CCW.</li>
 <li>Use <code>mmix 2 1.0, -1.0,  1.0, -1.0</code> for the Rear Right motor. It has negative roll, provides positive pitch when the speed is increased and turns CW.</li>
 <li>Use <code>mmix 3 1.0,  1.0,  1.0,  1.0</code> for the Rear Left motor. Increasing motor speed imparts positive roll, positive pitch and turns CCW.</li>
@@ -486,12 +540,12 @@ The cli mixer <code>smix</code> command controllers how the mixer maps internal 
 
 <h3>Example 2: A HEX-U Copter</h3>
 
-<p>Here is an example of a U-shaped hex; probably good for herding giraffes in the Sahara. Because the 1 and 6 motors are closer to the roll axis, they impart much less force than the motors mounted twice as far from the FC CG. The effect they have on pitch is the same as the forward motors because they are the same distance from the FC CG. The 2 and 5 motors do not contribute anything to pitch because speeding them up and slowing them down has no effect on the forward/back pitch of the FC. </p>
+<p>Here is an example of a U-shaped hex; probably good for herding giraffes in the Sahara. Because the 1 and 6 motors are closer to the roll axis, they impart much less force than the motors mounted twice as far from the FC CG. The effect they have on pitch is the same as the forward motors because they are the same distance from the FC CG. The 2 and 5 motors do not contribute anything to pitch because speeding them up and slowing them down has no effect on the forward/back pitch of the FC.</p>
 <figure class="highlight"><pre><code class="language-text" data-lang="text">HEX6-U
 
-.4........3. 
+.4........3.
 ............
-.5...FC...2. 
+.5...FC...2.
 ............
 ...6....1...
 </code></pre></figure>
@@ -561,7 +615,7 @@ smix reverse 5 2 r
 
 <p>Here is an example of a custom twin engine plane with <a href="http://rcvehicles.about.com/od/rcairplanes/ss/RCAirplaneBasic.htm#step8">Differential Thrust</a>
 Motors take the first 2 pins, the servos take pins as indicated in the [Servo slot] chart above.
-Settings bellow have motor yaw influence at &ldquo;0.3&rdquo;, you can change this nuber to have more or less differential thrust over the two motors.
+Settings bellow have motor yaw influence at &ldquo;0.3&rdquo;, you can change this number to have more or less differential thrust over the two motors.
 Note: You can look at the Motors tab in <a href="https://chrome.google.com/webstore/detail/cleanflight-configurator/enacoimjcgeinfnnnpajinjgmkahmfgb?hl=en">Cleanflight Cofigurator</a> to see motor and servo outputs.</p>
 
 <table><thead>
@@ -580,7 +634,7 @@ Note: You can look at the Motors tab in <a href="https://chrome.google.com/webst
 </tr>
 <tr>
 <td>3</td>
-<td>[EMPTY]</td>
+<td>Pitch / Elevator</td>
 </tr>
 <tr>
 <td>4</td>
@@ -596,7 +650,7 @@ Note: You can look at the Motors tab in <a href="https://chrome.google.com/webst
 </tr>
 <tr>
 <td>7</td>
-<td>Pitch / Elevator</td>
+<td>[EMPTY]</td>
 </tr>
 <tr>
 <td>8</td>
@@ -605,17 +659,31 @@ Note: You can look at the Motors tab in <a href="https://chrome.google.com/webst
 </tbody></table>
 <figure class="highlight"><pre><code class="language-text" data-lang="text">mixer CUSTOMAIRPLANE
 mmix reset
-mmix 0 1.0 0.0 0.0 0.3  # Left Engine
+mmix 0 1.0 0.0 0.0 0.3   # Left Engine
 mmix 1 1.0 0.0 0.0 -0.3  # Right Engine
 
 smix reset
 # Rule  Servo   Source  Rate    Speed   Min Max Box
 smix 0 3 0 100 0 0 100 0  # Roll / Aileron
 smix 1 4 0 100 0 0 100 0  # Roll / Aileron
-smix 3 5 2 100 0 0 100 0  # Yaw / Rudder
-smix 2 2 1 100 0 0 100 0  # Pitch / Elevator
+smix 2 5 2 100 0 0 100 0  # Yaw / Rudder
+smix 3 2 1 100 0 0 100 0  # Pitch / Elevator
 
 </code></pre></figure>
+<h3>Example 5: Use motor output 0,1,2,4 because your output 3 is broken</h3>
+
+<p>For this to work you have to make a dummy mmix for motor 3. We do this by just saying it has 0 impact on yaw, roll and pitch.
+<code>
+mixer custom
+mmix reset
+mmix 0 1.0, -1.0, 1.0, -1.0
+mmix 1 1.0, -1.0, -1.0,  1.0
+mmix 2 1.0, 1.0, 1.0, 1.0
+mmix 3 1.0, 0.0, 0.0, 0.0
+mmix 4 1.0, 1.0, -1.0, -1.0
+save
+</code></p>
+
       </div>
     </div>
     <div class="col-md-3">
@@ -641,6 +709,10 @@ smix 2 2 1 100 0 0 100 0  # Pitch / Elevator
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -658,6 +730,10 @@ smix 2 2 1 100 0 0 100 0  # Pitch / Elevator
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -686,6 +762,14 @@ smix 2 2 1 100 0 0 100 0  # Pitch / Elevator
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -828,6 +912,10 @@ smix 2 2 1 100 0 0 100 0  # Pitch / Elevator
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -848,7 +936,7 @@ smix 2 2 1 100 0 0 100 0  # Pitch / Elevator
                 
                   
                     <li>
-                      <a href="/docs/api/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -872,7 +960,7 @@ smix 2 2 1 100 0 0 100 0  # Pitch / Elevator
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -880,7 +968,7 @@ smix 2 2 1 100 0 0 100 0  # Pitch / Elevator
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -888,7 +976,7 @@ smix 2 2 1 100 0 0 100 0  # Pitch / Elevator
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -896,7 +984,7 @@ smix 2 2 1 100 0 0 100 0  # Pitch / Elevator
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -904,7 +992,7 @@ smix 2 2 1 100 0 0 100 0  # Pitch / Elevator
                 
                   
                     <li>
-                      <a href="/docs/development/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -912,7 +1000,7 @@ smix 2 2 1 100 0 0 100 0  # Pitch / Elevator
                 
                   
                     <li>
-                      <a href="/docs/development/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -920,7 +1008,15 @@ smix 2 2 1 100 0 0 100 0  # Pitch / Elevator
                 
                   
                     <li>
-                      <a href="/docs/development/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -928,7 +1024,7 @@ smix 2 2 1 100 0 0 100 0  # Pitch / Elevator
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -936,7 +1032,7 @@ smix 2 2 1 100 0 0 100 0  # Pitch / Elevator
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -944,7 +1040,7 @@ smix 2 2 1 100 0 0 100 0  # Pitch / Elevator
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -952,7 +1048,15 @@ smix 2 2 1 100 0 0 100 0  # Pitch / Elevator
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -960,7 +1064,7 @@ smix 2 2 1 100 0 0 100 0  # Pitch / Elevator
                 
                   
                     <li>
-                      <a href="/docs/development/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -968,7 +1072,7 @@ smix 2 2 1 100 0 0 100 0  # Pitch / Elevator
                 
                   
                     <li>
-                      <a href="/docs/development/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -982,6 +1086,7 @@ smix 2 2 1 100 0 0 100 0  # Pitch / Elevator
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>

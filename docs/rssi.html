@@ -88,9 +88,9 @@
       <div class="content">
         <h1>RSSI</h1>
 
-<p>RSSI is a measurement of signal strength and is very handy so you know when your aircraft isw going out of range or if it is suffering RF interference.</p>
+<p>RSSI is a measurement of signal strength and is very handy so you know when your aircraft is going out of range or if it is suffering RF interference.</p>
 
-<p>Some receivers have RSSI outputs.  3 types are supported.</p>
+<p>Some receivers have RSSI outputs. 3 types are supported.</p>
 
 <ol>
 <li>RSSI via PPM channel</li>
@@ -106,9 +106,9 @@
 <figure class="highlight"><pre><code class="language-text" data-lang="text">set rssi_channel = 9
 </code></pre></figure>
 <p>Note: Some systems such as EZUHF invert the RSSI ( 0 = Full signal / 100 = Lost signal). To correct this problem you can invert the channel input so you will get a correct reading by using command:</p>
-<figure class="highlight"><pre><code class="language-text" data-lang="text">set rssi_ppm_invert = 1
+<figure class="highlight"><pre><code class="language-text" data-lang="text">set rssi_ppm_invert = ON
 </code></pre></figure>
-<p>Default is set to &ldquo;0&rdquo; for normal operation ( 100 = Full signal / 0 = Lost signal).</p>
+<p>Default is set to &ldquo;OFF&rdquo; for normal operation ( 100 = Full signal / 0 = Lost signal).</p>
 
 <h2>RSSI via Parallel PWM channel</h2>
 
@@ -122,7 +122,15 @@ A simple PPM-&gt;RSSI conditioner can easily be made. See the  PPM-RSSI conditio
 
 <p>Under CLI :
 - enable using the RSSI_ADC feature  :  <code>feature RSSI_ADC</code>
-- set the RSSI_SCALE parameter (between 1 and 255) to adjust RSSI level according to your configuration.</p>
+- set the RSSI_SCALE parameter (between 1 and 255) to adjust RSSI level according to your configuration. The raw ADC value is divided by the value of this parameter.</p>
+
+<h2>RSSI_SCALE setup method:</h2>
+
+<ul>
+<li>set rssi_scale = 100. The displayed percentage will then be the raw ADC value.</li>
+<li>turn on RX (close to board). RSSI value should vary a little.</li>
+<li>Update rssi_scale to the maximum RSSI value previously measured.</li>
+</ul>
 
 <p>FrSky D4R-II and X8R supported.</p>
 
@@ -153,6 +161,10 @@ A simple PPM-&gt;RSSI conditioner can easily be made. See the  PPM-RSSI conditio
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -170,6 +182,10 @@ A simple PPM-&gt;RSSI conditioner can easily be made. See the  PPM-RSSI conditio
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -198,6 +214,14 @@ A simple PPM-&gt;RSSI conditioner can easily be made. See the  PPM-RSSI conditio
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -340,6 +364,10 @@ A simple PPM-&gt;RSSI conditioner can easily be made. See the  PPM-RSSI conditio
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -360,7 +388,7 @@ A simple PPM-&gt;RSSI conditioner can easily be made. See the  PPM-RSSI conditio
                 
                   
                     <li>
-                      <a href="/docs/api/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -384,7 +412,7 @@ A simple PPM-&gt;RSSI conditioner can easily be made. See the  PPM-RSSI conditio
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -392,7 +420,7 @@ A simple PPM-&gt;RSSI conditioner can easily be made. See the  PPM-RSSI conditio
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -400,7 +428,7 @@ A simple PPM-&gt;RSSI conditioner can easily be made. See the  PPM-RSSI conditio
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -408,7 +436,7 @@ A simple PPM-&gt;RSSI conditioner can easily be made. See the  PPM-RSSI conditio
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -416,7 +444,7 @@ A simple PPM-&gt;RSSI conditioner can easily be made. See the  PPM-RSSI conditio
                 
                   
                     <li>
-                      <a href="/docs/development/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -424,7 +452,7 @@ A simple PPM-&gt;RSSI conditioner can easily be made. See the  PPM-RSSI conditio
                 
                   
                     <li>
-                      <a href="/docs/development/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -432,7 +460,15 @@ A simple PPM-&gt;RSSI conditioner can easily be made. See the  PPM-RSSI conditio
                 
                   
                     <li>
-                      <a href="/docs/development/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -440,7 +476,7 @@ A simple PPM-&gt;RSSI conditioner can easily be made. See the  PPM-RSSI conditio
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -448,7 +484,7 @@ A simple PPM-&gt;RSSI conditioner can easily be made. See the  PPM-RSSI conditio
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -456,7 +492,7 @@ A simple PPM-&gt;RSSI conditioner can easily be made. See the  PPM-RSSI conditio
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -464,7 +500,15 @@ A simple PPM-&gt;RSSI conditioner can easily be made. See the  PPM-RSSI conditio
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -472,7 +516,7 @@ A simple PPM-&gt;RSSI conditioner can easily be made. See the  PPM-RSSI conditio
                 
                   
                     <li>
-                      <a href="/docs/development/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -480,7 +524,7 @@ A simple PPM-&gt;RSSI conditioner can easily be made. See the  PPM-RSSI conditio
                 
                   
                     <li>
-                      <a href="/docs/development/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -494,6 +538,7 @@ A simple PPM-&gt;RSSI conditioner can easily be made. See the  PPM-RSSI conditio
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>

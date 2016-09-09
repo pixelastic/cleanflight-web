@@ -105,7 +105,6 @@
 <h2>TODO</h2>
 
 <ul>
-<li>Sonar</li>
 <li>Display (via Flex port)</li>
 <li>SoftSerial - though having 3 hardware serial ports makes it a little redundant.</li>
 <li>Airplane PWM mappings.</li>
@@ -273,13 +272,39 @@ Once you have SWD connected you can use the st-link or j-link tools to flash a b
 <td>USART3</td>
 <td>RX / PB11</td>
 <td>TX / PB10</td>
-<td>RX/TX is on one end of the 6-pin header about the PWM outputs.</td>
+<td>RX/TX is on one end of the 6-pin header above the PWM outputs.</td>
 </tr>
 </tbody></table>
 
 <p>USB VCP <em>can</em> be used at the same time as other serial ports (unlike Naze32).</p>
 
 <p>All USART ports all support automatic hardware inversion which allows direct connection of serial rx receivers like the FrSky X4RSB - no external inverter needed.</p>
+
+<h1>Sonar Connections</h1>
+
+<table><thead>
+<tr>
+<th>Pin</th>
+<th>Signal</th>
+<th>Function</th>
+<th>Resistor</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PWM6</td>
+<td>PA2</td>
+<td>Trigger pin</td>
+<td>1K Ohm</td>
+</tr>
+<tr>
+<td>PWM7</td>
+<td>PB1</td>
+<td>Echo pin</td>
+<td>1K Ohm</td>
+</tr>
+</tbody></table>
+
+<p>WARNING: Both PWM6 and PWM7 pins are NOT 5 volt tolerant, so a 1K Ohm resistor is required between the sensor and the FC pins.</p>
 
 <h1>Battery Monitoring Connections</h1>
 
@@ -324,7 +349,7 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
 
 <h2>Current Monitoring</h2>
 
-<p>Connect a current sensor to PWM8/PA7 that gives a range between 0v and 3.3v out (MAX). </p>
+<p>Connect a current sensor to PWM8/PA7 that gives a range between 0v and 3.3v out (MAX).</p>
 
       </div>
     </div>
@@ -351,6 +376,10 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -368,6 +397,10 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -396,6 +429,14 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -538,6 +579,10 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -558,7 +603,7 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
                 
                   
                     <li>
-                      <a href="/docs/api/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -582,7 +627,7 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -590,7 +635,7 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -598,7 +643,7 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -606,7 +651,7 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -614,7 +659,7 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
                 
                   
                     <li>
-                      <a href="/docs/development/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -622,7 +667,7 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
                 
                   
                     <li>
-                      <a href="/docs/development/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -630,7 +675,15 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
                 
                   
                     <li>
-                      <a href="/docs/development/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -638,7 +691,7 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -646,7 +699,7 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -654,7 +707,7 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -662,7 +715,15 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -670,7 +731,7 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
                 
                   
                     <li>
-                      <a href="/docs/development/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -678,7 +739,7 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
                 
                   
                     <li>
-                      <a href="/docs/development/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -692,6 +753,7 @@ The divider circuit should eventally create a voltage between 0v and 3.3v (MAX) 
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>

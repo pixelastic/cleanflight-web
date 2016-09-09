@@ -92,7 +92,7 @@
 
 <p>Example Eclipse make target</p>
 
-<p><img src="https://raw.github.com/wiki/hydra/cleanflight/images/eclipse-gdb-debugging/make%201%20-%20OLIMEXINO%20GDB.PNG" alt=""></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/make%201%20-%20OLIMEXINO%20GDB.PNG" alt=""></p>
 
 <h1>GDB and OpenOCD</h1>
 
@@ -127,7 +127,7 @@
 
 <p>If you use cygwin to build the binaries then be sure to have configured your common <code>Source Lookup Path</code>, <code>Path Mappings</code> first, like this:</p>
 
-<p><img src="https://raw.github.com/wiki/cleanflight/cleanflight/images/eclipse-gdb-debugging/config%207.PNG" alt=""></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/config%207.PNG" alt=""></p>
 
 <p>Create a new <code>GDB Hardware Debugging</code> launch configuration from the <code>Run</code> menu</p>
 
@@ -136,11 +136,11 @@ Select the appropriate .elf file (not hex file) - In these examples the target p
 
 <p>DISABLE auto-build</p>
 
-<p><img src="https://raw.github.com/wiki/cleanflight/cleanflight/images/eclipse-gdb-debugging/config%201.PNG" alt=""></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/config%201.PNG" alt=""></p>
 
 <p>Choose the appropriate gdb executable - ideally from the same toolchain that you use to build the executable.</p>
 
-<p><img src="https://raw.github.com/wiki/cleanflight/cleanflight/images/eclipse-gdb-debugging/config%202.PNG" alt=""></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/config%202.PNG" alt=""></p>
 
 <p>Configure Startup as follows</p>
 
@@ -154,48 +154,48 @@ monitor flash breakpoints = 1
 monitor endian little
 monitor reset
 </code></pre></figure>
-<p><img src="https://raw.github.com/wiki/cleanflight/cleanflight/images/eclipse-gdb-debugging/config%203.PNG" alt=""></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/config%203.PNG" alt=""></p>
 
-<p><img src="https://raw.github.com/wiki/cleanflight/cleanflight/images/eclipse-gdb-debugging/config%204.PNG" alt=""></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/config%204.PNG" alt=""></p>
 
 <p>It may be useful to specify run commands too:</p>
 <figure class="highlight"><pre><code class="language-text" data-lang="text">monitor reg r13 = (0x00000000)
 monitor reg pc = (0x00000004)
 continue
 </code></pre></figure>
-<p><img src="https://raw.github.com/wiki/cleanflight/cleanflight/images/eclipse-gdb-debugging/config%2013.PNG" alt=""></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/config%2013.PNG" alt=""></p>
 
 <p>If you use cygwin an additional entry should be shown on the Source tab (not present in this screenshot)</p>
 
-<p><img src="https://raw.github.com/wiki/cleanflight/cleanflight/images/eclipse-gdb-debugging/config%205.PNG" alt=""></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/config%205.PNG" alt=""></p>
 
 <p>Nothing to change from the defaults on the Common tab</p>
 
-<p><img src="https://raw.github.com/wiki/cleanflight/cleanflight/images/eclipse-gdb-debugging/config%206.PNG" alt=""></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/config%206.PNG" alt=""></p>
 
 <p>Start up the J-Link server in USB mode</p>
 
-<p><img src="https://raw.github.com/wiki/cleanflight/cleanflight/images/eclipse-gdb-debugging/config%209.PNG" alt=""></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/config%209.PNG" alt=""></p>
 
 <p>If it connects to your target device it should look like this</p>
 
-<p><img src="https://raw.github.com/wiki/cleanflight/cleanflight/images/eclipse-gdb-debugging/config%2010.PNG" alt=""></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/config%2010.PNG" alt=""></p>
 
 <p>From Eclipse launch the application using the Run/Debug Configurations&hellip;, Eclipse should upload the compiled file to the target device which looks like this</p>
 
-<p><img src="https://raw.github.com/wiki/cleanflight/cleanflight/images/eclipse-gdb-debugging/config%2011.PNG" alt=""></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/config%2011.PNG" alt=""></p>
 
 <p>When it&rsquo;s running the J-Link server should look like this.</p>
 
-<p><img src="https://raw.github.com/wiki/cleanflight/cleanflight/images/eclipse-gdb-debugging/config%2012.PNG" alt=""></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/config%2012.PNG" alt=""></p>
 
 <p>Then finally you can use Eclipse debug features to inspect variables, memory, stacktrace, set breakpoints, step over code, etc.</p>
 
-<p><img src="https://raw.github.com/wiki/cleanflight/cleanflight/images/eclipse-gdb-debugging/debugging.PNG" alt=""></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/debugging.PNG" alt=""></p>
 
 <p>If Eclipse can&rsquo;t find your breakpoints and they are ignored then check your path mappings (if using cygwin) or use the other debugging launcher as follows.  Note the &lsquo;Select other&hellip;&rsquo; at the bottom of the configuration window.</p>
 
-<p><img src="https://raw.github.com/wiki/cleanflight/cleanflight/images/eclipse-gdb-debugging/config%208%20-%20If%20breakpoints%20do%20not%20work.PNG" alt=""></p>
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/config%208%20-%20If%20breakpoints%20do%20not%20work.PNG" alt=""></p>
 
       </div>
     </div>
@@ -222,6 +222,10 @@ continue
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -239,6 +243,10 @@ continue
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -267,6 +275,14 @@ continue
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -409,6 +425,10 @@ continue
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -429,7 +449,7 @@ continue
                 
                   
                     <li>
-                      <a href="/api/docs/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/api/docs/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -453,7 +473,7 @@ continue
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -461,7 +481,7 @@ continue
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -469,7 +489,7 @@ continue
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -477,7 +497,7 @@ continue
                 
                   
                     <li>
-                      <a href="/development/docs/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -485,7 +505,7 @@ continue
                 
                   
                     <li>
-                      <a href="/development/docs/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/development.html">
                         Development
                       </a>
                     </li>
@@ -493,7 +513,7 @@ continue
                 
                   
                     <li>
-                      <a href="/development/docs/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -501,7 +521,15 @@ continue
                 
                   
                     <li>
-                      <a href="/development/docs/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -509,7 +537,7 @@ continue
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -517,7 +545,7 @@ continue
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -525,7 +553,7 @@ continue
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -533,7 +561,15 @@ continue
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -541,7 +577,7 @@ continue
                 
                   
                     <li>
-                      <a href="/development/docs/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -549,7 +585,7 @@ continue
                 
                   
                     <li>
-                      <a href="/development/docs/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -563,6 +599,7 @@ continue
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>

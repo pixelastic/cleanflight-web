@@ -95,10 +95,9 @@
 <li>Flight controller based failsafe</li>
 </ol>
 
-<p>Receiver based failsafe is where you, from your transmitter and receiver, configure channels to output desired signals if your receiver detects signal loss and goes to <strong>rx-failsafe-state</strong>.
-The idea is that you set throttle and other controls so the aircraft descends in a controlled manner.  See your receiver&rsquo;s documentation for this method.</p>
+<p>Receiver based failsafe is where you, from your transmitter and receiver, configure channels to output desired signals if your receiver detects signal loss and goes to the <strong>failsafe mode</strong>. The idea is that you set throttle and other controls so the aircraft descends in a controlled manner.  See your receiver&rsquo;s documentation for this method.</p>
 
-<p>Flight controller based failsafe is where the flight controller attempts to detect signal loss and/or the <strong>rx-failsafe-state</strong> of your receiver and upon detection goes to <strong>fc-failsafe-state</strong>. The idea is that the flight controller starts using substitutes for all controls, which are set by you, using the CLI command <code>rxfail</code> (see <code>rxfail</code> document) or the cleanflight-configurator GUI.</p>
+<p>Flight controller based failsafe is where the flight controller attempts to detect signal loss and/or the <strong>failsafe mode</strong> of your receiver and upon detection goes to <strong>failsafe stage 1</strong>. The idea is that the flight controller starts using <strong>fallback settings</strong> for all controls, which are set by you, using the CLI command <code>rxfail</code> (see <a href="Rx.md#rx-loss-configuration">rxfail</a> section in rx documentation) or the cleanflight-configurator GUI.</p>
 
 <p>It is possible to use both types at the same time, which may be desirable.  Flight controller failsafe can even help if your receiver signal wires come loose, get damaged or your receiver malfunctions in a way the receiver itself cannot detect.</p>
 
@@ -106,28 +105,32 @@ The idea is that you set throttle and other controls so the aircraft descends in
 
 <h2>Flight controller failsafe system</h2>
 
-<p>The <strong>failsafe-auto-landing</strong> system is not activated until 5 seconds after the flight controller boots up.  This is to prevent <strong>failsafe-auto-landing</strong> from activating, as in the case of TX/RX gear with long bind procedures, before the RX sends out valid data.</p>
+<p>This system has two stages.</p>
 
-<p>The <strong>failsafe-detection</strong> system attempts to detect when your receiver loses signal <em>continuously</em> but the <strong>failsafe-auto-landing</strong> starts <em>only when your craft is <strong>armed</strong></em>.  It then attempts to prevent your aircraft from flying away uncontrollably by enabling an auto-level mode and setting the throttle that should allow the craft to come to a safer landing.</p>
+<p><strong>Stage 1</strong> is entered when <strong>a flightchannel</strong> has an <strong><em>invalid pulse length</em></strong>, the receiver reports <strong><em>failsafe mode</em></strong> or there is <strong><em>no signal</em></strong> from the receiver. Fallback settings are applied to <strong><em>all channels</em></strong> and a short amount of time is provided to allow for recovery.</p>
 
-<p><strong>The failsafe is activated when the craft is armed and either:</strong></p>
+<p><strong>Note:</strong> Prior to entering <strong>stage 1</strong>, fallback settings are also applied to <strong><em>individual AUX channels</em></strong> that have invalid pulses.</p>
 
-<ul>
-<li>The control (stick) channels do not have valid signals AND the failsafe guard time specified by <code>failsafe_delay</code> has elapsed.</li>
-<li>A transmitter switch that is configured to control the failsafe mode is switched ON (and &lsquo;failsafe_kill_switch&rsquo; is set to 0).</li>
-</ul>
+<p><strong>Stage 2</strong> is entered when your craft is <strong>armed</strong> and <strong>stage 1</strong> persists longer then the configured guard time (<code>failsafe_delay</code>). All channels will remain at the applied fallback setting unless overruled by the chosen stage 2 procedure (<code>failsafe_procedure</code>).</p>
 
-<p>Failsafe intervention will be aborted when it was due to:</p>
+<p><strong>Stage 2</strong> is not activated until 5 seconds after the flight controller boots up.  This is to prevent unwanted activation, as in the case of TX/RX gear with long bind procedures, before the RX sends out valid data.</p>
+
+<p><strong>Stage 2</strong> can also directly be activated when a transmitter switch that is configured to control the failsafe mode is switched ON (and <code>failsafe_kill_switch</code> is set to OFF).</p>
+
+<p><strong>Stage 2</strong> will be aborted when it was due to:</p>
 
 <ul>
 <li>a lost RC signal and the RC signal has recovered.</li>
-<li>a transmitter failsafe switch was set to ON position and the switch is set to OFF position (and &#39;failsafe_kill_switch&rsquo; is set to 0).</li>
+<li>a transmitter failsafe switch was set to ON position and the switch is set to OFF position (and <code>failsafe_kill_switch</code> is set to OFF).</li>
 </ul>
 
 <p>Note that:
-* At the end of a failsafe intervention, the flight controller will be disarmed and re-arming will be locked. From that moment on it is no longer possible to abort or re-arm and the flight controller has to be reset.
-* When &#39;failsafe_kill_switch&rsquo; is set to 1 and the rc switch configured for failsafe is set to ON, the craft is instantly disarmed (but re-arming is not locked). Similar effect can be achieved by setting &#39;failsafe_throttle&rsquo; to 1000 and &#39;failsafe_off_delay&rsquo; to 0 (but arming is locked).
-* Prior to starting a failsafe intervention it is checked if the throttle position was below &#39;min_throttle&rsquo; level for the last &#39;failsafe_throttle_low_delay&rsquo; seconds. If it was the craft is assumed to be on the ground and is only disarmed. It may be re-armed without a power cycle.     </p>
+* At the end of the stage 2 procedure, the flight controller will be disarmed and re-arming will be locked until the signal from the receiver is restored for 30 seconds AND the arming switch is in the OFF position (when an arm switch is in use).</p>
+
+<ul>
+<li><p>When <code>failsafe_kill_switch</code> is set to ON and the rc switch configured for failsafe is set to ON, the craft is instantly disarmed. Re-arming is possible when the signal from the receiver has restored for at least 3 seconds AND the arming switch is in the OFF position (when one is in use). Similar effect can be achieved by setting &lsquo;failsafe_throttle&rsquo; to 1000 and &#39;failsafe_off_delay&rsquo; to 0. This is not the prefered method, since the reaction is slower and re-arming will be locked.</p></li>
+<li><p>Prior to starting a stage 2 intervention it is checked if the throttle position was below <code>min_throttle</code> level for the last <code>failsafe_throttle_low_delay</code> seconds. If it was, the craft is assumed to be on the ground and is only disarmed. It may be re-armed without a power cycle.     </p></li>
+</ul>
 
 <p>Some notes about <strong>SAFETY</strong>:
 * The failsafe system will be activated regardless of current throttle position. So when the failsafe intervention is aborted (RC signal restored/failsafe switch set to OFF) the current stick position will direct the craft !
@@ -143,7 +146,7 @@ The idea is that you set throttle and other controls so the aircraft descends in
 
 <ul>
 <li>Upon signal loss, send no signal/pulses over the channels</li>
-<li>Send an invalid signal over the channels (for example, send values lower than &#39;rx_min_usec&rsquo;)</li>
+<li>Send an invalid signal over the channels (for example, send values lower than <code>rx_min_usec</code>)</li>
 </ul>
 
 <p>and</p>
@@ -159,8 +162,8 @@ The idea is that you set throttle and other controls so the aircraft descends in
 </ul>
 
 <ol>
-<li><p>Set &#39;failsafe_off_delay&rsquo; to an appropriate value based on how high you fly</p></li>
-<li><p>Set &#39;failsafe_throttle&rsquo; to a value that allows the aircraft to descend at approximately one meter per second (default is 1000 which should be throttle off).</p></li>
+<li><p>Set <code>failsafe_off_delay</code> to an appropriate value based on how high you fly</p></li>
+<li><p>Set <code>failsafe_throttle</code> to a value that allows the aircraft to descend at approximately one meter per second (default is 1000 which should be throttle off).</p></li>
 </ol>
 
 <p>These are the basic steps for flight controller failsafe configuration; see Failsafe Settings below for additional settings that may be changed.</p>
@@ -187,13 +190,20 @@ The idea is that you set throttle and other controls so the aircraft descends in
 
 <h3><code>failsafe_kill_switch</code></h3>
 
-<p>Configure the rc switched failsafe action: the same action as when the rc link is lost (set to 0) or disarms instantly (set to 1). Also see above.</p>
+<p>Configure the rc switched failsafe action: the same action as when the rc link is lost (set to OFF) or disarms instantly (set to ON). Also see above.</p>
 
 <h3><code>failsafe_throttle_low_delay</code></h3>
 
 <p>Time throttle level must have been below &#39;min_throttle&rsquo; to <u>only disarm</u> instead of <u>full failsafe procedure</u>.</p>
 
-<p>Use standard RX usec values.  See Rx documentation.</p>
+<p>Use standard RX usec values.  See <a href="http://shipow.github.io/cleanflight-web/docs/rx/">Rx documentation</a>.</p>
+
+<h3><code>failsafe_procedure</code></h3>
+
+<ul>
+<li><strong>Drop:</strong> Just kill the motors and disarm (crash the craft).</li>
+<li><strong>Land:</strong> Enable an auto-level mode, center the flight sticks and set the throttle to a predefined value (<code>failsafe_throttle</code>) for a predefined time (<code>failsafe_off_delay</code>). This should allow the craft to come to a safer landing.</li>
+</ul>
 
 <h3><code>rx_min_usec</code></h3>
 
@@ -275,6 +285,10 @@ The idea is that you set throttle and other controls so the aircraft descends in
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -292,6 +306,10 @@ The idea is that you set throttle and other controls so the aircraft descends in
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -320,6 +338,14 @@ The idea is that you set throttle and other controls so the aircraft descends in
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -462,6 +488,10 @@ The idea is that you set throttle and other controls so the aircraft descends in
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -482,7 +512,7 @@ The idea is that you set throttle and other controls so the aircraft descends in
                 
                   
                     <li>
-                      <a href="/docs/api/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -506,7 +536,7 @@ The idea is that you set throttle and other controls so the aircraft descends in
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -514,7 +544,7 @@ The idea is that you set throttle and other controls so the aircraft descends in
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -522,7 +552,7 @@ The idea is that you set throttle and other controls so the aircraft descends in
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -530,7 +560,7 @@ The idea is that you set throttle and other controls so the aircraft descends in
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -538,7 +568,7 @@ The idea is that you set throttle and other controls so the aircraft descends in
                 
                   
                     <li>
-                      <a href="/docs/development/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -546,7 +576,7 @@ The idea is that you set throttle and other controls so the aircraft descends in
                 
                   
                     <li>
-                      <a href="/docs/development/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -554,7 +584,15 @@ The idea is that you set throttle and other controls so the aircraft descends in
                 
                   
                     <li>
-                      <a href="/docs/development/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -562,7 +600,7 @@ The idea is that you set throttle and other controls so the aircraft descends in
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -570,7 +608,7 @@ The idea is that you set throttle and other controls so the aircraft descends in
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -578,7 +616,7 @@ The idea is that you set throttle and other controls so the aircraft descends in
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -586,7 +624,15 @@ The idea is that you set throttle and other controls so the aircraft descends in
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -594,7 +640,7 @@ The idea is that you set throttle and other controls so the aircraft descends in
                 
                   
                     <li>
-                      <a href="/docs/development/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -602,7 +648,7 @@ The idea is that you set throttle and other controls so the aircraft descends in
                 
                   
                     <li>
-                      <a href="/docs/development/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -616,6 +662,7 @@ The idea is that you set throttle and other controls so the aircraft descends in
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>

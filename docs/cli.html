@@ -153,6 +153,8 @@ dump rates
 
 <h2>CLI Command Reference</h2>
 
+<p>Click on a command to jump to the relevant documentation page.</p>
+
 <table><thead>
 <tr>
 <th><code>Command</code></th>
@@ -164,23 +166,23 @@ dump rates
 <td>passthrough 1wire to the specified esc</td>
 </tr>
 <tr>
-<td><code>adjrange</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/inflight-20adjustments/"><code>adjrange</code></a></td>
 <td>show/set adjustment ranges settings</td>
 </tr>
 <tr>
-<td><code>aux</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/modes/"><code>aux</code></a></td>
 <td>show/set aux settings</td>
 </tr>
 <tr>
-<td><code>mmix</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/mixer/"><code>mmix</code></a></td>
 <td>design custom motor mixer</td>
 </tr>
 <tr>
-<td><code>smix</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/mixer/"><code>smix</code></a></td>
 <td>design custom servo mixer</td>
 </tr>
 <tr>
-<td><code>color</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/ledstrip/"><code>color</code></a></td>
 <td>configure colors</td>
 </tr>
 <tr>
@@ -204,7 +206,7 @@ dump rates
 <td>get variable value</td>
 </tr>
 <tr>
-<td><code>gpspassthrough</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/gps/"><code>gpspassthrough</code></a></td>
 <td>passthrough gps to serial</td>
 </tr>
 <tr>
@@ -212,36 +214,44 @@ dump rates
 <td></td>
 </tr>
 <tr>
-<td><code>led</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/ledstrip/"><code>led</code></a></td>
 <td>configure leds</td>
 </tr>
 <tr>
-<td><code>map</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/rx/"><code>map</code></a></td>
 <td>mapping of rc channel order</td>
 </tr>
 <tr>
-<td><code>mixer</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/mixer/"><code>mixer</code></a></td>
 <td>mixer name or list</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/ledstrip/"><code>mode_color</code></a></td>
+<td>configure mode colors</td>
 </tr>
 <tr>
 <td><code>motor</code></td>
 <td>get/set motor output value</td>
 </tr>
 <tr>
-<td><code>play_sound</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/buzzer/"><code>play_sound</code></a></td>
 <td>index, or none for next</td>
 </tr>
 <tr>
-<td><code>profile</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/profiles/"><code>profile</code></a></td>
 <td>index (0 to 2)</td>
 </tr>
 <tr>
-<td><code>rateprofile</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/profiles/"><code>rateprofile</code></a></td>
 <td>index (0 to 2)</td>
 </tr>
 <tr>
-<td><code>rxrange</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/rx/"><code>rxrange</code></a></td>
 <td>configure rx channel ranges (end-points)</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/rx/"><code>rxfail</code></a></td>
+<td>show/set rx failsafe settings</td>
 </tr>
 <tr>
 <td><code>save</code></td>
@@ -257,11 +267,29 @@ dump rates
 </tr>
 <tr>
 <td><code>version</code></td>
-<td></td>
+<td>show version</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/serial/"><code>serial</code></a></td>
+<td>configure serial ports</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/mixer/"><code>servo</code></a></td>
+<td>configure servos</td>
+</tr>
+<tr>
+<td><code>sd_info</code></td>
+<td>sdcard info</td>
+</tr>
+<tr>
+<td><code>tasks</code></td>
+<td>show task stats</td>
 </tr>
 </tbody></table>
 
 <h2>CLI Variable Reference</h2>
+
+<p>Click on a variable to jump to the relevant documentation page.</p>
 
 <table><thead>
 <tr>
@@ -285,7 +313,7 @@ dump rates
 </tr>
 <tr>
 <td><code>emf_avoidance</code></td>
-<td>Default value is 0 for 72MHz processor speed. Setting this to 1 increases the processor speed, to move the 6th harmonic away from 432MHz.</td>
+<td>Default value is OFF for 72MHz processor speed. Setting this to ON increases the processor speed, to move the 6th harmonic away from 432MHz.</td>
 <td>OFF</td>
 <td>ON</td>
 <td>OFF</td>
@@ -293,16 +321,34 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>i2c_overclock</code></td>
-<td>Default value is 0 for disabled. Enabling this feature speeds up IMU speed significantly and faster looptimes are possible.</td>
+<td><code>i2c_highspeed</code></td>
+<td>Enabling this feature speeds up IMU speed significantly and faster looptimes are possible.</td>
 <td>OFF</td>
 <td>ON</td>
-<td>OFF</td>
+<td>ON</td>
 <td>Master</td>
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>mid_rc</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/pid-20tuning/"><code>gyro_sync</code></a></td>
+<td>This option enables gyro_sync feature. In this case the loop will be synced to gyro refresh rate. Loop will always wait for the newest gyro measurement. Use gyro_lpf and gyro_sync_denom determine the gyro refresh rate. Note that different targets have different limits. Setting too high refresh rate can mean that FC cannot keep up with the gyro and higher gyro_sync_denom is needed.</td>
+<td>OFF</td>
+<td>ON</td>
+<td>ON</td>
+<td>Master</td>
+<td>UINT8</td>
+</tr>
+<tr>
+<td><code>gyro_sync_denom</code></td>
+<td>This option determines the sampling ratio. Denominator of 1 means full gyro sampling rate. Denominator 2 would mean &frac12; samples will be collected. Denominator and gyro_lpf will together determine the control loop speed.</td>
+<td>0</td>
+<td>32</td>
+<td>1</td>
+<td>Master</td>
+<td>UINT8</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/rx/"><code>mid_rc</code></a></td>
 <td>This is an important number to set in order to avoid trimming receiver/transmitter. Most standard receivers will have this at 1500, however Futaba transmitters will need this set to 1520. A way to find out if this needs to be changed, is to clear all trim/subtrim on transmitter, and connect to GUI. Note the value most channels idle at - this should be the number to choose. Once midrc is set, use subtrim on transmitter to make sure all channels (except throttle of course) are centered at midrc value.</td>
 <td>1200</td>
 <td>1700</td>
@@ -311,7 +357,7 @@ dump rates
 <td>UINT16</td>
 </tr>
 <tr>
-<td><code>min_check</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/controls/"><code>min_check</code></a></td>
 <td>These are min/max values (in us) which, when a channel is smaller (min) or larger (max) than the value will activate various RC commands, such as arming, or stick configuration. Normally, every RC channel should be set so that min = 1000us, max = 2000us. On most transmitters this usually means 125% endpoints. Default check values are 100us above/below this value.</td>
 <td>0</td>
 <td>2000</td>
@@ -320,7 +366,7 @@ dump rates
 <td>UINT16</td>
 </tr>
 <tr>
-<td><code>max_check</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/controls/"><code>max_check</code></a></td>
 <td>These are min/max values (in us) which, when a channel is smaller (min) or larger (max) than the value will activate various RC commands, such as arming, or stick configuration. Normally, every RC channel should be set so that min = 1000us, max = 2000us. On most transmitters this usually means 125% endpoints. Default check values are 100us above/below this value.</td>
 <td>0</td>
 <td>2000</td>
@@ -329,8 +375,8 @@ dump rates
 <td>UINT16</td>
 </tr>
 <tr>
-<td><code>rssi_channel</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/rssi/"><code>rssi_channel</code></a></td>
+<td>RX channel containing the RSSI signal</td>
 <td>0</td>
 <td>18</td>
 <td>0</td>
@@ -338,8 +384,8 @@ dump rates
 <td>INT8</td>
 </tr>
 <tr>
-<td><code>rssi_scale</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/rssi/"><code>rssi_scale</code></a></td>
+<td>When using ADC RSSI, the raw ADC value will be divided by rssi_scale in order to get the RSSI percentage. RSSI scale is therefore the ADC raw value for 100% RSSI.</td>
 <td>1</td>
 <td>255</td>
 <td>30</td>
@@ -347,20 +393,11 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>rssi_ppm_invert</code></td>
-<td></td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>Master</td>
-<td>UINT8</td>
-</tr>
-<tr>
-<td><code>input_filtering_mode</code></td>
-<td></td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/rssi/"><code>rssi_ppm_invert</code></a></td>
+<td>When using PWM RSSI, determines if the signal is inverted (Futaba, FrSKY)</td>
+<td>OFF</td>
+<td>ON</td>
+<td>ON</td>
 <td>Master</td>
 <td>INT8</td>
 </tr>
@@ -374,7 +411,61 @@ dump rates
 <td>INT8</td>
 </tr>
 <tr>
-<td><code>min_throttle</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/rx/"><code>rx_min_usec</code></a></td>
+<td>Defines the shortest pulse width value used when ensuring the channel value is valid.  If the receiver gives a pulse value lower than this value then the channel will be marked as bad and will default to the value of <code>mid_rc</code>.</td>
+<td>750</td>
+<td>2250</td>
+<td>885</td>
+<td>Master</td>
+<td>UINT16</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/rx/"><code>rx_max_usec</code></a></td>
+<td>Defines the longest pulse width value used when ensuring the channel value is valid.  If the receiver gives a pulse value higher than this value then the channel will be marked as bad and will default to the value of <code>mid_rc</code>.</td>
+<td>750</td>
+<td>2250</td>
+<td>2115</td>
+<td>Master</td>
+<td>UINT16</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/rx/"><code>serialrx_provider</code></a></td>
+<td>When feature SERIALRX is enabled, this allows connection to several receivers which output data via digital interface resembling serial. Possible values: SPEK1024, SPEK2048, SBUS, SUMD, XB-B, XB-B-RJ01, IBUS</td>
+<td></td>
+<td></td>
+<td>SPEK1024</td>
+<td>Master</td>
+<td>UINT8</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/rx/"><code>sbus_inversion</code></a></td>
+<td>Standard SBUS (Futaba, FrSKY) uses an inverted signal. Some OpenLRS receivers produce a non-inverted SBUS signal. This setting is to support this type of receivers (including modified FrSKY). This only works on supported hardware (mainly F3 based flight controllers).</td>
+<td>OFF</td>
+<td>ON</td>
+<td>ON</td>
+<td>Master</td>
+<td>UINT8</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/spektrum-20bind/"><code>spektrum_sat_bind</code></a></td>
+<td>0 = disabled. Used to bind the spektrum satellite to RX</td>
+<td>0</td>
+<td>10</td>
+<td>0</td>
+<td>Master</td>
+<td>UINT8</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/rx/"><code>input_filtering_mode</code></a></td>
+<td>Filter out noise from OpenLRS Telemetry RX</td>
+<td>OFF</td>
+<td>ON</td>
+<td>ON</td>
+<td>Master</td>
+<td>INT8</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/controls/"><code>min_throttle</code></a></td>
 <td>These are min/max values (in us) that are sent to esc when armed. Defaults of 1150/1850 are OK for everyone, for use with AfroESC, they could be set to 1064/1864.</td>
 <td>0</td>
 <td>2000</td>
@@ -383,8 +474,8 @@ dump rates
 <td>UINT16</td>
 </tr>
 <tr>
-<td><code>max_throttle</code></td>
-<td>These are min/max values (in us) that are sent to esc when armed. Defaults of 1150/1850 are OK for everyone, for use with AfroESC, they could be set to 1064/1864.</td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/controls/"><code>max_throttle</code></a></td>
+<td>These are min/max values (in us) that are sent to esc when armed. Defaults of 1150/1850 are OK for everyone, for use with AfroESC, they could be set to 1064/1864.  If you have brushed motors, the value should be set to 2000.</td>
 <td>0</td>
 <td>2000</td>
 <td>1850</td>
@@ -392,7 +483,7 @@ dump rates
 <td>UINT16</td>
 </tr>
 <tr>
-<td><code>min_command</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/controls/"><code>min_command</code></a></td>
 <td>This is the PWM value sent to ESCs when they are not armed. If ESCs beep slowly when powered up, try decreasing this value. It can also be used for calibrating all ESCs at once.</td>
 <td>0</td>
 <td>2000</td>
@@ -402,7 +493,7 @@ dump rates
 </tr>
 <tr>
 <td><code>servo_center_pulse</code></td>
-<td></td>
+<td>Servo midpoint</td>
 <td>0</td>
 <td>2000</td>
 <td>1500</td>
@@ -410,44 +501,8 @@ dump rates
 <td>UINT16</td>
 </tr>
 <tr>
-<td><code>3d_deadband_low</code></td>
-<td></td>
-<td>0</td>
-<td>2000</td>
-<td>1406</td>
-<td>Master</td>
-<td>UINT16</td>
-</tr>
-<tr>
-<td><code>3d_deadband_high</code></td>
-<td></td>
-<td>0</td>
-<td>2000</td>
-<td>1514</td>
-<td>Master</td>
-<td>UINT16</td>
-</tr>
-<tr>
-<td><code>3d_neutral</code></td>
-<td></td>
-<td>0</td>
-<td>2000</td>
-<td>1460</td>
-<td>Master</td>
-<td>UINT16</td>
-</tr>
-<tr>
-<td><code>3d_deadband_throttle</code></td>
-<td></td>
-<td>0</td>
-<td>2000</td>
-<td>50</td>
-<td>Master</td>
-<td>UINT16</td>
-</tr>
-<tr>
 <td><code>motor_pwm_rate</code></td>
-<td>Output frequency (in Hz) for motor pins. Defaults are 400Hz for motor. If setting above 500Hz, will switch to brushed (direct drive) motors mode. For example, setting to 8000 will use brushed mode at 8kHz switching frequency. Up to 32kHz is supported. Note, that in brushed mode, minthrottle is offset to zero. Default is 16000 for boards with brushed motors.</td>
+<td>Output frequency (in Hz) for motor pins. Defaults are 400Hz for motor. If setting above 500Hz, will switch to brushed (direct drive) motors mode. For example, setting to 8000 will use brushed mode at 8kHz switching frequency. Up to 32kHz is supported.  Default is 16000 for boards with brushed motors. Note, that in brushed mode, minthrottle is offset to zero. For brushed mode, set <code>max_throttle</code> to 2000.</td>
 <td>50</td>
 <td>32000</td>
 <td>400</td>
@@ -464,22 +519,31 @@ dump rates
 <td>UINT16</td>
 </tr>
 <tr>
-<td><code>servo_lowpass_freq</code></td>
-<td>Selects the servo PWM output cutoff frequency. Valid values range from 10 to 400. This is a fraction of the loop frequency in 1/1000ths. For example, <code>40</code> means <code>0.040</code>.  The cutoff frequency can be determined by the following formula: <code>Frequency = 1000 * servo_lowpass_freq / looptime</code></td>
-<td>10</td>
-<td>400</td>
-<td>400</td>
+<td><code>3d_deadband_low</code></td>
+<td>Low value of throttle deadband for 3D mode (when stick is in the 3d_deadband_throttle range, the fixed values of 3d_deadband_low / _high are used instead)</td>
+<td>0</td>
+<td>2000</td>
+<td>1406</td>
 <td>Master</td>
-<td>INT16</td>
+<td>UINT16</td>
 </tr>
 <tr>
-<td><code>servo_lowpass_enable</code></td>
-<td>Disabled by default.</td>
-<td>OFF</td>
-<td>ON</td>
-<td>OFF</td>
+<td><code>3d_deadband_high</code></td>
+<td>High value of throttle deadband for 3D mode (when stick is in the deadband range, the value in 3d_neutral is used instead)</td>
+<td>0</td>
+<td>2000</td>
+<td>1514</td>
 <td>Master</td>
-<td>INT8</td>
+<td>UINT16</td>
+</tr>
+<tr>
+<td><code>3d_neutral</code></td>
+<td>Neutral (stop) throttle value for 3D mode</td>
+<td>0</td>
+<td>2000</td>
+<td>1460</td>
+<td>Master</td>
+<td>UINT16</td>
 </tr>
 <tr>
 <td><code>retarded_arm</code></td>
@@ -501,10 +565,19 @@ dump rates
 </tr>
 <tr>
 <td><code>auto_disarm_delay</code></td>
-<td></td>
+<td>Delay before automatic disarming</td>
 <td>0</td>
 <td>60</td>
 <td>5</td>
+<td>Master</td>
+<td>UINT8</td>
+</tr>
+<tr>
+<td><code>max_arm_angle</code></td>
+<td>Maximum horizontal angle before arming is disabled</td>
+<td>0</td>
+<td>180</td>
+<td>25</td>
 <td>Master</td>
 <td>UINT8</td>
 </tr>
@@ -518,26 +591,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>pid_at_min_throttle</code></td>
-<td>If enabled, the copter will process the pid algorithm at minimum throttle.  Cannot be used when <code>retarded_arm</code> is enabled.</td>
-<td>OFF</td>
-<td>ON</td>
-<td>ON</td>
-<td>Master</td>
-<td>UINT8</td>
-</tr>
-<tr>
-<td><code>flaps_speed</code></td>
-<td></td>
-<td>0</td>
-<td>100</td>
-<td>0</td>
-<td>Master</td>
-<td>UINT8</td>
-</tr>
-<tr>
 <td><code>fixedwing_althold_dir</code></td>
-<td></td>
+<td>Used for fixed-wing aircrafts. Determines of the correction value applied to throttle in alititude hold mode should be inverted.</td>
 <td>-1</td>
 <td>1</td>
 <td>1</td>
@@ -546,7 +601,7 @@ dump rates
 </tr>
 <tr>
 <td><code>reboot_character</code></td>
-<td></td>
+<td>Special character used to trigger reboot</td>
 <td>48</td>
 <td>126</td>
 <td>82</td>
@@ -554,8 +609,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>gps_provider</code></td>
-<td>NMEA, UBLOX</td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/gps/"><code>gps_provider</code></a></td>
+<td>GPS standard. Possible values: NMEA, UBLOX</td>
 <td></td>
 <td></td>
 <td>NMEA</td>
@@ -563,8 +618,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>gps_sbas_mode</code></td>
-<td>EGNOS, WAAS, MSAS, GAGAN</td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/gps/"><code>gps_sbas_mode</code></a></td>
+<td>Ground assistance type. Possible values: AUTO, EGNOS, WAAS, MSAS, GAGAN</td>
 <td></td>
 <td></td>
 <td>AUTO</td>
@@ -572,8 +627,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>gps_auto_config</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/gps/"><code>gps_auto_config</code></a></td>
+<td>Enable automatic configuration of UBlox GPS receivers.</td>
 <td>OFF</td>
 <td>ON</td>
 <td>ON</td>
@@ -582,7 +637,7 @@ dump rates
 </tr>
 <tr>
 <td><code>gps_auto_baud</code></td>
-<td></td>
+<td>Enable automatic detection of GPS baudrate.</td>
 <td>OFF</td>
 <td>ON</td>
 <td>OFF</td>
@@ -591,7 +646,7 @@ dump rates
 </tr>
 <tr>
 <td><code>gps_pos_p</code></td>
-<td></td>
+<td>GPS Position hold: P parameter</td>
 <td>0</td>
 <td>200</td>
 <td>15</td>
@@ -600,7 +655,7 @@ dump rates
 </tr>
 <tr>
 <td><code>gps_pos_i</code></td>
-<td></td>
+<td>GPS Position hold: I parameter</td>
 <td>0</td>
 <td>200</td>
 <td>0</td>
@@ -609,7 +664,7 @@ dump rates
 </tr>
 <tr>
 <td><code>gps_pos_d</code></td>
-<td></td>
+<td>GPS Position hold: D parameter</td>
 <td>0</td>
 <td>200</td>
 <td>0</td>
@@ -618,7 +673,7 @@ dump rates
 </tr>
 <tr>
 <td><code>gps_posr_p</code></td>
-<td></td>
+<td>GPS Position hold rate: P parameter</td>
 <td>0</td>
 <td>200</td>
 <td>34</td>
@@ -627,7 +682,7 @@ dump rates
 </tr>
 <tr>
 <td><code>gps_posr_i</code></td>
-<td></td>
+<td>GPS Position hold rate: I parameter</td>
 <td>0</td>
 <td>200</td>
 <td>14</td>
@@ -636,7 +691,7 @@ dump rates
 </tr>
 <tr>
 <td><code>gps_posr_d</code></td>
-<td></td>
+<td>GPS Position hold rate: D parameter</td>
 <td>0</td>
 <td>200</td>
 <td>53</td>
@@ -645,7 +700,7 @@ dump rates
 </tr>
 <tr>
 <td><code>gps_nav_p</code></td>
-<td></td>
+<td>GPS Navigation: P parameter</td>
 <td>0</td>
 <td>200</td>
 <td>25</td>
@@ -654,7 +709,7 @@ dump rates
 </tr>
 <tr>
 <td><code>gps_nav_i</code></td>
-<td></td>
+<td>GPS Navigation: I parameter</td>
 <td>0</td>
 <td>200</td>
 <td>33</td>
@@ -663,7 +718,7 @@ dump rates
 </tr>
 <tr>
 <td><code>gps_nav_d</code></td>
-<td></td>
+<td>GPS Navigation: D parameter</td>
 <td>0</td>
 <td>200</td>
 <td>83</td>
@@ -672,7 +727,7 @@ dump rates
 </tr>
 <tr>
 <td><code>gps_wp_radius</code></td>
-<td></td>
+<td>GPS Navigation: waypoint radius</td>
 <td>0</td>
 <td>2000</td>
 <td>200</td>
@@ -681,7 +736,7 @@ dump rates
 </tr>
 <tr>
 <td><code>nav_controls_heading</code></td>
-<td></td>
+<td>GPS Navigation: should the craft&rsquo;s heading follow the flying direction.</td>
 <td>OFF</td>
 <td>ON</td>
 <td>ON</td>
@@ -690,7 +745,7 @@ dump rates
 </tr>
 <tr>
 <td><code>nav_speed_min</code></td>
-<td></td>
+<td>GPS Navigation: minimum moving speed</td>
 <td>10</td>
 <td>2000</td>
 <td>100</td>
@@ -699,7 +754,7 @@ dump rates
 </tr>
 <tr>
 <td><code>nav_speed_max</code></td>
-<td></td>
+<td>GPS Navigation: maximum moving speed</td>
 <td>10</td>
 <td>2000</td>
 <td>300</td>
@@ -708,7 +763,7 @@ dump rates
 </tr>
 <tr>
 <td><code>nav_slew_rate</code></td>
-<td></td>
+<td>GPS Navigation: maximum angle correction value. Lower slew rate stops the craft from rotating too quickly.</td>
 <td>0</td>
 <td>100</td>
 <td>30</td>
@@ -716,26 +771,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>serialrx_provider</code></td>
-<td>When feature SERIALRX is enabled, this allows connection to several receivers which output data via digital interface resembling serial. See RX section.</td>
-<td>0</td>
-<td>6</td>
-<td>0</td>
-<td>Master</td>
-<td>UINT8</td>
-</tr>
-<tr>
-<td><code>spektrum_sat_bind</code></td>
-<td></td>
-<td>0</td>
-<td>10</td>
-<td>0</td>
-<td>Master</td>
-<td>UINT8</td>
-</tr>
-<tr>
 <td><code>telemetry_switch</code></td>
-<td>Which aux channel to use to change serial output &amp; baud rate (MSP / Telemetry). It disables automatic switching to Telemetry when armed.</td>
+<td>When an AUX channel is used to change serial output &amp; baud rate (MSP / Telemetry). OFF: Telemetry is activated when armed. ON: Telemetry is activated by the AUX channel.</td>
 <td>OFF</td>
 <td>ON</td>
 <td>OFF</td>
@@ -743,8 +780,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>telemetry_inversion</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/telemetry/"><code>telemetry_inversion</code></a></td>
+<td>Determines if the telemetry signal is inverted (Futaba, FrSKY)</td>
 <td>OFF</td>
 <td>ON</td>
 <td>OFF</td>
@@ -753,7 +790,7 @@ dump rates
 </tr>
 <tr>
 <td><code>frsky_default_lattitude</code></td>
-<td></td>
+<td>OpenTX needs a valid set of coordinates to show compass value. A fake value defined in this setting is sent while no fix is acquired.</td>
 <td>-90</td>
 <td>90</td>
 <td>0</td>
@@ -762,7 +799,7 @@ dump rates
 </tr>
 <tr>
 <td><code>frsky_default_longitude</code></td>
-<td></td>
+<td>OpenTX needs a valid set of coordinates to show compass value. A fake value defined in this setting is sent while no fix is acquired.</td>
 <td>-180</td>
 <td>180</td>
 <td>0</td>
@@ -771,7 +808,25 @@ dump rates
 </tr>
 <tr>
 <td><code>frsky_coordinates_format</code></td>
+<td>FRSKY_FORMAT_DMS (default), FRSKY_FORMAT_NMEA</td>
 <td></td>
+<td></td>
+<td>FRSKY_FORMAT_DMS</td>
+<td>Master</td>
+<td>UINT8</td>
+</tr>
+<tr>
+<td><code>frsky_unit</code></td>
+<td>IMPERIAL (default), METRIC</td>
+<td></td>
+<td></td>
+<td>IMPERIAL</td>
+<td>Master</td>
+<td>UINT8</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/telemetry/"><code>frsky_vfas_precision</code></a></td>
+<td>Set to 1 to send raw VBat value in 0.1V resolution for receivers that can handle it, or 0 (default) to use the standard method</td>
 <td>0</td>
 <td>1</td>
 <td>0</td>
@@ -779,17 +834,17 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>frsky_unit</code></td>
-<td></td>
-<td></td>
-<td></td>
-<td>*</td>
+<td><code>hott_alarm_sound_interval</code></td>
+<td>Battery alarm delay in seconds for Hott telemetry</td>
+<td>0</td>
+<td>120</td>
+<td>5</td>
 <td>Master</td>
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>battery_capacity</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/battery/"><code>battery_capacity</code></a></td>
+<td>Battery capacity in mAH. This value is used in conjunction with the current meter to determine remaining battery capacity.</td>
 <td>0</td>
 <td>20000</td>
 <td>0</td>
@@ -797,7 +852,7 @@ dump rates
 <td>UINT16</td>
 </tr>
 <tr>
-<td><code>vbat_scale</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/battery/"><code>vbat_scale</code></a></td>
 <td>Result is Vbatt in 0.1V steps. 3.3V = ADC Vref, 4095 = 12bit adc, 110 = 11:1 voltage divider (10k:1k) x 10 for 0.1V. Adjust this slightly if reported pack voltage is different from multimeter reading. You can get current voltage by typing &ldquo;status&rdquo;&ldquo; in cli.&rdquo;</td>
 <td>0</td>
 <td>255</td>
@@ -806,7 +861,7 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>vbat_max_cell_voltage</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/battery/"><code>vbat_max_cell_voltage</code></a></td>
 <td>Maximum voltage per cell, used for auto-detecting battery voltage in 0.1V units, default is 43 (4.3V)</td>
 <td>10</td>
 <td>50</td>
@@ -815,7 +870,7 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>vbat_min_cell_voltage</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/battery/"><code>vbat_min_cell_voltage</code></a></td>
 <td>Minimum voltage per cell, this triggers battery out alarms, in 0.1V units, default is 33 (3.3V)</td>
 <td>10</td>
 <td>50</td>
@@ -824,8 +879,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>vbat_warning_cell_voltage</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/battery/"><code>vbat_warning_cell_voltage</code></a></td>
+<td>Warning voltage per cell, this triggers battery warning alarms, in 0.1V units, default is 35 (3.5V)</td>
 <td>10</td>
 <td>50</td>
 <td>35</td>
@@ -833,8 +888,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>current_meter_scale</code></td>
-<td>This sets the output voltage to current scaling for the current sensor in 0.1 mV/A steps. 400 is 40mV/A such as the ACS756 sensor outputs. 183 is the setting for the Überdistro with a 0.25mOhm shunt.</td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/battery/"><code>current_meter_scale</code></a></td>
+<td>This sets the output voltage to current scaling for the current sensor in 0.1 mV/A steps. 400 is 40mV/A such as the ACS756 sensor outputs. 183 is the setting for the uberdistro with a 0.25mOhm shunt.</td>
 <td>-10000</td>
 <td>10000</td>
 <td>400</td>
@@ -842,7 +897,7 @@ dump rates
 <td>INT16</td>
 </tr>
 <tr>
-<td><code>current_meter_offset</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/battery/"><code>current_meter_offset</code></a></td>
 <td>This sets the output offset voltage of the current sensor in millivolts.</td>
 <td>0</td>
 <td>3300</td>
@@ -851,7 +906,7 @@ dump rates
 <td>UINT16</td>
 </tr>
 <tr>
-<td><code>multiwii_current_meter_output</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/battery/"><code>multiwii_current_meter_output</code></a></td>
 <td>Default current output via MSP is in 0.01A steps. Setting this to 1 causes output in default multiwii scaling (1mA steps).</td>
 <td>OFF</td>
 <td>ON</td>
@@ -860,17 +915,17 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>current_meter_type</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/battery/"><code>current_meter_type</code></a></td>
+<td>ADC (default), VIRTUAL, NONE. The virtual current sensor, once calibrated, estimates the current value from throttle position.</td>
 <td></td>
-<td>0</td>
-<td>2</td>
-<td>1</td>
+<td></td>
+<td>ADC</td>
 <td>Master</td>
 <td>UINT8</td>
 </tr>
 <tr>
 <td><code>align_gyro</code></td>
-<td>When running on non-default hardware or adding support for new sensors/sensor boards, these values are used for sensor orientation. When carefully understood, these values can also be used to rotate (in 90deg steps) or flip the board.</td>
+<td>When running on non-default hardware or adding support for new sensors/sensor boards, these values are used for sensor orientation. When carefully understood, these values can also be used to rotate (in 90deg steps) or flip the board. Possible values are: DEFAULT, CW0, CW90, CW180, CW270, CW0FLIP, CW90FLIP, CW180FLIP, CW270FLIP.</td>
 <td></td>
 <td></td>
 <td>DEFAULT</td>
@@ -879,7 +934,7 @@ dump rates
 </tr>
 <tr>
 <td><code>align_acc</code></td>
-<td>When running on non-default hardware or adding support for new sensors/sensor boards, these values are used for sensor orientation. When carefully understood, these values can also be used to rotate (in 90deg steps) or flip the board.</td>
+<td>When running on non-default hardware or adding support for new sensors/sensor boards, these values are used for sensor orientation. When carefully understood, these values can also be used to rotate (in 90deg steps) or flip the board. Possible values are: DEFAULT, CW0, CW90, CW180, CW270, CW0FLIP, CW90FLIP, CW180FLIP, CW270FLIP.</td>
 <td></td>
 <td></td>
 <td>DEFAULT</td>
@@ -888,7 +943,7 @@ dump rates
 </tr>
 <tr>
 <td><code>align_mag</code></td>
-<td>When running on non-default hardware or adding support for new sensors/sensor boards, these values are used for sensor orientation. When carefully understood, these values can also be used to rotate (in 90deg steps) or flip the board.</td>
+<td>When running on non-default hardware or adding support for new sensors/sensor boards, these values are used for sensor orientation. When carefully understood, these values can also be used to rotate (in 90deg steps) or flip the board. Possible values are: DEFAULT, CW0, CW90, CW180, CW270, CW0FLIP, CW90FLIP, CW180FLIP, CW270FLIP.</td>
 <td></td>
 <td></td>
 <td>DEFAULT</td>
@@ -932,11 +987,20 @@ dump rates
 <td>UINT16</td>
 </tr>
 <tr>
-<td><code>gyro_lpf</code></td>
-<td>Hardware lowpass filter for gyro. Allowed values depend on the driver - For example MPU6050 allows 5,10,20,42,98,188,256Hz, while MPU3050 doesn&rsquo;t allow 5Hz. If you have to set gyro lpf below 42Hz generally means the frame is vibrating too much, and that should be fixed first. Values outside of supported range will usually be ignored by drivers, and will configure lpf to default value of 42Hz.</td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/pid-20tuning/"><code>gyro_lpf</code></a></td>
+<td>Hardware lowpass filter cutoff frequency for gyro. Allowed values depend on the driver - For example MPU6050 allows 10HZ,20HZ,42HZ,98HZ,188HZ. If you have to set gyro lpf below 42Hz generally means the frame is vibrating too much, and that should be fixed first.</td>
+<td>10HZ</td>
+<td>188HZ</td>
+<td>42HZ</td>
+<td>Master</td>
+<td>UINT16</td>
+</tr>
+<tr>
+<td><code>gyro_soft_lpf</code></td>
+<td>Software lowpass filter cutoff frequency for gyro. Default is 60Hz. Set to 0 to disable.</td>
 <td>0</td>
-<td>256</td>
-<td>42</td>
+<td>500</td>
+<td>60</td>
 <td>Master</td>
 <td>UINT16</td>
 </tr>
@@ -950,26 +1014,26 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>gyro_cmpf_factor</code></td>
-<td>This setting controls the Gyro Weight for the Gyro/Acc complementary filter.  Increasing this value reduces and delays Acc influence on the output of the filter.</td>
-<td>100</td>
-<td>1000</td>
-<td>600</td>
+<td><code>imu_dcm_kp</code></td>
+<td>Inertial Measurement Unit KP Gain</td>
+<td>0</td>
+<td>20000</td>
+<td>2500</td>
 <td>Master</td>
 <td>UINT16</td>
 </tr>
 <tr>
-<td><code>gyro_cmpfm_factor</code></td>
-<td>This setting controls the Gyro Weight for the Gyro/Magnetometer complementary filter. Increasing this value reduces and delays the Magnetometer influence on the output of the filter.</td>
-<td>100</td>
-<td>1000</td>
-<td>250</td>
+<td><code>imu_dcm_ki</code></td>
+<td>Inertial Measurement Unit KI Gain</td>
+<td>0</td>
+<td>20000</td>
+<td>0</td>
 <td>Master</td>
 <td>UINT16</td>
 </tr>
 <tr>
 <td><code>alt_hold_deadband</code></td>
-<td></td>
+<td>Altitude will be held when throttle is centered with an error margin defined in this parameter.</td>
 <td>1</td>
 <td>250</td>
 <td>40</td>
@@ -978,7 +1042,7 @@ dump rates
 </tr>
 <tr>
 <td><code>alt_hold_fast_change</code></td>
-<td></td>
+<td>Authorise fast altitude changes. Should be disabled when slow changes are prefered, for example for aerial photography.</td>
 <td>OFF</td>
 <td>ON</td>
 <td>ON</td>
@@ -986,8 +1050,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>deadband</code></td>
-<td>These are values (in us) by how much RC input can be different before it&rsquo;s considered valid. For transmitters with jitter on outputs, this value can be increased. Defaults are zero, but can be increased up to 10 or so if rc inputs twitch while idle.</td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/controls/"><code>deadband</code></a></td>
+<td>These are values (in us) by how much RC input can be different before it&rsquo;s considered valid for roll and pitch axis. For transmitters with jitter on outputs, this value can be increased. Defaults are zero, but can be increased up to 10 or so if rc inputs twitch while idle. This value is applied either side of the centrepoint.</td>
 <td>0</td>
 <td>32</td>
 <td>0</td>
@@ -995,13 +1059,31 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>yaw_deadband</code></td>
-<td>These are values (in us) by how much RC input can be different before it&rsquo;s considered valid. For transmitters with jitter on outputs, this value can be increased. Defaults are zero, but can be increased up to 10 or so if rc inputs twitch while idle.</td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/controls/"><code>yaw_deadband</code></a></td>
+<td>These are values (in us) by how much RC input can be different before it&rsquo;s considered valid for the yaw axis. For transmitters with jitter on outputs, this value can be increased. Defaults are zero, but can be increased up to 10 or so if rc inputs twitch while idle. This value is applied either side of the centrepoint.</td>
 <td>0</td>
 <td>100</td>
 <td>0</td>
 <td>Profile</td>
 <td>UINT8</td>
+</tr>
+<tr>
+<td><code>yaw_control_direction</code></td>
+<td>Use if you need to inverse yaw control direction.</td>
+<td>-1</td>
+<td>1</td>
+<td>1</td>
+<td>Profile</td>
+<td>INT8</td>
+</tr>
+<tr>
+<td><code>3d_deadband_throttle</code></td>
+<td>Throttle signal will be held to a fixed value when throttle is centered with an error margin defined in this parameter.</td>
+<td>0</td>
+<td>2000</td>
+<td>50</td>
+<td>Profile</td>
+<td>UINT16</td>
 </tr>
 <tr>
 <td><code>throttle_correction_value</code></td>
@@ -1022,8 +1104,17 @@ dump rates
 <td>UINT16</td>
 </tr>
 <tr>
-<td><code>yaw_control_direction</code></td>
-<td></td>
+<td><code>pid_at_min_throttle</code></td>
+<td>If enabled, the copter will process the pid algorithm at minimum throttle.  Cannot be used when <code>retarded_arm</code> is enabled.</td>
+<td>OFF</td>
+<td>ON</td>
+<td>ON</td>
+<td>Master</td>
+<td>UINT8</td>
+</tr>
+<tr>
+<td><code>yaw_motor_direction</code></td>
+<td>Use if you need to inverse yaw motor direction.</td>
 <td>-1</td>
 <td>1</td>
 <td>1</td>
@@ -1031,17 +1122,8 @@ dump rates
 <td>INT8</td>
 </tr>
 <tr>
-<td><code>yaw_motor_direction</code></td>
-<td></td>
-<td>-1</td>
-<td>1</td>
-<td>1</td>
-<td>Profile</td>
-<td>INT8</td>
-</tr>
-<tr>
 <td><code>yaw_jump_prevention_limit</code></td>
-<td>Prevent yaw jumps during yaw stops. To disable set to 500.</td>
+<td>Prevent yaw jumps during yaw stops and rapid YAW input. To disable set to 500. Adjust this if your aircraft &#39;skids out&rsquo;. Higher values increases YAW authority but can cause roll/pitch instability in case of underpowered UAVs. Lower values makes yaw adjustments more gentle but can cause UAV unable to keep heading</td>
 <td>80</td>
 <td>500</td>
 <td>200</td>
@@ -1049,26 +1131,44 @@ dump rates
 <td>UINT16</td>
 </tr>
 <tr>
-<td><code>tri_unarmed_servo</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/controls/"><code>tri_unarmed_servo</code></a></td>
 <td>On tricopter mix only, if this is set to 1, servo will always be correcting regardless of armed state. to disable this, set it to 0.</td>
 <td>OFF</td>
 <td>ON</td>
 <td>ON</td>
-<td>Profile</td>
+<td>Master</td>
 <td>INT8</td>
 </tr>
 <tr>
-<td><code>default_rate_profile</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/mixer/"><code>servo_lowpass_freq</code></a></td>
+<td>Selects the servo PWM output cutoff frequency. Valid values range from 10 to 400. This is a fraction of the loop frequency in 1/1000ths. For example, <code>40</code> means <code>0.040</code>.  The cutoff frequency can be determined by the following formula: <code>Frequency = 1000 * servo_lowpass_freq / looptime</code></td>
+<td>10</td>
+<td>400</td>
+<td>400</td>
+<td>Master</td>
+<td>FLOAT</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/mixer/"><code>servo_lowpass_enable</code></a></td>
+<td>Disabled by default.</td>
+<td>OFF</td>
+<td>ON</td>
+<td>OFF</td>
+<td>Master</td>
+<td>INT8</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/profiles/"><code>default_rate_profile</code></a></td>
 <td>Default = profile number</td>
 <td>0</td>
 <td>2</td>
-<td></td>
+<td>0</td>
 <td>Profile</td>
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>rc_rate</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/profiles/"><code>rc_rate</code></a></td>
+<td>Rate value for all RC directions</td>
 <td>0</td>
 <td>250</td>
 <td>90</td>
@@ -1076,8 +1176,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>rc_expo</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/profiles/"><code>rc_expo</code></a></td>
+<td>Exposition value for all RC directions</td>
 <td>0</td>
 <td>100</td>
 <td>65</td>
@@ -1086,7 +1186,7 @@ dump rates
 </tr>
 <tr>
 <td><code>rc_yaw_expo</code></td>
-<td></td>
+<td>Yaw exposition value</td>
 <td>0</td>
 <td>100</td>
 <td>0</td>
@@ -1094,8 +1194,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>thr_mid</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/profiles/"><code>thr_mid</code></a></td>
+<td>Throttle value when the stick is set to mid-position. Used in the throttle curve calculation.</td>
 <td>0</td>
 <td>100</td>
 <td>50</td>
@@ -1103,8 +1203,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>thr_expo</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/profiles/"><code>thr_expo</code></a></td>
+<td>Throttle exposition value</td>
 <td>0</td>
 <td>100</td>
 <td>0</td>
@@ -1112,25 +1212,34 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>roll_pitch_rate</code></td>
+<td><code>roll_rate</code></td>
+<td>Roll rate value</td>
 <td></td>
-<td>0</td>
 <td>100</td>
+<td>40</td>
+<td>Rate Profile</td>
+<td>UINT8</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/profiles/"><code>pitch_rate</code></a></td>
+<td>Pitch rate value</td>
+<td></td>
+<td>100</td>
+<td>40</td>
+<td>Rate Profile</td>
+<td>UINT8</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/profiles/"><code>yaw_rate</code></a></td>
+<td>Yaw rate value</td>
+<td>0</td>
+<td>255</td>
 <td>0</td>
 <td>Rate Profile</td>
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>yaw_rate</code></td>
-<td></td>
-<td>0</td>
-<td>100</td>
-<td>0</td>
-<td>Rate Profile</td>
-<td>UINT8</td>
-</tr>
-<tr>
-<td><code>tpa_rate</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/profiles/"><code>tpa_rate</code></a></td>
 <td>Throttle PID attenuation reduces influence of P on ROLL and PITCH as throttle increases. For every 1% throttle after the TPA breakpoint, P is reduced by the TPA rate.</td>
 <td>0</td>
 <td>100</td>
@@ -1139,7 +1248,7 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>tpa_breakpoint</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/profiles/"><code>tpa_breakpoint</code></a></td>
 <td>See tpa_rate.</td>
 <td>1000</td>
 <td>2000</td>
@@ -1148,49 +1257,58 @@ dump rates
 <td>UINT16</td>
 </tr>
 <tr>
-<td><code>failsafe_delay</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/failsafe/"><code>failsafe_delay</code></a></td>
 <td>Time in deciseconds to wait before activating failsafe when signal is lost. See <a href="Failsafe.md#failsafe_delay">Failsafe documentation</a>.</td>
 <td>0</td>
 <td>200</td>
 <td>10</td>
-<td>Profile</td>
+<td>Master</td>
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>failsafe_off_delay</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/failsafe/"><code>failsafe_off_delay</code></a></td>
 <td>Time in deciseconds to wait before turning off motors when failsafe is activated. See <a href="Failsafe.md#failsafe_off_delay">Failsafe documentation</a>.</td>
 <td>0</td>
 <td>200</td>
 <td>200</td>
-<td>Profile</td>
+<td>Master</td>
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>failsafe_throttle</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/failsafe/"><code>failsafe_throttle</code></a></td>
 <td>Throttle level used for landing when failsafe is enabled. See <a href="Failsafe.md#failsafe_throttle">Failsafe documentation</a>.</td>
 <td>1000</td>
 <td>2000</td>
 <td>1000</td>
-<td>Profile</td>
+<td>Master</td>
 <td>UINT16</td>
 </tr>
 <tr>
-<td><code>rx_min_usec</code></td>
-<td>Defines the shortest pulse width value used when ensuring the channel value is valid.  If the receiver gives a pulse value lower than this value then the channel will be marked as bad and will default to the value of <code>mid_rc</code>.</td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/failsafe/"><code>failsafe_kill_switch</code></a></td>
+<td>Set to ON to use an AUX channel as a faisafe kill switch.</td>
+<td>OFF</td>
+<td>ON</td>
+<td>OFF</td>
+<td>Master</td>
+<td>UINT8</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/failsafe/"><code>failsafe_throttle_low_delay</code></a></td>
+<td>Activate failsafe when throttle is low and no RX data has been received since this value, in 10th of seconds</td>
+<td>0</td>
+<td>300</td>
 <td>100</td>
-<td>2000</td>
-<td>885</td>
-<td>Profile</td>
+<td>Master</td>
 <td>UINT16</td>
 </tr>
 <tr>
-<td><code>rx_max_usec</code></td>
-<td>Defines the longest pulse width value used when ensuring the channel value is valid.  If the receiver gives a pulse value higher than this value then the channel will be marked as bad and will default to the value of <code>mid_rc</code>.</td>
-<td>100</td>
-<td>3000</td>
-<td>2115</td>
-<td>Profile</td>
-<td>UINT16</td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/failsafe/"><code>failsafe_procedure</code></a></td>
+<td>0 = Autolanding (default). 1 = Drop.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>Master</td>
+<td>UINT8</td>
 </tr>
 <tr>
 <td><code>gimbal_mode</code></td>
@@ -1211,17 +1329,17 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>acc_lpf_factor</code></td>
-<td>This setting controls the Low Pass Filter factor for ACC.  Increasing this value reduces ACC noise (visible in GUI), but would increase ACC lag time.  Zero = no filter</td>
+<td><code>acc_cut_hz</code></td>
+<td>Set the Low Pass Filter factor for ACC. Reducing this value would reduce ACC noise (visible in GUI), but would increase ACC lag time. Zero = no filter</td>
 <td>0</td>
-<td>250</td>
-<td>4</td>
+<td>200</td>
+<td>15</td>
 <td>Profile</td>
 <td>UINT8</td>
 </tr>
 <tr>
 <td><code>accxy_deadband</code></td>
-<td></td>
+<td>Deadband applied to accelerometrer measurements to reduce integration drift and vibration influence</td>
 <td>0</td>
 <td>100</td>
 <td>40</td>
@@ -1230,7 +1348,7 @@ dump rates
 </tr>
 <tr>
 <td><code>accz_deadband</code></td>
-<td></td>
+<td>Deadband applied to accelerometrer measurements to reduce integration drift and vibration influence</td>
 <td>0</td>
 <td>100</td>
 <td>40</td>
@@ -1239,7 +1357,7 @@ dump rates
 </tr>
 <tr>
 <td><code>accz_lpf_cutoff</code></td>
-<td></td>
+<td>Cutoff frequency used in the low-pass filtering of accelerometer measurements.</td>
 <td>1</td>
 <td>20</td>
 <td>5</td>
@@ -1248,7 +1366,7 @@ dump rates
 </tr>
 <tr>
 <td><code>acc_unarmedcal</code></td>
-<td></td>
+<td>Determines the method used to calculate gravitational compensation on the Z axis in the Inertial Measurement Unit&rsquo;s acceleration calculation. The method used when set to ON takes account of the armed status.</td>
 <td>OFF</td>
 <td>ON</td>
 <td>ON</td>
@@ -1257,7 +1375,7 @@ dump rates
 </tr>
 <tr>
 <td><code>acc_trim_pitch</code></td>
-<td></td>
+<td>Accelerometer trim (Pitch)</td>
 <td>-300</td>
 <td>300</td>
 <td>0</td>
@@ -1266,7 +1384,7 @@ dump rates
 </tr>
 <tr>
 <td><code>acc_trim_roll</code></td>
-<td></td>
+<td>Accelerometer trim (Roll)</td>
 <td>-300</td>
 <td>300</td>
 <td>0</td>
@@ -1275,7 +1393,7 @@ dump rates
 </tr>
 <tr>
 <td><code>baro_tab_size</code></td>
-<td></td>
+<td>Pressure sensor sample count.</td>
 <td>0</td>
 <td>48</td>
 <td>21</td>
@@ -1284,7 +1402,7 @@ dump rates
 </tr>
 <tr>
 <td><code>baro_noise_lpf</code></td>
-<td></td>
+<td>barometer low-pass filter cut-off frequency in Hz. Ranges from 0 to 1 ; default 0.6</td>
 <td>0</td>
 <td>1</td>
 <td>0.6</td>
@@ -1293,7 +1411,7 @@ dump rates
 </tr>
 <tr>
 <td><code>baro_cf_vel</code></td>
-<td></td>
+<td>Velocity sensor mix in altitude hold. Determines the influence accelerometer and barometer sensors have in the velocity estimation. Values from 0 to 1; 1 for pure accelerometer altitude, 0 for pure barometer altitude.</td>
 <td>0</td>
 <td>1</td>
 <td>0.985</td>
@@ -1302,7 +1420,7 @@ dump rates
 </tr>
 <tr>
 <td><code>baro_cf_alt</code></td>
-<td></td>
+<td>Altitude sensor mix in altitude hold. Determines the influence accelerometer and barometer sensors have in the altitude estimation. Values from 0 to 1; 1 for pure accelerometer altitude, 0 for pure barometer altitude.</td>
 <td>0</td>
 <td>1</td>
 <td>0.965</td>
@@ -1310,17 +1428,26 @@ dump rates
 <td>FLOAT</td>
 </tr>
 <tr>
-<td><code>mag_hardware</code></td>
-<td>0 = Default, use whatever mag hardware is defined for your board type ; 1 = None, disable mag ; 2 = HMC5883 ; 3 = AK8975 (for versions &lt;= 1.7.1: 1 = HMC5883 ; 2 = AK8975 ; 3 = None, disable mag)</td>
+<td><code>baro_hardware</code></td>
+<td>0 = Default, use whatever mag hardware is defined for your board type ; 1 = None, 2 = BMP085, 3 = MS5611, 4 = BMP280</td>
 <td>0</td>
-<td>3</td>
+<td>4</td>
+<td>0</td>
+<td>Master</td>
+<td>UINT8</td>
+</tr>
+<tr>
+<td><code>mag_hardware</code></td>
+<td>0 = Default, use whatever mag hardware is defined for your board type ; 1 = None, disable mag ; 2 = HMC5883 ; 3 = AK8975 ; 4 = AK8963 (for versions &lt;= 1.7.1: 1 = HMC5883 ; 2 = AK8975 ; 3 = None, disable mag)</td>
+<td>0</td>
+<td>4</td>
 <td>0</td>
 <td>Master</td>
 <td>UINT8</td>
 </tr>
 <tr>
 <td><code>mag_declination</code></td>
-<td>Current location magnetic declination in format. For example, -6deg 37min, = for Japan. Leading zero in ddd not required. Get your local magnetic declination here: <a href="http://magnetic-declination.com/">http://magnetic-declination.com/</a></td>
+<td>Current location magnetic declination in dddmm format. For example, -6deg 37min = -637 for Japan. Leading zeros not required. Get your local magnetic declination here: <a href="http://magnetic-declination.com/">http://magnetic-declination.com/</a></td>
 <td>-18000</td>
 <td>18000</td>
 <td>0</td>
@@ -1328,8 +1455,8 @@ dump rates
 <td>INT16</td>
 </tr>
 <tr>
-<td><code>pid_controller</code></td>
-<td>MW23, MWREWRITE, LUX</td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/pid-20tuning/"><code>pid_controller</code></a></td>
+<td>MW23, MWREWRITE (deafult), LUX</td>
 <td></td>
 <td></td>
 <td>MWREWRITE</td>
@@ -1337,8 +1464,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>p_pitch</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/pid-20tuning/"><code>p_pitch</code></a></td>
+<td>Pitch P parameter</td>
 <td>0</td>
 <td>200</td>
 <td>40</td>
@@ -1346,8 +1473,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>i_pitch</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/pid-20tuning/"><code>i_pitch</code></a></td>
+<td>Pitch I parameter</td>
 <td>0</td>
 <td>200</td>
 <td>30</td>
@@ -1355,8 +1482,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>d_pitch</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/pid-20tuning/"><code>d_pitch</code></a></td>
+<td>Pitch D parameter</td>
 <td>0</td>
 <td>200</td>
 <td>23</td>
@@ -1364,8 +1491,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>p_roll</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/pid-20tuning/"><code>p_roll</code> </a></td>
+<td>Roll P parameter</td>
 <td>0</td>
 <td>200</td>
 <td>40</td>
@@ -1373,8 +1500,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>i_roll</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/pid-20tuning/"><code>i_roll</code> </a></td>
+<td>Roll I parameter</td>
 <td>0</td>
 <td>200</td>
 <td>30</td>
@@ -1382,8 +1509,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>d_roll</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/pid-20tuning/"><code>d_roll</code> </a></td>
+<td>Roll D parameter</td>
 <td>0</td>
 <td>200</td>
 <td>23</td>
@@ -1391,8 +1518,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>p_yaw</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/pid-20tuning/"><code>p_yaw</code></a></td>
+<td>Yaw P parameter</td>
 <td>0</td>
 <td>200</td>
 <td>85</td>
@@ -1400,8 +1527,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>i_yaw</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/pid-20tuning/"><code>i_yaw</code></a></td>
+<td>Yaw I parameter</td>
 <td>0</td>
 <td>200</td>
 <td>45</td>
@@ -1409,8 +1536,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>d_yaw</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/pid-20tuning/"><code>d_yaw</code></a></td>
+<td>Yaw D parameter</td>
 <td>0</td>
 <td>200</td>
 <td>0</td>
@@ -1418,116 +1545,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>p_pitchf</code></td>
-<td></td>
-<td>0</td>
-<td>100</td>
-<td>1.5</td>
-<td>Profile</td>
-<td>FLOAT</td>
-</tr>
-<tr>
-<td><code>i_pitchf</code></td>
-<td></td>
-<td>0</td>
-<td>100</td>
-<td>0.4</td>
-<td>Profile</td>
-<td>FLOAT</td>
-</tr>
-<tr>
-<td><code>d_pitchf</code></td>
-<td></td>
-<td>0</td>
-<td>100</td>
-<td>0.03</td>
-<td>Profile</td>
-<td>FLOAT</td>
-</tr>
-<tr>
-<td><code>p_rollf</code></td>
-<td></td>
-<td>0</td>
-<td>100</td>
-<td>1.5</td>
-<td>Profile</td>
-<td>FLOAT</td>
-</tr>
-<tr>
-<td><code>i_rollf</code></td>
-<td></td>
-<td>0</td>
-<td>100</td>
-<td>0.4</td>
-<td>Profile</td>
-<td>FLOAT</td>
-</tr>
-<tr>
-<td><code>d_rollf</code></td>
-<td></td>
-<td>0</td>
-<td>100</td>
-<td>0.03</td>
-<td>Profile</td>
-<td>FLOAT</td>
-</tr>
-<tr>
-<td><code>p_yawf</code></td>
-<td></td>
-<td>0</td>
-<td>100</td>
-<td>2.5</td>
-<td>Profile</td>
-<td>FLOAT</td>
-</tr>
-<tr>
-<td><code>i_yawf</code></td>
-<td></td>
-<td>0</td>
-<td>100</td>
-<td>1.0</td>
-<td>Profile</td>
-<td>FLOAT</td>
-</tr>
-<tr>
-<td><code>d_yawf</code></td>
-<td></td>
-<td>0</td>
-<td>100</td>
-<td>0.00</td>
-<td>Profile</td>
-<td>FLOAT</td>
-</tr>
-<tr>
-<td><code>level_horizon</code></td>
-<td></td>
-<td>0</td>
-<td>10</td>
-<td>3</td>
-<td>Profile</td>
-<td>FLOAT</td>
-</tr>
-<tr>
-<td><code>level_angle</code></td>
-<td></td>
-<td>0</td>
-<td>10</td>
-<td>5</td>
-<td>Profile</td>
-<td>FLOAT</td>
-</tr>
-<tr>
-<td><code>sensitivity_horizon</code></td>
-<td></td>
-<td>0</td>
-<td>250</td>
-<td>75</td>
-<td>Profile</td>
-<td>UINT8</td>
-</tr>
-<tr>
-<td><code>p_alt</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/pid-20tuning/"><code>p_alt</code></a></td>
+<td>Altitude P parameter (Baro / Sonar altitude hold)</td>
 <td>0</td>
 <td>200</td>
 <td>50</td>
@@ -1535,8 +1554,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>i_alt</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/pid-20tuning/"><code>i_alt</code></a></td>
+<td>Altitude I parameter (Baro / Sonar altitude hold)</td>
 <td>0</td>
 <td>200</td>
 <td>0</td>
@@ -1544,8 +1563,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>d_alt</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/pid-20tuning/"><code>d_alt</code></a></td>
+<td>Altitude D parameter (Baro / Sonar altitude hold)</td>
 <td>0</td>
 <td>200</td>
 <td>0</td>
@@ -1553,17 +1572,17 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>p_level</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/pid-20tuning/"><code>p_level</code></a></td>
+<td>Level P parameter (Angle / horizon modes)</td>
 <td>0</td>
 <td>200</td>
-<td>90</td>
+<td>20</td>
 <td>Profile</td>
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>i_level</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/pid-20tuning/"><code>i_level</code></a></td>
+<td>Level I parameter (Angle / horizon modes)</td>
 <td>0</td>
 <td>200</td>
 <td>10</td>
@@ -1571,8 +1590,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>d_level</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/pid-20tuning/"><code>d_level</code></a></td>
+<td>Level D parameter (Angle / horizon modes)</td>
 <td>0</td>
 <td>200</td>
 <td>100</td>
@@ -1580,8 +1599,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>p_vel</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/pid-20tuning/"><code>p_vel</code></a></td>
+<td>Velocity P parameter (Baro / Sonar altitude hold)</td>
 <td>0</td>
 <td>200</td>
 <td>120</td>
@@ -1589,8 +1608,8 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>i_vel</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/pid-20tuning/"><code>i_vel</code></a></td>
+<td>Velocity I parameter (Baro / Sonar altitude hold)</td>
 <td>0</td>
 <td>200</td>
 <td>45</td>
@@ -1598,49 +1617,13 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>d_vel</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/pid-20tuning/"><code>d_vel</code></a></td>
+<td>Velocity D parameter (Baro / Sonar altitude hold)</td>
 <td>0</td>
 <td>200</td>
 <td>1</td>
 <td>Profile</td>
 <td>UINT8</td>
-</tr>
-<tr>
-<td><code>dterm_cut_hz</code></td>
-<td>Lowpass cutoff filter for Dterm for all PID controllers</td>
-<td>0</td>
-<td>200</td>
-<td>0</td>
-<td>Profile</td>
-<td>UINT8</td>
-</tr>
-<tr>
-<td><code>pterm_cut_hz</code></td>
-<td>Lowpass cutoff filter for Pterm for all PID controllers</td>
-<td>0</td>
-<td>200</td>
-<td>0</td>
-<td>Profile</td>
-<td>UINT8</td>
-</tr>
-<tr>
-<td><code>gyro_cut_hz</code></td>
-<td>Lowpass cutoff filter for gyro input</td>
-<td>0</td>
-<td>200</td>
-<td>0</td>
-<td>Profile</td>
-<td>UINT8</td>
-</tr>
-<tr>
-<td><code>yaw_jump_prevention_limit</code></td>
-<td>Yaw Jump Prevention Limit, adjust this if your aircraft &#39;skids out&rsquo;</td>
-<td>80</td>
-<td>500</td>
-<td>200</td>
-<td>Profile</td>
-<td>UINT16</td>
 </tr>
 <tr>
 <td><code>yaw_p_limit</code></td>
@@ -1652,8 +1635,98 @@ dump rates
 <td>UINT16</td>
 </tr>
 <tr>
-<td><code>blackbox_rate_num</code></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/pid-20tuning/"><code>dterm_cut_hz</code></a></td>
+<td>Lowpass cutoff filter for Dterm for all PID controllers</td>
+<td>0</td>
+<td>500</td>
+<td>0</td>
+<td>Profile</td>
+<td>UINT16</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/gtune/"><code>gtune_loP_rll</code></a></td>
+<td>GTune: Low Roll P limit</td>
+<td>10</td>
+<td>200</td>
+<td>10</td>
+<td>Profile</td>
+<td>UINT8</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/gtune/"><code>gtune_loP_ptch</code></a></td>
+<td>GTune: Low Pitch P limit</td>
+<td>10</td>
+<td>200</td>
+<td>10</td>
+<td>Profile</td>
+<td>UINT8</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/gtune/"><code>gtune_loP_yw</code></a></td>
+<td>GTune: Low Yaw P limit</td>
+<td>10</td>
+<td>200</td>
+<td>10</td>
+<td>Profile</td>
+<td>UINT8</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/gtune/"><code>gtune_hiP_rll</code></a></td>
+<td>GTune: High Roll P limit</td>
+<td>0</td>
+<td>200</td>
+<td>100</td>
+<td>Profile</td>
+<td>UINT8</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/gtune/"><code>gtune_hiP_ptch</code></a></td>
+<td>GTune: High Pitch P limit</td>
+<td>0</td>
+<td>200</td>
+<td>100</td>
+<td>Profile</td>
+<td>UINT8</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/gtune/"><code>gtune_hiP_yw</code></a></td>
+<td>GTune: High Yaw P limit</td>
+<td>0</td>
+<td>200</td>
+<td>100</td>
+<td>Profile</td>
+<td>UINT8</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/gtune/"><code>gtune_pwr</code></a></td>
+<td>Strength of each Gtune adjustment</td>
+<td>0</td>
+<td>10</td>
+<td>0</td>
+<td>Profile</td>
+<td>UINT8</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/gtune/"><code>gtune_settle_time</code></a></td>
+<td>GTune settling time in milliseconds</td>
+<td>200</td>
 <td></td>
+<td>450</td>
+<td>Profile</td>
+<td>UINT16</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/gtune/"><code>gtune_average_cycles</code></a></td>
+<td>Looptime cycles for gyro average calculation. Default = 16.</td>
+<td>8</td>
+<td>128</td>
+<td>16</td>
+<td>Profile</td>
+<td>UINT8</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/blackbox/"><code>blackbox_rate_num</code></a></td>
+<td>Blackbox logging rate numerator. Use num/denom settings to decide if a frame should be logged, allowing control of the portion of logged loop iterations</td>
 <td>1</td>
 <td>32</td>
 <td>1</td>
@@ -1661,13 +1734,49 @@ dump rates
 <td>UINT8</td>
 </tr>
 <tr>
-<td><code>blackbox_rate_denom</code></td>
-<td></td>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/blackbox/"><code>blackbox_rate_denom</code></a></td>
+<td>Blackbox logging rate denominator. See blackbox_rate_num.</td>
 <td>1</td>
 <td>32</td>
 <td>1</td>
 <td>Master</td>
 <td>UINT8</td>
+</tr>
+<tr>
+<td><a href="http://shipow.github.io/cleanflight-web/docs/blackbox/"><code>blackbox_device</code></a></td>
+<td>SERIAL, SPIFLASH, SDCARD (default)</td>
+<td></td>
+<td></td>
+<td>SDCARD</td>
+<td>Master</td>
+<td>UINT8</td>
+</tr>
+<tr>
+<td><code>magzero_x</code></td>
+<td>Magnetometer calibration X offset</td>
+<td>-32768</td>
+<td>32767</td>
+<td>0</td>
+<td>Master</td>
+<td>INT16</td>
+</tr>
+<tr>
+<td><code>magzero_y</code></td>
+<td>Magnetometer calibration Y offset</td>
+<td>-32768</td>
+<td>32767</td>
+<td>0</td>
+<td>Master</td>
+<td>INT16</td>
+</tr>
+<tr>
+<td><code>magzero_z</code></td>
+<td>Magnetometer calibration Z offset</td>
+<td>-32768</td>
+<td>32767</td>
+<td>0</td>
+<td>Master</td>
+<td>INT16</td>
 </tr>
 </tbody></table>
 
@@ -1696,6 +1805,10 @@ dump rates
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -1713,6 +1826,10 @@ dump rates
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -1741,6 +1858,14 @@ dump rates
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -1883,6 +2008,10 @@ dump rates
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -1903,7 +2032,7 @@ dump rates
                 
                   
                     <li>
-                      <a href="/docs/api/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -1927,7 +2056,7 @@ dump rates
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -1935,7 +2064,7 @@ dump rates
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -1943,7 +2072,7 @@ dump rates
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -1951,7 +2080,7 @@ dump rates
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -1959,7 +2088,7 @@ dump rates
                 
                   
                     <li>
-                      <a href="/docs/development/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -1967,7 +2096,7 @@ dump rates
                 
                   
                     <li>
-                      <a href="/docs/development/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -1975,7 +2104,15 @@ dump rates
                 
                   
                     <li>
-                      <a href="/docs/development/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -1983,7 +2120,7 @@ dump rates
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -1991,7 +2128,7 @@ dump rates
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -1999,7 +2136,7 @@ dump rates
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -2007,7 +2144,15 @@ dump rates
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -2015,7 +2160,7 @@ dump rates
                 
                   
                     <li>
-                      <a href="/docs/development/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -2023,7 +2168,7 @@ dump rates
                 
                   
                     <li>
-                      <a href="/docs/development/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -2037,6 +2182,7 @@ dump rates
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>

@@ -91,13 +91,19 @@
 <p>A sonar sensor can be used to measure altitude for use with BARO and SONAR altitude
 hold modes.</p>
 
-<p>The sonar sensor is used instead of the pressure sensor (barometer) at low altitudes.
-The sonar sensor is only used when the aircraft inclination angle (attitude) is small.</p>
+<p>The sonar sensor is used instead of the pressure sensor (barometer) at low altitudes (less than about 3.5 meters above the ground).
+The sonar sensor is only used when the aircraft inclination angle (attitude) is small (less than 22.5 degrees).</p>
 
 <h2>Hardware</h2>
 
-<p>Currently the only supported sensor is the HCSR04 sensor.</p>
-
+<p>Currently the main supported sensor is the HCSR04 sensor.
+The Parallax 28015 single-wire sonar can also be used by connecting 1k resistors to the Trigger and Echo pins, and the other end of the resistors shorted together and to the Sonar module.</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">          1k
+TRIGGER--/\/\--\
+                \_______ 28015 SONAR
+          1k    /
+ECHO-----/\/\--/
+</code></pre></figure>
 <h2>Connections</h2>
 
 <h3>Naze/Flip32+</h3>
@@ -158,8 +164,8 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
 </tr>
 </thead><tbody>
 <tr>
-<td>PB5</td>
-<td>PB0</td>
+<td>PB5 / RC4</td>
+<td>PB0 / RC5</td>
 <td>YES (3.3v input)</td>
 </tr>
 </tbody></table>
@@ -167,6 +173,26 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
 <h4>Constraints</h4>
 
 <p>Sonar cannot be used in conjuction with SoftSerial or Parallel PWM.</p>
+
+<h3>SPRacingF3</h3>
+
+<table><thead>
+<tr>
+<th>Trigger</th>
+<th>Echo</th>
+<th>Inline 1k resistors</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PB0 / RC7</td>
+<td>PB1 / RC8</td>
+<td>YES (3.3v input)</td>
+</tr>
+</tbody></table>
+
+<h4>Constraints</h4>
+
+<p>Sonar cannot be used in conjuction with SoftSerial2 or Parallel PWM.</p>
 
       </div>
     </div>
@@ -193,6 +219,10 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -210,6 +240,10 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -238,6 +272,14 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -380,6 +422,10 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -400,7 +446,7 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
                 
                   
                     <li>
-                      <a href="/docs/api/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -424,7 +470,7 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -432,7 +478,7 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -440,7 +486,7 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -448,7 +494,7 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -456,7 +502,7 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
                 
                   
                     <li>
-                      <a href="/docs/development/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -464,7 +510,7 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
                 
                   
                     <li>
-                      <a href="/docs/development/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -472,7 +518,15 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
                 
                   
                     <li>
-                      <a href="/docs/development/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -480,7 +534,7 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -488,7 +542,7 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -496,7 +550,7 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -504,7 +558,15 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -512,7 +574,7 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
                 
                   
                     <li>
-                      <a href="/docs/development/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -520,7 +582,7 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
                 
                   
                     <li>
-                      <a href="/docs/development/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -534,6 +596,7 @@ The sonar sensor is only used when the aircraft inclination angle (attitude) is 
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>

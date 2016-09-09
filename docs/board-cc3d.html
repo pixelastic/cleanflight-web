@@ -125,8 +125,8 @@ have an on-board USB to uart adapter which connect to the processor&rsquo;s seri
 </tr>
 <tr>
 <td>3</td>
-<td>PPM Input</td>
-<td>Enable <code>feature RX_PPM</code></td>
+<td>Unused</td>
+<td></td>
 </tr>
 <tr>
 <td>4</td>
@@ -135,8 +135,8 @@ have an on-board USB to uart adapter which connect to the processor&rsquo;s seri
 </tr>
 <tr>
 <td>5</td>
-<td>SoftSerial1 RX / Sonar Echo</td>
-<td></td>
+<td>SoftSerial1 RX / Sonar Echo / RSSI_ADC</td>
+<td>Used either for SOFTSERIAL, SONAR or RSSI_ADC*. Only one feature can be enabled at any time.</td>
 </tr>
 <tr>
 <td>6</td>
@@ -150,10 +150,12 @@ have an on-board USB to uart adapter which connect to the processor&rsquo;s seri
 </tr>
 <tr>
 <td>8</td>
-<td>RSSI</td>
-<td>Enable <code>feature RSSI_ADC</code>.  Connect to the output of a PWM-RSSI conditioner, 0v-3.3v input</td>
+<td>PPM Input</td>
+<td>Enable <code>feature RX_PPM</code></td>
 </tr>
 </tbody></table>
+
+<p>*Connect to the output of a PWM-RSSI conditioner, 0v-3.3v input. </p>
 
 <p>The 6 pin RC_Output connector has the following pinouts when used in RX_PPM/RX_SERIAL mode</p>
 
@@ -375,30 +377,13 @@ have an on-board USB to uart adapter which connect to the processor&rsquo;s seri
 
 <h1>Flashing</h1>
 
-<p>There are two primary ways to get Cleanflight onto a CC3D board.</p>
-
-<ul>
-<li>Single binary image mode - best mode if you don&rsquo;t want to use OpenPilot.</li>
-<li>OpenPilot Bootloader compatible image mode - best mode if you want to switch between OpenPilot and Cleanflight.</li>
-</ul>
+<p>Since CleanFlight version 1.11.0 &ldquo;single binary image mode&rdquo; is the only way to get CleanFlight on CC3D. Prior the version 1.11.0 there was a possibility to use &ldquo;OpenPilot Bootloader compatible image mode&rdquo;, which allows you to easily switch between OpenPilot and CleanFlight, please refer to documentation from releases prior to 1.11.0 for more details.</p>
 
 <h2>Single binary image mode.</h2>
 
 <p>The entire flash ram on the target processor is flashed with a single image.</p>
 
 <p>The image can be flashed by using a USB to UART adapter connected to the main port when the CC3D is put into the STM32 bootloader mode, achieved by powering on the CC3D with the SBL/3.3v pads bridged.  </p>
-
-<h2>OpenPilot Bootloader compatible image mode.</h2>
-
-<p>The initial section of flash ram on the target process is flashed with a bootloader which can then run the code in the
-remaining area of flash ram.</p>
-
-<p>The OpenPilot bootloader code also allows the remaining section of flash to be reconfigured and re-flashed by the
-OpenPilot Ground Station (GCS) via USB without requiring a USB to uart adapter.</p>
-
-<p>The following features are not available:
- * Display
- * Sonar</p>
 
 <h1>Restoring OpenPilot bootloader</h1>
 
@@ -487,6 +472,10 @@ $
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -504,6 +493,10 @@ $
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -532,6 +525,14 @@ $
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -674,6 +675,10 @@ $
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -694,7 +699,7 @@ $
                 
                   
                     <li>
-                      <a href="/docs/api/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -718,7 +723,7 @@ $
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -726,7 +731,7 @@ $
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -734,7 +739,7 @@ $
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -742,7 +747,7 @@ $
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -750,7 +755,7 @@ $
                 
                   
                     <li>
-                      <a href="/docs/development/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -758,7 +763,7 @@ $
                 
                   
                     <li>
-                      <a href="/docs/development/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -766,7 +771,15 @@ $
                 
                   
                     <li>
-                      <a href="/docs/development/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -774,7 +787,7 @@ $
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -782,7 +795,7 @@ $
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -790,7 +803,7 @@ $
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -798,7 +811,15 @@ $
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -806,7 +827,7 @@ $
                 
                   
                     <li>
-                      <a href="/docs/development/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -814,7 +835,7 @@ $
                 
                   
                     <li>
-                      <a href="/docs/development/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -828,6 +849,7 @@ $
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>

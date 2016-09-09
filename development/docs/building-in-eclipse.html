@@ -109,8 +109,18 @@
 
 <ul>
 <li><strong>Eclipse C Development Tools</strong> (CDT) (available via <em>Help &gt; Install new Software</em>).</li>
-<li><strong>Zylin Embedded CDT Plugin</strong> (<a href="http://opensource.zylin.com/embeddedcdt.html">http://opensource.zylin.com/embeddedcdt.html</a>).</li>
-<li><strong>GNU ARM Eclipse</strong> (<a href="http://sourceforge.net/projects/gnuarmeclipse/">http://sourceforge.net/projects/gnuarmeclipse/</a>).</li>
+<li><strong>Zylin Embedded CDT Plugin</strong> (<a href="http://opensource.zylin.com/embeddedcdt.html">http://opensource.zylin.com/embeddedcdt.html</a>).
+
+<ul>
+<li>name: Zylin-embedded CDT</li>
+<li>location: <a href="http://opensource.zylin.com/zylincdt">http://opensource.zylin.com/zylincdt</a></li>
+</ul></li>
+<li><strong>GNU ARM Eclipse</strong> (<a href="http://sourceforge.net/projects/gnuarmeclipse/">http://sourceforge.net/projects/gnuarmeclipse/</a>).
+
+<ul>
+<li>name: GNU ARM Eclipse Plug-ins</li>
+<li>location: <a href="http://gnuarmeclipse.sourceforge.net/updates">http://gnuarmeclipse.sourceforge.net/updates</a></li>
+</ul></li>
 <li>If you want to hook up an SWD debugger you also need the <strong>GDB Hardware Debugging</strong> plugin (Also available via <em>Install new Software</em>).</li>
 </ul></li>
 <li>Now clone the project to your harddrive.</li>
@@ -118,7 +128,7 @@
 <li>Import the Git project into the C project in Eclipse via <em>File &gt; Import &gt; General &gt; File System</em>.</li>
 <li>Activate Git via <em>Project &gt; Team &gt; Share Project</em>.</li>
 <li>Switch to the master branch in Eclipse (<em>Project &gt; Team &gt; Switch To &gt; master</em>).</li>
-<li>The next thing you need to do is adjust the project configuration. There is a Makefile included that works but you might want to use GNU ARM Eclipse&rsquo;s automatic Makefile generation. Open the Project configuration and go to <em>C/C++ Build &gt; Settings</em>
+<li>The next thing you need to do is adjust the project configuration. There is a Makefile included that works but you might want to use GNU ARM Eclipse&rsquo;s automatic Makefile generation. Open the Project configuration (Project &gt; Properties) and go to <em>C/C++ Build &gt; Settings</em>
 
 <ul>
 <li>Under <em>Target Processor</em> choose &ldquo;cortex-m3&rdquo;</li>
@@ -127,7 +137,7 @@
 <ul>
 <li>Browse to the Script file <em>stm32_flash.ld</em></li>
 <li>Uncheck &ldquo;Do not use standard start files&rdquo;</li>
-<li>Check &ldquo;Remove unused sections&rdquo;<br></li>
+<li>Check &ldquo;Remove unused sections&rdquo;</li>
 </ul></li>
 <li>Under <em>ARM Yagarto [Windows/Mac OS] Linker &gt; Libraries</em>
 
@@ -189,6 +199,10 @@
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -206,6 +220,10 @@
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -234,6 +252,14 @@
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -376,6 +402,10 @@
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -396,7 +426,7 @@
                 
                   
                     <li>
-                      <a href="/api/docs/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/api/docs/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -420,7 +450,7 @@
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -428,7 +458,7 @@
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -436,7 +466,7 @@
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -444,7 +474,7 @@
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -452,7 +482,7 @@
                 
                   
                     <li>
-                      <a href="/docs/development/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -460,7 +490,7 @@
                 
                   
                     <li>
-                      <a href="/docs/development/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -468,7 +498,15 @@
                 
                   
                     <li>
-                      <a href="/docs/development/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -476,7 +514,7 @@
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -484,7 +522,7 @@
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -492,7 +530,7 @@
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -500,7 +538,15 @@
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -508,7 +554,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -516,7 +562,7 @@
                 
                   
                     <li>
-                      <a href="/development/docs/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -530,6 +576,7 @@
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>

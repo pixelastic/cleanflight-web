@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Configuration Format &middot; Cleanflight
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- build:css /assets/stylesheets/style.min.css -->
+  <link rel="stylesheet" href="http://shipow.github.io/cleanflight-web/assets/stylesheets/style.css">
+  <!-- endbuild -->
+  <link href='//fonts.googleapis.com/css?family=Marvel:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css">
+
+  <!-- JS -->
+  <!-- build:js /assets/javascript/all.min.js -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.5.0/algoliasearch.min.js"></script>
+  <script>
+    window.baseUrl = 'http://shipow.github.io/cleanflight-web';
+    window.algolia = algoliasearch('T2ZX9HO66V', '7119d2f6f1cd95224251ec2e490e824f');
+    window.index = algolia.initIndex('dev_cleanflight');
+  </script>
+  <script type="text/template" id="my-custom-menu-template">
+    <div class="my-custom-menu">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="aa-dataset-d1"></div>
+        </div>
+        <div class="col-sm-6">
+          <div class="aa-dataset-d2"></div>
+          <div class="aa-dataset-d3"></div>
+        </div>
+      </div>
+    </div>
+  </script>
+  <script src="http://shipow.github.io/cleanflight-web/assets/javascript/javascript.js"></script>
+  <!-- endbuild -->
+
+  <!-- Icons -->
+  <link rel="shortcut icon" href="http://shipow.github.io/cleanflight-web/assets/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://shipow.github.io/cleanflight-web/"><img src="http://shipow.github.io/cleanflight-web/assets/images/cleanflight-logo.png" height="50"></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/getting-started.html">Documentation</a></li>
+            <!-- <li><a href="#">Ressources</a></li> -->
+            <li><a href="https://github.com/cleanflight/cleanflight">Contributing</a></li>
+          </ul>
+          <div class="search-wrapper">
+            <input id="search" type="text" class="form-control" placeholder="Search">
+          </div>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <div class="container post">
+
+  <div class="row post-full">
+    <div class="col-md-9">
+      <div class="content">
+        <h1>Configuration Format</h1>
+
+<p>The configuration format and external protocol use some of the same concepts
+as SAE J1939.  A parameter group (PG) is a set of parameters belonging
+to the same topic and are stored and sent together.  A parameter group
+instance has a unique parameter group number (PGN).  Each parameter
+also has a suspect parameter number (SPN) which can be used to get or
+set a parameter directly.</p>
+
+<p>When used as on-wire formats structures should be packed to give the
+same in storage, in memory, and on-wire format.  However care must be taken
+over memory alignment issues when packing structures.</p>
+
+<p>The PGs can be defined on a system-wide basis on a profile specific basis.
+profiles can be activated on the fly.</p>
+
+<p>The storage consists of a header, zero or more PGs, a footer and a checksum.
+To keep the RAM usage low, the parameters are written directly to flash
+which means that things that are only known at the end, such as the
+size are stored in the footer. The checksum is written after the footer.</p>
+
+<p>The header holds:</p>
+
+<ul>
+<li>The format number.  This is bumped on incompatible changes.</li>
+</ul>
+
+<p>Each stored PG holds:</p>
+
+<ul>
+<li>The size of this record</li>
+<li>The PGN</li>
+<li>Version number</li>
+<li>Profile number</li>
+<li>Flags</li>
+<li>The record format.  This is bumped on incompatible changes.</li>
+<li>The PG data</li>
+</ul>
+
+<p>The footer holds:</p>
+
+<ul>
+<li>A zero to mark the end of data</li>
+</ul>
+
+<p>The checksum is based on the header, PGs, and footer.</p>
+
+<p>The PG registrations hold similar but not identical information (e.g. the profile
+number is not known until it is stored).</p>
+
+<h2>Initialiion function.</h2>
+
+<p>All fields are reset to 0 upon initialisation and then if a reset function is
+defined for the group then initial settings can be defined by the system.</p>
+
+<h2>Upgrading</h2>
+
+<p>Upgrades are done at the PG level and are detected by a difference in
+size or version.  New fields can be added to the end of the parameter group.
+The reset and initialisation function is called before upgrading so new
+fields will first be reset to 0 and then initialised by the system if defined.</p>
+
+<p>Note: Currently the code does not check the version field.</p>
+
+<h2>Downgrading</h2>
+
+<p>Downgrades are done at the PG level.  Any trailing, unrecognised
+fields will be silently dropped on load.  Saving the config back to
+flash will discard these unrecognised fields.</p>
+
+<h2>Incompatible changes</h2>
+
+<p>An incompatible change is where a field is inserted, deleted from the
+middle, reordered, resized (including changing the size of a contained array),
+or has the meaning changed.  Such changes should be handled by bumping the 
+PG version field or allocating a new PGN.</p>
+
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="spacer30"></div>
+      <h2>Documentation</h2>
+      <ul class="posts list-unstyled">
+        
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/1wire.html">1wire</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/autotune.html">Autotune</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/battery.html">Battery</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/blackbox.html">Blackbox</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-cc3d.html">Board   Cc3d</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-chebuzzf3.html">Board   Chebuzzf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-cjmcu.html">Board   Cjmcu</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-motolab.html">Board   Motolab</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-naze32.html">Board   Naze32</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-olimexino.html">Board   Olimexino</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-paris-air-hero-32.html">Board   Paris Air Hero 32</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-rmdo.html">Board   Rmdo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-sparky.html">Board   Sparky</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/boards.html">Boards</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/buzzer.html">Buzzer</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/cli.html">Cli</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/configuration.html">Configuration</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/controls.html">Controls</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/display.html">Display</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/failsafe.html">Failsafe</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/getting-started.html">Getting Started</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/gps.html">Gps</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/gtune.html">Gtune</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/inflight-adjustments.html">Inflight Adjustments</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/installation.html">Installation</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/introduction.html">Introduction</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/ledstrip.html">Ledstrip</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/migrating-from-baseflight.html">Migrating From Baseflight</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/mixer.html">Mixer</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/modes.html">Modes</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/oneshot.html">Oneshot</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/pid-tuning.html">Pid Tuning</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/profiles.html">Profiles</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/rssi.html">Rssi</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/rx.html">Rx</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/safety.html">Safety</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/serial.html">Serial</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/sonar.html">Sonar</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/spektrum-bind.html">Spektrum Bind</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/telemetry.html">Telemetry</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/usb-flashing.html">Usb Flashing</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+      
+        <div class="catbloc" id="docs">
+          
+          
+        </div>
+      
+        <div class="catbloc" id="api">
+          
+          
+            <h3>api</h3>
+            <ul class="posts list-unstyled">
+              
+                
+                  
+                
+              
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/api/docs/msp-extensions.html">
+                        Msp_extensions
+                      </a>
+                    </li>
+                  
+                
+              
+            </ul>
+          
+        </div>
+      
+        <div class="catbloc" id="development">
+          
+          
+            <h3>development</h3>
+            <ul class="posts list-unstyled">
+              
+                
+                  
+                
+              
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
+                        Travis
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
+                        Pid Internals
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
+                        Hardware Debugging
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
+                        Hardware Debugging In Eclipse
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
+                        Development
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage.html">
+                        Configuration Storage
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-manual.html">
+                        Building Manual
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-in-windows.html">
+                        Building In Windows
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-in-ubuntu.html">
+                        Building In Ubuntu
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-in-mac-os-x.html">
+                        Building In Mac Os X
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-in-eclipse.html">
+                        Building In Eclipse
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/blackbox-internals.html">
+                        Blackbox Internals
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/atomic-barrier.html">
+                        Atomic Barrier
+                      </a>
+                    </li>
+                  
+                
+              
+            </ul>
+          
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+    <footer class="footer text-center">
+      <i class="fa fa-copyright"></i> 2015 Cleanflight Team
+    </footer>
+  </body>
+</html>

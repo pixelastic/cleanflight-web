@@ -98,6 +98,8 @@
 <li>Serial Receivers</li>
 </ol>
 
+<p>As of 2016 the recommendation for new purchases is a Serial or PPM based receiver.  Avoid Parallel PWM recievers (1 wire per channel).  This is due to the amount of IO pins parallel PWM based receivers use.  Some new FC&rsquo;s do not support parallel PWM. </p>
+
 <h2>Parallel PWM Receivers</h2>
 
 <p>8 channel support, 1 channel per input pin.  On some platforms using parallel input will disable the use of serial ports
@@ -111,17 +113,15 @@ and SoftSerial making it hard to use telemetry or GPS features.</p>
 
 <p>These receivers are reported working:</p>
 
-<p>FrSky D4R-II
-<a href="http://www.frsky-rc.com/product/pro.php?pro_id=24">http://www.frsky-rc.com/product/pro.php?pro_id=24</a></p>
-
-<p>Graupner GR24
-<a href="http://www.graupner.de/en/products/33512/product.aspx">http://www.graupner.de/en/products/33512/product.aspx</a></p>
-
-<p>R615X Spektrum/JR DSM2/DSMX Compatible 6Ch 2.4GHz Receiver w/CPPM
-<a href="http://orangerx.com/2014/05/20/r615x-spektrumjr-dsm2dsmx-compatible-6ch-2-4ghz-receiver-wcppm-2/">http://orangerx.com/2014/05/20/r615x-spektrumjr-dsm2dsmx-compatible-6ch-2-4ghz-receiver-wcppm-2/</a></p>
-
-<p>FrSky D8R-XP 8ch telemetry receiver, or CPPM and RSSI enabled receiver
-<a href="http://www.frsky-rc.com/product/pro.php?pro_id=21">http://www.frsky-rc.com/product/pro.php?pro_id=21</a></p>
+<ul>
+<li><a href="http://www.frsky-rc.com/product/pro.php?pro_id=24">FrSky D4R-II</a></li>
+<li><a href="http://www.graupner.de/en/products/33512/product.aspx">Graupner GR24</a></li>
+<li><a href="http://orangerx.com/2014/05/20/r615x-spektrumjr-dsm2dsmx-compatible-6ch-2-4ghz-receiver-wcppm-2/">R615X Spektrum/JR DSM2/DSMX Compatible 6Ch 2.4GHz Receiver w/CPPM</a></li>
+<li><a href="http://www.frsky-rc.com/product/pro.php?pro_id=21">FrSky D8R-XP 8ch telemetry receiver, or CPPM and RSSI enabled receiver</a></li>
+<li><a href="http://www.frsky-rc.com/download/view.php?sort=&amp;down=158&amp;file=X4R-X4RSB">FrSky X4R and FrSky X4RSB</a> when flashed with CPPM firmware and bound with jumper between signal pins 2 and 3</li>
+<li>All FrSky S.Bus enabled devices when connected with <a href="http://www.frsky-rc.com/product/pro.php?pro_id=112">S.Bus CPPM converter cable</a>. Without jumper this converter cable uses 21ms frame size (Channels 1-8). When jumper is in place, it uses 28ms frame and channels 1-12 are available</li>
+<li>FlySky/Turnigy FS-iA6B receiver for FS-i6 and FS-i10 transmitters</li>
+</ul>
 
 <h2>Serial Receivers</h2>
 
@@ -132,7 +132,7 @@ and SoftSerial making it hard to use telemetry or GPS features.</p>
 <p>These receivers are reported working:</p>
 
 <p>Lemon Rx DSMX Compatible PPM 8-Channel Receiver + Lemon DSMX Compatible Satellite with Failsafe
-<a href="http://www.lemon-rx.com/shop/index.php?route=product/product&amp;product_id=118">http://www.lemon-rx.com/shop/index.php?route=product/product&amp;product_id=118</a></p>
+<a href="http://www.lemon-rx.com/index.php?route=product/product&amp;product_id=118">http://www.lemon-rx.com/index.php?route=product/product&amp;product_id=118</a></p>
 
 <h3>S.BUS</h3>
 
@@ -140,6 +140,7 @@ and SoftSerial making it hard to use telemetry or GPS features.</p>
 
 <ul>
 <li>You probably need an inverter between the receiver output and the flight controller. However, some flight controllers have this built in (the main port on CC3D, for example), and doesn&rsquo;t need one.</li>
+<li>Some OpenLRS receivers produce a non-inverted SBUS signal. It is possible to switch SBUS inversion off using CLI command <code>set sbus_inversion = OFF</code> when using an F3 based flight controller.</li>
 <li>Softserial ports cannot be used with SBUS because it runs at too high of a bitrate (1Mbps).  Refer to the chapter specific to your board to determine which port(s) may be used.</li>
 <li>You will need to configure the channel mapping in the GUI (Receiver tab) or CLI (<code>map</code> command). Note that channels above 8 are mapped &ldquo;straight&rdquo;, with no remapping.</li>
 </ul>
@@ -164,16 +165,44 @@ of all 16 channels. </p>
 The bug prevents use of all 16 channels.  Upgrade to the latest OpenTX version to allow correct reception of all 16 channels,
 without the fix you are limited to 8 channels regardless of the CH1-16/D16 settings.</p>
 
-<h3>XBUS</h3>
+<h3>SRXL (formerly XBUS)</h3>
 
-<p>The firmware currently supports the MODE B version of the XBus protocol.
+<p>(Serial Receiver Link Protocol)
+SRXL is an open data transfer protocol which allows to transport control data from a rc receiver to another device like a flybarless system 
+by only using one single line. This protocol has been established by SRXL.org based on the idea to create a freely available and unified protocol 
+that manufacturers can easily implement to their receivers and devices that process receiver data. The protocol does not describe an exact definition of 
+how the data must be processed. It only describes a framework in which receiver data can be packed. Each manufacturer can have his own ID, which must be 
+attached to the beginning of each data set, so that the device using this data can correctly identify and process the payload of the dataset.</p>
+
+<p>Supported receivers:</p>
+
+<h4>Multiplex:</h4>
+
+<p>All receivers with SRXL (also FLEXX receivers)</p>
+
+<h4>Gaupner / SJ HOTT:</h4>
+
+<p>All receiver with SUMD support</p>
+
+<h4>Spektrum:</h4>
+
+<p>AR7700 / AR9020 receiver </p>
+
+<h4>JR:</h4>
+
+<p>JR X-BUS
 Make sure to set your TX to use &ldquo;MODE B&rdquo; for XBUS in the TX menus!
-See here for info on JR&rsquo;s XBUS protocol: <a href="http://www.jrpropo.com/english/propo/XBus/">http://www.jrpropo.com/english/propo/XBus/</a></p>
-
-<p>These receivers are reported working:</p>
+See here for info on JR&rsquo;s XBUS protocol: <a href="http://www.jrpropo.com/english/propo/XBus/">http://www.jrpropo.com/english/propo/XBus/</a>
+These receivers are reported working:</p>
 
 <p>XG14 14ch DMSS System w/RG731BX XBus Receiver
 <a href="http://www.jramericas.com/233794/JRP00631/">http://www.jramericas.com/233794/JRP00631/</a></p>
+
+<h4>Jeti:</h4>
+
+<p>Receivers with UDI output</p>
+
+<h3>XBUS MODE B RJ01</h3>
 
 <p>There exist a remote receiver made for small BNF-models like the Align T-Rex 150 helicopter. The code also supports using the Align DMSS RJ01 receiver directly with the cleanflight software.
 To use this receiver you must power it with 3V from the hardware, and then connect the serial line as other serial RX receivers.
@@ -197,6 +226,22 @@ Receiver name: Align DMSS RJ01 (HER15001)</p>
 <p>8 channels via serial currently supported.</p>
 
 <p>SUMH is a legacy Graupner protocol.  Graupner have issued a firmware updates for many recivers that lets them use SUMD instead.</p>
+
+<h3>IBUS</h3>
+
+<p>10 channels via serial currently supported.</p>
+
+<p>IBUS is the FlySky digital serial protocol and is available with the FS-IA6B and
+FS-IA10 receivers. The Turnigy TGY-IA6B and TGY-IA10 are the same
+devices with a different label, therefore they also work.</p>
+
+<p>If you are using a 6ch tx such as the FS-I6 or TGY-I6 then you must flash a 10ch
+firmware on the tx to make use of these extra channels.</p>
+
+<p>These receivers are reported working:</p>
+
+<p>FlySky/Turnigy FS-iA6B 6-Channel Receiver
+<a href="http://www.flysky-cn.com/products_detail/&amp;productId=51.html">http://www.flysky-cn.com/products_detail/&amp;productId=51.html</a></p>
 
 <h2>MultiWii serial protocol (MSP)</h2>
 
@@ -329,6 +374,10 @@ For Serial RX enable <code>RX_SERIAL</code> and set the <code>serialrx_provider<
 <td>XBUS_MODE_B_RJ01</td>
 <td>6</td>
 </tr>
+<tr>
+<td>IBUS</td>
+<td>7</td>
+</tr>
 </tbody></table>
 
 <h3>PPM/PWM input filtering.</h3>
@@ -344,11 +393,11 @@ For Serial RX enable <code>RX_SERIAL</code> and set the <code>serialrx_provider<
 </tr>
 </thead><tbody>
 <tr>
-<td>0</td>
+<td>OFF</td>
 <td>Disabled</td>
 </tr>
 <tr>
-<td>1</td>
+<td>ON</td>
 <td>Enabled</td>
 </tr>
 </tbody></table>
@@ -369,6 +418,32 @@ One or more control channels may be set to OFF to signal a failsafe condition to
 Do <strong>NOT USE</strong> the mode indicated with FAILSAFE instead, as this combination is NOT handled correctly by the FC.</p>
 
 <h2>Receiver Channel Range Configuration.</h2>
+
+<p>The channels defined in CleanFlight are as follows:</p>
+
+<table><thead>
+<tr>
+<th>Channel number</th>
+<th>Channel name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>Roll</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Pitch</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Yaw</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Throttle</td>
+</tr>
+</tbody></table>
 
 <p>If you have a transmitter/receiver, that output a non-standard pulse range (i.e. 1070-1930 as some Spektrum receivers)
 you could use rx channel range configuration to map actual range of your transmitter to 1000-2000 as expected by Cleanflight.</p>
@@ -429,6 +504,10 @@ the CLI. Be sure to enter the <code>save</code> command to save the settings.</p
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -446,6 +525,10 @@ the CLI. Be sure to enter the <code>save</code> command to save the settings.</p
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -474,6 +557,14 @@ the CLI. Be sure to enter the <code>save</code> command to save the settings.</p
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -616,6 +707,10 @@ the CLI. Be sure to enter the <code>save</code> command to save the settings.</p
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -636,7 +731,7 @@ the CLI. Be sure to enter the <code>save</code> command to save the settings.</p
                 
                   
                     <li>
-                      <a href="/docs/api/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -660,7 +755,7 @@ the CLI. Be sure to enter the <code>save</code> command to save the settings.</p
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -668,7 +763,7 @@ the CLI. Be sure to enter the <code>save</code> command to save the settings.</p
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -676,7 +771,7 @@ the CLI. Be sure to enter the <code>save</code> command to save the settings.</p
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -684,7 +779,7 @@ the CLI. Be sure to enter the <code>save</code> command to save the settings.</p
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -692,7 +787,7 @@ the CLI. Be sure to enter the <code>save</code> command to save the settings.</p
                 
                   
                     <li>
-                      <a href="/docs/development/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -700,7 +795,7 @@ the CLI. Be sure to enter the <code>save</code> command to save the settings.</p
                 
                   
                     <li>
-                      <a href="/docs/development/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -708,7 +803,15 @@ the CLI. Be sure to enter the <code>save</code> command to save the settings.</p
                 
                   
                     <li>
-                      <a href="/docs/development/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -716,7 +819,7 @@ the CLI. Be sure to enter the <code>save</code> command to save the settings.</p
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -724,7 +827,7 @@ the CLI. Be sure to enter the <code>save</code> command to save the settings.</p
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -732,7 +835,7 @@ the CLI. Be sure to enter the <code>save</code> command to save the settings.</p
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -740,7 +843,15 @@ the CLI. Be sure to enter the <code>save</code> command to save the settings.</p
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -748,7 +859,7 @@ the CLI. Be sure to enter the <code>save</code> command to save the settings.</p
                 
                   
                     <li>
-                      <a href="/docs/development/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -756,7 +867,7 @@ the CLI. Be sure to enter the <code>save</code> command to save the settings.</p
                 
                   
                     <li>
-                      <a href="/docs/development/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -770,6 +881,7 @@ the CLI. Be sure to enter the <code>save</code> command to save the settings.</p
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>

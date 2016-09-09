@@ -99,7 +99,7 @@ for Installation:</p>
 
 <ul>
 <li>Devel/git</li>
-<li>Devel/git-completion (Optional)</li>
+<li>Devel/bash-completion (was git-completion, Optional)</li>
 <li>Devel/make</li>
 <li>Devel/binutils</li>
 <li>Editors/vim<br></li>
@@ -125,13 +125,13 @@ for Installation:</p>
 
 <hr>
 
-<p>versions do matter, 4.8-2014-q2 is known to work well. Download this version from <a href="https://launchpad.net/gcc-arm-embedded/+download">https://launchpad.net/gcc-arm-embedded/+download</a> - preferrebly as a ZIP-File. </p>
+<p>versions do matter, 4.8-2014-q2 is known to work well. Download this version from <a href="https://launchpad.net/gcc-arm-embedded/5.0/5-2016-q2-update/+download/gcc-arm-none-eabi-5_4-2016q2-20160622-win32.zip">https://launchpad.net/gcc-arm-embedded/5.0/5-2016-q2-update/+download/gcc-arm-none-eabi-5_4-2016q2-20160622-win32.zip</a> </p>
 
-<p>Extract the contents of this archive to any folder of your choice, for instance <code>C:\dev\gcc-arm-none-eabi-4_8-2014q2</code>. </p>
+<p>Extract the contents of this archive to any folder of your choice, for instance <code>C:\dev\gcc-arm</code>. </p>
 
 <p><img src="http://shipow.github.io/cleanflight-web/assets/images/008.toolchain.png" alt="GNU ARM Toolchain Setup"></p>
 
-<p>add the &ldquo;bin&rdquo; subdirectory to the PATH Windows environment variable: <code>%PATH%;C:\dev\gcc-arm-none-eabi-4_8-2014q2\bin</code></p>
+<p>add the &ldquo;bin&rdquo; subdirectory to the PATH Windows environment variable: <code>%PATH%;C:\dev\gcc-arm\bin</code></p>
 
 <p><img src="http://shipow.github.io/cleanflight-web/assets/images/009.toolchain_path.png" alt="GNU ARM Toolchain Setup"></p>
 
@@ -170,9 +170,11 @@ arm-none-eabi-objcopy -O ihex --set-start 0x8000000 obj/main/cleanflight_NAZE.el
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">cd /cygdrive/c/dev/cleanflight
 git reset --hard
 git pull
-make clean TARGET=NAZE
+make clean TARGET=NAZE -j16 -l
 make
 </code></pre></figure>
+<p>You may want to remove -j16 -l if your having a hard time narrowing down errors.  It does multithreaded make, however it makes it harder to know which warning or error comes from which file.</p>
+
       </div>
     </div>
     <div class="col-md-3">
@@ -198,6 +200,10 @@ make
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -215,6 +221,10 @@ make
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -243,6 +253,14 @@ make
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -385,6 +403,10 @@ make
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -405,7 +427,7 @@ make
                 
                   
                     <li>
-                      <a href="/api/docs/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/api/docs/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -429,7 +451,7 @@ make
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -437,7 +459,7 @@ make
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -445,7 +467,7 @@ make
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -453,7 +475,7 @@ make
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -461,7 +483,7 @@ make
                 
                   
                     <li>
-                      <a href="/docs/development/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -469,7 +491,7 @@ make
                 
                   
                     <li>
-                      <a href="/docs/development/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -477,7 +499,15 @@ make
                 
                   
                     <li>
-                      <a href="/docs/development/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -485,7 +515,7 @@ make
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -493,7 +523,7 @@ make
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -501,7 +531,7 @@ make
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -509,7 +539,15 @@ make
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -517,7 +555,7 @@ make
                 
                   
                     <li>
-                      <a href="/development/docs/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -525,7 +563,7 @@ make
                 
                   
                     <li>
-                      <a href="/development/docs/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -539,6 +577,7 @@ make
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>

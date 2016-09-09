@@ -179,22 +179,22 @@ set vbat_min_cell_voltage = 33
 </tr>
 </thead><tbody>
 <tr>
-<td>0</td>
+<td>NONE</td>
 <td>None</td>
 </tr>
 <tr>
-<td>1</td>
+<td>ADC</td>
 <td>ADC/hardware sensor</td>
 </tr>
 <tr>
-<td>2</td>
+<td>VIRTUAL</td>
 <td>Virtual sensor</td>
 </tr>
 </tbody></table>
 
 <p>Configure capacity using the <code>battery_capacity</code> setting, in mAh units.</p>
 
-<p>If you&rsquo;re using an OSD that expects the multiwii current meter output value, then set <code>multiwii_current_meter_output</code> to <code>1</code> (this multiplies amperage sent to MSP by 10).</p>
+<p>If you&rsquo;re using an OSD that expects the multiwii current meter output value, then set <code>multiwii_current_meter_output</code> to <code>ON</code> (this multiplies amperage sent to MSP by 10 and truncates negative values)).</p>
 
 <h3>ADC Sensor</h3>
 
@@ -204,6 +204,8 @@ set vbat_min_cell_voltage = 33
 
 <p><code>current_meter_scale</code>
 <code>current_meter_offset</code></p>
+
+<p>It is recommended to set <code>multiwii_current_meter_output</code> to <code>OFF</code> when calibrating ADC current sensor.</p>
 
 <h3>Virtual Sensor</h3>
 
@@ -229,7 +231,7 @@ set vbat_min_cell_voltage = 33
 
 <h4>Tuning Using Actual Current Measurements</h4>
 
-<p>If you know your craft&rsquo;s current draw while disarmed (Imin) and at maximum throttle while armed (Imax), calculate the scaling factors as follows:
+<p>If you know your craft&rsquo;s current draw (in Amperes) while disarmed (Imin) and at maximum throttle while armed (Imax), calculate the scaling factors as follows:
 <code>
 current_meter_scale = (Imax - Imin) * 100000 / (Tmax + (Tmax * Tmax / 50))
 current_meter_offset = Imin * 100
@@ -307,6 +309,10 @@ current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_mete
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -324,6 +330,10 @@ current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_mete
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -352,6 +362,14 @@ current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_mete
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -494,6 +512,10 @@ current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_mete
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -514,7 +536,7 @@ current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_mete
                 
                   
                     <li>
-                      <a href="/docs/api/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -538,7 +560,7 @@ current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_mete
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -546,7 +568,7 @@ current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_mete
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -554,7 +576,7 @@ current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_mete
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -562,7 +584,7 @@ current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_mete
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -570,7 +592,7 @@ current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_mete
                 
                   
                     <li>
-                      <a href="/docs/development/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -578,7 +600,7 @@ current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_mete
                 
                   
                     <li>
-                      <a href="/docs/development/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -586,7 +608,15 @@ current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_mete
                 
                   
                     <li>
-                      <a href="/docs/development/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -594,7 +624,7 @@ current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_mete
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -602,7 +632,7 @@ current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_mete
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -610,7 +640,7 @@ current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_mete
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -618,7 +648,15 @@ current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_mete
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -626,7 +664,7 @@ current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_mete
                 
                   
                     <li>
-                      <a href="/docs/development/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -634,7 +672,7 @@ current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_mete
                 
                   
                     <li>
-                      <a href="/docs/development/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -648,6 +686,7 @@ current_meter_scale = (charging_data_mAh / reported_draw_mAh) * old_current_mete
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>

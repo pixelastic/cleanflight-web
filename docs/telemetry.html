@@ -90,12 +90,13 @@
 
 <p>Telemetry allows you to know what is happening on your aircraft while you are flying it.  Among other things you can receive battery voltages and GPS positions on your transmitter.</p>
 
-<p>Telemetry can be either always on, or enabled when armed.  If a serial port for telemetry is shared with other functionality then then telemetry will only be enabled when armed on that port.</p>
+<p>Telemetry can be either always on, or enabled when armed.  If a serial port for telemetry is shared with other functionality then telemetry will only be enabled when armed on that port.</p>
 
 <p>Telemetry is enabled using the &lsquo;TELEMETRY` feature.</p>
 <figure class="highlight"><pre><code class="language-text" data-lang="text">feature TELEMETRY
 </code></pre></figure>
-<p>Multiple telemetry providers are currently supported, FrSky, Graupner HoTT V4, SmartPort (S.Port) and MultiWii Serial Protocol (MSP)</p>
+<p>Multiple telemetry providers are currently supported, FrSky, Graupner
+HoTT V4, SmartPort (S.Port) and LightTelemetry (LTM)</p>
 
 <p>All telemetry systems use serial ports, configure serial ports to use the telemetry system required.</p>
 
@@ -114,8 +115,42 @@
 <p>For 1, just connect your inverter to a usart or software serial port.</p>
 
 <p>For 2 and 3 use the CLI command as follows:</p>
-<figure class="highlight"><pre><code class="language-text" data-lang="text">set telemetry_inversion = 1
+<figure class="highlight"><pre><code class="language-text" data-lang="text">set telemetry_inversion = ON
 </code></pre></figure>
+<h3>Available sensors</h3>
+
+<p>The following sensors are transmitted :</p>
+
+<p>Vspd : vertical speed, unit is cm/s.</p>
+
+<p>Hdg : heading, North is 0°, South is 180°.</p>
+
+<p>AccX,Y,Z : accelerometers values.</p>
+
+<p>Tmp1 : baro temp if available, gyro otherwise.</p>
+
+<p>RPM : if armed : throttle value, battery capacity otherwise. (Blade number needs to be set to 12 in Taranis).</p>
+
+<p>Cels : average cell value, vbat divided by cell number.</p>
+
+<p>VFAS : actual vbat value (see VFAS precision section bellow).</p>
+
+<p>Curr : actual current comsuption, in amp.</p>
+
+<p>Fuel : if capacity set :remaining battery percentage, mah drawn otherwise.</p>
+
+<p>GPS : GPS coordinates.</p>
+
+<p>Alt : barometer based altitude, init level is zero.</p>
+
+<p>Date : time since powered.</p>
+
+<p>GSpd : current speed, calculated by GPS.</p>
+
+<p>GAlt : GPS altitude, sea level is zero.</p>
+
+<p>Tmp2 : number of sats. Every second, a number &gt; 100 is sent to represent GPS signal quality.</p>
+
 <h3>Precision setting for VFAS</h3>
 
 <p>Cleanflight can send VFAS (FrSky Ampere Sensor Voltage) in two ways:</p>
@@ -125,14 +160,6 @@
 <figure class="highlight"><pre><code class="language-text" data-lang="text">set frsky_vfas_precision  = 1
 </code></pre></figure>
 <p>This is new setting which supports VFAS resolution of 0.1 volts and is only supported by OpenTX radios (this method uses custom ID 0x39).</p>
-
-<h3>Notes</h3>
-
-<p>RPM shows throttle output when armed.
-RPM shows when disarmed.
-TEMP2 shows Satellite Signal Quality when GPS is enabled.</p>
-
-<p>RPM requires that the &#39;blades&rsquo; setting is set to 12 on your receiver/display - tested with Taranis/OpenTX.</p>
 
 <h2>HoTT telemetry</h2>
 
@@ -161,11 +188,33 @@ a serial port should be connected using a diode and a single wire to the <code>T
 
 <p>Note: The SoftSerial ports may not be 5V tolerant on your board.  Verify if you require a 5v/3.3v level shifters.</p>
 
-<h2>MultiWii Serial Protocol (MSP)</h2>
+<h2>LightTelemetry (LTM)</h2>
 
-<p>MSP Telemetry simply transmits MSP packets in sequence to any MSP device attached to the telemetry port.  It rotates though a fixes sequence of command responses.</p>
+<p>LTM is a lightweight streaming telemetry protocol supported by a
+number of OSDs, ground stations and antenna trackers.</p>
 
-<p>It is transmit only, it can work at any supported baud rate.</p>
+<p>The Cleanflight implementation of LTM implements the following frames:</p>
+
+<ul>
+<li>G-FRAME: GPS information (lat, long, ground speed, altitude, sat
+info)</li>
+<li>A-FRAME: Attitude (pitch, roll, heading)</li>
+<li>S-FRAME: Status (voltage, current+, RSSI, airspeed+, status). Item
+suffixed &rsquo;+&rsquo; not implemented in Cleanflight.</li>
+<li>O-FRAME: Origin (home position, lat, long, altitude, fix)</li>
+</ul>
+
+<p>In addition, in the inav (navigation-rewrite) fork:
+* N-FRAME: Navigation information (GPS mode, Nav mode, Nav action,
+  Waypoint number, Nav Error, Nav Flags).</p>
+
+<p>LTM is transmit only, and can work at any supported baud rate. It is
+designed to operate over 2400 baud (9600 in Cleanflight) and does not
+benefit from higher rates. It is thus usable on soft serial.</p>
+
+<p>More information about the fields, encoding and enumerations may be
+found at
+<a href="https://github.com/stronnag/mwptools/blob/master/docs/ltm-definition.txt">https://github.com/stronnag/mwptools/blob/master/docs/ltm-definition.txt</a></p>
 
 <h2>SmartPort (S.Port)</h2>
 
@@ -173,13 +222,76 @@ a serial port should be connected using a diode and a single wire to the <code>T
 
 <p>More information about the implementation can be found here: <a href="https://github.com/frank26080115/cleanflight/wiki/Using-Smart-Port">https://github.com/frank26080115/cleanflight/wiki/Using-Smart-Port</a></p>
 
-<p>In time this documentation will be updated with further details.</p>
+<h3>Available sensors</h3>
 
-<p>Smartport devices can be connected directly to STM32F3 boards such as the SPRacingF3 and Sparky, with a single straight through cable without the need for any hardware modifications on the FC or the receiver.</p>
+<p>The following sensors are transmitted :</p>
+
+<p>Alt : barometer based altitude, init level is zero.</p>
+
+<p>Vspd : vertical speed, unit is cm/s.</p>
+
+<p>Hdg : heading, North is 0°, South is 180°.</p>
+
+<p>AccX,Y,Z : accelerometers values.</p>
+
+<p>Tmp1 : actual flight mode, sent as 4 digits. Number is sent as (1)1234. Please ignore the leading 1, it is just there to ensure the number as always 5 digits (the 1 + 4 digits of actual data) the numbers are aditives (for example, if first digit after the leading 1 is 6, it means GPS Home and Headfree are both active) :</p>
+
+<ol>
+<li>1 is GPS Hold, 2 is GPS Home, 4 is Headfree</li>
+<li>1 is mag enabled, 2 is baro enabled, 4 is sonar enabled</li>
+<li>1 is angle, 2 is horizon, 4 is passthrough</li>
+<li>1 is ok to arm, 2 is arming is prevented,  4 is armed</li>
+</ol>
+
+<p>Tmp2 : GPS lock status, Number is sent as 1234, the numbers are aditives :</p>
+
+<ol>
+<li>1 is GPS Fix, 2 is GPS Home fix</li>
+<li>not used</li>
+<li>not used</li>
+<li>number of sats</li>
+</ol>
+
+<p>VFAS : actual vbat value.</p>
+
+<p>GAlt : GPS altitude, sea level is zero.</p>
+
+<p>GSpd : current speed, calculated by GPS.</p>
+
+<p>GPS : GPS coordinates.</p>
+
+<h3>Integrate Cleanflight telemetry with FrSky Smartport sensors</h3>
+
+<p>While Cleanflight telemetry brings a lot of valuable data to the radio, there are additional sensors, like Lipo cells sensor FLVSS, that can be a great addition for many aircrafts. Smartport sensors are designed to be daisy chained, and CF telemetry is no exception to that. To add an external sensor, just connect the &ldquo;S&rdquo; port of the FC and sensor(s) together, and ensure the sensor(s) are getting connected to GND and VCC either from the controler or the receiver</p>
+
+<p><img src="http://shipow.github.io/cleanflight-web/assets/images/integrate_smartport.png" alt="Smartport diagram"></p>
+
+<h3>SmartPort on F3 targets with hardware UART</h3>
+
+<p>Smartport devices can be connected directly to STM32F3 boards such as the SPRacingF3 and Sparky, with a single straight through cable without the need for any hardware modifications on the FC or the receiver. Connect the TX PIN of the UART to the Smartport signal pin.</p>
 
 <p>For Smartport on F3 based boards, enable the telemetry inversion setting.</p>
-<figure class="highlight"><pre><code class="language-text" data-lang="text">set telemetry_inversion = 1
+<figure class="highlight"><pre><code class="language-text" data-lang="text">set telemetry_inversion = ON
 </code></pre></figure>
+<h3>SmartPort on F1 and F3 targets with SoftSerial</h3>
+
+<p>Since F1 targets like Naze32 or Flip32 are not equipped with hardware inverters, SoftSerial might be simpler to use. </p>
+
+<ol>
+<li>Enable SoftSerial <code>feature SOFTSERIAL</code></li>
+<li>In Configurator assign <u>Telemetry</u> &gt; <u>Smartport</u> &gt; <u>Auto</u> to SoftSerial port of your choice</li>
+<li>Enable Telemetry <code>feature TELEMETRY</code></li>
+<li>Confirm telemetry invesion <code>set telemetry_inversion = ON</code></li>
+<li>You have to bridge TX and RX lines of SoftSerial and connect them together to S.Port signal line in receiver</li>
+</ol>
+
+<p>Notes:</p>
+
+<ul>
+<li>This has been tested with Flip32 and SPracingF3 boards and FrSky X8R and X4R receivers</li>
+<li>To discover all sensors board has to be armed, and when GPS is connected, it needs to have a proper 3D fix. When not armed, values like <strong><em>Vfas</em></strong> or GPS coordinates may not sent.</li>
+</ul>
+
       </div>
     </div>
     <div class="col-md-3">
@@ -205,6 +317,10 @@ a serial port should be connected using a diode and a single wire to the <code>T
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -222,6 +338,10 @@ a serial port should be connected using a diode and a single wire to the <code>T
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -250,6 +370,14 @@ a serial port should be connected using a diode and a single wire to the <code>T
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -392,6 +520,10 @@ a serial port should be connected using a diode and a single wire to the <code>T
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -412,7 +544,7 @@ a serial port should be connected using a diode and a single wire to the <code>T
                 
                   
                     <li>
-                      <a href="/docs/api/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/api/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -436,7 +568,7 @@ a serial port should be connected using a diode and a single wire to the <code>T
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -444,7 +576,7 @@ a serial port should be connected using a diode and a single wire to the <code>T
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -452,7 +584,7 @@ a serial port should be connected using a diode and a single wire to the <code>T
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -460,7 +592,7 @@ a serial port should be connected using a diode and a single wire to the <code>T
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -468,7 +600,7 @@ a serial port should be connected using a diode and a single wire to the <code>T
                 
                   
                     <li>
-                      <a href="/docs/development/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -476,7 +608,7 @@ a serial port should be connected using a diode and a single wire to the <code>T
                 
                   
                     <li>
-                      <a href="/docs/development/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -484,7 +616,15 @@ a serial port should be connected using a diode and a single wire to the <code>T
                 
                   
                     <li>
-                      <a href="/docs/development/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -492,7 +632,7 @@ a serial port should be connected using a diode and a single wire to the <code>T
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -500,7 +640,7 @@ a serial port should be connected using a diode and a single wire to the <code>T
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -508,7 +648,7 @@ a serial port should be connected using a diode and a single wire to the <code>T
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -516,7 +656,15 @@ a serial port should be connected using a diode and a single wire to the <code>T
                 
                   
                     <li>
-                      <a href="/docs/development/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -524,7 +672,7 @@ a serial port should be connected using a diode and a single wire to the <code>T
                 
                   
                     <li>
-                      <a href="/docs/development/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -532,7 +680,7 @@ a serial port should be connected using a diode and a single wire to the <code>T
                 
                   
                     <li>
-                      <a href="/docs/development/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -546,6 +694,7 @@ a serial port should be connected using a diode and a single wire to the <code>T
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>

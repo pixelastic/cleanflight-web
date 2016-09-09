@@ -88,15 +88,24 @@
       <div class="content">
         <h1>Configuration</h1>
 
-<p>The configuration in cleanflight is stored at the end of the flash ram, currently it uses 2KB of flash.</p>
+<p>The configuration in cleanflight is stored at the end of the flash ram, currently it uses 2-4KB of flash depending on the target.</p>
 
-<p>Sometimes it&rsquo;s necesaary to erase this during development.</p>
+<p>Sometimes it&rsquo;s necessary to erase this during development.</p>
 
 <h2>Erasing</h2>
 
-<p>Generate a 2kb blank file.</p>
-<figure class="highlight"><pre><code class="language-text" data-lang="text">dd if=/dev/zero of=obj/blankconfig.bin bs=1024 count=2
-</code></pre></figure>
+<p>Generate a 2-4kb blank file.</p>
+
+<p>2kb:
+<code>
+dd if=/dev/zero of=obj/blankconfig.bin bs=1024 count=2
+</code></p>
+
+<p>4kb:
+<code>
+dd if=/dev/zero of=obj/blankconfig.bin bs=1024 count=4
+</code></p>
+
 <p>Overwrite configuration using JLink</p>
 
 <p>Run JLink (OSX: <code>/Applications/SEGGER/JLink/JLinkExe</code>)</p>
@@ -105,9 +114,20 @@
 <code>device &lt;your device&gt;</code>, e.g. <code>STM32F303CB</code>
 <code>r</code>
 <code>h</code> 
-<code>loadbin obj/blankconfig.bin, &lt;address&gt;</code>, address 128k device = 0x801F800, 256k device = 0x803f800
+<code>loadbin obj/blankconfig.bin, &lt;address&gt;</code>
 <code>r</code> to Reboot FC.
 <code>q</code> to quit</p>
+
+<p>the address is the address of the end of the flash ram minus the size of the configuration.</p>
+
+<p>example addresses:
+<code>
+64k device/2kb config = 0x800F800
+128k device/2kb config = 0x801F800
+128k device/4kb config = 0x801F000
+256k device/2kb config = 0x803f800
+256k device/4kb config = 0x803f000
+</code></p>
 
 <p>Example session</p>
 <figure class="highlight"><pre><code class="language-text" data-lang="text">$ /Applications/SEGGER/JLink/JLinkExe
@@ -187,6 +207,10 @@ J-Link&gt;q
           
         
           
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienflight.html">Board   Alienflight</a></li>
+          
+        
+          
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-alienwii32.html">Board   Alienwii32</a></li>
           
         
@@ -204,6 +228,10 @@ J-Link&gt;q
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-colibrirace.html">Board   Colibrirace</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-f3fc-racing.html">Board   F3fc Racing</a></li>
           
         
           
@@ -232,6 +260,14 @@ J-Link&gt;q
         
           
             <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3.html">Board   Spracingf3</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3evo.html">Board   Spracingf3evo</a></li>
+          
+        
+          
+            <li><a href="http://shipow.github.io/cleanflight-web/docs/board-spracingf3mini.html">Board   Spracingf3mini</a></li>
           
         
           
@@ -374,6 +410,10 @@ J-Link&gt;q
         
           
         
+          
+        
+          
+        
       </ul>
       
         <div class="catbloc" id="docs">
@@ -394,7 +434,7 @@ J-Link&gt;q
                 
                   
                     <li>
-                      <a href="/api/docs/msp-extensions.html">
+                      <a href="http://shipow.github.io/cleanflight-web/api/docs/msp-extensions.html">
                         Msp_extensions
                       </a>
                     </li>
@@ -418,7 +458,7 @@ J-Link&gt;q
                 
                   
                     <li>
-                      <a href="/docs/development/travis.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/travis.html">
                         Travis
                       </a>
                     </li>
@@ -426,7 +466,7 @@ J-Link&gt;q
                 
                   
                     <li>
-                      <a href="/docs/development/pid-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/pid-internals.html">
                         Pid Internals
                       </a>
                     </li>
@@ -434,7 +474,7 @@ J-Link&gt;q
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging.html">
                         Hardware Debugging
                       </a>
                     </li>
@@ -442,7 +482,7 @@ J-Link&gt;q
                 
                   
                     <li>
-                      <a href="/docs/development/hardware-debugging-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/hardware-debugging-in-eclipse.html">
                         Hardware Debugging In Eclipse
                       </a>
                     </li>
@@ -450,7 +490,7 @@ J-Link&gt;q
                 
                   
                     <li>
-                      <a href="/docs/development/development.html">
+                      <a href="http://shipow.github.io/cleanflight-web/docs/development/development.html">
                         Development
                       </a>
                     </li>
@@ -458,7 +498,7 @@ J-Link&gt;q
                 
                   
                     <li>
-                      <a href="/development/docs/configuration-storage.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/configuration-storage.html">
                         Configuration Storage
                       </a>
                     </li>
@@ -466,7 +506,15 @@ J-Link&gt;q
                 
                   
                     <li>
-                      <a href="/development/docs/building-manual.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/configuration-format.html">
+                        Configuration Format
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-manual.html">
                         Building Manual
                       </a>
                     </li>
@@ -474,7 +522,7 @@ J-Link&gt;q
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-windows.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-in-windows.html">
                         Building In Windows
                       </a>
                     </li>
@@ -482,7 +530,7 @@ J-Link&gt;q
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-ubuntu.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-in-ubuntu.html">
                         Building In Ubuntu
                       </a>
                     </li>
@@ -490,7 +538,7 @@ J-Link&gt;q
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-mac-os-x.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-in-mac-os-x.html">
                         Building In Mac Os X
                       </a>
                     </li>
@@ -498,7 +546,15 @@ J-Link&gt;q
                 
                   
                     <li>
-                      <a href="/development/docs/building-in-eclipse.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-in-fedora.html">
+                        Building In Fedora
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/building-in-eclipse.html">
                         Building In Eclipse
                       </a>
                     </li>
@@ -506,7 +562,7 @@ J-Link&gt;q
                 
                   
                     <li>
-                      <a href="/development/docs/blackbox-internals.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/blackbox-internals.html">
                         Blackbox Internals
                       </a>
                     </li>
@@ -514,7 +570,7 @@ J-Link&gt;q
                 
                   
                     <li>
-                      <a href="/development/docs/atomic-barrier.html">
+                      <a href="http://shipow.github.io/cleanflight-web/development/docs/atomic-barrier.html">
                         Atomic Barrier
                       </a>
                     </li>
@@ -528,6 +584,7 @@ J-Link&gt;q
     </div>
   </div>
 </div>
+
     <footer class="footer text-center">
       <i class="fa fa-copyright"></i> 2015 Cleanflight Team
     </footer>
