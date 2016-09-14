@@ -8,5 +8,5 @@ gem 'jekyll-paginate'
 
 
 group :jekyll_plugins do
-  gem 'algoliasearch-jekyll', '~> 0.4.3'
+  gem 'algoliasearch-jekyll', '~> 1.0.0.beta.pre.1'
 end

@@ -45,5 +45,3 @@ algolia:
   index_name: dev_cleanflight
   application_id: T2ZX9HO66V
   search_only_api_key: 7119d2f6f1cd95224251ec2e490e824f
-  clusters:
-    - c1-eu-1
