@@ -8,5 +8,5 @@ gem 'jekyll-paginate'
 
 
 group :jekyll_plugins do
-  gem 'algoliasearch-jekyll', '~> 1.0.0.beta.pre.1'
+  gem 'jekyll-algolia', path: '/home/tim/local/www/algolia/clients/jekyll-algolia/'
 end
